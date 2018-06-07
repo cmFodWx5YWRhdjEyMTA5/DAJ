@@ -20,6 +20,41 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer" />
+        app:menu="@menu/activity_main_drawer"
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@mipmap/bg"/>
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@mipmap/bg"
+            android:layout_gravity="bottom"
+            >
+
+            <ImageView
+                android:id="@+id/facebook"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@color/colorPrimary"
+                android:layout_marginStart="72dp"/>
+            <ImageView
+                android:id="@+id/twitter"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@color/colorPrimary"
+                android:layout_marginStart="5dp"/>
+            <ImageView
+                android:id="@+id/instagram"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@color/colorPrimary"
+                android:layout_marginStart="5dp"/>
+        </LinearLayout>
+    </android.support.design.widget.NavigationView>
+
 
 </android.support.v4.widget.DrawerLayout>
