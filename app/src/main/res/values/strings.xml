@@ -6,4 +6,19 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="home">Home</string>
+    <string name="events">Events</string>
+    <string name="services">Services</string>
+    <string name="guest_registration">Guest Registration</string>
+    <string name="view_camera">View Camera</string>
+    <string name="navigation">Navigation</string>
+    <string name="projects">Projects</string>
+    <string name="view_profile">View Profile</string>
+    <string name="food">Food</string>
+    <string name="taxi">Taxi</string>
+    <string name="complaint">Complaint</string>
+    <string name="emergency_contact">Emergency Contact</string>
+    <string name="change_password">Change Password</string>
+    <string name="notification">Notification</string>
+    <string name="my_bookings">My Bookings</string>
 </resources>

@@ -17,9 +17,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     ImageView facebook;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity
     ImageView instagram;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -107,20 +108,45 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        int a = 1;
+        if (id == R.id.home) {
             // Handle the camera action
            // item.setIcon(R.layout.sample);
 
-        } else if (id == R.id.nav_gallery) {
+            if (a==1) {
+                item.setIcon(R.drawable.icon_slection_arabic);
+            }else {
+                item.setIcon(R.drawable.icon_slection_english);
+            }
+        } else if (id == R.id.events) {
+            setLanguage(true);
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.services) {
+            setLanguage(false);
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.guest_registration) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.view_camera) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.navigation) {
 
+        }else if (id == R.id.projects) {
+
+        }else if (id == R.id.my_bookings) {
+
+        }else if (id == R.id.view_profile) {
+
+        }else if (id == R.id.food) {
+
+        }else if (id == R.id.taxi) {
+
+        }else if (id == R.id.complaint) {
+
+        }else if (id == R.id.emergency_contact) {
+
+        }else if (id == R.id.change_password) {
+
+            Toast.makeText(this,""+getLanguage(),Toast.LENGTH_SHORT).show();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
