@@ -1,5 +1,6 @@
 package com.tinnovat.app.daj.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -38,7 +39,7 @@ public class MainActivity extends BaseActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+       // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -50,7 +51,7 @@ public class MainActivity extends BaseActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        facebook.setOnClickListener(new View.OnClickListener() {
+       facebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this,"facebook clicked",Toast.LENGTH_SHORT).show();
@@ -112,18 +113,22 @@ public class MainActivity extends BaseActivity
         if (id == R.id.home) {
             // Handle the camera action
            // item.setIcon(R.layout.sample);
+            getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
 
-            if (a==1) {
+           /* if (a==1) {
                 item.setIcon(R.drawable.icon_slection_arabic);
             }else {
                 item.setIcon(R.drawable.icon_slection_english);
-            }
+            }*/
         } else if (id == R.id.events) {
-            setLanguage(true);
+           // setLanguage(true);
+            getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
 
         } else if (id == R.id.services) {
-            setLanguage(false);
-
+           // setLanguage(false);
+            Intent i = new Intent(MainActivity.this, TestActivity.class);
+            startActivity(i);
+           // finish();
         } else if (id == R.id.guest_registration) {
 
         } else if (id == R.id.view_camera) {
