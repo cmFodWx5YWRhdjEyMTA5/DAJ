@@ -27,4 +27,9 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="user_name">User Name</string>
     <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="sign_in">Sign In</string>
+    <string name="follow_us">Follow Us</string>
+    <string name="english">English</string>
+    <string name="arabic">العَرَبِيَّة</string>
 </resources>
