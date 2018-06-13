@@ -9,9 +9,8 @@
     <string name="home">Home</string>
     <string name="events">Events</string>
     <string name="services">Services</string>
-    <string name="guest_registration">Guest Registration</string>
+    <string name="guest_reg">Guest Registration</string>
     <string name="view_camera">View Camera</string>
-    <string name="navigation">Navigation</string>
     <string name="projects">Projects</string>
     <string name="view_profile">View Profile</string>
     <string name="food">Food</string>
@@ -32,4 +31,5 @@
     <string name="follow_us">Follow Us</string>
     <string name="english">English</string>
     <string name="arabic">العَرَبِيَّة</string>
+    <string name="navigation">Navigation</string>
 </resources>

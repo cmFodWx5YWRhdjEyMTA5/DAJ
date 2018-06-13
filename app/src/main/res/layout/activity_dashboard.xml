@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@mipmap/bg">
+
+    <LinearLayout
+        style="@style/dashboardLayout">
+
+        <RelativeLayout
+            style="@style/dashboardContentLayout">
+            <ImageView
+                android:id="@+id/eventImg1"
+                style="@style/dashboardImage"/>
+            <ImageView
+                android:id="@+id/eventImg"
+                android:layout_below="@+id/eventImg1"
+                style="@style/dashboardImage"
+                app:srcCompat="@drawable/event"/>
+            <TextView
+                android:id="@+id/text"
+                style="@style/dashboardText"
+                android:layout_below="@+id/eventImg"
+                android:text="@string/events"
+                />
+
+            <ImageView
+                style="@style/dashboardArcRgt"
+                android:layout_above="@+id/text"
+                android:layout_toEndOf="@+id/eventImg" />
+            <ImageView
+                style="@style/dashboardArcLeft"
+                android:layout_above="@+id/text"
+                android:layout_toStartOf="@+id/eventImg"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/dashboardContentLayout">
+            <ImageView
+                android:id="@+id/servicesImg1"
+                style="@style/dashboardImage"
+                />
+            <ImageView
+                android:id="@+id/servicesImg"
+                android:layout_below="@+id/servicesImg1"
+                style="@style/dashboardImage"
+                app:srcCompat="@drawable/service"/>
+            <TextView
+                android:id="@+id/servicesText"
+                android:layout_below="@+id/servicesImg"
+                android:text="@string/services"
+                style="@style/dashboardText"/>
+
+            <ImageView
+                style="@style/dashboardArcRgt"
+                android:layout_above="@+id/servicesText"
+                android:layout_toEndOf="@+id/servicesImg" />
+            <ImageView
+                style="@style/dashboardArcLeft"
+                android:layout_above="@+id/servicesText"
+                android:layout_toStartOf="@+id/servicesImg"/>
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        style="@style/dashboardLayout"
+        android:gravity="center">
+
+        <RelativeLayout
+            style="@style/dashboardContentLayout">
+            <ImageView
+                android:id="@+id/guestImg1"
+                style="@style/dashboardImage"/>
+            <ImageView
+                android:id="@+id/guestImg"
+                android:layout_below="@+id/guestImg1"
+                style="@style/dashboardImage"
+                app:srcCompat="@drawable/guest"/>
+            <TextView
+                android:id="@+id/guestText"
+                style="@style/dashboardText"
+                android:layout_below="@+id/guestImg"
+                android:text="@string/guest_reg"
+                />
+
+            <ImageView
+                style="@style/dashboardArcRgt"
+                android:layout_above="@+id/guestText"
+                android:layout_toEndOf="@+id/guestImg" />
+            <ImageView
+                style="@style/dashboardArcLeft"
+                android:layout_above="@+id/guestText"
+                android:layout_toStartOf="@+id/guestImg"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/dashboardContentLayout">
+            <ImageView
+                android:id="@+id/cameraImg1"
+                style="@style/dashboardImage"
+                />
+            <ImageView
+                android:id="@+id/cameraImg"
+                android:layout_below="@+id/cameraImg1"
+                style="@style/dashboardImage"
+                app:srcCompat="@drawable/camera"/>
+            <TextView
+                android:id="@+id/cameraText"
+                android:layout_below="@+id/cameraImg"
+                android:text="@string/view_camera"
+                style="@style/dashboardText"/>
+
+            <ImageView
+                style="@style/dashboardArcRgt"
+                android:layout_above="@+id/cameraText"
+                android:layout_toEndOf="@+id/cameraImg" />
+            <ImageView
+                style="@style/dashboardArcLeft"
+                android:layout_above="@+id/cameraText"
+                android:layout_toStartOf="@+id/cameraImg"/>
+        </RelativeLayout>
+
+
+
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        style="@style/dashboardLayout"
+        android:gravity="center">
+        <RelativeLayout
+            style="@style/dashboardContentLayout">
+            <ImageView
+                android:id="@+id/navImg1"
+                style="@style/dashboardImage"/>
+            <ImageView
+                android:id="@+id/navImg"
+                android:layout_below="@+id/navImg1"
+                style="@style/dashboardImage"
+                app:srcCompat="@drawable/navigation"/>
+            <TextView
+                android:id="@+id/navText"
+                style="@style/dashboardText"
+                android:layout_below="@+id/navImg"
+                android:text="@string/navigation"
+                />
+
+            <ImageView
+                style="@style/dashboardArcRgt"
+                android:layout_above="@+id/navText"
+                android:layout_toEndOf="@+id/navImg" />
+            <ImageView
+                style="@style/dashboardArcLeft"
+                android:layout_above="@+id/navText"
+                android:layout_toStartOf="@+id/navImg"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/dashboardContentLayout">
+            <ImageView
+                android:id="@+id/projectImg1"
+                style="@style/dashboardImage"
+                />
+            <ImageView
+                android:id="@+id/projectImg"
+                android:layout_below="@+id/projectImg1"
+                style="@style/dashboardImage"
+                app:srcCompat="@drawable/projects"/>
+            <TextView
+                android:id="@+id/projectText"
+                android:layout_below="@+id/projectImg"
+                android:text="@string/projects"
+                style="@style/dashboardText"/>
+
+            <ImageView
+                style="@style/dashboardArcRgt"
+                android:layout_above="@+id/projectText"
+                android:layout_toEndOf="@+id/projectImg" />
+            <ImageView
+                style="@style/dashboardArcLeft"
+                android:layout_above="@+id/projectText"
+                android:layout_toStartOf="@+id/projectImg"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+    </LinearLayout>
+  <!-- </ImageView>-->
+
+</LinearLayout>

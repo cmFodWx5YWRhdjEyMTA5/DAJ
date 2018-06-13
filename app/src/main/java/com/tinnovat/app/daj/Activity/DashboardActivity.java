@@ -6,11 +6,11 @@ import android.os.Bundle;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 
-public class LoginActivity extends BaseActivity {
+public class DashboardActivity extends BaseActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_dashboard);
     }
 }

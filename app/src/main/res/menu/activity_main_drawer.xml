@@ -19,7 +19,7 @@
         <item
             android:id="@+id/guest_registration"
             android:icon="@drawable/ic_menu_manage"
-            android:title="@string/guest_registration" />
+            android:title="@string/guest_reg" />
         <item
             android:id="@+id/view_camera"
             android:icon="@drawable/ic_menu_manage"
