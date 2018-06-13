@@ -73,19 +73,22 @@
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/greenText</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">10dp</item>
     </style>
 
     <style name="dashboardArcRgt">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">70dp</item>
         <item name="android:src">@drawable/arc_right</item>
+        <item name="android:scaleType">fitStart</item>
+        <item name="android:visibility">invisible</item>
     </style>
 
     <style name="dashboardArcLeft">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">70dp</item>
         <item name="android:src">@drawable/arc_left</item>
-
+        <item name="android:scaleType">fitEnd</item>
     </style>
 
     <style name="dashboardContentLayout">
