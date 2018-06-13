@@ -68,9 +68,6 @@
                 android:layout_above="@+id/servicesText"
                 android:layout_toStartOf="@+id/servicesImg"/>
         </RelativeLayout>
-
-
-
     </LinearLayout>
     <LinearLayout
         style="@style/dashboardLayout"
@@ -129,12 +126,6 @@
                 android:layout_above="@+id/cameraText"
                 android:layout_toStartOf="@+id/cameraImg"/>
         </RelativeLayout>
-
-
-
-
-
-
     </LinearLayout>
     <LinearLayout
         style="@style/dashboardLayout"
@@ -195,6 +186,4 @@
 
     </LinearLayout>
     </LinearLayout>
-  <!-- </ImageView>-->
-
 </LinearLayout>

@@ -84,6 +84,15 @@
         <item name="android:visibility">invisible</item>
     </style>
 
+    <style name="serviceLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">.5</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+    </style>
+
     <style name="dashboardArcLeft">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">70dp</item>
@@ -105,6 +114,14 @@
         <item name="android:orientation">horizontal</item>
         <item name="android:baselineAligned">false</item>
         <item name="android:gravity">center</item>
+    </style>
+
+    <style name="backgroundBg">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@mipmap/bg</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:tint">@color/white</item>
     </style>
 
 </resources>

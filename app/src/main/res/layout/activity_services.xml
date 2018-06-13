@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activity.ServicesActivity"
+    android:background="@mipmap/bg">
+
+    <RelativeLayout
+        style="@style/serviceLayout"
+        android:background="@drawable/curve_bg_green">
+        <LinearLayout
+            style="@style/backgroundBg"/>
+        <ImageView
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:layout_marginTop="-20dp"
+            android:layout_marginStart="-20dp"
+            android:src="@drawable/green_circle"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                app:srcCompat="@drawable/hall"
+                android:layout_marginLeft="50dp"
+                android:layout_gravity="center_vertical"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="sample"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        style="@style/serviceLayout"
+        android:background="@drawable/curve_bg_green">
+        <LinearLayout
+            style="@style/backgroundBg"/>
+        <ImageView
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:layout_marginTop="-20dp"
+            android:layout_marginStart="-20dp"
+            android:src="@drawable/golden_circle"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        style="@style/serviceLayout"
+        android:background="@drawable/curve_bg_green">
+        <LinearLayout
+            style="@style/backgroundBg"/>
+        <ImageView
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:layout_marginTop="-20dp"
+            android:layout_marginStart="-20dp"
+            android:src="@drawable/green_circle"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

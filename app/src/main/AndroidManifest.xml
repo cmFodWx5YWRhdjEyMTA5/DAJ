@@ -30,27 +30,25 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity android:name=".BaseActivity" />
         <activity
             android:name=".Activity.LoginActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/MyTheme">
-
-        </activity>
+            android:theme="@style/MyTheme"></activity>
         <activity android:name=".Activity.TestActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.daj.Activity.MainActivity" />
         </activity>
-        <activity android:name=".Activity.DashboardActivity">
+        <activity android:name=".Activity.DashboardActivity"></activity>
+        <activity android:name=".Activity.ServicesActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
