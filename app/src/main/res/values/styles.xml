@@ -48,6 +48,22 @@
         <item name="android:elevation">5dp</item>
     </style>
 
+    <style name="boxStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/curve_small_bg_white</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:elevation">5dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="boxStyleNew">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/curve_small_bg_white</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:elevation">5dp</item>
+    </style>
     <style name="socialMediaIcons">
         <item name="android:layout_width">20dp</item>
         <item name="android:layout_height">20dp</item>
@@ -119,7 +135,15 @@
     <style name="backgroundBg">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:background">@mipmap/bg</item>
+        <item name="android:background">@drawable/green_bg</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:tint">@color/white</item>
+    </style>
+
+    <style name="backgroundBgGold">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@drawable/golden_bg</item>
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:tint">@color/white</item>
     </style>

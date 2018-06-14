@@ -5,8 +5,10 @@
     <color name="colorAccent">#000000</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
+    <color name="blackTrans">#66000000</color>
     <color name="greenNavSelection">#24735D</color>
     <color name="greenText">#2C7861</color>
+    <color name="gray">#D6D6D6</color>
 
     <color name="black_overlay">#66000000</color>
 </resources>

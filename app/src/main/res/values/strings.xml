@@ -32,4 +32,17 @@
     <string name="english">English</string>
     <string name="arabic">العَرَبِيَّة</string>
     <string name="navigation">Navigation</string>
+    <string name="halls">HALLS</string>
+    <string name="tennis_court">TENNIS COURT</string>
+    <string name="swimming_pool">SWIMMING POOL</string>
+    <string name="date_and_time">Date and Time</string>
+    <string name="number_of_guest">Number of Guest</string>
+    <string name="comments">Comments</string>
+    <string name="book">Book</string>
+    <string name="category">Category</string>
+    <string name="location">Location</string>
+    <string name="submit">Submit</string>
+    <string name="wedding_reception">Wedding Reception</string>
+    <string name="upcoming_activity_s">Upcoming Activity\'s</string>
+    <string name="lorem_ipsum">Lorem Ipsum</string>
 </resources>
