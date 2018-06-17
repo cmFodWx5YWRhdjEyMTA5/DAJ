@@ -35,7 +35,7 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:background="@mipmap/bg"
+            android:background="@color/white"
             android:layout_gravity="bottom"
             >
 
@@ -43,19 +43,19 @@
                 android:id="@+id/facebook"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:background="@color/colorPrimary"
+                app:srcCompat="@drawable/facebook"
                 android:layout_marginStart="72dp"/>
             <ImageView
                 android:id="@+id/twitter"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:background="@color/colorPrimary"
+                app:srcCompat="@drawable/twitter"
                 android:layout_marginStart="5dp"/>
             <ImageView
                 android:id="@+id/instagram"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:background="@color/colorPrimary"
+                app:srcCompat="@drawable/instagram"
                 android:layout_marginStart="5dp"/>
         </LinearLayout>
     </android.support.design.widget.NavigationView>

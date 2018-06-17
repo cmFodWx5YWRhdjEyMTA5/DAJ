@@ -28,19 +28,19 @@
             android:layout_marginEnd="20dp"
             app:srcCompat="@drawable/user"/>
         <ImageView
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
             android:background="@drawable/curve_small_bg_gray"
             app:srcCompat="@drawable/user"/>
         <ImageView
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/curve_small_bg_gray"
-        app:srcCompat="@drawable/user"/>
+            app:srcCompat="@drawable/user"/>
     </LinearLayout>
 
     <LinearLayout

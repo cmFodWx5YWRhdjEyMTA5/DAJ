@@ -16,6 +16,7 @@
         style="@style/dashboardLayout">
 
         <RelativeLayout
+            android:id="@+id/events"
             style="@style/dashboardContentLayout">
             <ImageView
                 android:id="@+id/eventImg1"
@@ -43,6 +44,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/services"
             style="@style/dashboardContentLayout">
             <ImageView
                 android:id="@+id/servicesImg1"
@@ -74,6 +76,7 @@
         android:gravity="center">
 
         <RelativeLayout
+            android:id="@+id/guest_registration"
             style="@style/dashboardContentLayout">
             <ImageView
                 android:id="@+id/guestImg1"
@@ -101,6 +104,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/view_camera"
             style="@style/dashboardContentLayout">
             <ImageView
                 android:id="@+id/cameraImg1"
@@ -131,6 +135,7 @@
         style="@style/dashboardLayout"
         android:gravity="center">
         <RelativeLayout
+            android:id="@+id/navigation"
             style="@style/dashboardContentLayout">
             <ImageView
                 android:id="@+id/navImg1"
@@ -158,6 +163,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/projects"
             style="@style/dashboardContentLayout">
             <ImageView
                 android:id="@+id/projectImg1"

@@ -16,10 +16,13 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
+
+import java.util.Objects;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -27,17 +30,31 @@ public class MainActivity extends BaseActivity
     ImageView facebook;
     ImageView twitter;
     ImageView instagram;
+    RelativeLayout events;
+    RelativeLayout services;
+    RelativeLayout guest_registration;
+    RelativeLayout view_camera;
+    RelativeLayout navigation;
+    RelativeLayout projects;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("DASHBOARD");
 
         facebook = findViewById(R.id.facebook);
         twitter = findViewById(R.id.twitter);
         instagram = findViewById(R.id.instagram);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        events = findViewById(R.id.events);
+        services = findViewById(R.id.services);
+        guest_registration = findViewById(R.id.guest_registration);
+        view_camera = findViewById(R.id.view_camera);
+        navigation = findViewById(R.id.navigation);
+        projects = findViewById(R.id.projects);
+
 
        // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
 
@@ -67,6 +84,40 @@ public class MainActivity extends BaseActivity
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this,"instagram clicked",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        events.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        services.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, ServicesActivity.class);
+                startActivity(i);
+            }
+        });
+        guest_registration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+        view_camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+        navigation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+        projects.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
             }
         });
     }
@@ -142,11 +193,16 @@ public class MainActivity extends BaseActivity
         }else if (id == R.id.view_profile) {
 
         }else if (id == R.id.food) {
+            Intent i = new Intent(MainActivity.this, OrderFoodActivity.class);
+            startActivity(i);
 
         }else if (id == R.id.taxi) {
+            Intent i = new Intent(MainActivity.this, OrderTaxiActivity.class);
+            startActivity(i);
 
         }else if (id == R.id.complaint) {
-
+            Intent i = new Intent(MainActivity.this, RegisterComplaintActivity.class);
+            startActivity(i);
         }else if (id == R.id.emergency_contact) {
 
         }else if (id == R.id.change_password) {
