@@ -41,7 +41,7 @@ public class MainActivity extends BaseActivity
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("DASHBOARD");
+        //Objects.requireNonNull(getSupportActionBar()).setTitle("DASHBOARD");
 
         facebook = findViewById(R.id.facebook);
         twitter = findViewById(R.id.twitter);
@@ -173,12 +173,14 @@ public class MainActivity extends BaseActivity
             }*/
         } else if (id == R.id.events) {
            // setLanguage(true);
-            getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+           // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+            Intent i = new Intent(MainActivity.this, EventBookingActivity.class);
+            startActivity(i);
 
         } else if (id == R.id.services) {
            // setLanguage(false);
-            Intent i = new Intent(MainActivity.this, TestActivity.class);
-            startActivity(i);
+           /* Intent i = new Intent(MainActivity.this, TestActivity.class);
+            startActivity(i);*/
            // finish();
         } else if (id == R.id.guest_registration) {
 
@@ -189,6 +191,8 @@ public class MainActivity extends BaseActivity
         }else if (id == R.id.projects) {
 
         }else if (id == R.id.my_bookings) {
+            Intent i = new Intent(MainActivity.this, ServiceBookingActivity.class);
+            startActivity(i);
 
         }else if (id == R.id.view_profile) {
 

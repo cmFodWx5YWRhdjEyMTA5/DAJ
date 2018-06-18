@@ -41,22 +41,49 @@
                 android:value="com.tinnovat.app.daj.Activity.MainActivity" />
         </activity>
         <activity android:name=".Activity.DashboardActivity" />
-        <activity android:name=".Activity.ServicesActivity" />
-        <activity android:name=".Activity.ServiceBookingActivity" />
-        <activity android:name=".Activity.RegisterComplaintActivity" />
-        <activity android:name=".Activity.EventBookingActivity">
-
+        <activity android:name=".Activity.ServicesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tinnovat.app.daj.Activity.MainActivity" />
         </activity>
-        <activity android:name=".Activity.OrderTaxiActivity" />
+        <activity android:name=".Activity.ServiceBookingActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tinnovat.app.daj.Activity.MainActivity" />
+        </activity>
+        <activity android:name=".Activity.RegisterComplaintActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tinnovat.app.daj.Activity.MainActivity" />
+        </activity>
+        <activity android:name=".Activity.EventBookingActivity" />
+        <activity android:name=".Activity.OrderTaxiActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tinnovat.app.daj.Activity.MainActivity" />
+        </activity>
         <activity android:name=".Activity.OrderFoodActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.daj.Activity.MainActivity" />
+        </activity>
+        <activity android:name=".Activity.SurveillanceActivity">
+
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tinnovat.app.daj.Activity.MainActivity" />
+        </activity>
+        <activity android:name=".Activity.MyComplaintActivity">
             <intent-filter>
             <action android:name="android.intent.action.MAIN" />
-
             <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
+        </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tinnovat.app.daj.Activity.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

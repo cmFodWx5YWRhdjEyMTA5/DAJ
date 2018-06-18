@@ -8,9 +8,10 @@
     android:background="@mipmap/bg">
     <ImageView
         android:id="@+id/banner"
-        android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:src="@drawable/booking_bg"/>
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:src="@drawable/order_food"
+        android:scaleType="centerCrop"/>
 
     <LinearLayout
         android:id="@+id/row1"
@@ -26,12 +27,14 @@
             android:background="@drawable/curve_small_bg_gray"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
+            android:elevation="5dp"
             app:srcCompat="@drawable/user"/>
         <ImageView
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_weight="1"
             android:background="@drawable/curve_small_bg_gray"
+            android:elevation="5dp"
             app:srcCompat="@drawable/user"/>
         <ImageView
             android:layout_width="0dp"
@@ -40,6 +43,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/curve_small_bg_gray"
+            android:elevation="5dp"
             app:srcCompat="@drawable/user"/>
     </LinearLayout>
 
@@ -56,12 +60,14 @@
             android:background="@drawable/curve_small_bg_gray"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
+            android:elevation="5dp"
             app:srcCompat="@drawable/user"/>
         <ImageView
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_weight="1"
             android:background="@drawable/curve_small_bg_gray"
+            android:elevation="5dp"
             app:srcCompat="@drawable/user"/>
         <ImageView
             android:layout_width="0dp"
@@ -70,6 +76,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/curve_small_bg_gray"
+            android:elevation="5dp"
             app:srcCompat="@drawable/user"/>
     </LinearLayout>
 
