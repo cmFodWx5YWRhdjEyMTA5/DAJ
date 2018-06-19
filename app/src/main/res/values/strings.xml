@@ -49,4 +49,8 @@
     <string name="children_play_area">Children Play Area</string>
     <string name="community_center">Community Center</string>
     <string name="assigned">Assigned</string>
+    <string name="submitted">Submitted</string>
+    <string name="in_progress">In Progress</string>
+    <string name="your_complaint_status">Your Complaint Status</string>
+    <string name="status">Status</string>
 </resources>
