@@ -45,6 +45,8 @@
     <string name="wedding_reception">Wedding Reception</string>
     <string name="upcoming_activity_s">Upcoming Activity\'s</string>
     <string name="lorem_ipsum">Lorem Ipsum</string>
+    <string name="lorem_ipsum_medium">Lorem Ipsum is simply dummy text of the printing</string>
+    <string name="lorem_ipsum_large">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</string>
     <string name="main_gate">Main Gate</string>
     <string name="children_play_area">Children Play Area</string>
     <string name="community_center">Community Center</string>
@@ -53,4 +55,5 @@
     <string name="in_progress">In Progress</string>
     <string name="your_complaint_status">Your Complaint Status</string>
     <string name="status">Status</string>
+    <string name="description">Description</string>
 </resources>

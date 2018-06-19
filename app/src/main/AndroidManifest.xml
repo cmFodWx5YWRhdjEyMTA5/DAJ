@@ -78,19 +78,18 @@
                 android:value="com.tinnovat.app.daj.Activity.MainActivity" />
         </activity>
         <activity android:name=".Activity.MyComplaintListActivity">
-
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.daj.Activity.MainActivity" />
         </activity>
         <activity android:name=".Activity.FuturePhaseInfoListActivity">
             <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+        <activity android:name=".Activity.FuturePhaseInfoDetailActivity"></activity>
     </application>
 
 </manifest>
