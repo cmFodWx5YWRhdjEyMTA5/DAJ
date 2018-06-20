@@ -17,13 +17,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/MyTheme">
 
-            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            -->
         </activity>
         <activity
             android:name=".Activity.MainActivity"
@@ -40,7 +38,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.daj.Activity.MainActivity" />
         </activity>
-        <activity android:name=".Activity.DashboardActivity" />
         <activity android:name=".Activity.ServicesActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -82,14 +79,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.daj.Activity.MainActivity" />
         </activity>
-        <activity android:name=".Activity.FuturePhaseInfoListActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".Activity.FuturePhaseInfoListActivity"></activity>
+        <activity android:name=".Activity.FuturePhaseInfoDetailActivity" />
+        <activity android:name=".Activity.EventNewsActivity">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-        <activity android:name=".Activity.FuturePhaseInfoDetailActivity"></activity>
+        <activity android:name=".Activity.EventDetailActivity"></activity>
     </application>
 
 </manifest>

@@ -8,12 +8,12 @@ import com.tinnovat.app.daj.R;
 
 import java.util.Objects;
 
-public class DashboardActivity extends BaseActivity {
+public class EventDetailActivity extends BaseActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("DASHBOARD");
+        setContentView(R.layout.activity_event_detail);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("EVENT DETAILS");
     }
 }

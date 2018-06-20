@@ -64,6 +64,10 @@
 
     </style>
 
+    <style name="TabLayoutTextStyle">
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="lineIndicationSmall">
         <item name="android:layout_width">1dp</item>
         <item name="android:layout_height">match_parent</item>
