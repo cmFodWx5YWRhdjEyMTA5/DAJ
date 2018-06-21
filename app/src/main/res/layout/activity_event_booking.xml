@@ -6,7 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".Activity.EventBookingActivity"
     android:background="@mipmap/bg">
-    <LinearLayout
+
+    <CalendarView
+        android:id="@+id/simpleCalendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weekDayTextAppearance="@color/blue"
+
+        />
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -284,6 +292,6 @@
                 </LinearLayout>
             </RelativeLayout>
         </RelativeLayout>
-    </LinearLayout>
+    </LinearLayout>-->
 
 </LinearLayout>
