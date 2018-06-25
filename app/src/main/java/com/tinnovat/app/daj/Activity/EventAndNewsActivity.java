@@ -67,7 +67,7 @@ public class EventAndNewsActivity extends BaseActivity {
         @Override
         public int getCount() {
 
-            return 9999;
+            return 2;
         }
 
         @Override

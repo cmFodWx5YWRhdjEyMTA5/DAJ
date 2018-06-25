@@ -4,294 +4,405 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.MyBookingActivity"
-    android:background="@mipmap/bg">
+    android:background="@mipmap/bg"
+    android:orientation="vertical"
+    tools:context=".Activity.MyBookingActivity">
 
-    <CalendarView
-        android:id="@+id/simpleCalendarView"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weekDayTextAppearance="@color/blue"
+        android:background="@color/blackLight">
 
-        />
-    <!--<LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp">
-        <RelativeLayout style="@style/boxStyleNew">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
+        <RelativeLayout
+            android:id="@+id/date"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".4">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    app:srcCompat="@drawable/time"/>
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/category"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:layout_marginStart="5dp"/>
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="30dp"
-                    android:background="@color/gray"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Today's Activity"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:layout_marginStart="10dp"/>
-
-            </LinearLayout>
-                <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/gray"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginTop="10dp"
-                        app:srcCompat="@drawable/time"/>
-                    <TextView
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:text="10.00am"
-                        android:layout_marginStart="5dp"
-                        android:textColor="@color/black"
-                        android:paddingTop="10dp"
-                         />
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="40dp"
-                        android:background="@color/gray"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:text="@string/wedding_reception"
-                        android:textColor="@color/black"
-                         />
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        app:srcCompat="@drawable/time"/>
-                    <TextView
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:text="10.00am"
-                        android:layout_marginStart="5dp"
-                        android:textColor="@color/black"
-                        />
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="40dp"
-                        android:background="@color/gray"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:text="@string/wedding_reception"
-                        android:textColor="@color/black"
-                        />
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-           
-
-        </RelativeLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/upcoming_activity_s"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_marginBottom="10dp"/>
-
-        <RelativeLayout style="@style/boxStyleNew"
-            android:padding="15dp">
-            <RelativeLayout
-                android:id="@+id/layout1"
+            <TextView
+                android:id="@+id/today_text"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-            <ImageView
-                android:id="@+id/img1"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="@string/today_events"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/todayDate"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="@color/black"/>
-            <LinearLayout
-                android:id="@+id/activityLayout1"
-                android:layout_alignParentTop="true"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/img1"
-                android:layout_marginTop="5dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/orenge_circle"
+                android:gravity="center"
+                android:text="25\nmay"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+        </RelativeLayout>
 
-                >
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/lorem_ipsum"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:layout_weight=".75"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginBottom="10dp"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="11.00am"
-                    android:textColor="@color/blackTrans"
-                    android:textStyle="bold"
-                    android:layout_weight=".25"
-                    android:layout_marginBottom="10dp"/>
-            </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".9"
+            android:theme="@style/CalenderViewCustom" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical">
+
+            <RelativeLayout style="@style/boxStyleNew">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <LinearLayout
+                            android:layout_width="125dp"
+                            android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="5dp"
+                            app:srcCompat="@drawable/time" />
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text="@string/category"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="30dp"
+                            android:background="@color/gray" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text="Today's Activity"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content" />
+                        <ImageView
+                            android:id="@+id/delete"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            app:srcCompat="@drawable/delete" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <LinearLayout
+                            android:layout_width="125dp"
+                            android:layout_height="wrap_content">
+                            <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/greenText"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:paddingTop="10dp"
+                                android:text="10.00am"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+
+
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="40dp"
+                            android:background="@color/gray" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/wedding_reception"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="125dp"
+                            android:layout_height="wrap_content">
+                            <CheckBox
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:buttonTint="@color/greenText"/>
+
+
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="10.00am"
+                            android:textColor="@color/black" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="40dp"
+                            android:background="@color/gray" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:paddingTop="10dp"
+                            android:text="@string/wedding_reception"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/img1"
-                android:layout_below="@+id/activityLayout1">
-                <TextView
+                android:layout_marginBottom="10dp"
+                android:text="@string/upcoming_activity_s"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                style="@style/boxStyleNew"
+                android:padding="15dp">
+
+                <RelativeLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/img1"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/orenge_circle" />
+
+                    <LinearLayout
+                        android:id="@+id/activityLayout1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="5dp"
+                        android:layout_toEndOf="@+id/img1"
+
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight=".75"
+                            android:text="@string/lorem_ipsum"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_weight=".25"
+                            android:text="11.00am"
+                            android:textColor="@color/blackTrans"
+                            android:textStyle="bold" />
+                        <ImageView
+                            android:id="@+id/delete1"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            app:srcCompat="@drawable/delete" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/activityLayout1"
+                        android:layout_toEndOf="@+id/img1">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="@string/lorem_ipsum"
+                            android:textColor="@color/blackTrans" />
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layout2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/lorem_ipsum"
-                    android:textColor="@color/blackTrans"
-                    android:layout_marginStart="5dp"/>
+                    android:layout_below="@+id/layout1">
 
-            </LinearLayout>
+                    <ImageView
+                        android:id="@+id/img2"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/green_circle" />
+
+                    <LinearLayout
+                        android:id="@+id/activityLayout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="5dp"
+                        android:layout_toEndOf="@+id/img2"
+
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight=".75"
+                            android:text="@string/lorem_ipsum"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_weight=".25"
+                            android:text="11.00am"
+                            android:textColor="@color/blackTrans"
+                            android:textStyle="bold" />
+                        <ImageView
+                            android:id="@+id/delete2"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            app:srcCompat="@drawable/delete" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/activityLayout2"
+                        android:layout_toEndOf="@+id/img2">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="@string/lorem_ipsum"
+                            android:textColor="@color/blackTrans" />
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layout3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/layout2">
+
+                    <ImageView
+                        android:id="@+id/img3"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/golden_circle" />
+
+                    <LinearLayout
+                        android:id="@+id/activityLayout3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="5dp"
+                        android:layout_toEndOf="@+id/img3"
+
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight=".75"
+                            android:text="@string/lorem_ipsum"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_weight=".25"
+                            android:text="11.00am"
+                            android:textColor="@color/blackTrans"
+                            android:textStyle="bold" />
+                        <ImageView
+                            android:id="@+id/delete3"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            app:srcCompat="@drawable/delete" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/activityLayout3"
+                        android:layout_toEndOf="@+id/img3">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="@string/lorem_ipsum"
+                            android:textColor="@color/blackTrans" />
+
+                    </LinearLayout>
+                </RelativeLayout>
             </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/layout2"
-                android:layout_below="@+id/layout1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/img2"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@color/black"/>
-                <LinearLayout
-                    android:id="@+id/activityLayout2"
-                    android:layout_alignParentTop="true"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/img2"
-                    android:layout_marginTop="5dp"
-
-                    >
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/lorem_ipsum"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:layout_weight=".75"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginBottom="10dp"/>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="11.00am"
-                        android:textColor="@color/blackTrans"
-                        android:textStyle="bold"
-                        android:layout_weight=".25"
-                        android:layout_marginBottom="10dp"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/img2"
-                    android:layout_below="@+id/activityLayout2">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/lorem_ipsum"
-                        android:textColor="@color/blackTrans"
-                        android:layout_marginStart="5dp"/>
-
-                </LinearLayout>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/layout3"
-                android:layout_below="@+id/layout2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/img3"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@color/black"/>
-                <LinearLayout
-                    android:id="@+id/activityLayout3"
-                    android:layout_alignParentTop="true"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/img3"
-                    android:layout_marginTop="5dp"
-
-                    >
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/lorem_ipsum"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:layout_weight=".75"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginBottom="10dp"/>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="11.00am"
-                        android:textColor="@color/blackTrans"
-                        android:textStyle="bold"
-                        android:layout_weight=".25"
-                        android:layout_marginBottom="10dp"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/img3"
-                    android:layout_below="@+id/activityLayout3">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/lorem_ipsum"
-                        android:textColor="@color/blackTrans"
-                        android:layout_marginStart="5dp"/>
-
-                </LinearLayout>
-            </RelativeLayout>
-        </RelativeLayout>
-    </LinearLayout>-->
-
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
