@@ -9,6 +9,7 @@
     android:background="@mipmap/bg">
 
     <RelativeLayout
+        android:id="@+id/hall"
         style="@style/serviceLayout"
         android:background="@drawable/curve_bg_green">
         <LinearLayout
@@ -46,6 +47,7 @@
                 app:srcCompat="@drawable/arc_right"
                 android:tint="@color/white"
                 android:scaleType="fitStart"
+                android:visibility="invisible"
                 />
 
 
@@ -62,6 +64,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/pool"
         style="@style/serviceLayout"
         android:background="@drawable/curve_bg_gold">
         <LinearLayout
@@ -99,6 +102,7 @@
                 app:srcCompat="@drawable/arc_right"
                 android:tint="@color/white"
                 android:scaleType="fitStart"
+                android:visibility="invisible"
                 />
 
         </LinearLayout>
@@ -113,6 +117,7 @@
 
     </RelativeLayout>
     <RelativeLayout
+        android:id="@+id/court"
         style="@style/serviceLayout"
         android:layout_marginBottom="20dp"
         android:background="@drawable/curve_bg_green">
@@ -142,7 +147,7 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:srcCompat="@drawable/tennis"
+                app:srcCompat="@drawable/tennis_ball"
                 android:layout_gravity="center"
                 />
 
@@ -152,6 +157,7 @@
                 app:srcCompat="@drawable/arc_right"
                 android:tint="@color/white"
                 android:scaleType="fitStart"
+                android:visibility="invisible"
                 />
 
 

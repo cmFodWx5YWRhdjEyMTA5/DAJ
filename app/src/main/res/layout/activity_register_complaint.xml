@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.RegisterComplaintActivity"
-    android:orientation="vertical"
-    android:background="@mipmap/bg">
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:src="@mipmap/bg"
+        android:scaleType="centerCrop"/>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="10dp"
+        android:layout_centerInParent="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -135,11 +141,9 @@
             android:text="@string/submit"
             android:textColor="@color/white"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:textStyle="bold" />
-
-
+            android:textStyle="bold"
+            android:layout_marginBottom="30dp"/>
     </LinearLayout>
     </ScrollView>
 
-</LinearLayout>
+</RelativeLayout>

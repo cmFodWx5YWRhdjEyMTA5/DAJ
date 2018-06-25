@@ -12,7 +12,7 @@ import com.tinnovat.app.daj.R;
 
 import java.util.Objects;
 
-public class EventBookingActivity extends BaseActivity {
+public class MyBookingActivity extends BaseActivity {
 
     CalendarView cal;
 
@@ -20,7 +20,7 @@ public class EventBookingActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_booking);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("EVENT BOOKING");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("MY BOOKINGS");
         cal = findViewById(R.id.simpleCalendarView);
     }
 }

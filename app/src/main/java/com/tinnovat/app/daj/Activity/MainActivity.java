@@ -2,27 +2,20 @@ package com.tinnovat.app.daj.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
-
-import java.util.Objects;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -90,6 +83,8 @@ public class MainActivity extends BaseActivity
         events.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, EventAndNewsActivity.class);
+                startActivity(i);
 
             }
         });
@@ -108,6 +103,8 @@ public class MainActivity extends BaseActivity
         view_camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, SurveillanceActivity.class);
+                startActivity(i);
             }
         });
         navigation.setOnClickListener(new View.OnClickListener() {
@@ -118,6 +115,8 @@ public class MainActivity extends BaseActivity
         projects.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, FuturePhaseInfoListActivity.class);
+                startActivity(i);
             }
         });
     }
@@ -164,7 +163,10 @@ public class MainActivity extends BaseActivity
         if (id == R.id.home) {
             // Handle the camera action
            // item.setIcon(R.layout.sample);
-            getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+           // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+
+            Intent i = new Intent(MainActivity.this, MainActivity.class);
+            startActivity(i);
 
            /* if (a==1) {
                 item.setIcon(R.drawable.icon_slection_arabic);
@@ -174,10 +176,12 @@ public class MainActivity extends BaseActivity
         } else if (id == R.id.events) {
            // setLanguage(true);
            // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
-            Intent i = new Intent(MainActivity.this, EventBookingActivity.class);
+            Intent i = new Intent(MainActivity.this, EventAndNewsActivity.class);
             startActivity(i);
 
         } else if (id == R.id.services) {
+            Intent i = new Intent(MainActivity.this, ServicesActivity.class);
+            startActivity(i);
            // setLanguage(false);
            /* Intent i = new Intent(MainActivity.this, TestActivity.class);
             startActivity(i);*/
@@ -185,13 +189,17 @@ public class MainActivity extends BaseActivity
         } else if (id == R.id.guest_registration) {
 
         } else if (id == R.id.view_camera) {
+            Intent i = new Intent(MainActivity.this, SurveillanceActivity.class);
+            startActivity(i);
 
         } else if (id == R.id.navigation) {
 
         }else if (id == R.id.projects) {
+            Intent i = new Intent(MainActivity.this, FuturePhaseInfoListActivity.class);
+            startActivity(i);
 
         }else if (id == R.id.my_bookings) {
-            Intent i = new Intent(MainActivity.this, ServiceBookingActivity.class);
+            Intent i = new Intent(MainActivity.this, MyBookingActivity.class);
             startActivity(i);
 
         }else if (id == R.id.view_profile) {
