@@ -23,8 +23,8 @@ public class MatrixView extends LinearLayout {
         canvas.save();
         int top = getTop();
 
-        float rotate =0;
-        //float rotate = calculateAngel(top, h);
+        //float rotate =0;
+        float rotate = calculateAngel(top, h);
         float scale = calcuylateScale(top, h);
 
         Matrix m = canvas.getMatrix();
@@ -46,8 +46,8 @@ public class MatrixView extends LinearLayout {
     private float calculateAngel(int top, int h) {
         //Angel
         float result = 0f;
-        float test = 21f;
-        float fullAngelFactor = 30f;
+        float test = 360f;
+        float fullAngelFactor = 190f;
         if (top < h / 2f) {
             result = (top - (h / 2f)) / (h / 2f) * fullAngelFactor;
         } else if (top > h / 2f) {

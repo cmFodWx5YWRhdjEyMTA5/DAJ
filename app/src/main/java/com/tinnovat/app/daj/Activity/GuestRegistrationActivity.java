@@ -20,7 +20,7 @@ public class GuestRegistrationActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guest_registration);
         Objects.requireNonNull(getSupportActionBar()).setTitle("Guest Registration");
-        String[] items = new String[]{"-- Select Purpose --","Family", "Friend", "Maintenance", "Taxi", "Delivery"};
+        String[] items = new String[]{"Family", "Friend", "Maintenance", "Taxi", "Delivery"};
         spinner2 = findViewById(R.id.spinner2);
 
        /* //get the spinner from the xml.
@@ -37,7 +37,8 @@ public class GuestRegistrationActivity extends BaseActivity {
 */
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, items);
-
+spinner2.setHintTextColor(getResources().getColor(R.color.black));
+spinner2.setFloatingLabelTextColor(getResources().getColor(R.color.black));
         spinner2.setAdapter(adapter);
     }
 }

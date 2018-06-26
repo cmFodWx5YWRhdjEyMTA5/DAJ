@@ -67,7 +67,7 @@ public class EventAndNewsActivity extends BaseActivity {
         @Override
         public int getCount() {
 
-            return 50;
+            return 12;
         }
 
         @Override
@@ -87,7 +87,7 @@ public class EventAndNewsActivity extends BaseActivity {
                 m.setParentHeight(listview.getHeight());
                 convertView = m;
             }
-            ImageView imageView = (ImageView) convertView.findViewById(R.id.image);
+            ImageView imageView = convertView.findViewById(R.id.image);
             imageView.setImageResource(images[position % images.length]);
             TextView textView = convertView.findViewById(R.id.text);
             textView.setText(text[position % text.length]);

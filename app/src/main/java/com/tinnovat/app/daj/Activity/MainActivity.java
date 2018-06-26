@@ -39,7 +39,7 @@ public class MainActivity extends BaseActivity
         facebook = findViewById(R.id.facebook);
         twitter = findViewById(R.id.twitter);
         instagram = findViewById(R.id.instagram);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         events = findViewById(R.id.events);
         services = findViewById(R.id.services);
@@ -187,6 +187,8 @@ public class MainActivity extends BaseActivity
             startActivity(i);*/
            // finish();
         } else if (id == R.id.guest_registration) {
+            Intent i = new Intent(MainActivity.this, GuestRegistrationActivity.class);
+            startActivity(i);
 
         } else if (id == R.id.view_camera) {
             Intent i = new Intent(MainActivity.this, SurveillanceActivity.class);
@@ -203,6 +205,8 @@ public class MainActivity extends BaseActivity
             startActivity(i);
 
         }else if (id == R.id.view_profile) {
+            Intent i = new Intent(MainActivity.this, ProfileActivity.class);
+            startActivity(i);
 
         }else if (id == R.id.food) {
             Intent i = new Intent(MainActivity.this, OrderFoodActivity.class);
@@ -216,10 +220,13 @@ public class MainActivity extends BaseActivity
             Intent i = new Intent(MainActivity.this, RegisterComplaintActivity.class);
             startActivity(i);
         }else if (id == R.id.emergency_contact) {
+            Intent i = new Intent(MainActivity.this, EmergencyContactActivity.class);
+            startActivity(i);
 
         }else if (id == R.id.change_password) {
-
-            Toast.makeText(this,""+getLanguage(),Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(MainActivity.this, ChangePasswordActivity.class);
+            startActivity(i);
+           // Toast.makeText(this,""+getLanguage(),Toast.LENGTH_SHORT).show();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

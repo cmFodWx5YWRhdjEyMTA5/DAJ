@@ -28,21 +28,18 @@
         <EditText
             android:id="@+id/userName"
             style="@style/EditTextField"
-            android:layout_below="@+id/logo"
-            android:layout_marginTop="70dp"
-            android:drawableStart="@drawable/user"
-            android:elevation="5dp"
-            android:drawableTint="@color/greenNavSelection"
+            android:layout_above="@+id/password"
+            android:drawableStart="@drawable/user_small_green"
             android:hint="@string/user_name" />
 
 
         <EditText
             android:id="@+id/password"
             style="@style/EditTextField"
-            android:layout_below="@+id/userName"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:layout_marginTop="10dp"
-            android:drawableStart="@drawable/password"
-            android:drawableTint="@color/greenNavSelection"
+            android:drawableStart="@drawable/password_small_green"
             android:hint="@string/password"
             android:inputType="textPassword" />
 
@@ -64,6 +61,7 @@
             android:layout_margin="20dp"
             android:background="@drawable/curve_bg_green"
             android:text="@string/sign_in"
+            android:textStyle="bold"
             android:textColor="@color/white" />
 
         <TextView
@@ -108,7 +106,7 @@
             android:layout_height="20dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="50dp">
+            android:layout_marginBottom="20dp">
 
             <TextView
                 android:id="@+id/english"

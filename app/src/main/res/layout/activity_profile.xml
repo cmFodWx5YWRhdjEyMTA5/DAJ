@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.EventDetailActivity">
+    <ImageView
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/bg"/>
+
+    <ImageView
+        android:id="@+id/bg1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/event_details_bg"
+        />
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/name"
+        style="@style/headingWhite"
+        android:text="@string/lorem_ipsum"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/gender"
+        android:layout_below="@+id/name"
+        style="@style/subHeadingWhite"
+        android:text="Gender - Male"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_below="@+id/gender"
+        style="@style/subHeadingWhite"
+        android:text="Villa No : 045"
+        android:layout_centerHorizontal="true"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="121dp"
+        android:background="@drawable/curve_small_bg_gray">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="3dp"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/calendarIcon1"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    app:srcCompat="@drawable/calender" />
+
+                <TextView
+                    android:id="@+id/dobText"
+                    style="@style/heading1"
+                    android:layout_marginStart="5dp"
+                    android:layout_toEndOf="@+id/calendarIcon1"
+                    android:text="@string/date_of_birth" />
+
+                <TextView
+                    android:id="@+id/dob"
+                    style="@style/subHeadingNormal"
+                    android:layout_toEndOf="@id/calendarIcon1"
+                    android:layout_marginStart="5dp"
+                    android:layout_below="@+id/dobText"
+                    android:text="12/5/2018" />
+
+                <ImageView
+                    android:id="@+id/calendarIcon2"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerHorizontal="true"
+                    app:srcCompat="@drawable/calender" />
+
+                <TextView
+                    style="@style/heading1"
+                    android:layout_marginStart="5dp"
+                    android:layout_toEndOf="@+id/calendarIcon2"
+                    android:text="@string/joining_date" />
+                <TextView
+                    android:id="@+id/joiningDate"
+                    style="@style/subHeadingNormal"
+                    android:layout_marginStart="5dp"
+                    android:layout_toEndOf="@id/calendarIcon2"
+                    android:layout_below="@+id/dobText"
+                    android:text="12/5/2018" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    app:srcCompat="@drawable/mail" />
+                <TextView
+                    style="@style/heading1"
+                    android:layout_marginStart="5dp"
+                    android:text="@string/email_id" />
+            </LinearLayout>
+            <TextView
+                style="@style/subHeadingNormal"
+                android:layout_marginStart="25dp"
+                android:text="@string/sample_mail" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    app:srcCompat="@drawable/navigation"
+                    android:tint="@color/greenText"/>
+                <TextView
+                    style="@style/heading1"
+                    android:layout_marginStart="5dp"
+                    android:text="@string/permanent_address" />
+            </LinearLayout>
+            <TextView
+                style="@style/subHeadingNormal"
+                android:layout_marginStart="25dp"
+                android:text="@string/lorem_ipsum_medium" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    app:srcCompat="@drawable/work"
+                    android:tint="@color/greenText"/>
+                <TextView
+                    style="@style/heading1"
+                    android:layout_marginStart="5dp"
+                    android:text="@string/occupation" />
+            </LinearLayout>
+            <TextView
+                style="@style/subHeadingNormal"
+                android:layout_marginStart="25dp"
+                android:text="@string/lorem_ipsum" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    app:srcCompat="@drawable/user"
+                    android:tint="@color/greenText"/>
+                <TextView
+                    style="@style/heading1"
+                    android:layout_marginStart="5dp"
+                    android:text="@string/material_status" />
+            </LinearLayout>
+            <TextView
+                style="@style/subHeadingNormal"
+                android:layout_marginStart="25dp"
+                android:text="@string/lorem_ipsum" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    app:srcCompat="@drawable/flag"
+                    android:tint="@color/greenText"/>
+                <TextView
+                    style="@style/heading1"
+                    android:layout_marginStart="5dp"
+                    android:text="@string/nationality" />
+            </LinearLayout>
+            <TextView
+                style="@style/subHeadingNormal"
+                android:layout_marginStart="25dp"
+                android:text="@string/lorem_ipsum" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    app:srcCompat="@drawable/mobile" />
+                <TextView
+                    style="@style/heading1"
+                    android:layout_marginStart="5dp"
+                    android:text="@string/mobile_no" />
+            </LinearLayout>
+            <TextView
+                style="@style/subHeadingNormal"
+                android:layout_marginStart="25dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/sample_mob" />
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+</RelativeLayout>

@@ -124,6 +124,16 @@
                 android:src="@drawable/event_details_bg"
                 />
         </LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/images"
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textStyle="bold"
+            android:text="@string/interest_to_attend"
+            android:background="@drawable/curve_small_bg_green"/>
 
     </RelativeLayout>
     </ScrollView>
