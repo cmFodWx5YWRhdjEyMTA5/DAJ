@@ -6,59 +6,64 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/home"
-            android:icon="@drawable/icon_slection_english"
+            android:icon="@drawable/home_nav"
             android:title="@string/home" />
         <item
             android:id="@+id/events"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/event_nav"
             android:title="@string/events" />
         <item
             android:id="@+id/services"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/service_nav"
             android:title="@string/services" />
         <item
             android:id="@+id/guest_registration"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/guest_nav"
             android:title="@string/guest_reg" />
         <item
             android:id="@+id/view_camera"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/camera_nav"
             android:title="@string/view_camera" />
         <item
             android:id="@+id/navigation"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/navigation_nav"
             android:title="@string/navigation" />
         <item
             android:id="@+id/projects"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/project_nav"
             android:title="@string/projects" />
         <item
             android:id="@+id/my_bookings"
-            android:icon="@drawable/ic_menu_share"
+            android:icon="@drawable/booking_nav"
             android:title="@string/my_bookings" />
         <item
             android:id="@+id/view_profile"
-            android:icon="@drawable/ic_menu_share"
+            android:icon="@drawable/profile_nav"
             android:title="@string/view_profile" />
         <item
             android:id="@+id/food"
-            android:icon="@drawable/ic_menu_send"
+            android:icon="@drawable/food_nav"
             android:title="@string/food" />
         <item
             android:id="@+id/taxi"
-            android:icon="@drawable/ic_menu_send"
+            android:icon="@drawable/taxi_nav"
             android:title="@string/taxi"/>
         <item
             android:id="@+id/complaint"
-            android:icon="@drawable/ic_menu_send"
+            android:icon="@drawable/complaint_nav"
             android:title="@string/complaint" />
         <item
             android:id="@+id/emergency_contact"
-            android:icon="@drawable/ic_menu_send"
+            android:icon="@drawable/contact_nav"
             android:title="@string/emergency_contact" />
         <item
             android:id="@+id/change_password"
-            android:icon="@drawable/ic_menu_share"
+            android:icon="@drawable/key_nav"
+            android:title="@string/change_password" />
+
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/key_nav"
             android:title="@string/change_password" />
 
         <item

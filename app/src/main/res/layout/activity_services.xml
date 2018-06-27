@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,109 +8,125 @@
     tools:context=".Activity.ServicesActivity"
     android:background="@mipmap/bg">
 
-    <RelativeLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+   <RelativeLayout
         android:id="@+id/hall"
         style="@style/serviceLayout"
-        android:background="@drawable/curve_bg_green">
+        android:background="@drawable/curve_small_bg_green">
         <LinearLayout
             style="@style/backgroundBg"/>
-        <ImageView
-            android:id="@+id/hallImg"
-            android:layout_width="220dp"
-            android:layout_height="220dp"
-            android:layout_marginTop="-20dp"
-            android:layout_marginStart="-15dp"
-            android:src="@drawable/green_circle"/>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center">
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                app:srcCompat="@drawable/arc_left"
-                android:tint="@color/white"
-                android:scaleType="fitEnd"
-                />
-            <ImageView
-                android:id="@+id/hallIcon"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                app:srcCompat="@drawable/hall"
+       <RelativeLayout
+           android:id="@+id/a1"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginStart="-18dp"
+           android:layout_marginTop="-25dp">
 
-                android:layout_gravity="center"
-                />
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                app:srcCompat="@drawable/arc_right"
-                android:tint="@color/white"
-                android:scaleType="fitStart"
-                android:visibility="invisible"
-                />
+           <ImageView
+               android:layout_width="180dp"
+               android:layout_height="220dp"
+               android:src="@drawable/green_circle"/>
+           <LinearLayout
+               android:layout_width="180dp"
+               android:layout_height="220dp"
+               android:orientation="horizontal"
+               android:gravity="center">
+               <ImageView
+                   android:layout_width="70dp"
+                   android:layout_height="70dp"
+                   app:srcCompat="@drawable/arc_left"
+                   android:tint="@color/white"
+                   android:scaleType="fitEnd"
+                   />
+               <ImageView
+                   android:layout_width="50dp"
+                   android:layout_height="50dp"
+                   app:srcCompat="@drawable/hall"
+                   />
+               <ImageView
+                   android:layout_width="70dp"
+                   android:layout_height="70dp"
+                   app:srcCompat="@drawable/arc_right"
+                   android:tint="@color/white"
+                   android:scaleType="fitStart"
+                   android:visibility="invisible"
+                   />
 
 
-        </LinearLayout>
+           </LinearLayout>
+       </RelativeLayout>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/hallImg"
+            android:layout_toEndOf="@+id/a1"
+            android:layout_marginStart="5dp"
             android:layout_centerVertical="true"
+            android:textSize="20sp"
             android:textColor="@color/white"
             android:textStyle="bold"
             android:text="@string/halls"/>
 
     </RelativeLayout>
 
+
     <RelativeLayout
         android:id="@+id/pool"
         style="@style/serviceLayout"
-        android:background="@drawable/curve_bg_gold">
+        android:background="@drawable/curve_small_bg_golden">
         <LinearLayout
             style="@style/backgroundBgGold"/>
-        <ImageView
-            android:id="@+id/swimmingImg"
-            android:layout_width="220dp"
-            android:layout_height="220dp"
-            android:layout_marginTop="-20dp"
-            android:layout_marginStart="-15dp"
-            android:src="@drawable/golden_circle"/>
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/a2"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-25dp"
+            android:layout_marginTop="-25dp">
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                app:srcCompat="@drawable/arc_left"
-                android:tint="@color/white"
-                android:scaleType="fitEnd"
-                />
+                android:layout_width="180dp"
+                android:layout_height="220dp"
+                android:src="@drawable/golden_circle"/>
+            <LinearLayout
+                android:layout_width="180dp"
+                android:layout_height="220dp"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    app:srcCompat="@drawable/arc_left"
+                    android:tint="@color/white"
+                    android:scaleType="fitEnd"
+                    />
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/swimming"
+                    />
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    app:srcCompat="@drawable/arc_right"
+                    android:tint="@color/white"
+                    android:scaleType="fitStart"
+                    android:visibility="invisible"
+                    />
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                app:srcCompat="@drawable/swimming"
-                android:layout_gravity="center"
-                />
 
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                app:srcCompat="@drawable/arc_right"
-                android:tint="@color/white"
-                android:scaleType="fitStart"
-                android:visibility="invisible"
-                />
+            </LinearLayout>
+        </RelativeLayout>
 
-        </LinearLayout>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/swimmingImg"
+            android:layout_toEndOf="@+id/a2"
             android:layout_centerVertical="true"
+            android:textSize="20sp"
+            android:layout_marginStart="5dp"
             android:textColor="@color/white"
             android:textStyle="bold"
             android:text="@string/swimming_pool"/>
@@ -119,59 +135,121 @@
     <RelativeLayout
         android:id="@+id/court"
         style="@style/serviceLayout"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/curve_bg_green">
+        android:background="@drawable/curve_small_bg_green">
         <LinearLayout
             style="@style/backgroundBg"/>
-        <ImageView
-            android:id="@+id/tennisImg"
-            android:layout_width="220dp"
-            android:layout_height="220dp"
-            android:layout_marginTop="-20dp"
-            android:layout_marginStart="-15dp"
-            android:src="@drawable/green_circle"/>
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/a3"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center">
-
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-25dp"
+            android:layout_marginTop="-25dp">
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                app:srcCompat="@drawable/arc_left"
-                android:tint="@color/white"
-                android:scaleType="fitEnd"
-                />
+                android:layout_width="180dp"
+                android:layout_height="220dp"
+                android:src="@drawable/green_circle"/>
+            <LinearLayout
+                android:layout_width="180dp"
+                android:layout_height="220dp"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    app:srcCompat="@drawable/arc_left"
+                    android:tint="@color/white"
+                    android:scaleType="fitEnd"
+                    />
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/tennis_ball"
+                    />
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    app:srcCompat="@drawable/arc_right"
+                    android:tint="@color/white"
+                    android:scaleType="fitStart"
+                    android:visibility="invisible"
+                    />
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                app:srcCompat="@drawable/tennis_ball"
-                android:layout_gravity="center"
-                />
 
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                app:srcCompat="@drawable/arc_right"
-                android:tint="@color/white"
-                android:scaleType="fitStart"
-                android:visibility="invisible"
-                />
+            </LinearLayout>
+        </RelativeLayout>
 
-
-
-        </LinearLayout>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/tennisImg"
+            android:layout_toEndOf="@+id/a3"
             android:layout_centerVertical="true"
+            android:textSize="20sp"
+            android:layout_marginStart="5dp"
             android:textColor="@color/white"
             android:textStyle="bold"
             android:text="@string/tennis_court"/>
 
     </RelativeLayout>
 
-</LinearLayout>
+        <RelativeLayout
+            android:id="@+id/hall2"
+            style="@style/serviceLayout"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/curve_small_bg_green">
+            <LinearLayout
+                style="@style/backgroundBg"/>
+            <RelativeLayout
+                android:id="@+id/a4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="-25dp"
+                android:layout_marginTop="-25dp">
+                <ImageView
+                    android:layout_width="180dp"
+                    android:layout_height="220dp"
+                    android:src="@drawable/green_circle"/>
+                <LinearLayout
+                    android:layout_width="180dp"
+                    android:layout_height="220dp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        app:srcCompat="@drawable/arc_left"
+                        android:tint="@color/white"
+                        android:scaleType="fitEnd"
+                        />
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        app:srcCompat="@drawable/hall"
+                        />
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        app:srcCompat="@drawable/arc_right"
+                        android:tint="@color/white"
+                        android:scaleType="fitStart"
+                        android:visibility="invisible"
+                        />
+
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/a4"
+                android:layout_marginStart="5dp"
+                android:layout_centerVertical="true"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:text="@string/halls"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>

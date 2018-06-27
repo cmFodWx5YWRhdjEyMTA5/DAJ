@@ -296,10 +296,14 @@
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
-                    <Spinner
+                    <EditText
+                        android:id="@+id/noOfGuest"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp" />
+                        android:layout_marginStart="10dp"
+                        android:hint="No"
+                        android:maxLength="4"
+                        android:inputType="number" />
                 </LinearLayout>
 
                 <EditText
@@ -308,10 +312,12 @@
                     android:layout_height="100dp"
                     android:layout_below="@+id/noOfGuestText"
                     android:layout_margin="20dp"
+                    android:windowSoftInputMode="stateAlwaysHidden"
                     android:background="@drawable/curve_small_bg_gray"
                     android:gravity="start"
                     android:hint="@string/comments"
-                    android:padding="5dp" />
+                    android:padding="5dp"
+                    android:inputType="textMultiLine" />
 
             </RelativeLayout>
 

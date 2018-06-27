@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="5dp"
                 android:text="@string/today_events"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
@@ -37,18 +37,27 @@
                 android:layout_centerInParent="true"
                 android:background="@drawable/orenge_circle"
                 android:gravity="center"
-                android:text="25\nmay"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
         </RelativeLayout>
 
 
-        <CalendarView
+        <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/calendarView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight=".9"
-            android:theme="@style/CalenderViewCustom" />
+            android:layout_weight=".7"
+            app:mcv_allowClickDaysOutsideCurrentMonth="false"
+            app:mcv_showOtherDates="none"
+            app:mcv_selectionColor="@color/orange"
+            app:mcv_dateTextAppearance="@style/CalenderViewCustom"
+            app:mcv_calendarMode="month"
+            app:mcv_arrowColor="@color/white"
+            app:mcv_headerTextAppearance="@style/CalenderViewCustom"
+            app:mcv_weekDayTextAppearance="@style/CalenderViewCustom"
+
+            />
     </LinearLayout>
 
     <ScrollView

@@ -36,4 +36,6 @@ dependencies {
     implementation 'devs.mulham.horizontalcalendar:horizontalcalendar:1.1.7'
 
     implementation 'com.github.Lesilva:BetterSpinner:1.1.0'
+
+    implementation 'com.prolificinteractive:material-calendarview:1.4.3'
 }

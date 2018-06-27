@@ -49,6 +49,8 @@ public class MainActivity extends BaseActivity
         projects = findViewById(R.id.projects);
 
 
+
+        //getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
        // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
 
 
@@ -60,6 +62,8 @@ public class MainActivity extends BaseActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().getItem(0).setChecked(true);
+        navigationView.setItemIconTintList(null);
 
        facebook.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +102,8 @@ public class MainActivity extends BaseActivity
         guest_registration.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, GuestRegistrationActivity.class);
+                startActivity(i);
             }
         });
         view_camera.setOnClickListener(new View.OnClickListener() {
@@ -161,12 +167,15 @@ public class MainActivity extends BaseActivity
 
         int a = 1;
         if (id == R.id.home) {
+
+
+           // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
             // Handle the camera action
            // item.setIcon(R.layout.sample);
            // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
 
-            Intent i = new Intent(MainActivity.this, MainActivity.class);
-            startActivity(i);
+           /* Intent i = new Intent(MainActivity.this, MainActivity.class);
+            startActivity(i);*/
 
            /* if (a==1) {
                 item.setIcon(R.drawable.icon_slection_arabic);
@@ -226,6 +235,9 @@ public class MainActivity extends BaseActivity
         }else if (id == R.id.change_password) {
             Intent i = new Intent(MainActivity.this, ChangePasswordActivity.class);
             startActivity(i);
+           // Toast.makeText(this,""+getLanguage(),Toast.LENGTH_SHORT).show();
+        }else if (id == R.id.logout) {
+            Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
            // Toast.makeText(this,""+getLanguage(),Toast.LENGTH_SHORT).show();
         }
 

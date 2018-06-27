@@ -13,6 +13,7 @@ import java.util.Objects;
 
 public class ServicesActivity extends BaseActivity {
     RelativeLayout hall;
+    RelativeLayout hall2;
     RelativeLayout pool;
     RelativeLayout court;
 
@@ -22,11 +23,22 @@ public class ServicesActivity extends BaseActivity {
         setContentView(R.layout.activity_services);
         Objects.requireNonNull(getSupportActionBar()).setTitle("SERVICES");
 
+
+
         hall = findViewById(R.id.hall);
+        hall2 = findViewById(R.id.hall2);
         pool = findViewById(R.id.pool);
         court = findViewById(R.id.court);
 
         hall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ServicesActivity.this, ServiceBookingActivity.class);
+                startActivity(i);
+            }
+        });
+
+        hall2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ServicesActivity.this, ServiceBookingActivity.class);

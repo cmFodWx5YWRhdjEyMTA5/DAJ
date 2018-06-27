@@ -11,9 +11,13 @@ import android.widget.CalendarView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
+import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 
+import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
@@ -23,9 +27,8 @@ import devs.mulham.horizontalcalendar.HorizontalCalendarListener;
 
 public class MyBookingActivity extends BaseActivity {
 
-    CalendarView cal;
+    MaterialCalendarView cal;
     TextView todayDate;
-    String currentMonth;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,18 +36,27 @@ public class MyBookingActivity extends BaseActivity {
         setContentView(R.layout.activity_event_booking);
         Objects.requireNonNull(getSupportActionBar()).setTitle("MY BOOKINGS");
         cal = findViewById(R.id.calendarView);
+
         todayDate = findViewById(R.id.todayDate);
+        cal.setSelectedDate(CalendarDay.today());
+        cal.setSelected(true);
 
-        cal.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+        setDate(CalendarDay.today().getDay(),CalendarDay.today().getMonth());
+
+
+        cal.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
-            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                Toast.makeText(MyBookingActivity.this, ""+year+" "+month+" "+dayOfMonth, Toast.LENGTH_SHORT).show();
+            public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
 
-                todayDate.setText(""+dayOfMonth+"\n"+""+ getCurrentMonth(month));
-
+                setDate(date.getDay(),date.getMonth());
             }
         });
 
 
+
+    }
+
+    private void setDate(int day ,int month){
+        todayDate.setText(""+day+"\n"+""+ getCurrentMonth(month));
     }
 }

@@ -15,6 +15,7 @@
         android:background="@android:color/transparent">
 
         <RelativeLayout
+            android:id="@+id/a1"
             android:layout_width="wrap_content"
             android:layout_height="200dp"
             android:background="@drawable/curve_small_bg_gray">
@@ -59,6 +60,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/a2"
             android:layout_width="wrap_content"
             android:layout_height="200dp"
             android:layout_marginTop="20dp"
@@ -104,6 +106,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/a3"
             android:layout_width="wrap_content"
             android:layout_height="200dp"
             android:layout_marginTop="20dp"
