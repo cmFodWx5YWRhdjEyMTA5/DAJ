@@ -9,29 +9,41 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/submit">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <android.support.design.widget.TextInputLayout
+            <!--<android.support.design.widget.TextInputLayout
                 android:id="@+id/input_layout_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:layout_marginStart="10dp"
-                android:theme="@style/EditTextHint">
+                android:theme="@style/EditTextHint">-->
+            <TextView
+                android:text="@string/guest_name"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                style="@style/heading1"/>
 
                 <EditText
                     android:id="@+id/input_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/curve_small_bg_gray"
                     android:hint="@string/guest_name"
+                    android:layout_margin="10dp"
+                    android:padding="10dp"
+                    android:textSize="18sp"
                     android:singleLine="true"
-                    android:textStyle="bold" />
-            </android.support.design.widget.TextInputLayout>
+                    android:textColor="@color/black"
+                    android:elevation="5dp"
+                   />
+           <!-- </android.support.design.widget.TextInputLayout>-->
 
 
             <RelativeLayout
@@ -202,7 +214,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_weight="1"
-                        android:text="10.00am"
+                        android:text="10.00 am"
                         android:textColor="@color/black" />
 
                     <TextView
@@ -210,7 +222,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_weight="1"
-                        android:text="11.00am"
+                        android:text="11.00 am"
                         android:textColor="@color/black" />
 
                     <TextView
@@ -218,7 +230,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_weight="1"
-                        android:text="12.00pm"
+                        android:text="12.00 pm"
                         android:textColor="@color/black" />
 
                     <TextView
@@ -226,13 +238,31 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_weight="1"
-                        android:text="01.00pm"
+                        android:text="01.00 pm"
                         android:textColor="@color/black" />
                 </LinearLayout>
 
             </RelativeLayout>
+            <TextView
+                android:text="@string/purpose"
+                android:layout_marginStart="10dp"
+                style="@style/heading1"/>
 
-            <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+            <TextView
+                android:id="@+id/purpose"
+                android:background="@drawable/curve_small_bg_gray"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:padding="10dp"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:elevation="5dp"
+                android:hint="@string/choose_purpose"/>
+
+          <!--  <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
                 android:id="@+id/spinner2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -245,24 +275,35 @@
                 android:textColorHint="@color/black"
                 android:textColorLink="@color/orange"
                 android:textStyle="bold"
-                app:met_floatingLabel="normal" />
+                app:met_floatingLabel="normal" />-->
 
-            <android.support.design.widget.TextInputLayout
+          <!--  <android.support.design.widget.TextInputLayout
                 android:id="@+id/vehicle_no_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:layout_marginStart="10dp"
                 android:theme="@style/EditTextHint">
+            </android.support.design.widget.TextInputLayout>-->
+            <TextView
+                android:text="@string/vehicle_no"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                style="@style/heading1"/>
 
                 <EditText
                     android:id="@+id/vehicle_no"
+                    android:background="@drawable/curve_small_bg_gray"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:padding="10dp"
                     android:hint="@string/vehicle_no"
                     android:singleLine="true"
-                    android:textStyle="bold" />
-            </android.support.design.widget.TextInputLayout>
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:elevation="5dp"/>
+
 
             <RelativeLayout
                 android:layout_width="match_parent"

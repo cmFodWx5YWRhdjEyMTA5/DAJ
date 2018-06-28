@@ -17,7 +17,7 @@ public class BaseActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         pref = getApplicationContext().getSharedPreferences("MyPref", 0);
         editor = pref.edit();
-       // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+        //getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
     }
 
     public void changeOrientation(){

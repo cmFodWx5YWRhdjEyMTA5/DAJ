@@ -195,7 +195,7 @@
                 <TextView
                     style="@style/heading1"
                     android:layout_marginStart="5dp"
-                    android:text="@string/material_status" />
+                    android:text="@string/marital_status" />
             </LinearLayout>
             <TextView
                 style="@style/subHeadingNormal"

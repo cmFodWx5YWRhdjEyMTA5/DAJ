@@ -226,7 +226,7 @@ public class MainActivity extends BaseActivity
             startActivity(i);
 
         }else if (id == R.id.complaint) {
-            Intent i = new Intent(MainActivity.this, RegisterComplaintActivity.class);
+            Intent i = new Intent(MainActivity.this, MyComplaintListActivity.class);
             startActivity(i);
         }else if (id == R.id.emergency_contact) {
             Intent i = new Intent(MainActivity.this, EmergencyContactActivity.class);
@@ -237,8 +237,10 @@ public class MainActivity extends BaseActivity
             startActivity(i);
            // Toast.makeText(this,""+getLanguage(),Toast.LENGTH_SHORT).show();
         }else if (id == R.id.logout) {
-            Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
            // Toast.makeText(this,""+getLanguage(),Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(i);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

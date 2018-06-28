@@ -22,8 +22,10 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
         app:itemBackground="@drawable/drawer_selected_item"
-        app:itemTextColor="@color/black"
-        app:menu="@menu/activity_main_drawer">
+        app:itemTextColor="@color/nav_selction_text"
+        android:textAllCaps="true"
+        app:menu="@menu/activity_main_drawer"
+        android:theme="@style/NavigationTheme">
 
         <RelativeLayout
             android:id="@+id/linearLayout"

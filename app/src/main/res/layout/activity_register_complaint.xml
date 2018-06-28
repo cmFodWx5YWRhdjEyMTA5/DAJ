@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Activity.RegisterComplaintActivity"
     android:orientation="vertical">
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -38,11 +39,12 @@
             android:layout_marginTop="5dp"/>
 
         <TextView
+            android:id="@+id/category"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="@drawable/curve_small_bg_gray"
             android:padding="10dp"
-            android:text="Electrical Problems"
+            android:hint="@string/choose_category"
             android:textColor="@color/black"
             android:layout_marginTop="10dp"/>
 
@@ -87,8 +89,8 @@
             android:background="@drawable/curve_small_bg_gray"
             android:padding="10dp"
             android:layout_marginTop="10dp"
-            android:text="Al Mahad Saudi Arabia"
-            android:textColor="@color/black"></TextView>
+            android:text="@string/sample_address"
+            android:textColor="@color/black"/>
 
         <LinearLayout
             android:layout_width="match_parent"

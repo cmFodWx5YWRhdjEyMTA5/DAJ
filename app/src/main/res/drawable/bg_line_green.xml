@@ -4,7 +4,7 @@
 
     <item >
         <shape android:shape="line"  >
-            <stroke android:width="5dip" android:color="#5AAA82"  />
+            <stroke android:width="5dip" android:color="@color/greenText"  />
             <gradient android:angle="360" android:startColor="#ffffff" android:endColor="#ffffff" />
         </shape>
     </item>

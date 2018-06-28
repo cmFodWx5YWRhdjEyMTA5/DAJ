@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#C2A15A</color>
+    <color name="gold">#C2A15A</color>
     <color name="colorPrimaryDark">#896e33</color>
     <color name="colorAccent">#F19157</color>
     <color name="white">#ffffff</color>
@@ -10,7 +11,7 @@
     <color name="blackLight">#323433</color>
     <color name="blackLightTrans">#11000000</color>
     <color name="greenNavSelection">#24735D</color>
-    <color name="greenText">#4FB784</color>
+    <color name="greenText">#24735D</color>
     <color name="grayLight">#FBFAF8</color>
     <color name="gray">#D6D6D6</color>
     <color name="grayTrans">#1dd6d6d6</color>
