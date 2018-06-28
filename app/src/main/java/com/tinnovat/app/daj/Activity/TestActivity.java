@@ -4,9 +4,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 
 import com.tinnovat.app.daj.BaseActivity;
+import com.tinnovat.app.daj.Circlelist.HalfCircleListView;
+import com.tinnovat.app.daj.Circlelist.ScrollAdapter;
 import com.tinnovat.app.daj.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TestActivity extends BaseActivity {
 

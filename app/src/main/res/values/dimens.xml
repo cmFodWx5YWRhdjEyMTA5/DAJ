@@ -6,4 +6,5 @@
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen tools:override="true" name="design_navigation_icon_padding">10dp</dimen>
+    <dimen name="activity_margin">16dp</dimen>
 </resources>

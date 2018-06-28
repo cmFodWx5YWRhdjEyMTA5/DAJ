@@ -85,5 +85,6 @@
     <string name="choose_category">Choose Category</string>
     <string name="sample_address">Al Mahad Saudi Arabia</string>
     <string name="choose_purpose">Choose Purpose</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>
