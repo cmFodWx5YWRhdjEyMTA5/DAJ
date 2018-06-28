@@ -1,11 +1,12 @@
 package com.tinnovat.app.daj.Circlelist;
 
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+
+import com.tinnovat.app.daj.R;
 
 import java.util.List;
 
@@ -56,12 +57,12 @@ public class ScrollAdapter extends BaseAdapter {
 //                    inflate(R.layout.list_item, viewGroup, false);
             view = new MyView(viewGroup.getContext());
         }
-        CustomTV currentView =  view.findViewById(R.id.tv);
+        MyView currentView = (MyView) view;
         String itemViewType = getItem(i);
         Log.d(TAG, itemViewType);
 
 //        ((MyView)  view).setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_brightness_low_black_24dp));
-        ((MyView)  view).setText(itemViewType);
+        ((MyView) view).setText(itemViewType);
 //        ((MyView) view).setCompoundDrawables(ContextCompat.getDrawable(context, R.drawable.ic_brightness_low_black_24dp),null,ContextCompat.getDrawable(context, R.drawable.ic_brightness_low_black_24dp),null);
         return view  ;
     }

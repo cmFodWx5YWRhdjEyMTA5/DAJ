@@ -4,12 +4,13 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 /**
  * Created by Anjali on 27-06-2018.
  */
 
-public class MyView extends ImageView {
+public class MyView extends TextView {
 
     private static final int MAX_INDENT = 300;
     private static final String TAG = MyView.class.getSimpleName();
