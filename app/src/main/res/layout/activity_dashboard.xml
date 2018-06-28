@@ -43,6 +43,7 @@
                 android:layout_above="@+id/text"
                 android:layout_toEndOf="@+id/eventImg" />
             <ImageView
+                android:id="@+id/leftRc"
                 style="@style/dashboardArcLeft"
                 android:layout_above="@+id/text"
                 android:layout_toStartOf="@+id/eventImg"/>

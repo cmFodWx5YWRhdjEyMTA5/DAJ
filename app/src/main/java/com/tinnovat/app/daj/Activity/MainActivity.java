@@ -1,6 +1,7 @@
 package com.tinnovat.app.daj.Activity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -17,6 +18,8 @@ import android.widget.Toast;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 
+import java.util.Locale;
+
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -30,10 +33,32 @@ public class MainActivity extends BaseActivity
     RelativeLayout navigation;
     RelativeLayout projects;
 
+    ImageView arc;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        setLanguage(true);
+
+
+            String languageToLoad  = "ar"; // your language
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
+        /*String languageToLoad  = "ar"; // your language
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());*/
+        this.setContentView(R.layout.activity_main);
+
+        Toast.makeText(this, ""+getText(R.string.hello_world), Toast.LENGTH_SHORT).show();
         //Objects.requireNonNull(getSupportActionBar()).setTitle("DASHBOARD");
 
         facebook = findViewById(R.id.facebook);
@@ -49,6 +74,12 @@ public class MainActivity extends BaseActivity
         projects = findViewById(R.id.projects);
 
 
+        arc = findViewById(R.id.leftRc);
+
+        if (getLanguage()){
+            arc.setScaleType(ImageView.ScaleType.FIT_START);
+            arc.setImageDrawable(getResources().getDrawable(R.drawable.arc_right));
+        }
 
         //getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
        // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);

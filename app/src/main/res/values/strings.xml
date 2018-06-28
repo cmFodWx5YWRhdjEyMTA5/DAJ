@@ -34,6 +34,8 @@
     <string name="english">English</string>
     <string name="arabic">العَرَبِيَّة</string>
 
+    <string name="hello_world">hello world</string>
+
     <string name="halls">HALLS</string>
     <string name="tennis_court">TENNIS COURT</string>
     <string name="swimming_pool">SWIMMING POOL</string>
