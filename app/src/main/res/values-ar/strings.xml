@@ -2,4 +2,92 @@
     <resources>
     <string name="home">الصفحة الرئيسية</string>
     <string name="events">أحداث</string>
+    <string name="services">خدمات</string>
+    <string name="guest_reg">تسجيل الضيف</string>
+    <string name="view_camera">عرض الكاميرا</string>
+    <string name="projects">مشروع</string>
+    <string name="view_profile">عرض الصفحة الشخصية</string>
+    <string name="food">طعام</string>
+    <string name="taxi">سيارة اجره</string>
+    <string name="complaint">شكوى</string>
+    <string name="emergency_contact">الاتصال بالطوارىء</string>
+    <string name="change_password">تغيير كلمة السر</string>
+    <string name="my_bookings">حجزي</string>
+    <string name="navigation">التنقل</string>
+    <string name="logout">الخروج</string>
+
+
+    <string name="sign_in">تسجيل الدخول</string>
+    <string name="user_name">اسم المستخدم</string>
+    <string name="password">كلمه السر</string>
+    <string name="forgot_password">هل نسيت كلمة المرور ؟</string>
+    <string name="follow_us">تابعنا</string>
+
+    <string name="halls">صالة</string>
+    <string name="tennis_court">ملعب تنس</string>
+    <string name="swimming_pool">حمام السباحة</string>
+
+
+
+    <string name="action_settings">إعدادات</string>
+
+    <string name="notification">إعلام</string>
+
+
+
+    <string name="date_and_time">التاريخ و الوقت</string>
+    <string name="number_of_guest">عدد الحضور</string>
+    <string name="comments">تعليقات</string>
+    <string name="book">كتاب</string>
+    <string name="category">الفئة</string>
+    <string name="location">موقعك</string>
+    <string name="submit">خضع</string>
+    <string name="wedding_reception">الاستقبال الخاص بالعرس</string>
+    <string name="upcoming_activity_s">نشاط قادم</string>
+    <string name="lorem_ipsum">أبجد هوز</string>
+    <string name="lorem_ipsum_medium">أبجد هوز هو مجرد دمية النص من الطباعة</string>
+    <string name="lorem_ipsum_large">لوريم إيبسوم (Lorem Ipsum) هو ببساطة نص شكلي في صناعة الطباعة والتنضيد. كان لوريم إيبسوم (Lorem Ipsum) النص القياسي المعياري لهذه الصناعة منذ القرن السادس عشر ، عندما أخذت طابعة غير معروفة مجموعة من الأطباق ، وهرعت بها لعمل كتاب من نوع العينة. وقد نجا ليس فقط خمسة قرون ، ولكن أيضا قفزة في التنضيد الإلكتروني ، وتبقى في الأساس دون تغيير.</string>
+    <string name="main_gate">البوابة الرئيسية</string>
+    <string name="children_play_area">منطقة لعب الأطفال</string>
+    <string name="community_center">مركز اجتماعي</string>
+    <string name="assigned">تعيين</string>
+    <string name="submitted">قدمت</string>
+    <string name="in_progress">في تَقَدم</string>
+    <string name="your_complaint_status">حالة الشكوى الخاصة بك</string>
+    <string name="status">الحالة</string>
+    <string name="description">وصف</string>
+    <string name="enjoy_our_events">استمتع أحداثنا</string>
+    <string name="more_images">المزيد من الصور</string>
+    <string name="today_events">أحداث اليوم</string>
+    <string name="guest_name">اسم الضيف</string>
+    <string name="vehicle_no">رقم تسجيل المركبة</string>
+    <string name="add">أضف</string>
+    <string name="purpose">غرض *</string>
+    <string name="date_of_birth">تاريخ الولادة</string>
+    <string name="joining_date">تاريخ الانضمام</string>
+    <string name="email_id">عنوان الايميل</string>
+    <string name="permanent_address">العنوان الثابت</string>
+    <string name="occupation">الاحتلال</string>
+    <string name="marital_status">الحالة الحالة الإجتماعية</string>
+    <string name="nationality">جنسية</string>
+    <string name="mobile_no">رقم المحمول</string>
+    <string name="sample_mob">9446655666</string>
+    <string name="interest_to_attend">الاهتمام بالحضور</string>
+    <string name="current_password">كلمة السر الحالية</string>
+    <string name="new_password">كلمة السر الجديدة</string>
+    <string name="confirm_password">تأكيد كلمة المرور</string>
+    <string name="email">البريد الإلكتروني</string>
+    <string name="choose_category">اختر الفئة</string>
+    <string name="sample_address">Al Mahad المملكة العربية السعودية</string>
+    <string name="choose_purpose">اختر الغرض</string>
+    <string name="title_activity_maps">خريطة</string>
+    <string name="cooking_competition">مسابقة الطبخ</string>
+    <string name="family_meeting_event">حدث اجتماع الأسرة</string>
+    <string name="festival_events">أحداث مهرجان</string>
+    <string name="children_s_play_event">حدث الأطفال في اللعب</string>
+    <string name="sports_event">حدث رياضي</string>
+    <string name="wedding_event">حدث عرس</string>
+    <string name="upload_photo">حمل الصورة</string>
+
+
     </resources>

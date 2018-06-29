@@ -41,15 +41,17 @@
             android:layout_marginTop="10dp"
             android:drawableStart="@drawable/password_small_green"
             android:hint="@string/password"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textAlignment="viewStart"/>
 
         <TextView
             android:id="@+id/forgotPassword"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/password"
             android:layout_margin="20dp"
+            android:gravity="right"
             android:text="@string/forgot_password"
             android:textColor="@color/black" />
 
@@ -62,7 +64,8 @@
             android:background="@drawable/curve_bg_green"
             android:text="@string/sign_in"
             android:textStyle="bold"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            />
 
         <TextView
             android:id="@+id/followUs"

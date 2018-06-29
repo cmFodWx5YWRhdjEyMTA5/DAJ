@@ -1,9 +1,11 @@
 package com.tinnovat.app.daj.Activity;
 
         import java.lang.reflect.Field;
+        import java.util.Locale;
         import java.util.Objects;
 
         import android.content.Intent;
+        import android.content.res.Configuration;
         import android.os.Bundle;
         import android.view.LayoutInflater;
         import android.view.View;
@@ -14,6 +16,7 @@ package com.tinnovat.app.daj.Activity;
         import android.widget.ImageView;
         import android.widget.ListView;
         import android.widget.AbsListView.OnScrollListener;
+        import android.widget.RelativeLayout;
         import android.widget.TextView;
 
         import com.tinnovat.app.daj.Activity.EventNewsActivity;
@@ -23,6 +26,13 @@ package com.tinnovat.app.daj.Activity;
 
 public class EventAndNewsActivity extends BaseActivity {
 
+    RelativeLayout row1;
+    RelativeLayout row2;
+    RelativeLayout row3;
+    RelativeLayout row4;
+    RelativeLayout row5;
+    RelativeLayout row6;
+
     private ListView listview;
     private int[] images = new int[]{R.drawable.cooking, R.drawable.family, R.drawable.festival, R.drawable.play, R.drawable.tennis_bat, R.drawable.wedding};
     private String[] text = new String[]{"Cooking", "Family", "Festival", "Play", "Tennis", "Wedding"};
@@ -30,8 +40,55 @@ public class EventAndNewsActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        String languageToLoad  = "en"; // your language
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
         setContentView(R.layout.activity_event_and_news);
         Objects.requireNonNull(getSupportActionBar()).setTitle("EVENT AND NEWS");
+
+        row1 = findViewById(R.id.row1);
+        row2 = findViewById(R.id.row2);
+        row3 = findViewById(R.id.row3);
+        row4= findViewById(R.id.row4);
+        row5 = findViewById(R.id.row5);
+        row6 = findViewById(R.id.row6);
+
+        row1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callEventNews();
+            }
+        });row2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callEventNews();
+            }
+        });row3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callEventNews();
+            }
+        });row4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callEventNews();
+            }
+        });row5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callEventNews();
+            }
+        });row6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callEventNews();
+            }
+        });
 
         listview = (ListView) findViewById(R.id.lv);
         listview.setAdapter(new EventAndNewsActivity.MyAdapter());
@@ -40,8 +97,7 @@ public class EventAndNewsActivity extends BaseActivity {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(EventAndNewsActivity.this, EventNewsActivity.class);
-                startActivity(i);
+                callEventNews();
             }
         });
 
@@ -60,6 +116,11 @@ public class EventAndNewsActivity extends BaseActivity {
                 }
             }
         });
+    }
+
+    public void callEventNews(){
+        Intent i = new Intent(EventAndNewsActivity.this, EventNewsActivity.class);
+        startActivity(i);
     }
 
     class MyAdapter extends BaseAdapter {

@@ -1,20 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Activity.TestActivity">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@drawable/bg_green_grade">
 
-    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:scaleType="fitEnd"
+        android:src="@drawable/logo_half_circle" />
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:foregroundGravity="right"
+        android:divider="@null" />
+
+
+</RelativeLayout>
+
+
+
+
+
+
+    <!--
+    <?xml version="1.0" encoding="utf-8"?>
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/calendarView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Activity.TestActivity">
 
-        app:mcv_showOtherDates="all"
-        app:mcv_selectionColor="#00F"
-        app:mcv_dateTextAppearance="@style/CalenderViewCustom"
-        app:mcv_calendarMode="week"
-        />
-</android.support.constraint.ConstraintLayout>
+        <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/calendarView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+
+            app:mcv_showOtherDates="all"
+            app:mcv_selectionColor="#00F"
+            app:mcv_dateTextAppearance="@style/CalenderViewCustom"
+            app:mcv_calendarMode="week"
+            />
+    </android.support.constraint.ConstraintLayout>-->

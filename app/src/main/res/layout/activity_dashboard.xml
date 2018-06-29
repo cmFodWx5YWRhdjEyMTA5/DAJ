@@ -39,11 +39,12 @@
                 />
 
             <ImageView
+                android:id="@+id/arcEventAr"
                 style="@style/dashboardArcRgt"
                 android:layout_above="@+id/text"
-                android:layout_toEndOf="@+id/eventImg" />
+                android:layout_toStartOf="@+id/eventImg" />
             <ImageView
-                android:id="@+id/leftRc"
+                android:id="@+id/arcEventEn"
                 style="@style/dashboardArcLeft"
                 android:layout_above="@+id/text"
                 android:layout_toStartOf="@+id/eventImg"/>
@@ -68,10 +69,12 @@
                 style="@style/dashboardText"/>
 
             <ImageView
+                android:id="@+id/arcServicesAr"
                 style="@style/dashboardArcRgt"
                 android:layout_above="@+id/servicesText"
-                android:layout_toEndOf="@+id/servicesImg" />
+                android:layout_toStartOf="@+id/servicesImg" />
             <ImageView
+                android:id="@+id/arcServicesEn"
                 style="@style/dashboardArcLeft"
                 android:layout_above="@+id/servicesText"
                 android:layout_toStartOf="@+id/servicesImg"/>
@@ -100,10 +103,12 @@
                 />
 
             <ImageView
+                android:id="@+id/arcGuestAr"
                 style="@style/dashboardArcRgt"
                 android:layout_above="@+id/guestText"
-                android:layout_toEndOf="@+id/guestImg" />
+                android:layout_toStartOf="@+id/guestImg" />
             <ImageView
+                android:id="@+id/arcGuestEn"
                 style="@style/dashboardArcLeft"
                 android:layout_above="@+id/guestText"
                 android:layout_toStartOf="@+id/guestImg"/>
@@ -128,10 +133,12 @@
                 style="@style/dashboardText"/>
 
             <ImageView
+                android:id="@+id/arcCameraAr"
                 style="@style/dashboardArcRgt"
                 android:layout_above="@+id/cameraText"
-                android:layout_toEndOf="@+id/cameraImg" />
+                android:layout_toStartOf="@+id/cameraImg" />
             <ImageView
+                android:id="@+id/arcCameraEn"
                 style="@style/dashboardArcLeft"
                 android:layout_above="@+id/cameraText"
                 android:layout_toStartOf="@+id/cameraImg"/>
@@ -159,10 +166,12 @@
                 />
 
             <ImageView
+                android:id="@+id/arcNavAr"
                 style="@style/dashboardArcRgt"
                 android:layout_above="@+id/navText"
-                android:layout_toEndOf="@+id/navImg" />
+                android:layout_toStartOf="@+id/navImg" />
             <ImageView
+                android:id="@+id/arcNavEn"
                 style="@style/dashboardArcLeft"
                 android:layout_above="@+id/navText"
                 android:layout_toStartOf="@+id/navImg"/>
@@ -187,10 +196,12 @@
                 style="@style/dashboardText"/>
 
             <ImageView
+                android:id="@+id/arcProjectAr"
                 style="@style/dashboardArcRgt"
                 android:layout_above="@+id/projectText"
-                android:layout_toEndOf="@+id/projectImg" />
+                android:layout_toStartOf="@+id/projectImg" />
             <ImageView
+                android:id="@+id/arcProjectEn"
                 style="@style/dashboardArcLeft"
                 android:layout_above="@+id/projectText"
                 android:layout_toStartOf="@+id/projectImg"/>

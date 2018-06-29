@@ -48,7 +48,11 @@
 
             <RelativeLayout
                 android:id="@+id/dateSelection"
-                style="@style/boxStyle">
+                style="@style/boxStyle"
+
+
+
+                >
 
                 <TextView
                     android:id="@+id/currentDate"

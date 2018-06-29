@@ -33,33 +33,41 @@ public class MainActivity extends BaseActivity
     RelativeLayout navigation;
     RelativeLayout projects;
 
-    ImageView arc;
+    ImageView arcEventAr;
+    ImageView arcEventEn;
+    ImageView arcServicesAr;
+    ImageView arcServicesEn;
+
+    ImageView arcGuestAr;
+    ImageView arcGuestEn;
+    ImageView arcCameraAr;
+    ImageView arcCameraEn;
+
+    ImageView arcNavAr;
+    ImageView arcNavEn;
+    ImageView arcProjectAr;
+    ImageView arcProjectEn;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setLanguage(true);
+        String languageToLoad;
+        if (getLanguage()){
+            languageToLoad  = "en"; // your language
+        }else {
+            languageToLoad  = "ar"; // your language
+        }
 
-
-            String languageToLoad  = "ar"; // your language
         Locale locale = new Locale(languageToLoad);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
         config.locale = locale;
         getBaseContext().getResources().updateConfiguration(config,
                 getBaseContext().getResources().getDisplayMetrics());
-        /*String languageToLoad  = "ar"; // your language
-        Locale locale = new Locale(languageToLoad);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.locale = locale;
-        getBaseContext().getResources().updateConfiguration(config,
-                getBaseContext().getResources().getDisplayMetrics());*/
-        this.setContentView(R.layout.activity_main);
 
-        Toast.makeText(this, ""+getText(R.string.hello_world), Toast.LENGTH_SHORT).show();
-        //Objects.requireNonNull(getSupportActionBar()).setTitle("DASHBOARD");
+
+        this.setContentView(R.layout.activity_main);
 
         facebook = findViewById(R.id.facebook);
         twitter = findViewById(R.id.twitter);
@@ -74,12 +82,70 @@ public class MainActivity extends BaseActivity
         projects = findViewById(R.id.projects);
 
 
-        arc = findViewById(R.id.leftRc);
 
-        if (getLanguage()){
+        arcEventAr = findViewById(R.id.arcEventAr);
+        arcEventEn = findViewById(R.id.arcEventEn);
+
+        arcServicesAr = findViewById(R.id.arcServicesAr);
+        arcServicesEn = findViewById(R.id.arcServicesEn);
+
+        arcGuestAr = findViewById(R.id.arcGuestAr);
+        arcGuestEn = findViewById(R.id.arcGuestEn);
+
+        arcCameraAr = findViewById(R.id.arcCameraAr);
+        arcCameraEn = findViewById(R.id.arcCameraEn);
+
+        arcNavAr = findViewById(R.id.arcNavAr);
+        arcNavEn = findViewById(R.id.arcNavEn);
+
+        arcProjectAr = findViewById(R.id.arcProjectAr);
+        arcProjectEn = findViewById(R.id.arcProjectEn);
+
+        if (!getLanguage()){
+            //for arabic
+            arcEventAr.setVisibility(View.VISIBLE);
+            arcEventEn.setVisibility(View.INVISIBLE);
+
+            arcServicesAr.setVisibility(View.VISIBLE);
+            arcServicesEn.setVisibility(View.INVISIBLE);
+
+            arcGuestAr.setVisibility(View.VISIBLE);
+            arcGuestEn.setVisibility(View.INVISIBLE);
+
+            arcCameraAr.setVisibility(View.VISIBLE);
+            arcCameraEn.setVisibility(View.INVISIBLE);
+
+            arcNavAr.setVisibility(View.VISIBLE);
+            arcNavEn.setVisibility(View.INVISIBLE);
+
+            arcProjectAr.setVisibility(View.VISIBLE);
+            arcProjectEn.setVisibility(View.INVISIBLE);
+        }else {
+            //for Eng
+            arcEventAr.setVisibility(View.INVISIBLE);
+            arcEventEn.setVisibility(View.VISIBLE);
+
+            arcServicesAr.setVisibility(View.INVISIBLE);
+            arcServicesEn.setVisibility(View.VISIBLE);
+
+            arcGuestAr.setVisibility(View.INVISIBLE);
+            arcGuestEn.setVisibility(View.VISIBLE);
+
+            arcCameraAr.setVisibility(View.INVISIBLE);
+            arcCameraEn.setVisibility(View.VISIBLE);
+
+            arcNavAr.setVisibility(View.INVISIBLE);
+            arcNavEn.setVisibility(View.VISIBLE);
+
+            arcProjectAr.setVisibility(View.INVISIBLE);
+            arcProjectEn.setVisibility(View.VISIBLE);
+        }
+
+   /*     if (getLanguage()){
             arc.setScaleType(ImageView.ScaleType.FIT_START);
             arc.setImageDrawable(getResources().getDrawable(R.drawable.arc_right));
         }
+*/
 
         //getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
        // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);

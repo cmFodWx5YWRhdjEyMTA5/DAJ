@@ -36,6 +36,7 @@
                android:orientation="horizontal"
                android:gravity="center">
                <ImageView
+                   android:id="@+id/arcHall"
                    android:layout_width="70dp"
                    android:layout_height="70dp"
                    app:srcCompat="@drawable/arc_left"
@@ -96,6 +97,7 @@
                 android:orientation="horizontal"
                 android:gravity="center">
                 <ImageView
+                    android:id="@+id/arcPool"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     app:srcCompat="@drawable/arc_left"
@@ -154,6 +156,7 @@
                 android:orientation="horizontal"
                 android:gravity="center">
                 <ImageView
+                    android:id="@+id/arcCourt"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     app:srcCompat="@drawable/arc_left"
@@ -214,6 +217,7 @@
                     android:orientation="horizontal"
                     android:gravity="center">
                     <ImageView
+                        android:id="@+id/arcHall1"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         app:srcCompat="@drawable/arc_left"
