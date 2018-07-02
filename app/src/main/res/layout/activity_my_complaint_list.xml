@@ -66,6 +66,7 @@
             android:id="@+id/day"
             style="@style/heading1"
             android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
             android:layout_toEndOf="@+id/line1"
             android:textSize="25sp"
             android:text="08"/>
@@ -127,6 +128,7 @@
             android:id="@+id/day1"
             style="@style/heading1"
             android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
             android:layout_toEndOf="@+id/line2"
             android:textSize="25sp"
             android:text="08"/>
@@ -188,6 +190,7 @@
             android:id="@+id/day2"
             style="@style/heading1"
             android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
             android:layout_toEndOf="@+id/line3"
             android:textSize="25sp"
             android:text="08"/>

@@ -17,12 +17,12 @@ public class EventNewsActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_news);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("EVENT NEWS");
+        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.event_news));
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("Today"));
-        tabLayout.addTab(tabLayout.newTab().setText("Tomorrow"));
-        tabLayout.addTab(tabLayout.newTab().setText("Weekend"));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.today1)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tomorrow)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.weekend)));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);

@@ -50,7 +50,7 @@
                 android:id="@+id/calendarView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".7"
+                android:layout_weight=".8"
                 app:mcv_allowClickDaysOutsideCurrentMonth="false"
                 app:mcv_arrowColor="@color/white"
                 app:mcv_calendarMode="month"
@@ -184,14 +184,14 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:buttonTint="@color/greenText" />
-
-
                             <TextView
-                                android:layout_width="100dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="5dp"
+                                android:paddingTop="10dp"
                                 android:text="10.00am"
                                 android:textColor="@color/black" />
+
                         </LinearLayout>
 
                         <View
@@ -236,6 +236,7 @@
                         android:id="@+id/img1"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
+                        android:layout_marginEnd="10dp"
                         android:background="@drawable/orenge_circle" />
 
                     <LinearLayout
@@ -300,6 +301,7 @@
                         android:id="@+id/img2"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
+                        android:layout_marginEnd="10dp"
                         android:background="@drawable/green_circle" />
 
                     <LinearLayout
@@ -364,6 +366,7 @@
                         android:id="@+id/img3"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
+                        android:layout_marginEnd="10dp"
                         android:background="@drawable/golden_circle" />
 
                     <LinearLayout

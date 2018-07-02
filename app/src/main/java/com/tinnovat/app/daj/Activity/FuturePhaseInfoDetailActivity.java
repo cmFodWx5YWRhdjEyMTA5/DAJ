@@ -14,6 +14,6 @@ public class FuturePhaseInfoDetailActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_future_phase_info_detail);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Future Phase Info Details");
+        Objects.requireNonNull(getSupportActionBar()).setTitle(getText(R.string.future_phase_info_details));
     }
 }

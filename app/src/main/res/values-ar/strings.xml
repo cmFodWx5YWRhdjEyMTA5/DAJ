@@ -89,5 +89,36 @@
     <string name="wedding_event">حدث عرس</string>
     <string name="upload_photo">حمل الصورة</string>
 
+    <string name="today1">اليوم</string>
+    <string name="tomorrow">غدا</string>
+    <string name="weekend">عطلة نهاية الاسبوع</string>
+
+    <string name="family">أسرة</string>
+    <string name="friend">صديق</string>
+    <string name="maintenance">اعمال صيانة</string>
+    <string name="delivery">توصيل</string>
+
+    <string name="electrical">الكهرباء</string>
+    <string name="plumbing">السباكة</string>
+    <string name="lift">مصعد</string>
+    <string name="parking">موقف سيارات</string>
+
+
+
+    <string name="event_and_news">الحدث والأخبار</string>
+    <string name="event_details">تفاصيل الحدث</string>
+    <string name="event_news">أخبار الفعالية</string>
+    <string name="future_phase_info_details"> معلوماتمستقبل مرحلة تفاصيل</string>
+    <string name="future_phase_info_list"> معلوماتمستقبل مرحلة تفاصيل قائمة</string>
+    <string name="my_booking">حجزي</string>
+    <string name="my_complaint">شكوى بلدي</string>
+    <string name="reg_complaint">تسجيل شكوى</string>
+    <string name="my_complaint_list">شكوى قائمة بلدي</string>
+    <string name="order_taxi">طلب سيارة أجرة</string>
+    <string name="order_food">طلب الطعام</string>
+    <string name="reset_password">إعادة تعيين كلمة المرور</string>
+    <string name="service_booking">خدمة الحجز</string>
+    <string name="surveillance">DAR Al JEWAR مراقبة</string>
+
 
     </resources>

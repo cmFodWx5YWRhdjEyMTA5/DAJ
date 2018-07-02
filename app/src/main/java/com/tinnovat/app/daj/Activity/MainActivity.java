@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
+import com.tinnovat.app.daj.circle.EventAndNewsActivity1;
 
 import java.util.Locale;
 
@@ -184,7 +185,7 @@ public class MainActivity extends BaseActivity
         events.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, EventAndNewsActivity.class);
+                Intent i = new Intent(MainActivity.this, EventAndNewsActivity1.class);
                 startActivity(i);
 
             }
@@ -282,7 +283,7 @@ public class MainActivity extends BaseActivity
         } else if (id == R.id.events) {
            // setLanguage(true);
            // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
-            Intent i = new Intent(MainActivity.this, EventAndNewsActivity.class);
+            Intent i = new Intent(MainActivity.this, EventAndNewsActivity1.class);
             startActivity(i);
 
         } else if (id == R.id.services) {

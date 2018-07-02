@@ -48,8 +48,10 @@
                         style="@style/dashboardArcRgt"
                         android:layout_above="@+id/mainText"
                         android:layout_toEndOf="@+id/mainImg"
-                        android:tint="@color/white"/>
+                        android:tint="@color/white"
+                        android:visibility="invisible"/>
                     <ImageView
+                        android:id="@+id/arc_gate"
                         style="@style/dashboardArcLeft"
                         android:layout_above="@+id/mainText"
                         android:layout_toStartOf="@+id/mainImg"
@@ -83,8 +85,10 @@
                         style="@style/dashboardArcRgt"
                         android:layout_above="@+id/communityText"
                         android:layout_toEndOf="@+id/communityImg"
-                        android:tint="@color/white"/>
+                        android:tint="@color/white"
+                        android:visibility="invisible"/>
                     <ImageView
+                        android:id="@+id/arc_community"
                         style="@style/dashboardArcLeft"
                         android:layout_above="@+id/communityText"
                         android:layout_toStartOf="@+id/communityImg"
@@ -119,8 +123,10 @@
                 style="@style/dashboardArcRgt"
                 android:layout_above="@+id/text"
                 android:layout_toEndOf="@+id/eventImg"
-                android:tint="@color/white"/>
+                android:tint="@color/white"
+                android:visibility="invisible"/>
             <ImageView
+                android:id="@+id/arc_play"
                 style="@style/dashboardArcLeft"
                 android:layout_above="@+id/text"
                 android:layout_toStartOf="@+id/eventImg"

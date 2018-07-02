@@ -28,7 +28,7 @@ public class ServicesActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_services);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("SERVICES");
+        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.services));
 
 
         arcHall = findViewById(R.id.arcHall);

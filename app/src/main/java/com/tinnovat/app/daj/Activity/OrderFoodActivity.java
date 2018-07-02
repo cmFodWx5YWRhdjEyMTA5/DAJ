@@ -15,6 +15,6 @@ public class OrderFoodActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_food);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("ORDER FOOD");
+        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.order_food));
     }
 }

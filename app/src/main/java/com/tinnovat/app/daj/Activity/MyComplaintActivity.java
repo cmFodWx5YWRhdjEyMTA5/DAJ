@@ -11,6 +11,8 @@ import com.tinnovat.app.daj.R;
 
 import org.w3c.dom.Text;
 
+import java.util.Objects;
+
 public class MyComplaintActivity extends BaseActivity {
 
     TextView locationText;
@@ -19,6 +21,7 @@ public class MyComplaintActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_complaint);
+        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.my_complaint));
         locationText = findViewById(R.id.locationText);
 
         locationText.setPaintFlags(locationText.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);

@@ -6,7 +6,7 @@
     android:background="@drawable/bg_green_grade">
 
     <ImageView
-        android:id="@+id/logo"
+        android:id="@+id/logo_en"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_alignParentEnd="true"

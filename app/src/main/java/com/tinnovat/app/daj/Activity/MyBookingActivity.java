@@ -1,15 +1,9 @@
 package com.tinnovat.app.daj.Activity;
 
-import android.annotation.SuppressLint;
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.CalendarView;
+import android.support.v4.content.ContextCompat;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
@@ -17,13 +11,7 @@ import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 
-import java.text.DateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Objects;
-
-import devs.mulham.horizontalcalendar.HorizontalCalendar;
-import devs.mulham.horizontalcalendar.HorizontalCalendarListener;
 
 public class MyBookingActivity extends BaseActivity {
 
@@ -33,13 +21,20 @@ public class MyBookingActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event_booking);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("MY BOOKINGS");
+        setContentView(R.layout.activity_my_booking);
+        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.my_booking));
         cal = findViewById(R.id.calendarView);
 
         todayDate = findViewById(R.id.todayDate);
         cal.setSelectedDate(CalendarDay.today());
         cal.setSelected(true);
+        if(getLanguage()){
+            cal.setRightArrowMask(ContextCompat.getDrawable(this, R.drawable.arrow_right));
+            cal.setLeftArrowMask(ContextCompat.getDrawable(this, R.drawable.arrow_left));
+        }else {
+            cal.setRightArrowMask(ContextCompat.getDrawable(this, R.drawable.arrow_left));
+            cal.setLeftArrowMask(ContextCompat.getDrawable(this, R.drawable.arrow_right));
+        }
 
         setDate(CalendarDay.today().getDay(),CalendarDay.today().getMonth());
 

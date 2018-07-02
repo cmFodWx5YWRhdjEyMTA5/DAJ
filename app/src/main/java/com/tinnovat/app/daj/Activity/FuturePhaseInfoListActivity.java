@@ -21,7 +21,7 @@ public class FuturePhaseInfoListActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_future_phase_info_list);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Future Phase Info List");
+        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.future_phase_info_list));
 
         row1 = findViewById(R.id.row1);
         row2 = findViewById(R.id.row2);

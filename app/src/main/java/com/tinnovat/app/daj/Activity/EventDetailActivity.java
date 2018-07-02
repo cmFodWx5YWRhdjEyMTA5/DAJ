@@ -14,6 +14,6 @@ public class EventDetailActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_detail);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("EVENT DETAILS");
+        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.event_details));
     }
 }

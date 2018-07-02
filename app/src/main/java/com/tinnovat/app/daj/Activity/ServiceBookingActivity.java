@@ -18,7 +18,7 @@ public class ServiceBookingActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_booking);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("SERVICE BOOKING");
+        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.service_booking));
 
     }
 }

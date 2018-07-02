@@ -17,7 +17,7 @@
             android:background="@drawable/login_bg" />
 
         <ImageView
-            android:id="@+id/logo"
+            android:id="@+id/logo_en"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_alignParentTop="true"

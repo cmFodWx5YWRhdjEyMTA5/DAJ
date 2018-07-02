@@ -14,6 +14,6 @@ public class EmergencyContactActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emergency_contact);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Emergency Contact");
+        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.emergency_contact));
     }
 }

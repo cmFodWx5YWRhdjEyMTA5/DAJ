@@ -17,13 +17,13 @@ import java.util.Objects;
 public class RegisterComplaintActivity extends BaseActivity {
 
     TextView category;
-    CharSequence categoryList[] = new CharSequence[] {"Electrical", "Plumbing", "Lift", "Parking","Food"};
+    CharSequence categoryList[] = new CharSequence[] {"electrical","plumbing","lift","parking","food"};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_complaint);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Register Complaint");
+        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.reg_complaint));
 
         category = findViewById(R.id.category);
 

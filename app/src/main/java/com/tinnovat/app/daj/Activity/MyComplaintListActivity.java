@@ -20,7 +20,7 @@ public class MyComplaintListActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_complaint_list);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("My Complaint List");
+        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.my_complaint_list));
         addComplaints = findViewById(R.id.addComplaints);
 
         addComplaints.setOnClickListener(new View.OnClickListener() {

@@ -19,14 +19,23 @@ import java.util.Objects;
 
 public class GuestRegistrationActivity extends BaseActivity {
     TextView purpose;
-    CharSequence purposeList[] = new CharSequence[] {"Family", "Friend", "Maintenance", "Taxi", "Delivery"};
+    CharSequence purposeList[] =new CharSequence[]{"family","friend","maintenance","taxi","delivery"};
+    /*CharSequence purposeList[] = new CharSequence[] {GuestRegistrationActivity.this.getResources().getString(R.string.family),
+            GuestRegistrationActivity.this.getResources().getString(R.string.friend),
+            GuestRegistrationActivity.this.getResources().getString(R.string.maintenance),
+            GuestRegistrationActivity.this.getResources().getString(R.string.taxi),
+            GuestRegistrationActivity.this.getResources().getString(R.string.delivery)};*/
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guest_registration);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Guest Registration");
-
+        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.guest_reg));
+       /* purposeList[] = new CharSequence[] {GuestRegistrationActivity.this.getResources().getString(R.string.family),
+       GuestRegistrationActivity.this.getResources().getString(R.string.friend),
+                GuestRegistrationActivity.this.getResources().getString(R.string.maintenance),
+                GuestRegistrationActivity.this.getResources().getString(R.string.taxi),
+                GuestRegistrationActivity.this.getResources().getString(R.string.delivery)};*/
 
         purpose = findViewById(R.id.purpose);
         purpose.setOnClickListener(new View.OnClickListener() {

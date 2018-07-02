@@ -14,6 +14,6 @@ public class ProfileActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Profile");
+        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.view_profile));
     }
 }

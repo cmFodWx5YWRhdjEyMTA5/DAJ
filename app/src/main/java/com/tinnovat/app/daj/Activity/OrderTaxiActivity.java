@@ -14,6 +14,6 @@ public class OrderTaxiActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_taxi);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("ORDER TAXI");
+        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.order_taxi));
     }
 }
