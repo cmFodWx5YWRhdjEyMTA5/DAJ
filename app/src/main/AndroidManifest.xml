@@ -35,7 +35,7 @@
         </activity>
         <activity
             android:name=".Activity.MainActivity"
-            android:label="@string/app_name"
+            android:label="@string/home"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
@@ -46,11 +46,7 @@
         <activity
             android:name=".circle.EventAndNewsActivity1"
             android:screenOrientation="portrait" >
-            <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -60,11 +56,7 @@
             android:name=".Activity.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyTheme" >
-            <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
         </activity>
         <activity
             android:name=".Activity.TestActivity"
@@ -77,13 +69,7 @@
             android:name=".Activity.ServicesActivity"
             android:screenOrientation="portrait">
 
-            <!--
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.daj.Activity.MainActivity" />
@@ -190,6 +176,8 @@
         <activity
             android:name=".Activity.GuestRegistrationActivity"
             android:screenOrientation="portrait">
+
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.daj.Activity.MainActivity" />

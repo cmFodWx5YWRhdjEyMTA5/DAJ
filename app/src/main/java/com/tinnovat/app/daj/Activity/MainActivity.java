@@ -2,7 +2,12 @@ package com.tinnovat.app.daj.Activity;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.design.internal.NavigationMenu;
+import android.view.ActionProvider;
+import android.view.ContextMenu;
+import android.view.SubMenu;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -56,9 +61,9 @@ public class MainActivity extends BaseActivity
 
         String languageToLoad;
         if (getLanguage()){
-            languageToLoad  = "en"; // your language
+            languageToLoad  = "en"; // english
         }else {
-            languageToLoad  = "ar"; // your language
+            languageToLoad  = "ar"; // arabic
         }
 
         Locale locale = new Locale(languageToLoad);
@@ -70,12 +75,24 @@ public class MainActivity extends BaseActivity
 
 
         this.setContentView(R.layout.activity_main);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().getItem(0).setChecked(true);
+        navigationView.setItemIconTintList(null);
 
         facebook = findViewById(R.id.facebook);
         twitter = findViewById(R.id.twitter);
         instagram = findViewById(R.id.instagram);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
         events = findViewById(R.id.events);
         services = findViewById(R.id.services);
         guest_registration = findViewById(R.id.guest_registration);
@@ -105,6 +122,20 @@ public class MainActivity extends BaseActivity
 
         if (!getLanguage()){
             //for arabic
+            navigationView.getMenu().getItem(0).setIcon(R.drawable.home_ar_nav);
+            navigationView.getMenu().getItem(1).setIcon(R.drawable.event_ar_nav);
+            navigationView.getMenu().getItem(2).setIcon(R.drawable.service_ar_nav);
+            navigationView.getMenu().getItem(3).setIcon(R.drawable.guest_ar_nav);
+            navigationView.getMenu().getItem(4).setIcon(R.drawable.camera_ar_nav);
+            navigationView.getMenu().getItem(5).setIcon(R.drawable.navigation_ar_nav);
+            navigationView.getMenu().getItem(6).setIcon(R.drawable.project_ar_nav);
+            navigationView.getMenu().getItem(7).setIcon(R.drawable.booking_ar_nav);
+            navigationView.getMenu().getItem(8).setIcon(R.drawable.profile_ar_nav);
+            navigationView.getMenu().getItem(9).setIcon(R.drawable.food_ar_nav);
+            navigationView.getMenu().getItem(10).setIcon(R.drawable.taxi_ar_nav);
+            navigationView.getMenu().getItem(11).setIcon(R.drawable.complaint_ar_nav);
+            navigationView.getMenu().getItem(12).setIcon(R.drawable.contact_ar_nav);
+
             arcEventAr.setVisibility(View.VISIBLE);
             arcEventEn.setVisibility(View.INVISIBLE);
 
@@ -124,6 +155,21 @@ public class MainActivity extends BaseActivity
             arcProjectEn.setVisibility(View.INVISIBLE);
         }else {
             //for Eng
+
+            navigationView.getMenu().getItem(0).setIcon(R.drawable.home_nav);
+            navigationView.getMenu().getItem(1).setIcon(R.drawable.event_nav);
+            navigationView.getMenu().getItem(2).setIcon(R.drawable.service_nav);
+            navigationView.getMenu().getItem(3).setIcon(R.drawable.guest_nav);
+            navigationView.getMenu().getItem(4).setIcon(R.drawable.camera_nav);
+            navigationView.getMenu().getItem(5).setIcon(R.drawable.navigation_nav);
+            navigationView.getMenu().getItem(6).setIcon(R.drawable.project_nav);
+            navigationView.getMenu().getItem(7).setIcon(R.drawable.booking_nav);
+            navigationView.getMenu().getItem(8).setIcon(R.drawable.profile_nav);
+            navigationView.getMenu().getItem(9).setIcon(R.drawable.food_nav);
+            navigationView.getMenu().getItem(10).setIcon(R.drawable.taxi_nav);
+            navigationView.getMenu().getItem(11).setIcon(R.drawable.complaint_nav);
+            navigationView.getMenu().getItem(12).setIcon(R.drawable.contact_nav);
+
             arcEventAr.setVisibility(View.INVISIBLE);
             arcEventEn.setVisibility(View.VISIBLE);
 
@@ -143,26 +189,9 @@ public class MainActivity extends BaseActivity
             arcProjectEn.setVisibility(View.VISIBLE);
         }
 
-   /*     if (getLanguage()){
-            arc.setScaleType(ImageView.ScaleType.FIT_START);
-            arc.setImageDrawable(getResources().getDrawable(R.drawable.arc_right));
-        }
-*/
-
-        //getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-       // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
 
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-        navigationView.getMenu().getItem(0).setChecked(true);
-        navigationView.setItemIconTintList(null);
 
        facebook.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -266,8 +295,9 @@ public class MainActivity extends BaseActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        int a = 1;
         if (id == R.id.home) {
+
+
 
 
            // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);

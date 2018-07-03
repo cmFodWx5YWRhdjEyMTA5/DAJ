@@ -82,157 +82,24 @@
 
             <RelativeLayout
                 android:id="@+id/dateSelection"
-                style="@style/boxStyle">
-
-                <TextView
-                    android:id="@+id/currentDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="10dp"
-                    android:text="May - 2018"
-                    android:textColor="@color/black" />
-
-                <LinearLayout
-                    android:id="@+id/week"
+                style="@style/boxStyle"
+                android:padding="10dp">
+                <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/calendarView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/currentDate"
-                    android:layout_marginLeft="10dp">
+                    app:mcv_allowClickDaysOutsideCurrentMonth="false"
+                    app:mcv_arrowColor="@color/black"
+                    app:mcv_calendarMode="week"
+                    app:mcv_dateTextAppearance="@style/CalenderViewCustomWeek"
+                    app:mcv_headerTextAppearance="@style/CalenderViewCustomWeekHeading"
+                    app:mcv_selectionColor="@color/orange"
+                    app:mcv_showOtherDates="none"
+                    app:mcv_tileHeight="30dp"
+                    app:mcv_weekDayTextAppearance="@style/CalenderViewCustomWeekText"
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_weight="1"
-                        android:text="Sun"
-                        android:textColor="@color/greenText" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_weight="1"
-                        android:text="Mon"
-                        android:textColor="@color/greenText" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_weight="1"
-                        android:text="Tue"
-                        android:textColor="@color/greenText" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_weight="1"
-                        android:text="Wed"
-                        android:textColor="@color/greenText" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_weight="1"
-                        android:text="Thu"
-                        android:textColor="@color/greenText" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_weight="1"
-                        android:text="Fri"
-                        android:textColor="@color/greenText" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_weight="1"
-                        android:text="Sat"
-                        android:textColor="@color/greenText" />
-
-                </LinearLayout>
-
-                <View
-                    android:id="@+id/line1"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_below="@+id/week"
-                    android:layout_margin="10dp"
-                    android:background="@color/blackTrans" />
-
-                <LinearLayout
-                    android:id="@+id/days"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/line1"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="10dp">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_weight="1"
-                        android:text="29"
-                        android:textColor="@color/black" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_weight="1"
-                        android:text="30"
-                        android:textColor="@color/black" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_weight="1"
-                        android:text="31"
-                        android:textColor="@color/black" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_weight="1"
-                        android:text="1"
-                        android:textColor="@color/black" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_weight="1"
-                        android:text="2"
-                        android:textColor="@color/black" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_weight="1"
-                        android:text="3"
-                        android:textColor="@color/black" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_weight="1"
-                        android:text="4"
-                        android:textColor="@color/black" />
-
-                </LinearLayout>
-
+                    />
             </RelativeLayout>
 
             <RelativeLayout style="@style/boxStyle">
@@ -241,38 +108,41 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
-                    android:layout_marginTop="20dp">
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center">
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
                         android:layout_weight="1"
-                        android:text="10.00am"
+                        android:text="10.00 am"
+                        android:gravity="center"
                         android:textColor="@color/black" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
                         android:layout_weight="1"
-                        android:text="11.00am"
+                        android:text="11.00 am"
+                        android:gravity="center"
                         android:textColor="@color/black" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
                         android:layout_weight="1"
-                        android:text="12.00pm"
+                        android:text="12.00 pm"
+                        android:gravity="center"
                         android:textColor="@color/black" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
                         android:layout_weight="1"
-                        android:text="01.00pm"
+                        android:text="01.00 pm"
+                        android:gravity="center"
                         android:textColor="@color/black" />
                 </LinearLayout>
 

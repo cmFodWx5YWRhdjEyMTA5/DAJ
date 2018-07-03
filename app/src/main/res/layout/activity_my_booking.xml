@@ -107,7 +107,26 @@
                             android:layout_height="30dp"
                             android:background="@color/gray" />
 
-                        <TextView
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/today_events"
+                                android:textColor="@color/black"
+                                android:layout_alignParentStart="true"
+                                android:textStyle="bold" />
+                            <ImageView
+                                android:id="@+id/delete"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                app:srcCompat="@drawable/delete"
+                                android:layout_alignParentEnd="true"/>
+                        </RelativeLayout>
+
+                       <!-- <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
@@ -123,7 +142,7 @@
                             android:id="@+id/delete"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
-                            app:srcCompat="@drawable/delete" />
+                            app:srcCompat="@drawable/delete" />-->
 
                     </LinearLayout>
 
@@ -218,7 +237,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
                 android:text="@string/upcoming_event"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
@@ -239,63 +259,53 @@
                         android:layout_marginEnd="10dp"
                         android:background="@drawable/orenge_circle" />
 
-                    <LinearLayout
-                        android:id="@+id/activityLayout1"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/title1"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginTop="5dp"
+                        android:text="@string/lorem_ipsum"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:maxLines="1"
                         android:layout_toEndOf="@+id/img1"
+                        android:layout_toStartOf="@+id/time1"/>
 
-                        >
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="10dp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_weight=".75"
-                            android:text="@string/lorem_ipsum"
-                            android:textColor="@color/black"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="10dp"
-                            android:layout_weight=".25"
-                            android:text="11.00am"
-                            android:textColor="@color/blackTrans"
-                            android:textStyle="bold" />
-
-                        <ImageView
-                            android:id="@+id/delete1"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            app:srcCompat="@drawable/delete" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/time1"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/activityLayout1"
-                        android:layout_toEndOf="@+id/img1">
+                        android:layout_marginBottom="10dp"
+                        android:layout_toStartOf="@+id/delete1"
+                        android:text="11.00am"
+                        android:textColor="@color/blackTrans"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="@string/lorem_ipsum"
-                            android:textColor="@color/blackTrans" />
+                    <ImageView
+                        android:id="@+id/delete1"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        app:srcCompat="@drawable/delete" />
 
-                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/sub1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLines="1"
+                        android:text="@string/lorem_ipsum"
+                        android:textColor="@color/blackTrans"
+                        android:layout_below="@+id/title1"
+                        android:layout_toEndOf="@+id/img1"/>
+
+
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/layout2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/layout1">
+                    android:layout_below="@+id/layout1"
+                    android:layout_marginTop="10dp">
 
                     <ImageView
                         android:id="@+id/img2"
@@ -304,122 +314,98 @@
                         android:layout_marginEnd="10dp"
                         android:background="@drawable/green_circle" />
 
-                    <LinearLayout
-                        android:id="@+id/activityLayout2"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/title2"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginTop="5dp"
+                        android:text="@string/lorem_ipsum"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:maxLines="1"
                         android:layout_toEndOf="@+id/img2"
+                        android:layout_toStartOf="@+id/time2"/>
 
-                        >
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="10dp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_weight=".75"
-                            android:text="@string/lorem_ipsum"
-                            android:textColor="@color/black"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="10dp"
-                            android:layout_weight=".25"
-                            android:text="11.00am"
-                            android:textColor="@color/blackTrans"
-                            android:textStyle="bold" />
-
-                        <ImageView
-                            android:id="@+id/delete2"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            app:srcCompat="@drawable/delete" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/time2"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/activityLayout2"
-                        android:layout_toEndOf="@+id/img2">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="@string/lorem_ipsum"
-                            android:textColor="@color/blackTrans" />
-
-                    </LinearLayout>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/layout3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/layout2">
+                        android:layout_marginBottom="10dp"
+                        android:layout_toStartOf="@+id/delete2"
+                        android:text="11.00am"
+                        android:textColor="@color/blackTrans"
+                        android:textStyle="bold" />
 
                     <ImageView
-                        android:id="@+id/img3"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginEnd="10dp"
-                        android:background="@drawable/golden_circle" />
+                        android:id="@+id/delete2"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        app:srcCompat="@drawable/delete" />
 
-                    <LinearLayout
-                        android:id="@+id/activityLayout3"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/sub2"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginTop="5dp"
-                        android:layout_toEndOf="@+id/img3"
+                        android:maxLines="1"
+                        android:text="@string/lorem_ipsum"
+                        android:textColor="@color/blackTrans"
+                        android:layout_below="@+id/title2"
+                        android:layout_toEndOf="@+id/img2"/>
 
-                        >
+                   </RelativeLayout>
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="10dp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_weight=".75"
-                            android:text="@string/lorem_ipsum"
-                            android:textColor="@color/black"
-                            android:textStyle="bold" />
+                  <RelativeLayout
+                      android:id="@+id/layout3"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_below="@+id/layout2"
+                      android:layout_marginTop="10dp">
+                      <ImageView
+                          android:id="@+id/img3"
+                          android:layout_width="50dp"
+                          android:layout_height="50dp"
+                          android:layout_marginEnd="10dp"
+                          android:background="@drawable/green_circle" />
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="10dp"
-                            android:layout_weight=".25"
-                            android:text="11.00am"
-                            android:textColor="@color/blackTrans"
-                            android:textStyle="bold" />
+                      <TextView
+                          android:id="@+id/title3"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="@string/lorem_ipsum"
+                          android:textColor="@color/black"
+                          android:textStyle="bold"
+                          android:maxLines="1"
+                          android:layout_toEndOf="@+id/img3"
+                          android:layout_toStartOf="@+id/time3"/>
 
-                        <ImageView
-                            android:id="@+id/delete3"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            app:srcCompat="@drawable/delete" />
-                    </LinearLayout>
+                      <TextView
+                          android:id="@+id/time3"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginBottom="10dp"
+                          android:layout_toStartOf="@+id/delete3"
+                          android:text="11.00am"
+                          android:textColor="@color/blackTrans"
+                          android:textStyle="bold" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/activityLayout3"
-                        android:layout_toEndOf="@+id/img3">
+                      <ImageView
+                          android:id="@+id/delete3"
+                          android:layout_width="20dp"
+                          android:layout_height="20dp"
+                          android:layout_alignParentEnd="true"
+                          app:srcCompat="@drawable/delete" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="@string/lorem_ipsum"
-                            android:textColor="@color/blackTrans" />
+                      <TextView
+                          android:id="@+id/sub3"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:maxLines="1"
+                          android:text="@string/lorem_ipsum"
+                          android:textColor="@color/blackTrans"
+                          android:layout_below="@+id/title3"
+                          android:layout_toEndOf="@+id/img3"/>
 
-                    </LinearLayout>
-                </RelativeLayout>
+                  </RelativeLayout>
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>

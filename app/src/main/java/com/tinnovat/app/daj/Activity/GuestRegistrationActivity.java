@@ -10,15 +10,21 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.CalendarMode;
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
+import java.util.Calendar;
 import java.util.Objects;
 
 
 public class GuestRegistrationActivity extends BaseActivity {
     TextView purpose;
+    MaterialCalendarView cal;
+
     CharSequence purposeList[] =new CharSequence[]{"family","friend","maintenance","taxi","delivery"};
     /*CharSequence purposeList[] = new CharSequence[] {GuestRegistrationActivity.this.getResources().getString(R.string.family),
             GuestRegistrationActivity.this.getResources().getString(R.string.friend),
@@ -31,11 +37,8 @@ public class GuestRegistrationActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guest_registration);
         Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.guest_reg));
-       /* purposeList[] = new CharSequence[] {GuestRegistrationActivity.this.getResources().getString(R.string.family),
-       GuestRegistrationActivity.this.getResources().getString(R.string.friend),
-                GuestRegistrationActivity.this.getResources().getString(R.string.maintenance),
-                GuestRegistrationActivity.this.getResources().getString(R.string.taxi),
-                GuestRegistrationActivity.this.getResources().getString(R.string.delivery)};*/
+
+        cal = findViewById(R.id.calendarView);
 
         purpose = findViewById(R.id.purpose);
         purpose.setOnClickListener(new View.OnClickListener() {
@@ -45,24 +48,6 @@ public class GuestRegistrationActivity extends BaseActivity {
             }
         });
 
-       /* //get the spinner from the xml.
-       spinner2 = findViewById(R.id.spinner2);
-        Spinner dropdown = findViewById(R.id.spinner1);
-//create a list of items for the spinner.
-        String[] items = new String[]{"-- Select Purpose --","Family", "Friend", "Maintenance", "Taxi", "Delivery"};
-//create an adapter to describe how the items are displayed, adapters are used in several places in android.
-//There are multiple variations of this, but this is the basic variant.
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-//set the spinners adapter to the previously created one.
-
-        dropdown.setPrompt("haiiiiiiiiiii");
-        dropdown.setAdapter(adapter);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_dropdown_item_1line, items);
-spinner2.setHintTextColor(getResources().getColor(R.color.black));
-spinner2.setFloatingLabelTextColor(getResources().getColor(R.color.black));
-        spinner2.setAdapter(adapter);*/
     }
 
     private void showDialog(){

@@ -120,5 +120,7 @@
     <string name="service_booking">خدمة الحجز</string>
     <string name="surveillance">DAR Al JEWAR مراقبة</string>
 
+    <string name="time">زمن</string>
+
 
     </resources>
