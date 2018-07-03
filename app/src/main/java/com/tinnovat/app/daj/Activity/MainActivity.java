@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.circle.EventAndNewsActivity1;
+import com.tinnovat.app.daj.map.MapsActivity;
 
 import java.util.Locale;
 
@@ -214,6 +215,8 @@ public class MainActivity extends BaseActivity
         navigation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, MapsActivity.class);
+                startActivity(i);
             }
         });
         projects.setOnClickListener(new View.OnClickListener() {
@@ -302,6 +305,8 @@ public class MainActivity extends BaseActivity
             startActivity(i);
 
         } else if (id == R.id.navigation) {
+            Intent i = new Intent(MainActivity.this, MapsActivity.class);
+            startActivity(i);
 
         }else if (id == R.id.projects) {
             Intent i = new Intent(MainActivity.this, FuturePhaseInfoListActivity.class);

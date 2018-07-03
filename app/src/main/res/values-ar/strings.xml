@@ -6,7 +6,7 @@
     <string name="guest_reg">تسجيل الضيف</string>
     <string name="view_camera">عرض الكاميرا</string>
     <string name="projects">مشروع</string>
-    <string name="view_profile">عرض الصفحة الشخصية</string>
+    <string name="my_profile">عرض الصفحة الشخصية</string>
     <string name="food">طعام</string>
     <string name="taxi">سيارة اجره</string>
     <string name="complaint">شكوى</string>
@@ -43,7 +43,7 @@
     <string name="location">موقعك</string>
     <string name="submit">خضع</string>
     <string name="wedding_reception">الاستقبال الخاص بالعرس</string>
-    <string name="upcoming_activity_s">نشاط قادم</string>
+    <string name="upcoming_event">نشاط قادم</string>
     <string name="lorem_ipsum">أبجد هوز</string>
     <string name="lorem_ipsum_medium">أبجد هوز هو مجرد دمية النص من الطباعة</string>
     <string name="lorem_ipsum_large">لوريم إيبسوم (Lorem Ipsum) هو ببساطة نص شكلي في صناعة الطباعة والتنضيد. كان لوريم إيبسوم (Lorem Ipsum) النص القياسي المعياري لهذه الصناعة منذ القرن السادس عشر ، عندما أخذت طابعة غير معروفة مجموعة من الأطباق ، وهرعت بها لعمل كتاب من نوع العينة. وقد نجا ليس فقط خمسة قرون ، ولكن أيضا قفزة في التنضيد الإلكتروني ، وتبقى في الأساس دون تغيير.</string>

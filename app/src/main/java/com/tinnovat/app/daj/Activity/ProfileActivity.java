@@ -1,6 +1,5 @@
 package com.tinnovat.app.daj.Activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.tinnovat.app.daj.BaseActivity;
@@ -14,6 +13,6 @@ public class ProfileActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.view_profile));
+        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.my_profile));
     }
 }

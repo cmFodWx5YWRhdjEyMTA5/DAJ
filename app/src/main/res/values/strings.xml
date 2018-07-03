@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DAJ</string>
+    <string name="app_name">DAR AL JEWAR</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -12,7 +12,7 @@
     <string name="guest_reg">GUEST REGISTRATION</string>
     <string name="view_camera">VIEW CAMERA</string>
     <string name="projects">PROJECTS</string>
-    <string name="view_profile">VIEW PROFILE</string>
+    <string name="my_profile">MY PROFILE</string>
     <string name="food">FOOD</string>
     <string name="taxi">TAXI</string>
     <string name="complaint">COMPLAINT</string>
@@ -47,7 +47,7 @@
     <string name="location">Location</string>
     <string name="submit">Submit</string>
     <string name="wedding_reception">Wedding Reception</string>
-    <string name="upcoming_activity_s">Upcoming Activity\'s</string>
+    <string name="upcoming_event">Upcoming Event</string>
     <string name="lorem_ipsum">Lorem Ipsum</string>
     <string name="lorem_ipsum_medium">Lorem Ipsum is simply dummy text of the printing</string>
     <string name="lorem_ipsum_large">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</string>
@@ -124,5 +124,6 @@
     <string name="reset_password">RESET PASSWORD</string>
     <string name="service_booking">SERVICE BOOKING</string>
     <string name="surveillance">DAR Al JEWAR SURVEILLANCE</string>
+    <string name="time">Time</string>
 
 </resources>

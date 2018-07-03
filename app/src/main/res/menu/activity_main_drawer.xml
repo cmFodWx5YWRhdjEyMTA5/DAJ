@@ -39,7 +39,7 @@
         <item
             android:id="@+id/view_profile"
             android:icon="@drawable/profile_nav"
-            android:title="@string/view_profile" />
+            android:title="@string/my_profile" />
         <item
             android:id="@+id/food"
             android:icon="@drawable/food_nav"

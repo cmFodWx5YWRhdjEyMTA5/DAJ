@@ -30,7 +30,8 @@
             style="@style/EditTextField"
             android:layout_above="@+id/password"
             android:drawableStart="@drawable/user_small_green"
-            android:hint="@string/user_name" />
+            android:hint="@string/user_name"
+            android:textAlignment="viewStart"/>
 
 
         <EditText
