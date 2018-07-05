@@ -3,7 +3,7 @@
     <color name="colorPrimary">#C2A15A</color>
     <color name="gold">#C2A15A</color>
     <color name="colorPrimaryDark">#896e33</color>
-    <color name="colorAccent">#24735D</color>
+    <color name="colorAccent">#C2A15A</color>
     <color name="white">#ffffff</color>
     <color name="whiteTrans">#62ffffff</color>
     <color name="black">#000000</color>
@@ -17,7 +17,7 @@
     <color name="grayTrans">#1dd6d6d6</color>
     <color name="orange">#F19157</color>
     <color name="red">#EC4028</color>
-    <color name="blue">#3ECFFE</color>
+    <color name="blue">#0E7AFF</color>
     <color name="transparentWhite">#00ffffff</color>
 
     <color name="black_overlay">#66000000</color>

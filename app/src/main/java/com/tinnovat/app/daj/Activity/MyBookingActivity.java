@@ -8,9 +8,12 @@ import android.widget.TextView;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
+import com.prolificinteractive.materialcalendarview.format.ArrayWeekDayFormatter;
+import com.prolificinteractive.materialcalendarview.format.DayFormatter;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 
+import java.util.Locale;
 import java.util.Objects;
 
 public class MyBookingActivity extends BaseActivity {
@@ -35,11 +38,21 @@ public class MyBookingActivity extends BaseActivity {
             cal.setRightArrowMask(ContextCompat.getDrawable(this, R.drawable.arrow_left));
             cal.setLeftArrowMask(ContextCompat.getDrawable(this, R.drawable.arrow_right));
         }
+        Locale locale = new Locale("en", "US");
 
         setDate(CalendarDay.today().getDay(),CalendarDay.today().getMonth());
         String[] ArrayWeekDayFormatter = { "Sun","Mon","Tue","Wed","Thu","Fri","Sat" };
-        int[] dat={1,2,3};
+        DayFormatter formatter =DayFormatter.DEFAULT;
         cal.setWeekDayLabels(ArrayWeekDayFormatter);
+      //  SimpleDateFormat sdf = new SimpleDateFormat("MMMM dd,yyyy hh:mm a");
+        DayFormatter day = new DayFormatter() {
+            @NonNull
+            @Override
+            public String format(@NonNull CalendarDay day) {
+                return ""+day.getDay();
+            }
+        };
+        cal.setDayFormatter(day);
        // cal.setDayFormatter(CalendarDay);
 
         cal.setOnDateChangedListener(new OnDateSelectedListener() {
@@ -53,6 +66,7 @@ public class MyBookingActivity extends BaseActivity {
 
 
     }
+
 
     private void setDate(int day ,int month){
         todayDate.setText(""+day+"\n"+""+ getCurrentMonth(month));

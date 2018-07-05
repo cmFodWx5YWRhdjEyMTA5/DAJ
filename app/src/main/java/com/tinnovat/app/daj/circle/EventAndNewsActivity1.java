@@ -1,5 +1,7 @@
 package com.tinnovat.app.daj.circle;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -8,6 +10,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kapil.circularlayoutmanager.CircularLayoutManager;
+import com.tinnovat.app.daj.Activity.EventNewsActivity;
+import com.tinnovat.app.daj.Activity.MainActivity;
+import com.tinnovat.app.daj.Activity.SurveillanceActivity;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 
@@ -68,8 +73,8 @@ public class EventAndNewsActivity1 extends BaseActivity {
                 new OnRecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void OnItemClick(RecyclerView parent, int childIndex) {
-                Toast.makeText(EventAndNewsActivity1.this, ((TextView) parent.getChildAt(childIndex)
-                        .findViewById(R.id.event)).getText(), Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(EventAndNewsActivity1.this, EventNewsActivity.class);
+                startActivity(i);
 
 
             }

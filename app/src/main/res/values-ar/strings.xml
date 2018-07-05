@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
     <resources>
-    <string name="home">الصفحة الرئيسية</string>
+    <string name="home">المنزل</string>
     <string name="events">الفعاليات</string>//
     <string name="services">الخدمات</string>//
     <string name="guest_reg">تسجل زائر</string>//
@@ -8,7 +8,7 @@
     <string name="projects">المشاريع</string>//
     <string name="my_profile">بياناتي</string>//
     <string name="food">طعام</string>//
-    <string name="taxi">سيارة اجره</string>
+    <string name="taxi">تاكسي</string>
     <string name="complaint">شكوى</string>//
     <string name="emergency_contact">تواصل الطوارئ</string>//
     <string name="change_password">تغيير كلمة المرور</string>//
@@ -78,9 +78,9 @@
     <string name="new_password">كلمة المرور الجديدة </string>//
     <string name="confirm_password">تأكيد كلمة المرور</string>//
     <string name="email">البريد الإلكتروني</string>//
-    <string name="choose_category">اختر الفئة</string>
-    <string name="sample_address">Al Mahad المملكة العربية السعودية</string>
-    <string name="choose_purpose">اختر الغرض</string>
+    <string name="choose_category">اختيار الفئة</string>//
+    <string name="sample_address"> المملكة العربية السعودية</string>
+    <string name="choose_purpose">اخيار الغاية</string>//
     <string name="title_activity_maps">خريطة</string>
     <string name="cooking_competition">مسابقة الطبخ</string>
     <string name="family_meeting_event">حدث اجتماع الأسرة</string>
@@ -94,10 +94,10 @@
     <string name="tomorrow">غداً</string>//
     <string name="weekend">عطلة نهاية الأسبوع</string>//
 
-    <string name="family">أسرة</string>
-    <string name="friend">صديق</string>
-    <string name="maintenance">اعمال صيانة</string>
-    <string name="delivery">توصيل</string>
+    <string name="family">العائلة </string>//
+    <string name="friend">الأصدقاء</string>//
+    <string name="maintenance">الصيانة</string>//
+    <string name="delivery">توصيل</string>//
 
     <string name="electrical">الكهرباء</string>
     <string name="plumbing">السباكة</string>
@@ -109,22 +109,23 @@
     <string name="event_and_news">الأخبار و الفعاليات</string>//
     <string name="event_details">تفاصيل الفعاليات</string>//
     <string name="event_news">أخبار عن الفعاليات </string>//
-    <string name="future_phase_info_details"> معلوماتمستقبل مرحلة تفاصيل</string>
-    <string name="future_phase_info_list"> معلوماتمستقبل مرحلة تفاصيل قائمة</string>
-    <string name="my_booking">حجوزاتي</string>//
+    <string name="future_phase_info_details">تفاصيل المرحلة المستقبلية</string>//
+    <string name="future_phase_info_list">قائمة معلومات المرحلة المستقبلية</string>//
+    <string name="my_booking">حجزي</string>//
     <string name="my_complaint">الشكاوي الخاصة بي</string>//
     <string name="reg_complaint">تسجيل شكوى</string>//
     <string name="my_complaint_list">قائمة الشكاوي الخاصة بي</string>//
     <string name="order_taxi">طلب تاكسي</string>//
     <string name="order_food">طلب توصيل طعام</string>//
     <string name="reset_password">إعادة تعيين كلمة المرور</string>//
-    <string name="service_booking">الخدمات الحجز</string>
+    <string name="service_booking">خدمة الحجز</string>//
     <string name="surveillance">كاميرات المراقبة بدار الجوار</string>//
 
     <string name="time">الوقت</string>//
     <string name="gender">الجنس</string>
-    <string name="male">الذكر</string>
-    <string name="villa_no_045">فيلا لا  : 045</string>
+    <string name="male">ذكر</string>//
+    <string name="female">انثى</string>//
+    <string name="villa_no_045">رقم الفيلا: 045</string>//
 
     <string name="saudi_arabia">المملكة العربية السعودية</string>
     <string name="dar_al_jewar_hall">دار الجوير -</string>
@@ -136,11 +137,11 @@
 
     <string name="reg_no_727247878">ريج لا: 727247878</string>
 
-    <string name="restaurants">مطاعم</string>
-    <string name="hospitals">المستشفيات</string>
-    <string name="petrol">بنزين</string>
-    <string name="shopping">التسوق</string>
-    <string name="map">خريطة</string>
+    <string name="restaurants">المطاعم</string>//
+    <string name="hospitals">المستشفيات</string>//
+    <string name="petrol">محطة الوقود</string>//
+    <string name="shopping">الأسواق</string>//
+    <string name="map">الخريطة</string>//
     <string name="please_try_again_later">الرجاء المحاولة مرة أخرى</string>//
     <string name="password_changed_successfully">تم تغيير كلمة المرور بنجاح</string>//
     <string name="success">عملية ناجحة</string>//

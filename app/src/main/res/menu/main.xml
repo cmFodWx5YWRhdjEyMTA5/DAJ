@@ -6,5 +6,5 @@
         android:orderInCategory="100"
         android:icon="@drawable/notification"
         android:title="@string/notification"
-        app:showAsAction="always" />
+        app:showAsAction="" />
 </menu>
