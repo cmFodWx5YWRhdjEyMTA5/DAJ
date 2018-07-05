@@ -1,6 +1,7 @@
 package com.tinnovat.app.daj.map;
 
 import android.Manifest;
+import android.app.ActionBar;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
@@ -12,6 +13,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -34,6 +36,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 
+import java.util.Objects;
+
 public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
@@ -44,6 +48,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
     private CheckableImageButton image1;
     private CheckableImageButton image2;
     private CheckableImageButton image3;
+    private CheckableImageButton image4;
     private LocationRequest mLocationRequest;
     private Location mLastLocation;
     private Marker mCurrLocationMarker;
@@ -56,17 +61,26 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-
+      //  Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.map));
+      // ActionBar actionBar.setDisplayHomeAsUpEnabled(true);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setTitle(getText(R.string.map));
+        }
 
         image1 = findViewById(R.id.image1);
         image2 = findViewById(R.id.image2);
         image3 = findViewById(R.id.image3);
+        image4 = findViewById(R.id.image4);
 
         image1.setOnClickListener(this);
         image2.setOnClickListener(this);
         image3.setOnClickListener(this);
+        image4.setOnClickListener(this);
 
         LinearLayout layoutBottomSheet = findViewById(R.id.bottom_sheet);
         BottomSheetBehavior<LinearLayout> sheetBehavior = BottomSheetBehavior.from(layoutBottomSheet);
@@ -131,7 +145,15 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
         }
         return true;
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            finish(); // close this activity and return to preview activity (if there is any)
+        }
 
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -315,6 +337,17 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
                 break;
             case R.id.image2:
                 mMap.clear();
+                url = getUrl(latitude, longitude, "gas_station");
+                dataTransfer = new Object[2];
+                dataTransfer[0] = mMap;
+                dataTransfer[1] = url;
+                Log.d("onClick", url);
+                getNearbyPlacesData = new GetNearbyPlacesData();
+                getNearbyPlacesData.execute(dataTransfer);
+                Toast.makeText(MapsActivity.this, "Nearby Petrol", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.image3:
+                mMap.clear();
                 url = getUrl(latitude, longitude, "hospital");
                 dataTransfer = new Object[2];
                 dataTransfer[0] = mMap;
@@ -324,16 +357,17 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
                 getNearbyPlacesData.execute(dataTransfer);
                 Toast.makeText(MapsActivity.this, "Nearby Hospitals", Toast.LENGTH_LONG).show();
                 break;
-            case R.id.image3:
+
+                case R.id.image4:
                 mMap.clear();
-                url = getUrl(latitude, longitude, "school");
+                url = getUrl(latitude, longitude, "supermarket");
                 dataTransfer = new Object[2];
                 dataTransfer[0] = mMap;
                 dataTransfer[1] = url;
                 Log.d("onClick", url);
                 getNearbyPlacesData = new GetNearbyPlacesData();
                 getNearbyPlacesData.execute(dataTransfer);
-                Toast.makeText(MapsActivity.this, "Nearby Schools", Toast.LENGTH_LONG).show();
+                Toast.makeText(MapsActivity.this, "Nearby Shopping", Toast.LENGTH_LONG).show();
                 break;
         }
     }

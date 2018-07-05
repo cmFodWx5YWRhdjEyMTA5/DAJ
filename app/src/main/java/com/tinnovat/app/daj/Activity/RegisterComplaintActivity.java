@@ -12,18 +12,30 @@ import android.widget.Toast;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class RegisterComplaintActivity extends BaseActivity {
 
     TextView category;
-    CharSequence categoryList[] = new CharSequence[] {"electrical","plumbing","lift","parking","food"};
+    CharSequence categoryList[];
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_complaint);
         Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.reg_complaint));
+
+        List<String> listItems = new ArrayList<String>();
+
+        listItems.add(getResources().getString(R.string.electrical));
+        listItems.add(getResources().getString(R.string.plumbing));
+        listItems.add(getResources().getString(R.string.lift));
+        listItems.add(getResources().getString(R.string.parking));
+        listItems.add(getResources().getString(R.string.food));
+
+        categoryList = listItems.toArray(new CharSequence[listItems.size()]);
 
         category = findViewById(R.id.category);
 
@@ -46,7 +58,7 @@ public class RegisterComplaintActivity extends BaseActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // the user clicked on colors[which]
-                Toast.makeText(RegisterComplaintActivity.this, "test :"+which, Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(RegisterComplaintActivity.this, "test :"+which, Toast.LENGTH_SHORT).show();
                 category.setText(categoryList[which]);
             }
         });

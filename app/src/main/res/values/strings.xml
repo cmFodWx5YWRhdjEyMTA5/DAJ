@@ -15,7 +15,7 @@
     <string name="my_profile">MY PROFILE</string>
     <string name="food">FOOD</string>
     <string name="taxi">TAXI</string>
-    <string name="complaint">COMPLAINT</string>
+    <string name="complaint">COMPLAINTS</string>
     <string name="emergency_contact">EMERGENCY CONTACT</string>
     <string name="change_password">CHANGE PASSWORD</string>
     <string name="my_bookings">MY BOOKINGS</string>
@@ -40,14 +40,14 @@
     <string name="tennis_court">TENNIS COURT</string>
     <string name="swimming_pool">SWIMMING POOL</string>
     <string name="date_and_time">Date and Time</string>
-    <string name="number_of_guest">Number of Guest</string>
+    <string name="number_of_guest">Number of Guests</string>
     <string name="comments">Comments</string>
     <string name="book">Book</string>
     <string name="category">Category</string>
     <string name="location">Location</string>
     <string name="submit">Submit</string>
     <string name="wedding_reception">Wedding Reception</string>
-    <string name="upcoming_event">Upcoming Event</string>
+    <string name="upcoming_event">Upcoming Events</string>
     <string name="lorem_ipsum">Lorem Ipsum</string>
     <string name="lorem_ipsum_medium">Lorem Ipsum is simply dummy text of the printing</string>
     <string name="lorem_ipsum_large">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</string>
@@ -116,7 +116,7 @@
     <string name="future_phase_info_details">FUTURE PHASE INFO DETAILS</string>
     <string name="future_phase_info_list">FUTURE PHASE INFO LIST</string>
     <string name="my_booking">MY BOOKINGS</string>
-    <string name="my_complaint">MY COMPLAINT</string>
+    <string name="my_complaint">MY COMPLAINTS</string>
     <string name="reg_complaint">Register Complaint</string>
     <string name="my_complaint_list">MY COMPLAINT LIST</string>
     <string name="order_taxi">ORDER TAXI</string>
@@ -125,5 +125,27 @@
     <string name="service_booking">SERVICE BOOKING</string>
     <string name="surveillance">DAR Al JEWAR SURVEILLANCE</string>
     <string name="time">Time</string>
+    <string name="gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="villa_no_045">Villa No : 045</string>
+    <string name="saudi_arabia">SAUDI ARABIA</string>
+    <string name="dar_al_jewar_hall">DAR Al JEWAR HALL -</string>
+
+    <string name="hall1">Hall 1</string>
+    <string name="hall2">Hall 2</string>
+    <string name="hall3">Hall 3</string>
+    <string name="hall4">Hall 4</string>
+    <string name="reg_no_727247878">Reg No: 727247878</string>
+    <string name="restaurants">Restaurants</string>
+    <string name="hospitals">Hospitals</string>
+    <string name="petrol">Petrol</string>
+    <string name="shopping">Shopping</string>
+    <string name="map">MAP</string>
+    <string name="success">Success</string>
+    <string name="password_mailed">New password has been mailed to you, please login with it</string>
+
+    <string name="please_try_again_later">please try again later</string>
+    <string name="password_changed_successfully">password changed successfully</string>
+    <string name="search_nearby">Search Nearby</string>
 
 </resources>

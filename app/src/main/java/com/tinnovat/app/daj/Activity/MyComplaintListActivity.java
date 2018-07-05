@@ -2,6 +2,7 @@ package com.tinnovat.app.daj.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -34,6 +35,8 @@ public class MyComplaintListActivity extends BaseActivity {
         });
 
         FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setColorFilter(Color.WHITE);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

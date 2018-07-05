@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/event_details_bg"
+        android:src="@drawable/profile_bg"
         />
     <TextView
         android:layout_marginTop="20dp"
@@ -30,13 +30,14 @@
         android:id="@+id/gender"
         android:layout_below="@+id/name"
         style="@style/subHeadingWhite"
-        android:text="Gender - Male"
+
+        android:text="@string/male"
         android:layout_centerHorizontal="true"/>
 
     <TextView
         android:layout_below="@+id/gender"
         style="@style/subHeadingWhite"
-        android:text="Villa No : 045"
+        android:text="@string/villa_no_045"
         android:layout_centerHorizontal="true"/>
 
     <ScrollView

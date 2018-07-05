@@ -1,6 +1,7 @@
 package com.tinnovat.app.daj.Activity;
 
 import android.content.DialogInterface;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,7 +18,9 @@ import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -25,18 +28,23 @@ public class GuestRegistrationActivity extends BaseActivity {
     TextView purpose;
     MaterialCalendarView cal;
 
-    CharSequence purposeList[] =new CharSequence[]{"family","friend","maintenance","taxi","delivery"};
-    /*CharSequence purposeList[] = new CharSequence[] {GuestRegistrationActivity.this.getResources().getString(R.string.family),
-            GuestRegistrationActivity.this.getResources().getString(R.string.friend),
-            GuestRegistrationActivity.this.getResources().getString(R.string.maintenance),
-            GuestRegistrationActivity.this.getResources().getString(R.string.taxi),
-            GuestRegistrationActivity.this.getResources().getString(R.string.delivery)};*/
+    CharSequence purposeList[];
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guest_registration);
         Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.guest_reg));
+
+        List<String> listItems = new ArrayList<String>();
+
+        listItems.add(getResources().getString(R.string.family));
+        listItems.add(getResources().getString(R.string.friend));
+        listItems.add(getResources().getString(R.string.maintenance));
+        listItems.add(getResources().getString(R.string.taxi));
+        listItems.add(getResources().getString(R.string.delivery));
+
+        purposeList = listItems.toArray(new CharSequence[listItems.size()]);
 
         cal = findViewById(R.id.calendarView);
 
@@ -47,6 +55,14 @@ public class GuestRegistrationActivity extends BaseActivity {
                 showDialog();
             }
         });
+
+        if(getLanguage()){
+            cal.setRightArrowMask(ContextCompat.getDrawable(this, R.drawable.arrow_right));
+            cal.setLeftArrowMask(ContextCompat.getDrawable(this, R.drawable.arrow_left));
+        }else {
+            cal.setRightArrowMask(ContextCompat.getDrawable(this, R.drawable.arrow_left));
+            cal.setLeftArrowMask(ContextCompat.getDrawable(this, R.drawable.arrow_right));
+        }
 
     }
 

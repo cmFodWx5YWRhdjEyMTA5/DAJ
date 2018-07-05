@@ -36,7 +36,8 @@
             android:layout_toEndOf="@+id/comStatus"
             android:layout_alignBottom="@+id/comStatus"
             android:layout_marginStart="50dp"
-            app:srcCompat="@drawable/add" />
+            app:srcCompat="@drawable/add"
+            android:visibility="invisible"/>
     </RelativeLayout>
     <View
         android:id="@+id/line"
@@ -99,7 +100,7 @@
             style="@style/subHeading1"
             android:layout_below="@+id/complaint"
             android:layout_alignStart="@+id/complaint"
-            android:text="Reg No: 727247878"/>
+            android:text="@string/reg_no_727247878"/>
 
 
         <TextView
@@ -161,7 +162,7 @@
             style="@style/subHeading1"
             android:layout_below="@+id/complaint1"
             android:layout_alignStart="@+id/complaint1"
-            android:text="Reg No: 727247878"/>
+            android:text="@string/reg_no_727247878"/>
 
 
         <TextView
@@ -223,7 +224,7 @@
             style="@style/subHeading1"
             android:layout_below="@+id/complaint2"
             android:layout_alignStart="@+id/complaint2"
-            android:text="Reg No: 727247878"/>
+            android:text="@string/reg_no_727247878"/>
 
 
         <TextView

@@ -207,8 +207,10 @@
             android:name=".map.MapsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:label="@string/title_activity_maps">
-
+            android:label="@string/map">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tinnovat.app.daj.Activity.MainActivity" />
 
         </activity>
     </application>

@@ -37,7 +37,10 @@ public class MyBookingActivity extends BaseActivity {
         }
 
         setDate(CalendarDay.today().getDay(),CalendarDay.today().getMonth());
-
+        String[] ArrayWeekDayFormatter = { "Sun","Mon","Tue","Wed","Thu","Fri","Sat" };
+        int[] dat={1,2,3};
+        cal.setWeekDayLabels(ArrayWeekDayFormatter);
+       // cal.setDayFormatter(CalendarDay);
 
         cal.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override

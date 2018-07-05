@@ -2,10 +2,12 @@ package com.tinnovat.app.daj.Activity;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +23,9 @@ public class LoginActivity extends BaseActivity {
     TextView forgotPassword;
     TextView english;
     TextView arabic;
+    ImageView facebook;
+    ImageView twitter;
+    ImageView instagram;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,6 +48,10 @@ public class LoginActivity extends BaseActivity {
         setContentView(R.layout.activity_login);
         signIn = findViewById(R.id.signIn);
         forgotPassword = findViewById(R.id.forgotPassword);
+
+        facebook = findViewById(R.id.facebook);
+        twitter = findViewById(R.id.twitter);
+        instagram = findViewById(R.id.instagram);
 
         english = findViewById(R.id.english);
         arabic = findViewById(R.id.arabic);
@@ -86,6 +95,29 @@ public class LoginActivity extends BaseActivity {
             public void onClick(View v) {
                 Intent i = new Intent(LoginActivity.this, ResetPasswordActivity.class);
                 startActivity(i);
+            }
+        });
+
+        facebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Toast.makeText(MainActivity.this,"facebook clicked",Toast.LENGTH_SHORT).show();
+                Intent followIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/MadinahKEC/"));
+                startActivity(followIntent);
+            }
+        });
+        twitter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent followIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/MadinahKEC"));
+                startActivity(followIntent);
+            }
+        });
+        instagram.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent followIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/madinahkec/"));
+                startActivity(followIntent);
             }
         });
     }

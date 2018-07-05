@@ -3,6 +3,7 @@ package com.tinnovat.app.daj.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.internal.NavigationMenu;
 import android.view.ActionProvider;
@@ -196,19 +197,23 @@ public class MainActivity extends BaseActivity
        facebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"facebook clicked",Toast.LENGTH_SHORT).show();
+               // Toast.makeText(MainActivity.this,"facebook clicked",Toast.LENGTH_SHORT).show();
+                Intent followIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/MadinahKEC/"));
+                startActivity(followIntent);
             }
         });
         twitter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"twitter clicked",Toast.LENGTH_SHORT).show();
+                Intent followIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/MadinahKEC"));
+                startActivity(followIntent);
             }
         });
         instagram.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"instagram clicked",Toast.LENGTH_SHORT).show();
+                Intent followIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/madinahkec/"));
+                startActivity(followIntent);
             }
         });
 
