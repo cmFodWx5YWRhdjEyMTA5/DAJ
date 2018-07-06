@@ -6,6 +6,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -105,6 +106,27 @@ public class GuestRegistrationActivity extends BaseActivity {
         });
     }
 
+    private void showDialog1() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        // Get the layout inflater
+        LayoutInflater inflater = (this).getLayoutInflater();
+        // Inflate and set the layout for the dialog
+        // Pass null as the parent view because its going in the
+        // dialog layout
+        builder.setTitle("hello");
+        builder.setCancelable(false);
+        builder.setIcon(R.drawable.camera);
+        builder.setView(inflater.inflate(R.layout.activity_test, null))
+                // Add action buttons
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+    });
+    builder.create();
+    builder.show();
+    }
     private void showDialog(){
         int cate = 0;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -113,7 +135,7 @@ public class GuestRegistrationActivity extends BaseActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // the user clicked on colors[which]
-                Toast.makeText(GuestRegistrationActivity.this, "test :"+which, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(GuestRegistrationActivity.this, "test :"+which, Toast.LENGTH_SHORT).show();
                 purpose.setText(purposeList[which]);
             }
         });
