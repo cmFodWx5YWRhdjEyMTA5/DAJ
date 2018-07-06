@@ -62,10 +62,20 @@
                     app:mcv_dateTextAppearance="@style/CalenderViewCustomWeek"
                     app:mcv_headerTextAppearance="@style/CalenderViewCustomWeekHeading"
                     app:mcv_selectionColor="@color/orange"
-                    app:mcv_showOtherDates="none"
+                    app:mcv_showOtherDates="decorated_disabled"
                     app:mcv_tileHeight="30dp"
                     app:mcv_weekDayTextAppearance="@style/CalenderViewCustomWeekText"
-
+                    />
+                <TextView
+                    android:id="@+id/monthTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"
+                    android:visibility="invisible"
+                    android:layout_marginTop="5dp"
+                    android:textSize="15sp"
                     />
 
 

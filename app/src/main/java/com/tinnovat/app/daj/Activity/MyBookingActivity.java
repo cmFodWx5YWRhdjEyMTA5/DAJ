@@ -8,7 +8,6 @@ import android.widget.TextView;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
-import com.prolificinteractive.materialcalendarview.format.ArrayWeekDayFormatter;
 import com.prolificinteractive.materialcalendarview.format.DayFormatter;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
@@ -38,13 +37,14 @@ public class MyBookingActivity extends BaseActivity {
             cal.setRightArrowMask(ContextCompat.getDrawable(this, R.drawable.arrow_left));
             cal.setLeftArrowMask(ContextCompat.getDrawable(this, R.drawable.arrow_right));
         }
-        Locale locale = new Locale("en", "US");
 
         setDate(CalendarDay.today().getDay(),CalendarDay.today().getMonth());
-        String[] ArrayWeekDayFormatter = { "Sun","Mon","Tue","Wed","Thu","Fri","Sat" };
-        DayFormatter formatter =DayFormatter.DEFAULT;
-        cal.setWeekDayLabels(ArrayWeekDayFormatter);
-      //  SimpleDateFormat sdf = new SimpleDateFormat("MMMM dd,yyyy hh:mm a");
+        String[] weekDays ={ "Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
+        String[] months = { "January","February","March","April","May","June","July","August","September","October","November","December" };
+
+        cal.setWeekDayLabels(weekDays);
+
+
         DayFormatter day = new DayFormatter() {
             @NonNull
             @Override
@@ -52,9 +52,9 @@ public class MyBookingActivity extends BaseActivity {
                 return ""+day.getDay();
             }
         };
-        cal.setDayFormatter(day);
-       // cal.setDayFormatter(CalendarDay);
+        cal.setTitleMonths(months);
 
+        cal.setDayFormatter(day);
         cal.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
@@ -62,11 +62,7 @@ public class MyBookingActivity extends BaseActivity {
                 setDate(date.getDay(),date.getMonth());
             }
         });
-
-
-
     }
-
 
     private void setDate(int day ,int month){
         todayDate.setText(""+day+"\n"+""+ getCurrentMonth(month));

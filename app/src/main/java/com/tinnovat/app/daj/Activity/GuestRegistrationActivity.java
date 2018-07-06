@@ -1,6 +1,7 @@
 package com.tinnovat.app.daj.Activity;
 
 import android.content.DialogInterface;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,9 @@ import android.widget.Toast;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.CalendarMode;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
+import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
+import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
+import com.prolificinteractive.materialcalendarview.format.DayFormatter;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
@@ -26,6 +30,7 @@ import java.util.Objects;
 
 public class GuestRegistrationActivity extends BaseActivity {
     TextView purpose;
+    TextView monthTitle;
     MaterialCalendarView cal;
 
     CharSequence purposeList[];
@@ -47,8 +52,9 @@ public class GuestRegistrationActivity extends BaseActivity {
         purposeList = listItems.toArray(new CharSequence[listItems.size()]);
 
         cal = findViewById(R.id.calendarView);
-
+        monthTitle = findViewById(R.id.monthTitle);
         purpose = findViewById(R.id.purpose);
+
         purpose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,6 +70,39 @@ public class GuestRegistrationActivity extends BaseActivity {
             cal.setLeftArrowMask(ContextCompat.getDrawable(this, R.drawable.arrow_right));
         }
 
+
+        String[] weekDays ={ "Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
+        String[] months = { "January","February","March","April","May","June","July","August","September","October","November","December" };
+
+        cal.setWeekDayLabels(weekDays);
+
+        DayFormatter day = new DayFormatter() {
+            @NonNull
+            @Override
+            public String format(@NonNull CalendarDay day) {
+                return ""+day.getDay();
+            }
+        };
+        cal.setTitleMonths(months);
+        cal.setDayFormatter(day);
+        cal.setSelectedDate(CalendarDay.today());
+        cal.setSelected(true);
+        cal.setOnMonthChangedListener(new OnMonthChangedListener() {
+            @Override
+            public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
+                monthTitle.setVisibility(View.INVISIBLE);
+                cal.setHeaderTextAppearance(R.style.CalenderViewCustomWeekHeading);
+            }
+        });
+
+        cal.setOnDateChangedListener(new OnDateSelectedListener() {
+            @Override
+            public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
+                monthTitle.setVisibility(View.VISIBLE);
+                cal.setHeaderTextAppearance(R.style.CalenderViewCustomWeekHeading1);
+                monthTitle.setText(""+getCurrentMonthWeek(date.getMonth())+" "+date.getYear());
+            }
+        });
     }
 
     private void showDialog(){

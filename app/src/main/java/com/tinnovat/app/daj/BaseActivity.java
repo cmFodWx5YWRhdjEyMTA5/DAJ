@@ -81,6 +81,38 @@ public class BaseActivity extends AppCompatActivity {
       return   mnt;
     }
 
+    public String getCurrentMonthWeek(int month){
+
+        String mnt = "January";
+        if (month == 0){
+            mnt = "January";
+        }else if (month == 1){
+            mnt = "February";
+        }else if (month == 2){
+            mnt = "March";
+        }else if (month == 3){
+            mnt = "April";
+        }else if (month == 4){
+            mnt = "May";
+        }else if (month == 5){
+            mnt = "June";
+        }else if (month == 6){
+            mnt = "July";
+        }else if (month == 7){
+            mnt = "August";
+        }else if (month == 8){
+            mnt = "September";
+        }else if (month == 9){
+            mnt = "October";
+        }else if (month == 10){
+            mnt = "November";
+        }else if (month == 11){
+            mnt = "December";
+        }
+
+      return   mnt;
+    }
+
 
 
 
