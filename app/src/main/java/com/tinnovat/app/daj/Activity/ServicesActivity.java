@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class ServicesActivity extends BaseActivity {
+
     RelativeLayout hall;
     RelativeLayout hall2;
     RelativeLayout pool;
@@ -114,6 +115,16 @@ public class ServicesActivity extends BaseActivity {
 
     }
 
+    @Override
+    public void initialiseViews() {
+
+    }
+
+    @Override
+    public void initialiseEventListners() {
+
+    }
+
     private void showDialog(){
         int cate = 0;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -127,5 +138,10 @@ public class ServicesActivity extends BaseActivity {
             }
         });
         builder.show();
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

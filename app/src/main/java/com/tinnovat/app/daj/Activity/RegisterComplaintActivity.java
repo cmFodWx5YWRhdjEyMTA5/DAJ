@@ -50,6 +50,16 @@ public class RegisterComplaintActivity extends BaseActivity {
 
     }
 
+    @Override
+    public void initialiseViews() {
+
+    }
+
+    @Override
+    public void initialiseEventListners() {
+
+    }
+
     private void showDialog(){
         int cate = 0;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -65,4 +75,8 @@ public class RegisterComplaintActivity extends BaseActivity {
         builder.show();
     }
 
+    @Override
+    public void onClick(View v) {
+
+    }
 }

@@ -47,4 +47,19 @@ public class MyComplaintListActivity extends BaseActivity {
             }
         });
     }
+
+    @Override
+    public void initialiseViews() {
+
+    }
+
+    @Override
+    public void initialiseEventListners() {
+
+    }
+
+    @Override
+    public void onClick(View v) {
+
+    }
 }

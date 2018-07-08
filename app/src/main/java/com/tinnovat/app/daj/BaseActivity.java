@@ -21,8 +21,16 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         appPreferenceStore = new AppPreferanceStore(getApplicationContext());
         appPreferenceStore.changeLocaleLanguage(appPreferenceStore.getLanguage());
 
+        initialiseViews();
+        initialiseEventListners();
+
         //getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
     }
+
+    public abstract void initialiseViews();
+
+    public abstract void initialiseEventListners();
+
 
     public void changeOrientation() {
         getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);

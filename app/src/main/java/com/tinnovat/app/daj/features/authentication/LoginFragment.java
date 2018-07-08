@@ -35,15 +35,11 @@ public class LoginFragment extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.activity_login, container, false);
-
-        initialiseViews(rootView);
-
-        return rootView;
+        return inflater.inflate(R.layout.activity_login, container, false);
     }
 
-    private void initialiseViews(View rootView) {
-
+    @Override
+    public void initialiseViews(View rootView) {
         Button signIn = rootView.findViewById(R.id.signIn);
         TextView forgotPassword = rootView.findViewById(R.id.forgotPassword);
 
@@ -63,6 +59,11 @@ public class LoginFragment extends BaseFragment {
 
         english.setOnClickListener(this);
         arabic.setOnClickListener(this);
+    }
+
+    @Override
+    public void initialiseEventListners() {
+
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.tinnovat.app.daj.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.tinnovat.app.daj.BaseActivity;
@@ -10,6 +11,7 @@ import com.tinnovat.app.daj.R;
 import java.util.Objects;
 
 public class SurveillanceActivity extends BaseActivity {
+
     ImageView arc_gate;
     ImageView arc_community;
     ImageView arc_play;
@@ -43,5 +45,20 @@ public class SurveillanceActivity extends BaseActivity {
             arc_play.setImageResource(R.drawable.arc_right);
             arc_play.setScaleType(ImageView.ScaleType.FIT_START);
         }
+    }
+
+    @Override
+    public void initialiseViews() {
+
+    }
+
+    @Override
+    public void initialiseEventListners() {
+
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

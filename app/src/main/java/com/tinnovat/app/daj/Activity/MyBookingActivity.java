@@ -3,6 +3,7 @@ package com.tinnovat.app.daj.Activity;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.view.View;
 import android.widget.TextView;
 
 import com.prolificinteractive.materialcalendarview.CalendarDay;
@@ -70,7 +71,22 @@ public class MyBookingActivity extends BaseActivity {
         });
     }
 
+    @Override
+    public void initialiseViews() {
+
+    }
+
+    @Override
+    public void initialiseEventListners() {
+
+    }
+
     private void setDate(Calendar calendar) {
         todayDate.setText(CommonUtils.getInstance().getDateMonth(calendar));
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

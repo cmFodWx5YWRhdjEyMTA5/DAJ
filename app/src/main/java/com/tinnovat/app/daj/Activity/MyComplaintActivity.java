@@ -4,6 +4,7 @@ import android.graphics.Paint;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.tinnovat.app.daj.BaseActivity;
@@ -26,5 +27,20 @@ public class MyComplaintActivity extends BaseActivity {
 
         locationText.setPaintFlags(locationText.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);
        // description.setText(Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID));
+    }
+
+    @Override
+    public void initialiseViews() {
+
+    }
+
+    @Override
+    public void initialiseEventListners() {
+
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

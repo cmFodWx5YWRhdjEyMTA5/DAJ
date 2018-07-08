@@ -16,9 +16,12 @@ public class SplashScreenActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+    }
+
+    @Override
+    public void initialiseViews() {
 
         int timeOut = SPLASH_TIME_OUT;
-
         if (getIntent().getBooleanExtra("IS_FROM_LOGOUT",false))
             timeOut = 0;
 
@@ -32,6 +35,11 @@ public class SplashScreenActivity extends BaseActivity {
                 transaction.commit();
             }
         }, timeOut);
+    }
+
+    @Override
+    public void initialiseEventListners() {
+
     }
 
     @Override

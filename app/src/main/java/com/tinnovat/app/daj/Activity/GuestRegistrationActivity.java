@@ -31,6 +31,7 @@ import java.util.Objects;
 
 
 public class GuestRegistrationActivity extends BaseActivity {
+
     TextView purpose;
     TextView monthTitle;
     MaterialCalendarView cal;
@@ -108,6 +109,16 @@ public class GuestRegistrationActivity extends BaseActivity {
         });
     }
 
+    @Override
+    public void initialiseViews() {
+
+    }
+
+    @Override
+    public void initialiseEventListners() {
+
+    }
+
     private void showDialog1() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         // Get the layout inflater
@@ -142,5 +153,10 @@ public class GuestRegistrationActivity extends BaseActivity {
             }
         });
         builder.show();
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }
