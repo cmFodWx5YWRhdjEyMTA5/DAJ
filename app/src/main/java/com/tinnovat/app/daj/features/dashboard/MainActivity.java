@@ -1,4 +1,4 @@
-package com.tinnovat.app.daj.Activity;
+package com.tinnovat.app.daj.features.dashboard;
 
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -14,6 +14,17 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.tinnovat.app.daj.Activity.ChangePasswordActivity;
+import com.tinnovat.app.daj.Activity.EmergencyContactActivity;
+import com.tinnovat.app.daj.Activity.FuturePhaseInfoListActivity;
+import com.tinnovat.app.daj.Activity.GuestRegistrationActivity;
+import com.tinnovat.app.daj.Activity.MyBookingActivity;
+import com.tinnovat.app.daj.Activity.MyComplaintListActivity;
+import com.tinnovat.app.daj.Activity.OrderFoodActivity;
+import com.tinnovat.app.daj.Activity.OrderTaxiActivity;
+import com.tinnovat.app.daj.Activity.ProfileActivity;
+import com.tinnovat.app.daj.Activity.ServicesActivity;
+import com.tinnovat.app.daj.Activity.SurveillanceActivity;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.circle.EventAndNewsActivity1;
