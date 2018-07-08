@@ -1,18 +1,13 @@
 package com.tinnovat.app.daj.circle;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.kapil.circularlayoutmanager.CircularLayoutManager;
 import com.tinnovat.app.daj.Activity.EventNewsActivity;
-import com.tinnovat.app.daj.Activity.MainActivity;
-import com.tinnovat.app.daj.Activity.SurveillanceActivity;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 

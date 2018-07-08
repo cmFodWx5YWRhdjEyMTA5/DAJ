@@ -22,7 +22,7 @@
             android:value="AIzaSyAlatLwlGxwDed7curNyJhpeuzWHha6lsg" />
 
         <activity
-            android:name=".Activity.SplashScreenActivity"
+            android:name=".features.authentication.SplashScreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/MyTheme">
@@ -34,7 +34,7 @@
 
         </activity>
         <activity
-            android:name=".Activity.MainActivity"
+            android:name=".features.dashboard.MainActivity"
 
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
@@ -50,20 +50,14 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.Activity.MainActivity" />
-        </activity>
-        <activity
-            android:name=".Activity.LoginActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/MyTheme" >
-
+                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
             android:name=".Activity.TestActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.Activity.MainActivity" />
+                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
             android:name=".Activity.ServicesActivity"
@@ -72,7 +66,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.Activity.MainActivity" />
+                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
             android:name=".Activity.ServiceBookingActivity"
@@ -86,56 +80,56 @@
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.Activity.MainActivity" />
+                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
             android:name=".Activity.MyBookingActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.Activity.MainActivity" />
+                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
             android:name=".Activity.OrderTaxiActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.Activity.MainActivity" />
+                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
             android:name=".Activity.OrderFoodActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.Activity.MainActivity" />
+                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
             android:name=".Activity.SurveillanceActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.Activity.MainActivity" />
+                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
             android:name=".Activity.MyComplaintActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.Activity.MainActivity" />
+                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
             android:name=".Activity.MyComplaintListActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.Activity.MainActivity" />
+                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
             android:name=".Activity.FuturePhaseInfoListActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.Activity.MainActivity" />
+                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
             android:name=".Activity.FuturePhaseInfoDetailActivity"
@@ -164,14 +158,14 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.Activity.MainActivity" />
+                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
             android:name=".Activity.EmergencyContactActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.Activity.MainActivity" />
+                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
             android:name=".Activity.GuestRegistrationActivity"
@@ -180,28 +174,28 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.Activity.MainActivity" />
+                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
             android:name=".Activity.ProfileActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.Activity.MainActivity" />
+                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
             android:name=".Activity.ChangePasswordActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.Activity.MainActivity" />
+                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
             android:name=".Activity.ResetPasswordActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.Activity.LoginActivity" />
+                android:value="com.tinnovat.app.daj.features.authentication.LoginActivity" />
         </activity>
         <activity
             android:name=".map.MapsActivity"
@@ -210,7 +204,7 @@
             android:label="@string/map">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.Activity.MainActivity" />
+                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
 
         </activity>
     </application>

@@ -29,6 +29,7 @@ public class MyBookingActivity extends BaseActivity {
         Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.my_booking));
         cal = findViewById(R.id.calendarView);
 
+
         todayDate = findViewById(R.id.todayDate);
         cal.setSelectedDate(CalendarDay.today());
         cal.setSelected(true);
@@ -71,9 +72,5 @@ public class MyBookingActivity extends BaseActivity {
 
     private void setDate(Calendar calendar) {
         todayDate.setText(CommonUtils.getInstance().getDateMonth(calendar));
-    }
-
-    private void setDate(int day ,int month){
-        todayDate.setText(""+day+"\n"+""+ getCurrentMonth(month));
     }
 }

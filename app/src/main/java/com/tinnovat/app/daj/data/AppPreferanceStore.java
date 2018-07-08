@@ -20,7 +20,7 @@ public class AppPreferanceStore {
 
     private static final int PRIVATE_MODE = 0;
 
-    private static final String PREF_NAME = "RackSafetySharedPref";
+    private static final String PREF_NAME = "DAJSharedPref";
 
     private static final String IS_ENGLISH = "IS_ENGLISH";
 
@@ -40,7 +40,7 @@ public class AppPreferanceStore {
         changeLocaleLanguage(isEnglish);
     }
 
-    private void changeLocaleLanguage(boolean isEnglish) {
+    public void changeLocaleLanguage(boolean isEnglish) {
         String languageToLoad;
         if (isEnglish){
             languageToLoad  = "en"; // your language

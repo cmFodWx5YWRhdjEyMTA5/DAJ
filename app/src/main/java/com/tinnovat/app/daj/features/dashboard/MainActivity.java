@@ -28,7 +28,7 @@ import com.tinnovat.app.daj.Activity.SurveillanceActivity;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.circle.EventAndNewsActivity1;
-import com.tinnovat.app.daj.features.authentication.LoginActivity;
+import com.tinnovat.app.daj.features.authentication.SplashScreenActivity;
 import com.tinnovat.app.daj.map.MapsActivity;
 
 import java.util.Locale;
@@ -384,8 +384,9 @@ public class MainActivity extends BaseActivity
            // Toast.makeText(this,""+getLanguage(),Toast.LENGTH_SHORT).show();
         }else if (id == R.id.logout) {
            // Toast.makeText(this,""+getLanguage(),Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity(i);
+            Intent intent = new Intent(MainActivity.this, SplashScreenActivity.class);
+            intent.putExtra("IS_FROM_LOGOUT", true);
+            startActivity(intent);
             finish();
         }
 

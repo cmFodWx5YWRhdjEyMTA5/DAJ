@@ -9,8 +9,6 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.tinnovat.app.daj.Activity.EventDetailActivity;
-import com.tinnovat.app.daj.Activity.MainActivity;
-import com.tinnovat.app.daj.Activity.ServicesActivity;
 import com.tinnovat.app.daj.R;
 
 public class TabFragment1 extends Fragment {
