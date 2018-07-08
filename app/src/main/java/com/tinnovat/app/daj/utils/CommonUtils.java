@@ -15,13 +15,13 @@ public class CommonUtils {
     }
 
     public String getDateMonth(Calendar calendar) {
-        SimpleDateFormat month_date = new SimpleDateFormat("dd\nMMM", Locale.ENGLISH);
-        return month_date.format(calendar.getTime());
+        SimpleDateFormat month_date = new SimpleDateFormat("dd\nMMM", Locale.US);
+        return month_date.format(calendar.getTime()).toUpperCase();
     }
 
 
     public String getMonthWithYear(Calendar calendar) {
-        SimpleDateFormat month_date = new SimpleDateFormat("MMMM yyyy", Locale.ENGLISH);
+        SimpleDateFormat month_date = new SimpleDateFormat("MMMM yyyy", Locale.US);
         return month_date.format(calendar.getTime());
     }
 }
