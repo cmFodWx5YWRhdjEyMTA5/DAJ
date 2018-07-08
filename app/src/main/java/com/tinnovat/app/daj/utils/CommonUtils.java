@@ -20,8 +20,8 @@ public class CommonUtils {
     }
 
 
-    public String getDateMonthShrinked(Calendar calendar) {
-        SimpleDateFormat month_date = new SimpleDateFormat("dd\nMMMM", Locale.ENGLISH);
+    public String getMonthWithYear(Calendar calendar) {
+        SimpleDateFormat month_date = new SimpleDateFormat("MMMM yyyy", Locale.ENGLISH);
         return month_date.format(calendar.getTime());
     }
 }

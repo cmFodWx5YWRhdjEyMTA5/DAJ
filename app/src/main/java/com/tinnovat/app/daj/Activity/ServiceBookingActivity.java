@@ -17,6 +17,7 @@ import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
 import com.prolificinteractive.materialcalendarview.format.DayFormatter;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
+import com.tinnovat.app.daj.utils.CommonUtils;
 
 import java.util.Objects;
 
@@ -69,7 +70,8 @@ public class ServiceBookingActivity extends BaseActivity {
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
                 monthTitle.setVisibility(View.VISIBLE);
                 cal.setHeaderTextAppearance(R.style.CalenderViewCustomWeekHeading1);
-                monthTitle.setText(""+getCurrentMonthWeek(date.getMonth())+" "+date.getYear());
+//                monthTitle.setText(""+getCurrentMonthWeek(date.getMonth())+" "+date.getYear());
+                monthTitle.setText(CommonUtils.getInstance().getMonthWithYear(date.getCalendar()));
             }
         });
 
