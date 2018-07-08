@@ -11,7 +11,9 @@ import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 import com.prolificinteractive.materialcalendarview.format.DayFormatter;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
+import com.tinnovat.app.daj.utils.CommonUtils;
 
+import java.util.Calendar;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -38,7 +40,9 @@ public class MyBookingActivity extends BaseActivity {
             cal.setLeftArrowMask(ContextCompat.getDrawable(this, R.drawable.arrow_right));
         }
 
-        setDate(CalendarDay.today().getDay(),CalendarDay.today().getMonth());
+        setDate(CalendarDay.today().getCalendar());
+
+//        setDate(CalendarDay.today().getDay(),CalendarDay.today().getMonth());
         String[] weekDays ={ "Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
         String[] months = { "January","February","March","April","May","June","July","August","September","October","November","December" };
 
@@ -59,9 +63,14 @@ public class MyBookingActivity extends BaseActivity {
             @Override
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
 
-                setDate(date.getDay(),date.getMonth());
+//                setDate(date.getDay(),date.getMonth());
+                setDate(date.getCalendar());
             }
         });
+    }
+
+    private void setDate(Calendar calendar) {
+        todayDate.setText(CommonUtils.getInstance().getDateMonth(calendar));
     }
 
     private void setDate(int day ,int month){
