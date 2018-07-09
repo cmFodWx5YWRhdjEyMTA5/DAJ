@@ -51,6 +51,16 @@ public class EventAndNewsActivity1 extends BaseActivity {
         setViews();
     }
 
+    @Override
+    public void initialiseViews() {
+
+    }
+
+    @Override
+    public void initialiseEventListners() {
+
+    }
+
     private void initViews() {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
       //  scrollWheel = (ScrollWheel) findViewById(R.id.scroll_wheel);
@@ -108,6 +118,11 @@ public class EventAndNewsActivity1 extends BaseActivity {
 
             list.add(model);
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
  /*
     @Override

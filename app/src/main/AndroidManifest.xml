@@ -31,23 +31,21 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".features.dashboard.MainActivity"
-
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity
+        <!--
+            <activity
             android:name=".BaseActivity"
             android:screenOrientation="portrait" />
+        -->
 
         <activity
             android:name=".circle.EventAndNewsActivity1"
-            android:screenOrientation="portrait" >
-
-
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
@@ -62,8 +60,6 @@
         <activity
             android:name=".Activity.ServicesActivity"
             android:screenOrientation="portrait">
-
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
@@ -80,7 +76,7 @@
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
+                android:value="com.tinnovat.app.daj.Activity.MyComplaintListActivity" />
         </activity>
         <activity
             android:name=".Activity.MyBookingActivity"
@@ -115,7 +111,7 @@
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
+                android:value=".Activity.MyComplaintActivity" />
         </activity>
         <activity
             android:name=".Activity.MyComplaintListActivity"
@@ -155,7 +151,6 @@
         <activity
             android:name=".Activity.EventAndNewsActivity"
             android:screenOrientation="portrait">
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
@@ -170,8 +165,6 @@
         <activity
             android:name=".Activity.GuestRegistrationActivity"
             android:screenOrientation="portrait">
-
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
@@ -193,20 +186,23 @@
         <activity
             android:name=".Activity.ResetPasswordActivity"
             android:screenOrientation="portrait">
-            <meta-data
+
+            <!--
+                <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.daj.features.authentication.LoginActivity" />
+            -->
         </activity>
         <activity
             android:name=".map.MapsActivity"
+            android:label="@string/map"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:label="@string/map">
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
-
         </activity>
+        <activity android:name=".Activity.ServiceListActivity"></activity>
     </application>
 
 </manifest>

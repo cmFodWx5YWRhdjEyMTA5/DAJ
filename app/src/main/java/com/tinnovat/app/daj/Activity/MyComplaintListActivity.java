@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
@@ -25,6 +26,10 @@ public class MyComplaintListActivity extends BaseActivity {
         setContentView(R.layout.activity_my_complaint_list);
         Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.my_complaint_list));
         addComplaints = findViewById(R.id.addComplaints);
+
+        RelativeLayout row1 = findViewById(R.id.row1);
+
+        row1.setOnClickListener(this);
 
         addComplaints.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,5 +66,11 @@ public class MyComplaintListActivity extends BaseActivity {
     @Override
     public void onClick(View v) {
 
+        switch (v.getId()){
+            case R.id.row1:
+                Intent i = new Intent(MyComplaintListActivity.this, MyComplaintActivity.class);
+                startActivity(i);
+                break;
+        }
     }
 }

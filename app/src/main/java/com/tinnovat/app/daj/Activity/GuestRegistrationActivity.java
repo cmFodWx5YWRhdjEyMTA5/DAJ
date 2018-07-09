@@ -1,5 +1,7 @@
 package com.tinnovat.app.daj.Activity;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
@@ -8,7 +10,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -61,7 +66,9 @@ public class GuestRegistrationActivity extends BaseActivity {
         purpose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDialog();
+
+                ViewDialog alert = new ViewDialog();
+                alert.showDialog(GuestRegistrationActivity.this, "");
             }
         });
 
@@ -119,44 +126,63 @@ public class GuestRegistrationActivity extends BaseActivity {
 
     }
 
-    private void showDialog1() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        // Get the layout inflater
-        LayoutInflater inflater = (this).getLayoutInflater();
-        // Inflate and set the layout for the dialog
-        // Pass null as the parent view because its going in the
-        // dialog layout
-        builder.setTitle("hello");
-        builder.setCancelable(false);
-        builder.setIcon(R.drawable.camera);
-        builder.setView(inflater.inflate(R.layout.activity_test, null))
-                // Add action buttons
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-
-                    }
-    });
-    builder.create();
-    builder.show();
-    }
-    private void showDialog(){
-        int cate = 0;
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        //  builder.setTitle("Pick a color");
-        builder.setItems(purposeList, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // the user clicked on colors[which]
-                //Toast.makeText(GuestRegistrationActivity.this, "test :"+which, Toast.LENGTH_SHORT).show();
-                purpose.setText(purposeList[which]);
-            }
-        });
-        builder.show();
-    }
 
     @Override
     public void onClick(View v) {
+
+    }
+
+    public class ViewDialog {
+
+        public void showDialog(Activity activity, String msg){
+            final Dialog dialog = new Dialog(GuestRegistrationActivity.this);
+            dialog.setContentView(R.layout.sample);
+            final TextView family =  dialog.findViewById(R.id.family);
+            final TextView friend =  dialog.findViewById(R.id.friend);
+            final TextView maintenance =  dialog.findViewById(R.id.maintenance);
+            final TextView taxi =  dialog.findViewById(R.id.taxi);
+            final TextView delivery =  dialog.findViewById(R.id.delivery);
+
+
+            family.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    purpose.setText(family.getText());
+                    dialog.dismiss();
+                }
+            });
+
+            friend.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    purpose.setText(friend.getText());
+                    dialog.dismiss();
+                }
+            });
+
+            maintenance.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    purpose.setText(maintenance.getText());
+                    dialog.dismiss();
+                }
+            });taxi.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    purpose.setText(taxi.getText());
+                    dialog.dismiss();
+                }
+            });delivery.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    purpose.setText(delivery.getText());
+                    dialog.dismiss();
+                }
+            });
+
+            dialog.show();
+
+        }
 
     }
 }

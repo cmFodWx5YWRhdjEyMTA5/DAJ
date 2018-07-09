@@ -1,5 +1,7 @@
 package com.tinnovat.app.daj.Activity;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
@@ -43,7 +45,9 @@ public class RegisterComplaintActivity extends BaseActivity {
         category.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDialog();
+                //showDialog();
+                ViewDialog alert = new ViewDialog();
+                alert.showDialog(RegisterComplaintActivity.this, "");
             }
         });
 
@@ -77,6 +81,61 @@ public class RegisterComplaintActivity extends BaseActivity {
 
     @Override
     public void onClick(View v) {
+
+    }
+    public class ViewDialog {
+
+        public void showDialog(Activity activity, String msg){
+            final Dialog dialog = new Dialog(RegisterComplaintActivity.this);
+            dialog.setContentView(R.layout.sample1);
+            final TextView family =  dialog.findViewById(R.id.family);
+            final TextView friend =  dialog.findViewById(R.id.friend);
+            final TextView maintenance =  dialog.findViewById(R.id.maintenance);
+            final TextView taxi =  dialog.findViewById(R.id.taxi);
+            final TextView delivery =  dialog.findViewById(R.id.delivery);
+
+
+
+
+            family.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    category.setText(family.getText());
+                    dialog.dismiss();
+                }
+            });
+
+            friend.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    category.setText(friend.getText());
+                    dialog.dismiss();
+                }
+            });
+
+            maintenance.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    category.setText(maintenance.getText());
+                    dialog.dismiss();
+                }
+            });taxi.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    category.setText(taxi.getText());
+                    dialog.dismiss();
+                }
+            });delivery.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    category.setText(delivery.getText());
+                    dialog.dismiss();
+                }
+            });
+
+            dialog.show();
+
+        }
 
     }
 }

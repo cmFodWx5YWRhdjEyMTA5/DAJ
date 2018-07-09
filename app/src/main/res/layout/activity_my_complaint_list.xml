@@ -59,10 +59,12 @@
         android:orientation="vertical">
     
     <RelativeLayout
+        android:id="@+id/row1"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp">
+        android:layout_marginEnd="20dp"
+        android:gravity="start">
 
         <View
             android:id="@+id/line1"
@@ -121,6 +123,7 @@
         android:layout_marginBottom="5dp"/>
 
     <RelativeLayout
+        android:id="@+id/row2"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginStart="20dp"
@@ -183,6 +186,7 @@
         android:layout_marginBottom="5dp"/>
 
     <RelativeLayout
+        android:id="@+id/row3"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginStart="20dp"
@@ -244,6 +248,7 @@
             android:layout_marginBottom="5dp"/>
 
         <RelativeLayout
+            android:id="@+id/row4"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginStart="20dp"
@@ -305,6 +310,7 @@
             android:layout_marginBottom="5dp"/>
 
         <RelativeLayout
+            android:id="@+id/row5"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginStart="20dp"

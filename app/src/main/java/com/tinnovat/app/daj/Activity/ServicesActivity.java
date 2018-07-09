@@ -126,8 +126,11 @@ public class ServicesActivity extends BaseActivity {
     }
 
     private void showDialog(){
+
+        Intent i = new Intent(ServicesActivity.this, ServiceListActivity.class);
+        startActivity(i);
         int cate = 0;
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+       /* AlertDialog.Builder builder = new AlertDialog.Builder(this);
         //builder.setTitle("S a color");
         builder.setItems(categoryList, new DialogInterface.OnClickListener() {
             @Override
@@ -137,7 +140,7 @@ public class ServicesActivity extends BaseActivity {
                 startActivity(i);
             }
         });
-        builder.show();
+        builder.show();*/
     }
 
     @Override

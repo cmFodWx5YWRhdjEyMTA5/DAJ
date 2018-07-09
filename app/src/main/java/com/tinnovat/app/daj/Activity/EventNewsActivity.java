@@ -19,8 +19,8 @@ public class EventNewsActivity extends BaseActivity implements TabLayout.OnTabSe
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_news);
+        super.onCreate(savedInstanceState);
         Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.event_news));
     }
 

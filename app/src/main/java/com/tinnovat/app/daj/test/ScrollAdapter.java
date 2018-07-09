@@ -14,7 +14,7 @@ import com.tinnovat.app.daj.R;
 import java.util.List;
 
 /**
- * Created by Anjali on 27-06-2018.
+ * Created by Rahul on 27-06-2018.
  */
 
 public class ScrollAdapter extends BaseAdapter {

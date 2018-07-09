@@ -20,7 +20,7 @@ import com.tinnovat.app.daj.data.AppPreferanceStore;
 import com.tinnovat.app.daj.features.dashboard.MainActivity;
 
 /**
- * Created by Anjali on 08-07-2018.
+ * Created by Rahul on 08-07-2018.
  */
 
 public class LoginFragment extends BaseFragment {
@@ -34,8 +34,10 @@ public class LoginFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        return inflater.inflate(R.layout.activity_login, container, false);
+            View view =inflater.inflate(R.layout.activity_login, container, false);
+        initialiseViews(view);
+           // super.onCreateView(inflater,container,savedInstanceState);
+        return view;
     }
 
     @Override
@@ -71,6 +73,7 @@ public class LoginFragment extends BaseFragment {
         switch (v.getId()) {
 
             case R.id.signIn:
+
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
                 if (getActivity() != null)
@@ -78,19 +81,24 @@ public class LoginFragment extends BaseFragment {
                 break;
 
             case R.id.english:
-                if (getLanguage()) {
+                if (!getLanguage()) {
                     setLanguage(true);
-                    if (getActivity() != null)
+                    if (getActivity() != null) {
+
                         getActivity().recreate();
+                    }
                 }
                 break;
 
             case R.id.arabic:
-                showMessage("ar");
+
                 if (getLanguage()) {
+                    showMessage("ar");
                     setLanguage(false);
-                    if (getActivity() != null)
-                        this.getActivity().recreate();
+                    if (getActivity() != null) {
+                        getActivity().recreate();
+
+                    }
                 }
 
                 break;

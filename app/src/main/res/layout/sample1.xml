@@ -22,7 +22,7 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/choose_purpose"
+        android:text="@string/choose_category"
         android:textColor="@color/black"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
@@ -32,33 +32,33 @@
         android:id="@+id/family"
         style="@style/purposeList"
         android:layout_below="@+id/title"
-        android:text="@string/family"
+        android:text="@string/electrical"
         />
     <TextView
         android:id="@+id/friend"
         style="@style/purposeList"
     android:layout_below="@+id/family"
-        android:text="@string/friend"
+        android:text="@string/plumbing"
         />
     <TextView
         android:id="@+id/maintenance"
         style="@style/purposeList"
     android:layout_below="@+id/friend"
-        android:text="@string/maintenance"
+        android:text="@string/lift"
         />
 
     <TextView
         android:id="@+id/taxi"
         style="@style/purposeList"
     android:layout_below="@+id/maintenance"
-        android:text="@string/taxi"
+        android:text="@string/parking"
         />
 
     <TextView
         android:id="@+id/delivery"
         style="@style/purposeList"
     android:layout_below="@+id/taxi"
-        android:text="@string/delivery"
+        android:text="@string/food"
         />
 
 </RelativeLayout>

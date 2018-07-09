@@ -132,6 +132,16 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
         mapFragment.getMapAsync(this);
     }
 
+    @Override
+    public void initialiseViews() {
+
+    }
+
+    @Override
+    public void initialiseEventListners() {
+
+    }
+
 
     private boolean CheckGooglePlayServices() {
         GoogleApiAvailability googleAPI = GoogleApiAvailability.getInstance();

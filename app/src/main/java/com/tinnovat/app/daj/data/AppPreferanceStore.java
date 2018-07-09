@@ -7,7 +7,7 @@ import android.content.res.Configuration;
 import java.util.Locale;
 
 /**
- * Created by Anjali on 09-09-2017.
+ * Created by Rahul on 09-09-2017.
  */
 
 public class AppPreferanceStore {

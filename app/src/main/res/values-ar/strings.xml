@@ -47,7 +47,7 @@
     <string name="upcoming_event">الفعاليات القادمة</string>//
     <string name="lorem_ipsum">أبجد هوز</string>
     <string name="lorem_ipsum_medium">أبجد هوز هو مجرد دمية النص من الطباعة</string>
-    <string name="lorem_ipsum_large">لوريم إيبسوم (Lorem Ipsum) هو ببساطة نص شكلي في صناعة الطباعة والتنضيد. كان لوريم إيبسوم (Lorem Ipsum) النص القياسي المعياري لهذه الصناعة منذ القرن السادس عشر ، عندما أخذت طابعة غير معروفة مجموعة من الأطباق ، وهرعت بها لعمل كتاب من نوع العينة. وقد نجا ليس فقط خمسة قرون ، ولكن أيضا قفزة في التنضيد الإلكتروني ، وتبقى في الأساس دون تغيير.</string>
+    <string name="lorem_ipsum_large">لوريم إيبسوم  هو ببساطة نص شكلي في صناعة الطباعة والتنضيد. كان لوريم إيبسوم النص القياسي المعياري لهذه الصناعة منذ القرن السادس عشر ، عندما أخذت طابعة غير معروفة مجموعة من الأطباق ، وهرعت بها لعمل كتاب من نوع العينة. وقد نجا ليس فقط خمسة قرون ، ولكن أيضا قفزة في التنضيد الإلكتروني ، وتبقى في الأساس دون تغيير.</string>
     <string name="main_gate">البوابة الرئيسية</string>
     <string name="children_play_area">منطقة لعب الأطفال</string>
     <string name="community_center">مركز اجتماعي</string>
@@ -145,7 +145,8 @@
     <string name="please_try_again_later">الرجاء المحاولة مرة أخرى</string>//
     <string name="password_changed_successfully">تم تغيير كلمة المرور بنجاح</string>//
     <string name="success">عملية ناجحة</string>//
-    <string name="password_mailed">الرجاء تسجيل الدخول بكلمة المرور الجديدة المرسلة إلى البريد الالكتروني الخاص بك</string>//
+    <string name="password_mailed">الرجاء تسجيل الدخول بكلمة المرور الجديدة المرسلة إلى البريد الالكتروني الخاص بك</string>
+    <string name="bulb_is_not_working">لمبة لا يعمل</string>//
 
 
 </resources>

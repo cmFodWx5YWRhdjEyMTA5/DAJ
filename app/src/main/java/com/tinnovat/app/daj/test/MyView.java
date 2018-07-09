@@ -7,7 +7,7 @@ import android.util.DisplayMetrics;
 import android.widget.TextView;
 
 /**
- * Created by Anjali on 27-06-2018.
+ * Created by Rahul on 27-06-2018.
  */
 
 public class MyView extends TextView {

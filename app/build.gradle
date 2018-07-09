@@ -44,9 +44,13 @@ dependencies {
     implementation 'com.github.kapil93:circular-layout-manager:1.0.0'
 
     //Retrofit
-    compile 'com.squareup.retrofit2:retrofit:2.4.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.4.0'
-    compile 'com.squareup.okhttp:okhttp-urlconnection:2.4.0'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
-    compile 'com.squareup.okhttp:okhttp:2.4.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.okhttp:okhttp-urlconnection:2.4.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.6.0'
+    implementation 'com.squareup.okhttp:okhttp:2.4.0'
+
+    //progress loader
+
+    implementation 'com.github.yash786agg:AnimatedLoadingIndicator:c359c50711'
 }
