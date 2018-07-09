@@ -1,4 +1,4 @@
-package com.tinnovat.app.daj.Activity;
+package com.tinnovat.app.daj.features.authentication;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

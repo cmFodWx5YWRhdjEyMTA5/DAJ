@@ -48,17 +48,6 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         }
     }*/
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = super.onCreateView(inflater, container, savedInstanceState);
-
-        initialiseViews(view);
-        initialiseEventListners();
-
-        return view;
-    }
-
     public abstract void initialiseViews(View view);
 
     public abstract void initialiseEventListners();

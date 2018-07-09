@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +14,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.tinnovat.app.daj.Activity.ResetPasswordActivity;
 import com.tinnovat.app.daj.BaseFragment;
 import com.tinnovat.app.daj.R;
-import com.tinnovat.app.daj.data.AppPreferanceStore;
 import com.tinnovat.app.daj.features.dashboard.MainActivity;
 
 /**
@@ -34,9 +33,9 @@ public class LoginFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            View view =inflater.inflate(R.layout.activity_login, container, false);
+        View view = inflater.inflate(R.layout.fragment_login, container, false);
         initialiseViews(view);
-           // super.onCreateView(inflater,container,savedInstanceState);
+        // super.onCreateView(inflater,container,savedInstanceState);
         return view;
     }
 
@@ -96,6 +95,7 @@ public class LoginFragment extends BaseFragment {
                     showMessage("ar");
                     setLanguage(false);
                     if (getActivity() != null) {
+
                         getActivity().recreate();
 
                     }
@@ -119,8 +119,11 @@ public class LoginFragment extends BaseFragment {
                 break;
 
             case R.id.forgotPassword:
-                intent = new Intent(this.getActivity(), ResetPasswordActivity.class);
-                startActivity(intent);
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.content_frame, ResetPasswordFragment.getInstance()).addToBackStack(null);
+                transaction.commit();
+//                intent = new Intent(this.getActivity(), ResetPasswordActivity.class);
+//                startActivity(intent);
                 break;
         }
     }

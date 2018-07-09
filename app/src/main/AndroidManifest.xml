@@ -33,6 +33,11 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".features.authentication.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+         <activity
             android:name=".features.dashboard.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -184,7 +189,7 @@
                 android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
-            android:name=".Activity.ResetPasswordActivity"
+            android:name=".features.authentication.ResetPasswordActivity"
             android:screenOrientation="portrait">
 
             <!--

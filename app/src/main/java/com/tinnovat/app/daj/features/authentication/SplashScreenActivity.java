@@ -23,22 +23,16 @@ public class SplashScreenActivity extends BaseActivity {
     @Override
     public void initialiseViews() {
 
-        int timeOut = SPLASH_TIME_OUT;
-        if (getIntent().getBooleanExtra("IS_FROM_LOGOUT",false))
-            timeOut = 0;
-
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-               /* Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
-                startActivity(intent);*/
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.content_frame, LoginFragment.getInstance());
-                transaction.setCustomAnimations(FragmentTransaction.TRANSIT_ENTER_MASK,0);
-                transaction.commit();
+                Intent intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+
             }
-        }, timeOut);
+        }, SPLASH_TIME_OUT);
     }
 
     @Override
