@@ -33,12 +33,7 @@ public class ResetPasswordFragment extends BaseFragment {
             if (((AppCompatActivity) getActivity()).getSupportActionBar() != null)
                 ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getText(R.string.reset_password));
         }
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().onBackPressed();
-            }
-        });
+        toolbar.setNavigationOnClickListener(this);
         return view;
     }
 
@@ -54,6 +49,7 @@ public class ResetPasswordFragment extends BaseFragment {
 
     @Override
     public void onClick(View view) {
-
+        if (getActivity() != null)
+        getActivity().onBackPressed();
     }
 }
