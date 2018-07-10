@@ -17,7 +17,7 @@ public interface ApiInterface {
 
     //Login
     @POST("/abc/loginservice/login")
-    Call<ResponseModel> login(@Body RequestParams.LoginReequest params);
+    Call<RequestParams> login(@Body RequestParams.LoginReequest params);
     
 
     //Get Something

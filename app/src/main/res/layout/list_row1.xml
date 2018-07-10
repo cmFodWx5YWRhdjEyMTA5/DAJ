@@ -13,7 +13,7 @@
 
     <TextView
         android:id="@+id/event"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/img"
         android:layout_marginTop="5dp"

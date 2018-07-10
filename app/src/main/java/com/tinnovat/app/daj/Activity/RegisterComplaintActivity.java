@@ -3,13 +3,10 @@ package com.tinnovat.app.daj.Activity;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
@@ -87,7 +84,7 @@ public class RegisterComplaintActivity extends BaseActivity {
 
         public void showDialog(Activity activity, String msg){
             final Dialog dialog = new Dialog(RegisterComplaintActivity.this);
-            dialog.setContentView(R.layout.sample1);
+            dialog.setContentView(R.layout.dialog_reg_complaint);
             final TextView family =  dialog.findViewById(R.id.family);
             final TextView friend =  dialog.findViewById(R.id.friend);
             final TextView maintenance =  dialog.findViewById(R.id.maintenance);

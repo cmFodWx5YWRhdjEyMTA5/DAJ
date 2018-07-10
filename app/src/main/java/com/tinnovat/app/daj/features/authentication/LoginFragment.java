@@ -16,7 +16,17 @@ import android.widget.TextView;
 
 import com.tinnovat.app.daj.BaseFragment;
 import com.tinnovat.app.daj.R;
+import com.tinnovat.app.daj.data.network.ApiClient;
+import com.tinnovat.app.daj.data.network.ApiInterface;
+import com.tinnovat.app.daj.data.network.model.Data;
+import com.tinnovat.app.daj.data.network.model.RequestParams;
+import com.tinnovat.app.daj.data.network.model.ResponseModel;
 import com.tinnovat.app.daj.features.dashboard.MainActivity;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 /**
  * Created by Rahul on 08-07-2018.
@@ -72,7 +82,6 @@ public class LoginFragment extends BaseFragment {
         switch (v.getId()) {
 
             case R.id.signIn:
-
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
                 if (getActivity() != null)

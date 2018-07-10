@@ -148,6 +148,7 @@
                 android:textSize="18sp"
                 android:textColor="@color/black"
                 android:elevation="5dp"
+                android:drawableEnd="@drawable/arrow_down"
                 android:hint="@string/choose_purpose"/>
 
           <!--  <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner

@@ -326,7 +326,7 @@ public class MainActivity extends BaseActivity
 
            // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
             // Handle the camera action
-           // item.setIcon(R.layout.sample);
+           // item.setIcon(R.layout.dialog_guest);
            // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
 
            /* Intent i = new Intent(MainActivity.this, MainActivity.class);
