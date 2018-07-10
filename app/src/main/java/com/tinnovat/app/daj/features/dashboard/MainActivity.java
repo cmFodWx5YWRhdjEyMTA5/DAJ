@@ -85,7 +85,7 @@ public class MainActivity extends BaseActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle(getText(R.string.map));
+            getSupportActionBar().setTitle(getText(R.string.dashboard));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

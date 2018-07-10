@@ -83,20 +83,22 @@ public class LoginFragment extends BaseFragment {
                 if (!getLanguage()) {
                     setLanguage(true);
                     if (getActivity() != null) {
-
-                        getActivity().recreate();
+                        getActivity().finish();
+                        startActivity(getActivity().getIntent());
+                        //getActivity().recreate();
                     }
                 }
                 break;
 
             case R.id.arabic:
-
+                showMessage("ar");
                 if (getLanguage()) {
-                    showMessage("ar");
+
                     setLanguage(false);
                     if (getActivity() != null) {
-
-                        getActivity().recreate();
+                        getActivity().finish();
+                        startActivity(getActivity().getIntent());
+                       // getActivity().recreate();
 
                     }
                 }

@@ -6,6 +6,7 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="dashboard">DASHBOARD</string>
     <string name="home">HOME</string>
     <string name="events">EVENTS</string>
     <string name="services">SERVICES</string>
@@ -15,6 +16,7 @@
     <string name="my_profile">MY PROFILE</string>
     <string name="food">FOOD</string>
     <string name="taxi">TAXI</string>
+    <string name="taxi1">Taxi</string>
     <string name="complaint">COMPLAINTS</string>
     <string name="emergency_contact">EMERGENCY CONTACT</string>
     <string name="change_password">CHANGE PASSWORD</string>

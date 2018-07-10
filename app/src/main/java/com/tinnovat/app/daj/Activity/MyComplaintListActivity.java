@@ -71,6 +71,26 @@ public class MyComplaintListActivity extends BaseActivity {
                 Intent i = new Intent(MyComplaintListActivity.this, MyComplaintActivity.class);
                 startActivity(i);
                 break;
+
+                case R.id.row2:
+                i = new Intent(MyComplaintListActivity.this, MyComplaintActivity.class);
+                startActivity(i);
+                break;
+
+                case R.id.row3:
+                i = new Intent(MyComplaintListActivity.this, MyComplaintActivity.class);
+                startActivity(i);
+                break;
+
+                case R.id.row4:
+                i = new Intent(MyComplaintListActivity.this, MyComplaintActivity.class);
+                startActivity(i);
+                break;
+
+                case R.id.row5:
+                i = new Intent(MyComplaintListActivity.this, MyComplaintActivity.class);
+                startActivity(i);
+                break;
         }
     }
 }

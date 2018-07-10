@@ -9,12 +9,14 @@
     <string name="my_profile">بياناتي</string>//
     <string name="food">طعام</string>//
     <string name="taxi">تاكسي</string>
+    <string name="taxi1">تاكسي</string>
     <string name="complaint">شكوى</string>//
     <string name="emergency_contact">تواصل الطوارئ</string>//
     <string name="change_password">تغيير كلمة المرور</string>//
     <string name="my_bookings">حجوزاتي</string>//
     <string name="navigation">تصفح الخارطة</string>//
     <string name="logout">تسجيل الخروج  </string>//
+    <string name="dashboard">لوحة المعلومات</string>
 
 
     <string name="sign_in">تسجيل دخول</string>//
