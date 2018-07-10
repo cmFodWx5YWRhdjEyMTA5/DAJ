@@ -24,6 +24,8 @@ public class AppPreferanceStore {
 
     private static final String IS_ENGLISH = "IS_ENGLISH";
 
+    private static final String AUTH_TOKEN = "AUTH_TOKEN";
+
 
     public AppPreferanceStore(Context context){
         this._context = context;
@@ -38,6 +40,22 @@ public class AppPreferanceStore {
         editor.putBoolean(IS_ENGLISH, isEnglish);
         editor.apply();
         changeLocaleLanguage(isEnglish);
+    }
+
+    /**
+     * Set Language
+     * */
+    public void setToken(String token){
+        editor = pref.edit();
+        editor.putString(AUTH_TOKEN, token);
+        editor.apply();
+    }
+
+    /**
+     * Get Laguage
+     * */
+    public String getToken(){
+        return pref.getString(AUTH_TOKEN, null);
     }
 
     public void changeLocaleLanguage(boolean isEnglish) {

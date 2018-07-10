@@ -7,12 +7,14 @@ package com.tinnovat.app.daj.data.network.model;
 public class RequestParams {
 
     public class LoginReequest {
-        private String userName;
-        private String password;
+        private String UserName;
+        private String Password;
+        private String language;
 
-        public LoginReequest(String userName, String password) {
-            this.userName = userName;
-            this.password = password;
+        public LoginReequest(String userName, String password, String language) {
+            UserName = userName;
+            Password = password;
+            this.language = language;
         }
     }
 }
