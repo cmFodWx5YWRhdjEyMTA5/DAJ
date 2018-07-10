@@ -3,6 +3,7 @@ package com.tinnovat.app.daj.data;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.os.LocaleList;
 
 import java.util.Locale;
 
@@ -67,10 +68,27 @@ public class AppPreferanceStore {
         }
         Locale locale = new Locale(languageToLoad);
         Locale.setDefault(locale);
+        /*Locale locale = null;
+        LocaleList locale1 = null;
+        Locale newLocale = new Locale(languageToLoad);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            locale1 = new LocaleList(newLocale);
+            LocaleList.setDefault(locale1);
+        }else {
+            locale = new Locale(languageToLoad);
+            Locale.setDefault(locale);
+        }*/
+
         Configuration config = new Configuration();
         config.locale = locale;
         _context.getResources().updateConfiguration(config,
                 _context.getResources().getDisplayMetrics());
+
+      /*  configuration.setLocale(newLocale);
+        LocaleList localeList = new LocaleList(newLocale);
+        LocaleList.setDefault(localeList);
+        configuration.setLocales(localeList);
+        context = context.createConfigurationContext(configuration);*/
     }
 
     /**

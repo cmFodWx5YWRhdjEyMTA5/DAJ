@@ -2,24 +2,13 @@ package com.tinnovat.app.daj.Activity;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.prolificinteractive.materialcalendarview.CalendarDay;
-import com.prolificinteractive.materialcalendarview.CalendarMode;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
@@ -27,10 +16,8 @@ import com.prolificinteractive.materialcalendarview.format.DayFormatter;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.utils.CommonUtils;
-import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
@@ -136,7 +123,7 @@ public class GuestRegistrationActivity extends BaseActivity {
 
         public void showDialog(Activity activity, String msg){
             final Dialog dialog = new Dialog(GuestRegistrationActivity.this);
-            dialog.setContentView(R.layout.sample);
+            dialog.setContentView(R.layout.dialog_guest);
             final TextView family =  dialog.findViewById(R.id.family);
             final TextView friend =  dialog.findViewById(R.id.friend);
             final TextView maintenance =  dialog.findViewById(R.id.maintenance);

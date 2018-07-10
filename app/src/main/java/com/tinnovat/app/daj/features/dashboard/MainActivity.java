@@ -85,7 +85,7 @@ public class MainActivity extends BaseActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle(getText(R.string.map));
+            getSupportActionBar().setTitle(getText(R.string.dashboard));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -326,7 +326,7 @@ public class MainActivity extends BaseActivity
 
            // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
             // Handle the camera action
-           // item.setIcon(R.layout.sample);
+           // item.setIcon(R.layout.dialog_guest);
            // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
 
            /* Intent i = new Intent(MainActivity.this, MainActivity.class);

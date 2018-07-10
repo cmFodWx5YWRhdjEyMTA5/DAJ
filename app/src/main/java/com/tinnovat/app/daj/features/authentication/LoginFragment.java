@@ -28,6 +28,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+
 /**
  * Created by Rahul on 08-07-2018.
  */
@@ -93,19 +94,23 @@ public class LoginFragment extends BaseFragment {
                 if (!getLanguage()) {
                     setLanguage(true);
                     if (getActivity() != null) {
-                        getActivity().recreate();
+
+                        getActivity().finish();
+                        startActivity(getActivity().getIntent());
+                        //getActivity().recreate();
                     }
                 }
                 break;
 
             case R.id.arabic:
-
+                showMessage("ar");
                 if (getLanguage()) {
-                    showMessage("ar");
+
                     setLanguage(false);
                     if (getActivity() != null) {
-
-                        getActivity().recreate();
+                        getActivity().finish();
+                        startActivity(getActivity().getIntent());
+                        // getActivity().recreate();
 
                     }
                 }

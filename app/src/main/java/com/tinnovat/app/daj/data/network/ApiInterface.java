@@ -21,12 +21,6 @@ public interface ApiInterface {
     //Login
     @POST("/Dar_alJewar/api/loginUser")
     Call<LoginResponseModel> login(@Body RequestParams.LoginReequest params);
-/*
-
-    //Get Events and News
-    @GET("/Dar_alJewar/api/eventNews")
-    Call<EventListModel> getEventsAndNews(@Header("Authorization") String authKey, @Query("language") String language);
-*/
 
     //Get Events and News
     @GET("/Dar_alJewar/api/eventNews")

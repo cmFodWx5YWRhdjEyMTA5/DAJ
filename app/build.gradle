@@ -53,4 +53,6 @@ dependencies {
     //progress loader
 
     implementation 'com.github.yash786agg:AnimatedLoadingIndicator:c359c50711'
+    //recyclerview
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
 }

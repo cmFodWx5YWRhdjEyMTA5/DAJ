@@ -31,6 +31,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         appPreferenceStore = new AppPreferanceStore(getActivity());
+        appPreferenceStore.changeLocaleLanguage(appPreferenceStore.getLanguage());
         /*progressDialog = new Dialog(Objects.requireNonNull(getActivity()));
         progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         progressDialog.setContentView(R.layout.custom_dialog_progress);

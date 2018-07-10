@@ -51,7 +51,7 @@
         android:id="@+id/taxi"
         style="@style/purposeList"
     android:layout_below="@+id/maintenance"
-        android:text="@string/taxi"
+        android:text="@string/taxi1"
         />
 
     <TextView

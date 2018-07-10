@@ -28,8 +28,16 @@ public class MyComplaintListActivity extends BaseActivity {
         addComplaints = findViewById(R.id.addComplaints);
 
         RelativeLayout row1 = findViewById(R.id.row1);
+        RelativeLayout row2 = findViewById(R.id.row2);
+        RelativeLayout row3 = findViewById(R.id.row3);
+        RelativeLayout row4 = findViewById(R.id.row4);
+        RelativeLayout row5 = findViewById(R.id.row5);
 
         row1.setOnClickListener(this);
+        row2.setOnClickListener(this);
+        row3.setOnClickListener(this);
+        row4.setOnClickListener(this);
+        row5.setOnClickListener(this);
 
         addComplaints.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +77,26 @@ public class MyComplaintListActivity extends BaseActivity {
         switch (v.getId()){
             case R.id.row1:
                 Intent i = new Intent(MyComplaintListActivity.this, MyComplaintActivity.class);
+                startActivity(i);
+                break;
+
+                case R.id.row2:
+                i = new Intent(MyComplaintListActivity.this, MyComplaintActivity.class);
+                startActivity(i);
+                break;
+
+                case R.id.row3:
+                i = new Intent(MyComplaintListActivity.this, MyComplaintActivity.class);
+                startActivity(i);
+                break;
+
+                case R.id.row4:
+                i = new Intent(MyComplaintListActivity.this, MyComplaintActivity.class);
+                startActivity(i);
+                break;
+
+                case R.id.row5:
+                i = new Intent(MyComplaintListActivity.this, MyComplaintActivity.class);
                 startActivity(i);
                 break;
         }
