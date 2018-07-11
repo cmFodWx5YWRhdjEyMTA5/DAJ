@@ -44,6 +44,57 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         return appPreferenceStore.getLanguage();
     }
 
+    public String getName() {
+        return appPreferenceStore.getName();
+    }
+    public String getUserName(){
+        return appPreferenceStore.getUserName();
+    }
+
+    public int getGender(){
+        return appPreferenceStore.getGender();
+    }
+
+    public String getDob(){
+        return appPreferenceStore.getDob();
+    }
+
+    public String getJod(){
+        return appPreferenceStore.getJod();
+    }
+
+    public String getEmail(){
+        return appPreferenceStore.getEmail();
+    }
+
+    public String getAddress(){
+        return appPreferenceStore.getAddress();
+    }
+
+    public String getOccupation(){
+        return appPreferenceStore.getOccupation();
+    }
+
+    public String getMobNo(){
+        return appPreferenceStore.getMobNo();
+    }
+
+    public int getMaritalStatus(){
+        return appPreferenceStore.getMaritalStatus();
+    }
+
+    public String getNationality(){
+        return appPreferenceStore.getNationality();
+    }
+
+    public int getStatusBoolean(){
+        return appPreferenceStore.getStatusBoolean();
+    }
+
+    public String getVillaNo(){
+        return appPreferenceStore.getVillaNo();
+    }
+
     public void showMessage(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }

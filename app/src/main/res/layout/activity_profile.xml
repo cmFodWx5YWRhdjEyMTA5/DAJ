@@ -27,15 +27,14 @@
         android:layout_centerHorizontal="true"/>
 
     <TextView
-        android:id="@+id/gender"
+        android:id="@+id/userName"
         android:layout_below="@+id/name"
         style="@style/subHeadingWhite"
-
-        android:text="@string/male"
         android:layout_centerHorizontal="true"/>
 
     <TextView
-        android:layout_below="@+id/gender"
+        android:id="@+id/villaNo"
+        android:layout_below="@+id/userName"
         style="@style/subHeadingWhite"
         android:text="@string/villa_no_045"
         android:layout_centerHorizontal="true"/>
@@ -125,6 +124,7 @@
                     android:text="@string/email_id" />
             </LinearLayout>
             <TextView
+                android:id="@+id/email"
                 style="@style/subHeadingNormal"
                 android:layout_marginStart="25dp"
                 android:text="@string/sample_mail" />
@@ -149,6 +149,7 @@
                     android:text="@string/permanent_address" />
             </LinearLayout>
             <TextView
+                android:id="@+id/address"
                 style="@style/subHeadingNormal"
                 android:layout_marginStart="25dp"
                 android:text="@string/lorem_ipsum_medium" />
@@ -174,6 +175,32 @@
                     android:text="@string/occupation" />
             </LinearLayout>
             <TextView
+                android:id="@+id/occupation"
+                style="@style/subHeadingNormal"
+                android:layout_marginStart="25dp"
+                android:text="@string/lorem_ipsum" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    app:srcCompat="@drawable/gender"/>
+                <TextView
+                    style="@style/heading1"
+                    android:layout_marginStart="5dp"
+                    android:text="@string/gender" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/gender"
                 style="@style/subHeadingNormal"
                 android:layout_marginStart="25dp"
                 android:text="@string/lorem_ipsum" />
@@ -199,6 +226,7 @@
                     android:text="@string/marital_status" />
             </LinearLayout>
             <TextView
+                android:id="@+id/maritalStatus"
                 style="@style/subHeadingNormal"
                 android:layout_marginStart="25dp"
                 android:text="@string/lorem_ipsum" />
@@ -224,6 +252,7 @@
                     android:text="@string/nationality" />
             </LinearLayout>
             <TextView
+                android:id="@+id/nationality"
                 style="@style/subHeadingNormal"
                 android:layout_marginStart="25dp"
                 android:text="@string/lorem_ipsum" />
@@ -248,6 +277,7 @@
                     android:text="@string/mobile_no" />
             </LinearLayout>
             <TextView
+                android:id="@+id/mobNo"
                 style="@style/subHeadingNormal"
                 android:layout_marginStart="25dp"
                 android:layout_marginBottom="10dp"

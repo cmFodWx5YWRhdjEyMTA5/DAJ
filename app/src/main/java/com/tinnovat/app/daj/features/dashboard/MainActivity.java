@@ -27,9 +27,8 @@ import com.tinnovat.app.daj.Activity.ServicesActivity;
 import com.tinnovat.app.daj.Activity.SurveillanceActivity;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
-import com.tinnovat.app.daj.circle.EventAndNewsActivity1;
+import com.tinnovat.app.daj.circle.EventAndNewsActivity;
 import com.tinnovat.app.daj.features.authentication.LoginActivity;
-import com.tinnovat.app.daj.features.authentication.SplashScreenActivity;
 import com.tinnovat.app.daj.map.MapsActivity;
 
 import java.util.Locale;
@@ -229,7 +228,7 @@ public class MainActivity extends BaseActivity
         events.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, EventAndNewsActivity1.class);
+                Intent i = new Intent(MainActivity.this, EventAndNewsActivity.class);
                 startActivity(i);
 
             }
@@ -340,7 +339,7 @@ public class MainActivity extends BaseActivity
         } else if (id == R.id.events) {
            // setLanguage(true);
            // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
-            Intent i = new Intent(MainActivity.this, EventAndNewsActivity1.class);
+            Intent i = new Intent(MainActivity.this, EventAndNewsActivity.class);
             startActivity(i);
 
         } else if (id == R.id.services) {

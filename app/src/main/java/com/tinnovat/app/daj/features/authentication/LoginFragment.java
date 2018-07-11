@@ -86,8 +86,8 @@ public class LoginFragment extends BaseFragment {
         switch (v.getId()) {
 
             case R.id.signIn:
-                fetchEventList();
-//                invokeLoginService();
+               // fetchEventList();
+                invokeLoginService();
                 break;
 
             case R.id.english:
@@ -144,15 +144,14 @@ public class LoginFragment extends BaseFragment {
 
     private void invokeLoginService() {
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        RequestParams.LoginReequest loginReequest = new RequestParams().new LoginReequest("Jainy", "123456", "es");
+        RequestParams.LoginReequest loginReequest = new RequestParams().new LoginReequest("Jainy", "123456", "en");
         Call<LoginResponseModel> call = apiInterface.login(loginReequest);
         call.enqueue(new Callback<LoginResponseModel>() {
             @Override
             public void onResponse(Call<LoginResponseModel> call, Response<LoginResponseModel> response) {
                 showMessage("Login Successful");
                 if (response.body() != null && response.body().getData() != null) {
-                    appPreferanceStore.setToken(response.body().getData().getToken());
-
+                    seData(response);
                     Intent intent = new Intent(getActivity(), MainActivity.class);
                     startActivity(intent);
                     if (getActivity() != null)
@@ -167,9 +166,19 @@ public class LoginFragment extends BaseFragment {
         });
     }
 
+    private void seData(Response<LoginResponseModel> response){
+        appPreferanceStore.setToken(response.body().getData().getToken());
+        appPreferanceStore.setData(""+response.body().getData().getFirstName()+" "+response.body().getData().getMiddleName()+" "+response.body().getData().getLastName(),
+                response.body().getData().getUsername(),response.body().getData().getGender(),response.body().getData().getDateOfBirth(),response.body().getData().getJoiningDate(),response.body().getData().getEmail(),
+                response.body().getData().getPermanentAddress(),response.body().getData().getOccupation(),response.body().getData().getMobileNo(),response.body().getData().getMaritalStatus(),response.body().getData().getNationality(),response.body().getData().getStatusBoolean(),response.body().getData().getVillaNo());
+
+    }
+
     private void fetchEventList() {
-        ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
         String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImQ0MTVlYjEyMDE3NmM2MDNmNjIyMThmZjhiZjA1ZDM5ZGU1ZTNjMTQxNDZiN2I0OWExN2NiYzJmNjllZTBkZWNjZTgxOTQwMzEwNGIzM2I0In0.eyJhdWQiOiIyIiwianRpIjoiZDQxNWViMTIwMTc2YzYwM2Y2MjIxOGZmOGJmMDVkMzlkZTVlM2MxNDE0NmI3YjQ5YTE3Y2JjMmY2OWVlMGRlY2NlODE5NDAzMTA0YjMzYjQiLCJpYXQiOjE1MjkzODM1MDcsIm5iZiI6MTUyOTM4MzUwNywiZXhwIjoxNTYwOTE5NTA3LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.Gg02Gdo4Gw-o6MzubJsJutKHbgjEG4anz0nLXzdVWiz4mxhc2zv84Aa8nE_mrgDNswxl6mex6fz-Esk2NXAva1auBHS1g4ZyQ9eud49_zUC1uwdPSXwn9Ebj9SDNMol0q6I84FTH8YUNyM_mlBAh5Z2knMgnGbBnmJzD-cOLokhhoV5UfEnfKl5gKEeSikgh4ptGWAmOCi6M_UMY89oQ24xbWRmDt3L8gHNJh2zUtKhEtxm4iEnwaMWW3RlVHJiWnqrKSOE6EJV1c1p-sFOMqMLmmlt-Ia8SUUVkiAy19w6uwdkQ6LlMd85GdtBHZdxazyiTyX4imib5SIxZ3sTPoCGxjIeV5rMhGEhwUNseqUilPUZnXN8UQ7pGiF7T31v6F95t1P5RK0_yShSJm1_ptWirZDXNbCW6GUKMkJIMkKeODkPbczY1LP1GQLdJytD_3GuHC4rOrNeiaHJyQp__1I6YTYqbxNUuMPnWFedDcKZAFyfyv945nSmIfbByTbMbijDg25gYaTrrRkMVbUMt9P5jX2KlDNRYJlrDlUBrf7MpFmAFoLyakVpiqIrX1OCIsRIzw5F4VX2pxc3UFGcI_EFnO2BlmdQtIMmjJn74qhwtz2hHgNVOWwhwpTtXNNkivm5Qq6GCQhBPi4L9JTXZfwrDEn_Rdi2-GglmELG4YFA";
+
+        ApiInterface apiInterface = ApiClient.getAuthClient(token).create(ApiInterface.class);
+        //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
         Call<EventListModel> call = apiInterface.getEventsAndNews("en");
         call.enqueue(new Callback<EventListModel>() {
             @Override

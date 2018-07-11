@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Objects;
 
 
-public class EventAndNewsActivity1 extends BaseActivity {
+public class EventAndNewsActivity extends BaseActivity {
 
     private RecyclerView recyclerView;
     private List<Model> list;
@@ -62,7 +62,7 @@ public class EventAndNewsActivity1 extends BaseActivity {
     }
 
     private void initViews() {
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView = findViewById(R.id.recycler_view);
       //  scrollWheel = (ScrollWheel) findViewById(R.id.scroll_wheel);
 
       //  addItemButton = (FloatingActionButton) findViewById(R.id.add_item_button);
@@ -78,7 +78,7 @@ public class EventAndNewsActivity1 extends BaseActivity {
                 new OnRecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void OnItemClick(RecyclerView parent, int childIndex) {
-                Intent i = new Intent(EventAndNewsActivity1.this, EventNewsActivity.class);
+                Intent i = new Intent(EventAndNewsActivity.this, EventNewsActivity.class);
                 startActivity(i);
 
 
@@ -93,13 +93,13 @@ public class EventAndNewsActivity1 extends BaseActivity {
   /*      scrollWheel.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(ScrollWheel scrollWheel, int childIndex) {
-                Toast.makeText(EventAndNewsActivity1.this, "OC " + ((TextView) scrollWheel.getRecyclerView()
+                Toast.makeText(EventAndNewsActivity.this, "OC " + ((TextView) scrollWheel.getRecyclerView()
                         .getChildAt(childIndex).findViewById(R.id.event)).getText(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onItemLongClick(ScrollWheel scrollWheel, int childIndex) {
-                Toast.makeText(EventAndNewsActivity1.this, "OLC " + ((TextView) scrollWheel.getRecyclerView()
+                Toast.makeText(EventAndNewsActivity.this, "OLC " + ((TextView) scrollWheel.getRecyclerView()
                         .getChildAt(childIndex).findViewById(R.id.event)).getText(), Toast.LENGTH_SHORT).show();
             }
         });*/

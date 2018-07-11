@@ -37,7 +37,7 @@ public class LoginData {
     private String permanentAddress;
     @SerializedName("Occupation")
     @Expose
-    private Object occupation;
+    private String occupation;
     @SerializedName("MobileNo")
     @Expose
     private String mobileNo;
@@ -49,7 +49,13 @@ public class LoginData {
     private String nationality;
     @SerializedName("StatusBoolean")
     @Expose
-    private Integer statusBoolean;
+    private int statusBoolean;
+
+
+
+    @SerializedName("VillaNo")
+    @Expose
+    private String villaNo;
 
     public String getToken() {
         return token;
@@ -131,11 +137,11 @@ public class LoginData {
         this.permanentAddress = permanentAddress;
     }
 
-    public Object getOccupation() {
+    public String getOccupation() {
         return occupation;
     }
 
-    public void setOccupation(Object occupation) {
+    public void setOccupation(String occupation) {
         this.occupation = occupation;
     }
 
@@ -169,6 +175,14 @@ public class LoginData {
 
     public void setStatusBoolean(Integer statusBoolean) {
         this.statusBoolean = statusBoolean;
+    }
+
+    public String getVillaNo() {
+        return villaNo;
+    }
+
+    public void setVillaNo(String villaNo) {
+        this.villaNo = villaNo;
     }
 
 }

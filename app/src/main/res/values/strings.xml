@@ -128,9 +128,15 @@
     <string name="time">Time</string>
     <string name="gender">Gender</string>
     <string name="male">Male</string>
-    <string name="villa_no_045">Villa No : 045</string>
+    <string name="female">Female</string>
+    <string name="villa_no_045">Villa No : </string>
     <string name="saudi_arabia">SAUDI ARABIA</string>
     <string name="dar_al_jewar_hall">DAR Al JEWAR HALL -</string>
+
+
+    <string name="single">Single</string>
+    <string name="married">Married</string>
+
 
     <string name="hall1">Hall 1</string>
     <string name="hall2">Hall 2</string>

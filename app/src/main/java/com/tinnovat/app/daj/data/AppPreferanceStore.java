@@ -27,6 +27,32 @@ public class AppPreferanceStore {
 
     private static final String AUTH_TOKEN = "AUTH_TOKEN";
 
+    private static final String NAME = "Name";
+
+    private static final String USER_NAME = "Username";
+
+    private static final String GENDER = "Gender";
+
+    private static final String DOB = "DateOfBirth";
+
+    private static final String JOD = "JoiningDate";
+
+    private static final String EMAIL = "email";
+
+    private static final String PERMANENT_ADDRESS = "PermanentAddress";
+
+    private static final String OCCUPATION = "Occupation";
+
+    private static final String MOB_NO = "MobileNo";
+
+    private static final String MARITAL_STATUS = "MaritalStatus";
+
+    private static final String NATIONALITY = "Nationality";
+
+    private static final String STATUSBOOLEAN = "StatusBoolean";
+
+    private static final String VILLANO = "VillaNo";
+
 
     public AppPreferanceStore(Context context){
         this._context = context;
@@ -52,19 +78,95 @@ public class AppPreferanceStore {
         editor.apply();
     }
 
+    public void setData(String name, String userName, int gender, String dob,String jod, String email,
+                        String address, String occupation, String mobNo, int maritalStatus, String nationality, int statusBoolean, String villaNo){
+        editor = pref.edit();
+        editor.putString(NAME, name);
+        editor.putString(USER_NAME, userName);
+        editor.putInt(GENDER, gender);
+        editor.putString(DOB, dob);
+        editor.putString(JOD, jod);
+        editor.putString(EMAIL, email);
+        editor.putString(PERMANENT_ADDRESS, address);
+        editor.putString(OCCUPATION, occupation);
+        editor.putString(MOB_NO, mobNo);
+        editor.putInt(MARITAL_STATUS, maritalStatus);
+        editor.putString(NATIONALITY, nationality);
+        editor.putInt(MARITAL_STATUS, maritalStatus);
+        editor.putString(NATIONALITY, nationality);
+        editor.putInt(STATUSBOOLEAN, statusBoolean);
+        editor.putString(VILLANO, villaNo);
+        editor.apply();
+    }
+
+    public String getName(){
+        return pref.getString(NAME, null);
+    }
+
+    public String getUserName(){
+        return pref.getString(USER_NAME, null);
+    }
+
+    public int getGender(){
+        return pref.getInt(GENDER, 0);
+    }
+
+    public String getDob(){
+        return pref.getString(DOB, null);
+    }
+
+    public String getJod(){
+        return pref.getString(JOD, null);
+    }
+
+    public String getEmail(){
+        return pref.getString(EMAIL, null);
+    }
+
+    public String getAddress(){
+        return pref.getString(PERMANENT_ADDRESS, null);
+    }
+
+    public String getOccupation(){
+        return pref.getString(OCCUPATION, null);
+    }
+
+    public String getMobNo(){
+        return pref.getString(MOB_NO, null);
+    }
+
+    public int getMaritalStatus(){
+        return pref.getInt(MARITAL_STATUS, 0);
+    }
+
+    public String getNationality(){
+        return pref.getString(NATIONALITY, null);
+    }
+
+    public int getStatusBoolean(){
+        return pref.getInt(MARITAL_STATUS, 0);
+    }
+
+    public String getVillaNo(){
+        return pref.getString(VILLANO, null);
+    }
+
     /**
-     * Get Laguage
+     * Get Language
      * */
     public String getToken(){
         return pref.getString(AUTH_TOKEN, null);
     }
 
+
+
+
     public void changeLocaleLanguage(boolean isEnglish) {
         String languageToLoad;
         if (isEnglish){
-            languageToLoad  = "en"; // your language
+            languageToLoad  = "en"; // English
         }else {
-            languageToLoad  = "ar"; // your language
+            languageToLoad  = "ar"; // Arabic
         }
         Locale locale = new Locale(languageToLoad);
         Locale.setDefault(locale);
