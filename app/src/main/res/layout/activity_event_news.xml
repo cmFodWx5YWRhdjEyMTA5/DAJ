@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activity.EventNewsActivity"
+    tools:context=".features.eventAndNews.EventNewsActivity"
     android:background="@mipmap/bg">
     <RelativeLayout
         android:layout_width="wrap_content"

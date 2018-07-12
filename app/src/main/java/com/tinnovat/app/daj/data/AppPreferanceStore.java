@@ -3,9 +3,12 @@ package com.tinnovat.app.daj.data;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.os.LocaleList;
+
+import com.tinnovat.app.daj.data.network.model.EventListModel;
 
 import java.util.Locale;
+
+import retrofit2.Response;
 
 /**
  * Created by Rahul on 09-09-2017.
@@ -53,6 +56,8 @@ public class AppPreferanceStore {
 
     private static final String VILLANO = "VillaNo";
 
+    private static Response<EventListModel> response1 = null;
+
 
     public AppPreferanceStore(Context context){
         this._context = context;
@@ -77,9 +82,16 @@ public class AppPreferanceStore {
         editor.putString(AUTH_TOKEN, token);
         editor.apply();
     }
+    public void setDataEventAndNews(Response<EventListModel> response){
+        response1 =response;
+    }
 
-    public void setData(String name, String userName, int gender, String dob,String jod, String email,
-                        String address, String occupation, String mobNo, int maritalStatus, String nationality, int statusBoolean, String villaNo){
+    public Response<EventListModel> getDataEventAndNews(){
+        return response1;
+    }
+
+    public void setDataLogin(String name, String userName, int gender, String dob, String jod, String email,
+                             String address, String occupation, String mobNo, int maritalStatus, String nationality, int statusBoolean, String villaNo){
         editor = pref.edit();
         editor.putString(NAME, name);
         editor.putString(USER_NAME, userName);

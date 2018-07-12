@@ -1,10 +1,10 @@
-package com.tinnovat.app.daj.Adapter;
+package com.tinnovat.app.daj.features.eventAndNews;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.tinnovat.app.daj.fragments.TabFragment1;
+import com.tinnovat.app.daj.features.eventAndNews.fragments.TabFragment1;
 
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
@@ -36,5 +36,11 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
         return mNumOfTabs;
+    }
+
+    @Override
+    public int getItemPosition(Object object) {
+        // POSITION_NONE makes it possible to reload the PagerAdapter
+        return POSITION_NONE;
     }
 }

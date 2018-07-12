@@ -1,4 +1,4 @@
-package com.tinnovat.app.daj.Activity;
+package com.tinnovat.app.daj.features.eventAndNews;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -6,7 +6,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
-import com.tinnovat.app.daj.Adapter.PagerAdapter;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 
@@ -41,6 +40,7 @@ public class EventNewsActivity extends BaseActivity implements TabLayout.OnTabSe
         tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#2C7861"));
         tabLayout.setTabTextColors(Color.parseColor("#000000"), Color.parseColor("#2C7861"));
         tabLayout.addOnTabSelectedListener(this);
+
     }
 
     @Override

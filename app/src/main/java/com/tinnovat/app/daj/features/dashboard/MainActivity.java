@@ -23,11 +23,11 @@ import com.tinnovat.app.daj.Activity.MyComplaintListActivity;
 import com.tinnovat.app.daj.Activity.OrderFoodActivity;
 import com.tinnovat.app.daj.Activity.OrderTaxiActivity;
 import com.tinnovat.app.daj.Activity.ProfileActivity;
-import com.tinnovat.app.daj.Activity.ServicesActivity;
+import com.tinnovat.app.daj.features.services.ServicesActivity;
 import com.tinnovat.app.daj.Activity.SurveillanceActivity;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
-import com.tinnovat.app.daj.circle.EventAndNewsActivity;
+import com.tinnovat.app.daj.features.eventAndNews.circle.EventAndNewsActivity;
 import com.tinnovat.app.daj.features.authentication.LoginActivity;
 import com.tinnovat.app.daj.map.MapsActivity;
 

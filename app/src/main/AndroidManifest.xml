@@ -28,7 +28,6 @@
             android:theme="@style/MyTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -42,14 +41,8 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <!--
-            <activity
-            android:name=".BaseActivity"
-            android:screenOrientation="portrait" />
-        -->
-
         <activity
-            android:name=".circle.EventAndNewsActivity"
+            android:name=".features.eventAndNews.circle.EventAndNewsActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -58,14 +51,14 @@
         <activity
             android:name=".testing.TestActivity"
             android:screenOrientation="portrait">
-            <!--<intent-filter>
+           <!-- <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <serviceCategory android:name="android.intent.serviceCategory.LAUNCHER" />
             </intent-filter>-->
         </activity>
         <activity
-            android:name=".Activity.ServicesActivity"
+            android:name=".features.services.ServicesActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -76,7 +69,7 @@
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.Activity.ServicesActivity" />
+                android:value="com.tinnovat.app.daj.features.services.ServicesActivity" />
         </activity>
         <activity
             android:name=".Activity.RegisterComplaintActivity"
@@ -142,18 +135,18 @@
                 android:value="com.tinnovat.app.daj.Activity.FuturePhaseInfoListActivity" />
         </activity>
         <activity
-            android:name=".Activity.EventNewsActivity"
+            android:name=".features.eventAndNews.EventNewsActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.Activity.EventNewsActivity" />
+                android:value=".features.eventAndNews.circle.EventAndNewsActivity" />
         </activity>
         <activity
             android:name=".Activity.EventDetailActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.circle.EventAndNewsActivity" />
+                android:value="com.tinnovat.app.daj.features.eventAndNews.EventNewsActivity" />
         </activity>
 
         <activity
