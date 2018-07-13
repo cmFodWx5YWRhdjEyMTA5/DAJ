@@ -8,6 +8,7 @@ package com.tinnovat.app.daj.data.network;
 import com.tinnovat.app.daj.data.network.model.EventListModel;
 import com.tinnovat.app.daj.data.network.model.RequestParams;
 import com.tinnovat.app.daj.data.network.model.LoginResponseModel;
+import com.tinnovat.app.daj.data.network.model.ServicesResponseModel;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -25,5 +26,9 @@ public interface ApiInterface {
     //Get Events and News
     @GET("/Dar_alJewar/api/eventNews")
     Call<EventListModel> getEventsAndNews( @Query("language") String language);
+
+    //Get Service List
+    @GET("/Dar_alJewar/api/serviceList")
+    Call<ServicesResponseModel> getServiceList(@Query("language") String language);
 
 }

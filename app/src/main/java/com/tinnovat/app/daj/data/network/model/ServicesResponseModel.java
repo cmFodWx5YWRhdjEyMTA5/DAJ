@@ -6,15 +6,15 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class ServicesResponseModel {
-    @SerializedName("serviceCategory")
+    @SerializedName("category")
     @Expose
-    private List<ServiceCategory> serviceCategory = null;
+    private List<ServiceCategory> category = null;
 
     public List<ServiceCategory> getServiceCategory() {
-        return serviceCategory;
+        return category;
     }
 
     public void setServiceCategory(List<ServiceCategory> serviceCategory) {
-        this.serviceCategory = serviceCategory;
+        this.category = serviceCategory;
     }
 }

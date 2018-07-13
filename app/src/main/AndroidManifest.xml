@@ -196,7 +196,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
-        <activity android:name=".Activity.ServiceListActivity"></activity>
+        <activity android:name=".features.services.ServiceListActivity"></activity>
     </application>
 
 </manifest>
