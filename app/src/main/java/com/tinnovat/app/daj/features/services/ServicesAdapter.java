@@ -105,16 +105,9 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.MyView
         holder.rowBackBg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String res = new Gson().toJson(response.body());
               //  holder.cat_name.setBackgroundColor(mContext.getResources().getColor(R.color.orange));
                 Intent i = new Intent(mContext, ServiceListActivity.class);
-                i.putExtra("response",res);
-               /* i.putExtra("id",category.getName());
-                Bundle bundle = new Bundle();
-                bundle.putBundle("Name",response); //This is for a String
-                i.setClass(CurrentClass.this, Class.class);
-                i.putExtras(bundle);
-                i.*/
+                i.putExtra("response",new Gson().toJson(response.body().getServiceCategory().get(holder.getAdapterPosition()).getServices()));
                 mContext.startActivity(i);
             }
         });

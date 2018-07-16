@@ -9,45 +9,41 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.google.gson.Gson;
-import com.tinnovat.app.daj.Activity.ServiceBookingActivity;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
+import com.tinnovat.app.daj.data.network.model.Service;
 import com.tinnovat.app.daj.data.network.model.ServicesResponseModel;
-import com.tinnovat.app.daj.testing.Movie;
-import com.tinnovat.app.daj.testing.MoviesAdapter;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-
-import retrofit2.Response;
+import java.util.Objects;
 
 public class ServiceListActivity extends BaseActivity {
 
     private RecyclerView recyclerView;
     private ServicesListAdapter mAdapter;
-    private ServicesResponseModel res;
+    private Service[] res;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_list);
-
+        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.services_list));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         recyclerView = findViewById(R.id.recycler_view);
 
+        setData();
 
+    }
+
+    private void setData(){
         Intent i = getIntent();
-        //String test = i.getStringExtra("response");
-        res = new Gson().fromJson( i.getStringExtra("response") ,ServicesResponseModel.class );
+        res = new Gson().fromJson( i.getStringExtra("response") ,Service[].class );
 
-        mAdapter = new ServicesListAdapter();
+        mAdapter = new ServicesListAdapter(res);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
-
     }
-
 
 
     @Override
@@ -73,14 +69,11 @@ public class ServiceListActivity extends BaseActivity {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-
+        /*switch (v.getId()) {
             case R.id.row1:
                 Intent i = new Intent(ServiceListActivity.this, ServiceBookingActivity.class);
                 startActivity(i);
                 break;
-
-
-        }
+        }*/
     }
 }

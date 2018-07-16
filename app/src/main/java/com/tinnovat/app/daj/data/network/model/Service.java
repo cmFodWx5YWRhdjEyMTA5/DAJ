@@ -15,7 +15,7 @@ public class Service {
     @SerializedName("service_images")
     @Expose
     private String serviceImages;
-    @SerializedName("serviceAvailableDates")
+    @SerializedName("availableDates")
     @Expose
     private List<ServiceAvailableDate> serviceAvailableDates = null;
 

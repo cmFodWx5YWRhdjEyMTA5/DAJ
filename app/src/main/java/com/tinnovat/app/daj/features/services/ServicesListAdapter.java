@@ -9,14 +9,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
-import com.tinnovat.app.daj.Activity.ServiceBookingActivity;
 import com.tinnovat.app.daj.R;
+import com.tinnovat.app.daj.data.network.model.Service;
 import com.tinnovat.app.daj.data.network.model.ServicesResponseModel;
-import com.tinnovat.app.daj.testing.Movie;
 import com.tinnovat.app.daj.testing.TestActivity;
-
-import java.util.List;
 
 import retrofit2.Response;
 
@@ -38,6 +36,8 @@ public class ServicesListAdapter extends RecyclerView.Adapter<ServicesListAdapte
 
 
   //  private List<Movie> moviesList;
+  private Service[] response;
+  private Service service;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView servicesImage;
@@ -52,8 +52,8 @@ public class ServicesListAdapter extends RecyclerView.Adapter<ServicesListAdapte
     }
 
 
-    public ServicesListAdapter() {
-       // this.moviesList = moviesList;
+    public ServicesListAdapter(Service[] res ) {
+        this.response = res;
     }
 
     @Override
@@ -63,15 +63,15 @@ public class ServicesListAdapter extends RecyclerView.Adapter<ServicesListAdapte
         itemView.setOnClickListener(new TestActivity());
         mContext = parent.getContext();
 
-
         return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        //Movie movie = moviesList.get(position);
-        Picasso.get().load("http://5.2.89.2/Dar_alJewar/public/storage/services_images/dsDEeBTmoR8Va7pediW52i233h7GIZt5O3bkqf9C.jpeg").into(holder.servicesImage);
-        holder.serviceName.setText("10Am - 11am");
+
+                Picasso.get().load(response[position].getServiceImages()).into(holder.servicesImage);
+                holder.serviceName.setText(response[position].getName());
+
 
      //   holder.response
 
@@ -79,6 +79,7 @@ public class ServicesListAdapter extends RecyclerView.Adapter<ServicesListAdapte
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(mContext, ServiceBookingActivity.class);
+                i.putExtra("response",new Gson().toJson(response[holder.getAdapterPosition()]));
                 mContext.startActivity(i);
             }
         });
@@ -87,6 +88,6 @@ public class ServicesListAdapter extends RecyclerView.Adapter<ServicesListAdapte
 
     @Override
     public int getItemCount() {
-        return 10;
+        return response.length;
     }
 }

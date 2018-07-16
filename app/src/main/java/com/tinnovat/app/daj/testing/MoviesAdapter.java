@@ -29,20 +29,20 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
 
 
 
-    private List<Movie> moviesList;
+  //  private List<Movie> moviesList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title;
+        //public TextView title;
 
         public MyViewHolder(View view) {
             super(view);
-            title =  view.findViewById(R.id.title);
+           // title =  view.findViewById(R.id.title);
         }
     }
 
 
-    public MoviesAdapter(List<Movie> moviesList) {
-        this.moviesList = moviesList;
+    public MoviesAdapter() {
+       // this.moviesList = moviesList;
     }
 
     @Override
@@ -57,13 +57,13 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        Movie movie = moviesList.get(position);
-        holder.title.setText("10Am - 11am");
+        /*Movie movie = moviesList.get(position);
+        holder.title.setText("10Am - 11am");*/
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                holder.title.setBackgroundColor(mContext.getResources().getColor(R.color.orange));
+               // holder.title.setBackgroundColor(mContext.getResources().getColor(R.color.orange));
             }
         });
 
@@ -71,6 +71,6 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
 
     @Override
     public int getItemCount() {
-        return moviesList.size();
+        return 10;
     }
 }

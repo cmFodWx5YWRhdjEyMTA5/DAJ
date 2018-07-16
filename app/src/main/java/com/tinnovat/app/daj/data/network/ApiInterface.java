@@ -6,8 +6,11 @@ package com.tinnovat.app.daj.data.network;
  */
 
 import com.tinnovat.app.daj.data.network.model.EventListModel;
+import com.tinnovat.app.daj.data.network.model.FuturePhasesResponseModel;
 import com.tinnovat.app.daj.data.network.model.RequestParams;
 import com.tinnovat.app.daj.data.network.model.LoginResponseModel;
+import com.tinnovat.app.daj.data.network.model.Service;
+import com.tinnovat.app.daj.data.network.model.ServiceSlots;
 import com.tinnovat.app.daj.data.network.model.ServicesResponseModel;
 
 import retrofit2.Call;
@@ -31,4 +34,11 @@ public interface ApiInterface {
     @GET("/Dar_alJewar/api/serviceList")
     Call<ServicesResponseModel> getServiceList(@Query("language") String language);
 
+    //Get Service Available Time Slots
+    @GET("/Dar_alJewar/api/availableTimeslots")
+    Call<ServiceSlots> getAvailableTimeSlots(@Query("category") String category, @Query("service_type") String service_type, @Query("date")String date);
+
+    //Get Future Phases Info
+    @GET("/Dar_alJewar/api/futurePhases")
+    Call<FuturePhasesResponseModel> getFuturePhasesInfo(@Query("language") String language);
 }

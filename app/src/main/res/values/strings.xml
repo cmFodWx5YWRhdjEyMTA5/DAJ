@@ -10,6 +10,7 @@
     <string name="home">HOME</string>
     <string name="events">EVENTS</string>
     <string name="services">SERVICES</string>
+    <string name="services_list">SERVICES LIST</string>
     <string name="guest_reg">GUEST REGISTRATION</string>
     <string name="view_camera">VIEW CAMERA</string>
     <string name="projects">PROJECTS</string>

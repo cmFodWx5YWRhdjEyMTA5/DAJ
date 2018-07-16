@@ -27,6 +27,7 @@
                 android:layout_height="165dp">
 
                 <ImageView
+                    android:id="@+id/servicesImage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/booking_bg"
@@ -58,17 +59,6 @@
                     android:textColor="@color/white"
                     android:textSize="15sp"
                     android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="-2dp"
-                    android:layout_toEndOf="@+id/locationText"
-                    android:gravity="center_vertical"
-                    android:text="@string/saudi_arabia"
-                    android:textColor="@color/white"
-                    android:textSize="12sp" />
             </RelativeLayout>
 
             <TextView
@@ -114,7 +104,13 @@
 
             <RelativeLayout style="@style/boxStyle">
 
-                <LinearLayout
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+              <!--  <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
@@ -159,7 +155,7 @@
                         android:text="01.00 pm"
                         android:gravity="center"
                         android:textColor="@color/black" />
-                </LinearLayout>
+                </LinearLayout>-->
 
             </RelativeLayout>
 

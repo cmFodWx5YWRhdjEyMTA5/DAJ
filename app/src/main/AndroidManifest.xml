@@ -65,11 +65,8 @@
                 android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
-            android:name=".Activity.ServiceBookingActivity"
+            android:name=".features.services.ServiceBookingActivity"
             android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.features.services.ServicesActivity" />
         </activity>
         <activity
             android:name=".Activity.RegisterComplaintActivity"
