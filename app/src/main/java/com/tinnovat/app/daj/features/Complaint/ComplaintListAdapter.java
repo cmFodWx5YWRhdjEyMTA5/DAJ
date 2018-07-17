@@ -68,9 +68,9 @@ public class ComplaintListAdapter extends RecyclerView.Adapter<ComplaintListAdap
 
 
 
-        holder.day.setText(CommonUtils.getInstance().getDate(response.body().getComplaints().get(position).getSubmittedDate()));
+        holder.day.setText(CommonUtils.getInstance().getDate(response.body().getComplaints().get(position).getSubmittedDate(),true));
        // holder.day.setText(response.body().getComplaints().get(position).getSubmittedDate());
-        holder.month.setText(CommonUtils.getInstance().getMonth(response.body().getComplaints().get(position).getSubmittedDate()));
+        holder.month.setText(CommonUtils.getInstance().getDate(response.body().getComplaints().get(position).getSubmittedDate(),false));
         holder.complaint.setText(response.body().getComplaints().get(position).getCategoryName());
         holder.complaintId.setText(String.format(mContext.getString(R.string.formatter) , response.body().getComplaints().get(position).getRegisterNo()));
 

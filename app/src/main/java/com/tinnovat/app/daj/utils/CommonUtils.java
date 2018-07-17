@@ -28,31 +28,22 @@ public class CommonUtils {
         return month_date.format(calendar.getTime());
     }
 
-    public String getDate(String inputDate){
-       // String input_date="01/08/2012";
-        SimpleDateFormat format1=new SimpleDateFormat("dd-MM-yyyy");
-        Date dt1= null;
+    public String getDate(String inputDate, boolean isDay) {
+        // String input_date="01/08/2012";
+        SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yyyy");
+        Date dt1 = null;
         try {
             dt1 = format1.parse(inputDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        DateFormat format2=new SimpleDateFormat("dd");
-        String finalDay=format2.format(dt1);
-        return finalDay;
-    }
+        DateFormat format2;
+        if (isDay)
+            format2 = new SimpleDateFormat("dd");
+        else
+            format2 = new SimpleDateFormat("MMM");
 
-    public String getMonth(String inputDate){
-       // String input_date="01/08/2012";
-        SimpleDateFormat format1=new SimpleDateFormat("dd-MM-yyyy");
-        Date dt1= null;
-        try {
-            dt1 = format1.parse(inputDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        DateFormat format2=new SimpleDateFormat("MMM");
-        String finalDay=format2.format(dt1);
+        String finalDay = format2.format(dt1);
         return finalDay;
     }
 }
