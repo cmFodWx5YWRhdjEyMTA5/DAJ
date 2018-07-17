@@ -58,6 +58,10 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         appPreferenceStore.setLanguage(language);
     }
 
+    public String getToken(){
+        return appPreferenceStore.getToken();
+    }
+
     public boolean getLanguage(){
         return appPreferenceStore.getLanguage();
     }

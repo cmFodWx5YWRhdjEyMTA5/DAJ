@@ -40,6 +40,10 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         appPreferenceStore.setLanguage(language);
     }
 
+    public String getToken() {
+        return appPreferenceStore.getToken();
+    }
+
     public boolean getLanguage() {
         return appPreferenceStore.getLanguage();
     }
