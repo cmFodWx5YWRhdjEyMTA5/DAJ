@@ -37,6 +37,10 @@
     <string name="english">English</string>
     <string name="arabic">العَرَبِيَّة</string>
 
+    <string name="formatter">Reg No: %d</string>
+
+
+
     <string name="hello_world">hello world</string>
 
     <string name="halls">HALLS</string>
@@ -96,6 +100,8 @@
     <string name="sports_event">SPORTS EVENT</string>
     <string name="wedding_event">WEDDING EVENT</string>
     <string name="upload_photo">Upload photo</string>
+
+    <string name="completed">Completed</string>
 
     <string name="today1">TODAY</string>
     <string name="tomorrow">TOMORROW</string>

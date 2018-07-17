@@ -15,13 +15,13 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.tinnovat.app.daj.Activity.ChangePasswordActivity;
-import com.tinnovat.app.daj.Activity.EmergencyContactActivity;
+import com.tinnovat.app.daj.features.EmergencyContact.EmergencyContactActivity;
 import com.tinnovat.app.daj.Activity.FuturePhaseInfoListActivity;
 import com.tinnovat.app.daj.Activity.GuestRegistrationActivity;
 import com.tinnovat.app.daj.Activity.MyBookingActivity;
-import com.tinnovat.app.daj.Activity.MyComplaintListActivity;
-import com.tinnovat.app.daj.Activity.OrderFoodActivity;
-import com.tinnovat.app.daj.Activity.OrderTaxiActivity;
+import com.tinnovat.app.daj.features.Complaint.MyComplaintListActivity;
+import com.tinnovat.app.daj.features.foodAndTaxi.OrderFoodActivity;
+import com.tinnovat.app.daj.features.foodAndTaxi.OrderTaxiActivity;
 import com.tinnovat.app.daj.Activity.ProfileActivity;
 import com.tinnovat.app.daj.features.services.ServicesActivity;
 import com.tinnovat.app.daj.Activity.SurveillanceActivity;

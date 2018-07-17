@@ -19,6 +19,10 @@
     <string name="logout">تسجيل الخروج  </string>//
     <string name="dashboard">لوحة المعلومات</string>
 
+    <string name="completed">منجز</string>
+    <string name="formatter">ريج لا: %d </string>
+
+
 
     <string name="sign_in">تسجيل دخول</string>//
     <string name="user_name">اسم المستخدم</string>//

@@ -5,7 +5,10 @@ package com.tinnovat.app.daj.data.network;
  * Created by Rahul on 9/1/2017.
  */
 
+import com.tinnovat.app.daj.data.network.model.ComplaintListResponseModel;
+import com.tinnovat.app.daj.data.network.model.ContactResponseModel;
 import com.tinnovat.app.daj.data.network.model.EventListModel;
+import com.tinnovat.app.daj.data.network.model.FoodResponseModel;
 import com.tinnovat.app.daj.data.network.model.FuturePhasesResponseModel;
 import com.tinnovat.app.daj.data.network.model.RequestParams;
 import com.tinnovat.app.daj.data.network.model.LoginResponseModel;
@@ -41,4 +44,20 @@ public interface ApiInterface {
     //Get Future Phases Info
     @GET("/Dar_alJewar/api/futurePhases")
     Call<FuturePhasesResponseModel> getFuturePhasesInfo(@Query("language") String language);
+
+    //Get Food Apps
+    @GET("/Dar_alJewar/api/appFood")
+    Call<FoodResponseModel> getFoodApps(@Query("language") String language, @Query("device") String device);
+
+    //Get Taxi Apps
+    @GET("/Dar_alJewar/api/appTaxi")
+    Call<FoodResponseModel> getTaxiApps(@Query("language") String language, @Query("device") String device);
+
+    //Get ContactList
+    @GET("/Dar_alJewar/api/contactList")
+    Call<ContactResponseModel> getContactList(@Query("language") String language);
+
+    //Get My Complaint list
+    @GET("/Dar_alJewar/api/complaintList")
+    Call<ComplaintListResponseModel> getComplaintList(@Query("language") String language);
 }
