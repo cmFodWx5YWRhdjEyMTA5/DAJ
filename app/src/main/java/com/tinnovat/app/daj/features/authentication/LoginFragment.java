@@ -143,7 +143,7 @@ public class LoginFragment extends BaseFragment {
 
     private void invokeLoginService() {
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        RequestParams.LoginReequest loginReequest = new RequestParams().new LoginReequest("Jainy", "12345", "en");
+        RequestParams.LoginReequest loginReequest = new RequestParams().new LoginReequest("Rahul", "123456", "en");
         Call<LoginResponseModel> call = apiInterface.login(loginReequest);
         call.enqueue(new Callback<LoginResponseModel>() {
             @Override

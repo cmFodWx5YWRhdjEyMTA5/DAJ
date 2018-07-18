@@ -1,24 +1,18 @@
 package com.tinnovat.app.daj.features.Complaint;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.model.ComplaintListResponseModel;
-import com.tinnovat.app.daj.data.network.model.ContactResponseModel;
 import com.tinnovat.app.daj.testing.TestActivity;
 import com.tinnovat.app.daj.utils.CommonUtils;
-
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 import retrofit2.Response;
 
@@ -64,12 +58,11 @@ public class ComplaintListAdapter extends RecyclerView.Adapter<ComplaintListAdap
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
 
 
         holder.day.setText(CommonUtils.getInstance().getDate(response.body().getComplaints().get(position).getSubmittedDate(),true));
-       // holder.day.setText(response.body().getComplaints().get(position).getSubmittedDate());
         holder.month.setText(CommonUtils.getInstance().getDate(response.body().getComplaints().get(position).getSubmittedDate(),false));
         holder.complaint.setText(response.body().getComplaints().get(position).getCategoryName());
         holder.complaintId.setText(String.format(mContext.getString(R.string.formatter) , response.body().getComplaints().get(position).getRegisterNo()));
@@ -77,17 +70,17 @@ public class ComplaintListAdapter extends RecyclerView.Adapter<ComplaintListAdap
         switch (response.body().getComplaints().get(position).getComplaintStatus()) {
             case 0:
                 holder.status.setText(R.string.submitted);
-                holder.status.setBackgroundColor(mContext.getResources().getColor(R.color.greenText));
+                holder.status.setBackgroundResource(R.drawable.curve_small_bg_green);
                 break;
 
             case 1:
                 holder.status.setText(R.string.in_progress);
-                holder.status.setBackgroundColor(mContext.getResources().getColor(R.color.orange));
+                holder.status.setBackgroundResource(R.drawable.curve_small_bg_orange);
                 break;
 
             case 2:
                 holder.status.setText(R.string.completed);
-                holder.status.setBackgroundColor(mContext.getResources().getColor(R.color.red));
+                holder.status.setBackgroundResource(R.drawable.curve_small_bg_red);
                 break;
         }
 
@@ -96,7 +89,10 @@ public class ComplaintListAdapter extends RecyclerView.Adapter<ComplaintListAdap
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // holder.title.setBackgroundColor(mContext.getResources().getColor(R.color.orange));
+                Intent i = new Intent(mContext, MyComplaintActivity.class);
+                i.putExtra("response",new Gson().toJson(response.body().getComplaints().get(position)));
+
+                mContext.startActivity(i);
             }
         });
 

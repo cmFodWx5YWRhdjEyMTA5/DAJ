@@ -17,4 +17,14 @@ public class RequestParams {
             this.language = language;
         }
     }
+
+    public class ResetPasswordRequest{
+        String Oldpassword;
+        String Newpassword;
+
+        public ResetPasswordRequest (String oldpassword,String newpassword){
+            Oldpassword = oldpassword;
+            Newpassword = newpassword;
+        }
+    }
 }

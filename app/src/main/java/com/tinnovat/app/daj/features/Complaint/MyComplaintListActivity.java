@@ -8,18 +8,12 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
-import com.tinnovat.app.daj.Activity.MyComplaintActivity;
-import com.tinnovat.app.daj.Activity.RegisterComplaintActivity;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.ComplaintListResponseModel;
-import com.tinnovat.app.daj.data.network.model.ContactResponseModel;
-import com.tinnovat.app.daj.features.EmergencyContact.ContactListAdapter;
 
 import java.util.Objects;
 
@@ -38,7 +32,12 @@ public class MyComplaintListActivity extends BaseActivity {
 
         fetchContactList();
 
+        registerComplaint();
 
+
+    }
+
+    private void registerComplaint(){
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setColorFilter(Color.WHITE);
 

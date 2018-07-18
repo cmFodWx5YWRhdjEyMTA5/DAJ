@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="start">
+        <View
+            android:id="@+id/lineGreen"
+            style="@style/lineIndication"
+            android:background="@color/greenText"/>
+        <TextView
+            android:gravity="center_vertical"
+            android:id="@+id/headingSubmitted"
+            style="@style/heading1"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/lineGreen"
+            android:text="@string/submitted"/>
+        <TextView
+            android:id="@+id/logNote"
+            style="@style/subHeading1"
+            android:layout_below="@+id/headingSubmitted"
+            android:layout_toEndOf="@+id/lineGreen"/>
+        <TextView
+            android:id="@+id/submittedDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thu , Nov 2017"
+            android:textColor="@color/greenText"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="5dp"/>
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:srcCompat="@drawable/date"
+            android:layout_margin="5dp"
+            android:layout_toStartOf="@+id/submittedDate" />
+
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
+</LinearLayout>
+
+

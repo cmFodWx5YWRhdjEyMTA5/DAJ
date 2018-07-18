@@ -20,7 +20,7 @@ public class ComplaintList {
     private String submittedDate;
     @SerializedName("location")
     @Expose
-    private String location;
+    private Locations location;
     @SerializedName("description")
     @Expose
     private String description;
@@ -29,7 +29,7 @@ public class ComplaintList {
     private List<LogDetail> logDetails = null;
     @SerializedName("images")
     @Expose
-    private List<Object> images = null;
+    private List<Images> images = null;
     @SerializedName("user_id")
     @Expose
     private Integer userId;
@@ -66,11 +66,11 @@ public class ComplaintList {
         this.submittedDate = submittedDate;
     }
 
-    public String getLocation() {
+    public Locations getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Locations location) {
         this.location = location;
     }
 
@@ -90,11 +90,11 @@ public class ComplaintList {
         this.logDetails = logDetails;
     }
 
-    public List<Object> getImages() {
+    public List<Images> getImages() {
         return images;
     }
 
-    public void setImages(List<Object> images) {
+    public void setImages(List<Images> images) {
         this.images = images;
     }
 

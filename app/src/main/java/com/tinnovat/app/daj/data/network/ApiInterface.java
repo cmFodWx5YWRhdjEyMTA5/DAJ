@@ -5,6 +5,7 @@ package com.tinnovat.app.daj.data.network;
  * Created by Rahul on 9/1/2017.
  */
 
+import com.tinnovat.app.daj.data.network.model.ComplaintCategoriesResponseModel;
 import com.tinnovat.app.daj.data.network.model.ComplaintListResponseModel;
 import com.tinnovat.app.daj.data.network.model.ContactResponseModel;
 import com.tinnovat.app.daj.data.network.model.EventListModel;
@@ -15,6 +16,7 @@ import com.tinnovat.app.daj.data.network.model.LoginResponseModel;
 import com.tinnovat.app.daj.data.network.model.Service;
 import com.tinnovat.app.daj.data.network.model.ServiceSlots;
 import com.tinnovat.app.daj.data.network.model.ServicesResponseModel;
+import com.tinnovat.app.daj.data.network.model.SuccessResponseModel;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -28,6 +30,10 @@ public interface ApiInterface {
     //Login
     @POST("/Dar_alJewar/api/loginUser")
     Call<LoginResponseModel> login(@Body RequestParams.LoginReequest params);
+
+    //Get Change Password
+    @POST("/Dar_alJewar/api/changePassword")
+    Call<SuccessResponseModel> postChangePassword(@Body RequestParams.ResetPasswordRequest passwordRequest);
 
     //Get Events and News
     @GET("/Dar_alJewar/api/eventNews")
@@ -60,4 +66,8 @@ public interface ApiInterface {
     //Get My Complaint list
     @GET("/Dar_alJewar/api/complaintList")
     Call<ComplaintListResponseModel> getComplaintList(@Query("language") String language);
+
+    //Get Complaint Category
+    @GET("/Dar_alJewar/api/complaintCategory")
+    Call<ComplaintCategoriesResponseModel> getComplaintCategory(@Query("language") String language);
 }

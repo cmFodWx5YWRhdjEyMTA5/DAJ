@@ -1,10 +1,17 @@
 package com.tinnovat.app.daj.utils;
 
+import android.content.Context;
+import android.location.Address;
+import android.location.Geocoder;
+import android.util.Log;
+
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -29,8 +36,7 @@ public class CommonUtils {
     }
 
     public String getDate(String inputDate, boolean isDay) {
-        // String input_date="01/08/2012";
-        SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
         Date dt1 = null;
         try {
             dt1 = format1.parse(inputDate);
@@ -39,11 +45,10 @@ public class CommonUtils {
         }
         DateFormat format2;
         if (isDay)
-            format2 = new SimpleDateFormat("dd");
+            format2 = new SimpleDateFormat("dd", Locale.US);
         else
-            format2 = new SimpleDateFormat("MMM");
+            format2 = new SimpleDateFormat("MMM", Locale.US);
 
-        String finalDay = format2.format(dt1);
-        return finalDay;
+        return format2.format(dt1);
     }
 }
