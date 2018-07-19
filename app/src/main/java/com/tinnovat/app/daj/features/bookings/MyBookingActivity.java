@@ -1,4 +1,4 @@
-package com.tinnovat.app.daj.Activity;
+package com.tinnovat.app.daj.features.bookings;
 
 import android.support.annotation.NonNull;
 import android.os.Bundle;
@@ -12,11 +12,19 @@ import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 import com.prolificinteractive.materialcalendarview.format.DayFormatter;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
+import com.tinnovat.app.daj.data.network.ApiClient;
+import com.tinnovat.app.daj.data.network.ApiInterface;
+import com.tinnovat.app.daj.data.network.model.ComplaintCategoriesResponseModel;
+import com.tinnovat.app.daj.data.network.model.MyServiceBookingResponseModel;
 import com.tinnovat.app.daj.utils.CommonUtils;
 
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MyBookingActivity extends BaseActivity {
 
@@ -30,6 +38,7 @@ public class MyBookingActivity extends BaseActivity {
         Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.my_booking));
         cal = findViewById(R.id.calendarView);
 
+        fetchMyBooking();
 
         todayDate = findViewById(R.id.todayDate);
         cal.setSelectedDate(CalendarDay.today());
@@ -88,5 +97,25 @@ public class MyBookingActivity extends BaseActivity {
     @Override
     public void onClick(View v) {
 
+    }
+
+    private void fetchMyBooking() {
+
+        ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
+        //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
+        Call<MyServiceBookingResponseModel> call = apiInterface.getBookingServices("en");
+        call.enqueue(new Callback<MyServiceBookingResponseModel>() {
+            @Override
+            public void onResponse(Call<MyServiceBookingResponseModel> call, Response<MyServiceBookingResponseModel> response) {
+                showMessage("Category list Successfully");
+                //setData(response);
+            }
+
+            @Override
+            public void onFailure(Call<MyServiceBookingResponseModel> call, Throwable t) {
+
+                showMessage("Category list Failed");
+            }
+        });
     }
 }

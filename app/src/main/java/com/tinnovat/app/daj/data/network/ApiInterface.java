@@ -11,6 +11,7 @@ import com.tinnovat.app.daj.data.network.model.ContactResponseModel;
 import com.tinnovat.app.daj.data.network.model.EventListModel;
 import com.tinnovat.app.daj.data.network.model.FoodResponseModel;
 import com.tinnovat.app.daj.data.network.model.FuturePhasesResponseModel;
+import com.tinnovat.app.daj.data.network.model.MyServiceBookingResponseModel;
 import com.tinnovat.app.daj.data.network.model.RequestParams;
 import com.tinnovat.app.daj.data.network.model.LoginResponseModel;
 import com.tinnovat.app.daj.data.network.model.Service;
@@ -74,4 +75,8 @@ public interface ApiInterface {
     //Get Complaint Category
     @GET("/Dar_alJewar/api/complaintCategory")
     Call<ComplaintCategoriesResponseModel> getComplaintCategory(@Query("language") String language);
+
+    //Get My Booking services
+    @GET("/Dar_alJewar/api/myBookingServices")
+    Call<MyServiceBookingResponseModel> getBookingServices(@Query("language") String language);
 }

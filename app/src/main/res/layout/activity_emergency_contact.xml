@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@mipmap/bg"
-    tools:context=".features.EmergencyContact.EmergencyContactActivity">
+    tools:context=".features.emergencyContact.EmergencyContactActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package com.tinnovat.app.daj.features.Complaint;
+package com.tinnovat.app.daj.features.complaint;
 
 import android.content.Intent;
 import android.graphics.Color;

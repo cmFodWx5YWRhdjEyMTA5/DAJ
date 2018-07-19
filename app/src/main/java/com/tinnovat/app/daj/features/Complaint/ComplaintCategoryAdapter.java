@@ -1,4 +1,4 @@
-package com.tinnovat.app.daj.features.Complaint;
+package com.tinnovat.app.daj.features.complaint;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

@@ -1,21 +1,16 @@
-package com.tinnovat.app.daj.features.EmergencyContact;
+package com.tinnovat.app.daj.features.emergencyContact;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.ContactResponseModel;
-import com.tinnovat.app.daj.data.network.model.FoodResponseModel;
-import com.tinnovat.app.daj.data.network.model.ServicesResponseModel;
-import com.tinnovat.app.daj.features.services.ServicesAdapter;
 
 import java.util.Objects;
 

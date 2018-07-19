@@ -1,12 +1,9 @@
-package com.tinnovat.app.daj.features.Complaint;
+package com.tinnovat.app.daj.features.complaint;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.location.Address;
 import android.location.Geocoder;
-import android.provider.Settings;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,18 +20,11 @@ import com.squareup.picasso.Picasso;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.model.ComplaintList;
-import com.tinnovat.app.daj.data.network.model.ComplaintListResponseModel;
-import com.tinnovat.app.daj.data.network.model.Service;
-import com.tinnovat.app.daj.utils.CommonUtils;
-
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
-
-import retrofit2.Response;
 
 public class MyComplaintActivity extends BaseActivity {
 
