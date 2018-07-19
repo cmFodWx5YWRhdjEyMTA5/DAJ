@@ -3,17 +3,15 @@ package com.tinnovat.app.daj.features.services;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -30,10 +28,9 @@ import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.Service;
 import com.tinnovat.app.daj.data.network.model.ServiceAvailableDate;
 import com.tinnovat.app.daj.data.network.model.ServiceSlots;
-import com.tinnovat.app.daj.data.network.model.ServicesResponseModel;
-import com.tinnovat.app.daj.testing.MoviesAdapter;
 import com.tinnovat.app.daj.utils.CommonUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -41,15 +38,17 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ServiceBookingActivity extends BaseActivity {
+public class ServiceBookingActivity extends BaseActivity implements ChooseDateAdapter.DateAdapterListener {
 
     MaterialCalendarView cal;
     TextView monthTitle;
     TextView locationText;
     ImageView servicesImage;
+    Button buttonBook;
 
     private RecyclerView recyclerView;
     private ChooseDateAdapter mAdapter;
+    private List<String> mSelectedTimeSlots = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,6 +61,8 @@ public class ServiceBookingActivity extends BaseActivity {
         monthTitle = findViewById(R.id.monthTitle);
         locationText = findViewById(R.id.locationText);
         servicesImage = findViewById(R.id.servicesImage);
+        buttonBook = findViewById(R.id.button_book);
+        buttonBook.setOnClickListener(this);
 
         recyclerView = findViewById(R.id.recycler_view);
 
@@ -100,7 +101,7 @@ public class ServiceBookingActivity extends BaseActivity {
     }
 
     private void setDateCategory(List<ServiceAvailableDate> serviceAvailableDate){
-        mAdapter = new ChooseDateAdapter(serviceAvailableDate);
+        mAdapter = new ChooseDateAdapter(this, this, serviceAvailableDate);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -172,11 +173,14 @@ public class ServiceBookingActivity extends BaseActivity {
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.button_book :
+                if (!mSelectedTimeSlots.isEmpty())
+                Log.d("time Slots ===> ", mSelectedTimeSlots.get(0));
+            break;
+        }
 
     }
-
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -189,5 +193,10 @@ public class ServiceBookingActivity extends BaseActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onDateSelected(List<String> selectedTimeSlots) {
+        mSelectedTimeSlots = selectedTimeSlots;
     }
 }
