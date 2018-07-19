@@ -113,7 +113,10 @@ public class EventAndNewsActivity extends BaseActivity {
             Model model = new Model();
             model.setEvent(response.body().getCategory().get(i).getCategoryName() );
 
-            list.add(model);list.add(model);
+            list.add(model);
+            list.add(model);
+            list.add(model);
+            list.add(model);
         }
         appPreferanceStore.setDataEventAndNews(response);
         setViews(response);
@@ -121,16 +124,23 @@ public class EventAndNewsActivity extends BaseActivity {
 
     private void setViews(Response<EventListModel> response) {
        // initializeList();
+
+
         recyclerView.setAdapter(new RecyclerViewAdapter(getApplicationContext(), list));
         recyclerView.addItemDecoration(new RecyclerItemDecoration());
         recyclerView.setLayoutManager(new CircularLayoutManager(getApplicationContext(), 300, -100));
+
+
+
         recyclerView.addOnItemTouchListener(new OnRecyclerItemClickListener(getApplicationContext(),
                 new OnRecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void OnItemClick(RecyclerView parent, int childIndex) {
-
-                Intent i = new Intent(EventAndNewsActivity.this, EventNewsActivity.class);
-                startActivity(i);
+                showMessage(""+childIndex);
+                if (childIndex == 3){
+                    Intent i = new Intent(EventAndNewsActivity.this, EventNewsActivity.class);
+                    startActivity(i);
+                }
 
             }
         }));

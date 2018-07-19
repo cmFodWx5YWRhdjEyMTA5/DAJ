@@ -5,8 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.tinnovat.app.daj.R;
 
 import java.util.List;
@@ -32,13 +34,20 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.event.setText(list.get(position).getEvent());
-        holder.timings.setText(list.get(position).getTimings());
+        if (position < 4){
+            holder.event.setText("");
+            Picasso.get().load("https://android--code.blogspot.com/2015/08/android-listview-disable-item").into(holder.img);
+         //   holder.img.setVisibility(View.GONE);
+        }else {
+            holder.img.setVisibility(View.VISIBLE);
+            holder.event.setText(list.get(position - 4).getEvent());
+        }
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return list.size()+4;
+       // return Integer.MAX_VALUE;
     }
 
     /**
@@ -46,12 +55,13 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
      */
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView event, timings;
+        TextView event;
+        ImageView img;
 
         MyViewHolder(View itemView) {
             super(itemView);
-            event = (TextView) itemView.findViewById(R.id.event);
-            timings = (TextView) itemView.findViewById(R.id.timings);
+            event = itemView.findViewById(R.id.event);
+            img = itemView.findViewById(R.id.img);
         }
     }
 }
