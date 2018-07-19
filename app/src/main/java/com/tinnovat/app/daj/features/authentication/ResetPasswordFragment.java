@@ -13,11 +13,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.tinnovat.app.daj.BaseFragment;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
+import com.tinnovat.app.daj.data.network.model.ComplaintListResponseModel;
 import com.tinnovat.app.daj.data.network.model.LoginResponseModel;
 import com.tinnovat.app.daj.data.network.model.RequestParams;
 import com.tinnovat.app.daj.data.network.model.SuccessResponseModel;
@@ -28,6 +30,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ResetPasswordFragment extends BaseFragment {
+
+    EditText userName;
+    EditText email;
 
 
     public static Fragment getInstance() {
@@ -50,34 +55,16 @@ public class ResetPasswordFragment extends BaseFragment {
         return view;
     }
 
-    private void invokeChangePassword() {
-        ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
-        //ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        RequestParams.ResetPasswordRequest resetPasswordRequest = new RequestParams().new ResetPasswordRequest("123456", "12345");
-        Call<SuccessResponseModel> call = apiInterface.postChangePassword(resetPasswordRequest);
-        call.enqueue(new Callback<SuccessResponseModel>() {
-            @Override
-            public void onResponse(Call<SuccessResponseModel> call, Response<SuccessResponseModel> response) {
-                showMessage("Login Successful");
-                /*if (response.body() != null && response.body().getData() != null) {
 
-
-                }*/
-            }
-
-            @Override
-            public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
-                showMessage("Login Failed");
-            }
-        });
-    }
 
     @Override
     public void initialiseViews(View view) {
+
         Button submit = view.findViewById(R.id.submit);
+        userName = view.findViewById(R.id.userName);
+        email = view.findViewById(R.id.email);
 
         submit.setOnClickListener(this);
-
 
     }
 
@@ -93,14 +80,50 @@ public class ResetPasswordFragment extends BaseFragment {
         getActivity().onBackPressed();
 
         switch (view.getId()){
+
             case R.id.submit:
-
-                invokeChangePassword();
-
+                fetchData();
                 break;
-
-                default:
-                    break;
         }
+
+
+    }
+
+    private void fetchData(){
+       /* EditText userName = view.findViewById(R.id.userName);
+        EditText email = view.findViewById(R.id.email);*/
+
+        if ( userName.getText().toString().matches("") ||email.getText().toString().matches("")){
+            showMessage(getResources().getString(R.string.fil_all_fields));
+        }else {
+            invokeResetPassword(userName.getText().toString(),email.getText().toString());
+        }
+
+    }
+
+    private void invokeResetPassword(String userName, String email) {
+
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<SuccessResponseModel> call = apiInterface.resetPassword(userName,email);
+        call.enqueue(new Callback<SuccessResponseModel>() {
+            @Override
+            public void onResponse(Call<SuccessResponseModel> call, Response<SuccessResponseModel> response) {
+                if (response.body() != null) {
+                    if (response.body().getSuccess()) {
+                        showMessage(response.body().getMessage());
+                    } else {
+                        showMessage(response.body().getMessage());
+                    }
+                }else {
+                    showMessage(getResources().getString(R.string.network_problem));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
+
+                showMessage(getResources().getString(R.string.network_problem));
+            }
+        });
     }
 }

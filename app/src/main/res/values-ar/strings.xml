@@ -22,7 +22,9 @@
     <string name="completed">منجز</string>
     <string name="formatter">ريج لا: %d </string>
 
-
+    <string name="network_problem">مشكلة شبكة</string>
+    <string name="password_mismatch">عدم تطابق كلمة المرور</string>
+    <string name="fil_all_fields">املأ جميع الحقول</string>
 
     <string name="sign_in">تسجيل دخول</string>//
     <string name="user_name">اسم المستخدم</string>//

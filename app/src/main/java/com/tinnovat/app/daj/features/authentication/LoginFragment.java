@@ -23,6 +23,8 @@ import com.tinnovat.app.daj.data.network.model.LoginResponseModel;
 import com.tinnovat.app.daj.data.network.model.RequestParams;
 import com.tinnovat.app.daj.features.dashboard.MainActivity;
 
+import java.util.Objects;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -132,7 +134,7 @@ public class LoginFragment extends BaseFragment {
                 break;
 
             case R.id.forgotPassword:
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                FragmentTransaction transaction = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.content_frame, ResetPasswordFragment.getInstance()).addToBackStack(null);
                 transaction.commit();
 //                intent = new Intent(this.getActivity(), ResetPasswordActivity.class);
@@ -148,19 +150,25 @@ public class LoginFragment extends BaseFragment {
         call.enqueue(new Callback<LoginResponseModel>() {
             @Override
             public void onResponse(Call<LoginResponseModel> call, Response<LoginResponseModel> response) {
-                showMessage("Login Successful");
-                if (response.body() != null && response.body().getData() != null) {
-                    seData(response);
-                    Intent intent = new Intent(getActivity(), MainActivity.class);
-                    startActivity(intent);
-                    if (getActivity() != null)
-                        getActivity().finish();
+               // showMessage("Login Successful");
+                if (response.body() != null) {
+                    if (response.body().getData() != null) {
+                        seData(response);
+                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                        startActivity(intent);
+                        if (getActivity() != null)
+                            getActivity().finish();
+                    }else if (response.body().getMessage() != null){
+                        showMessage(response.body().getMessage());
+                    }
+                }else {
+                    showMessage(getResources().getString(R.string.network_problem));
                 }
             }
 
             @Override
             public void onFailure(Call<LoginResponseModel> call, Throwable t) {
-                showMessage("Login Failed");
+                showMessage(getResources().getString(R.string.network_problem));
             }
         });
     }

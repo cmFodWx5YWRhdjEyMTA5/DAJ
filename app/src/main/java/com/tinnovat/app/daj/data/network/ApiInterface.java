@@ -31,6 +31,10 @@ public interface ApiInterface {
     @POST("/Dar_alJewar/api/loginUser")
     Call<LoginResponseModel> login(@Body RequestParams.LoginReequest params);
 
+    //Reset password
+    @POST("/Dar_alJewar/api/forgotPassword")
+    Call<SuccessResponseModel> resetPassword( @Query("UserName") String userName,@Query("email") String email);
+
     //Get Change Password
     @POST("/Dar_alJewar/api/changePassword")
     Call<SuccessResponseModel> postChangePassword(@Body RequestParams.ResetPasswordRequest passwordRequest);
