@@ -104,7 +104,9 @@ public class ResetPasswordFragment extends BaseFragment {
     private void invokeResetPassword(String userName, String email) {
 
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<SuccessResponseModel> call = apiInterface.resetPassword(userName,email);
+        RequestParams.ResetPasswordRequest resetPasswordRequest = new RequestParams().new ResetPasswordRequest(userName, email);
+
+        Call<SuccessResponseModel> call = apiInterface.resetPassword(resetPasswordRequest);
         call.enqueue(new Callback<SuccessResponseModel>() {
             @Override
             public void onResponse(Call<SuccessResponseModel> call, Response<SuccessResponseModel> response) {

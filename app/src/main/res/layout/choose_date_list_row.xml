@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:textColor="@color/greenText"
+        android:background="@drawable/curve_small_bg_white"
         android:padding="5dp"
         android:textStyle="bold" />
 

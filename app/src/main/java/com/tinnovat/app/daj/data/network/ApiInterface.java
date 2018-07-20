@@ -14,7 +14,6 @@ import com.tinnovat.app.daj.data.network.model.FuturePhasesResponseModel;
 import com.tinnovat.app.daj.data.network.model.MyServiceBookingResponseModel;
 import com.tinnovat.app.daj.data.network.model.RequestParams;
 import com.tinnovat.app.daj.data.network.model.LoginResponseModel;
-import com.tinnovat.app.daj.data.network.model.Service;
 import com.tinnovat.app.daj.data.network.model.ServiceSlots;
 import com.tinnovat.app.daj.data.network.model.ServicesResponseModel;
 import com.tinnovat.app.daj.data.network.model.SuccessResponseModel;
@@ -22,7 +21,6 @@ import com.tinnovat.app.daj.data.network.model.SuccessResponseModel;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
-import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -34,11 +32,15 @@ public interface ApiInterface {
 
     //Reset password
     @POST("/Dar_alJewar/api/forgotPassword")
-    Call<SuccessResponseModel> resetPassword( @Query("UserName") String userName,@Query("email") String email);
+    Call<SuccessResponseModel> resetPassword( @Body RequestParams.ResetPasswordRequest resetPasswordRequest);
+
+    //Service Booking
+    @POST("/Dar_alJewar/api/serviceBooking")
+    Call<SuccessResponseModel> serviceBooking(@Body RequestParams.ServiceBookingRequest serviceBookingRequest);
 
     //Get Change Password
     @POST("/Dar_alJewar/api/changePassword")
-    Call<SuccessResponseModel> postChangePassword(@Body RequestParams.ResetPasswordRequest passwordRequest);
+    Call<SuccessResponseModel> postChangePassword(@Body RequestParams.ChangePasswordRequest passwordRequest);
 
     //Get Events and News
     @GET("/Dar_alJewar/api/eventNews")
@@ -50,7 +52,7 @@ public interface ApiInterface {
 
     //Get Service Available Time Slots
     @GET("/Dar_alJewar/api/availableTimeslots")
-    Call<ServiceSlots> getAvailableTimeSlots(@Query("category") String category, @Query("service_type") String service_type, @Query("date")String date);
+    Call<ServiceSlots> getAvailableTimeSlots(@Query("category") int category_id, @Query("service_type") int service_type_id, @Query("date")String date);
 
     //Get Future Phases Info
     @GET("/Dar_alJewar/api/futurePhases")

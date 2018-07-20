@@ -29,6 +29,11 @@ public class CommonUtils {
         return month_date.format(calendar.getTime()).toUpperCase();
     }
 
+    public String getDate(Calendar calendar) {
+        SimpleDateFormat month_date = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+        return month_date.format(calendar.getTime());
+    }
+
 
     public String getMonthWithYear(Calendar calendar) {
         SimpleDateFormat month_date = new SimpleDateFormat("MMMM yyyy", Locale.US);

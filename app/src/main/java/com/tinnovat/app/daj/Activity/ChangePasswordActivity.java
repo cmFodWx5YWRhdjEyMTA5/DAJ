@@ -76,8 +76,8 @@ public class ChangePasswordActivity extends BaseActivity {
 
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
         //ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        RequestParams.ResetPasswordRequest resetPasswordRequest = new RequestParams().new ResetPasswordRequest(oldPassword, newPassword);
-        Call<SuccessResponseModel> call = apiInterface.postChangePassword(resetPasswordRequest);
+        RequestParams.ChangePasswordRequest changePasswordRequest = new RequestParams().new ChangePasswordRequest(oldPassword, newPassword);
+        Call<SuccessResponseModel> call = apiInterface.postChangePassword(changePasswordRequest);
         call.enqueue(new Callback<SuccessResponseModel>() {
             @Override
             public void onResponse(Call<SuccessResponseModel> call, Response<SuccessResponseModel> response) {

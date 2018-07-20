@@ -37,6 +37,7 @@ public class ServicesListAdapter extends RecyclerView.Adapter<ServicesListAdapte
 
   //  private List<Movie> moviesList;
   private Service[] response;
+  private int category_id;
   private Service service;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -52,8 +53,9 @@ public class ServicesListAdapter extends RecyclerView.Adapter<ServicesListAdapte
     }
 
 
-    public ServicesListAdapter(Service[] res ) {
+    public ServicesListAdapter(Service[] res , int category_id) {
         this.response = res;
+        this.category_id = category_id;
     }
 
     @Override
@@ -79,6 +81,7 @@ public class ServicesListAdapter extends RecyclerView.Adapter<ServicesListAdapte
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(mContext, ServiceBookingActivity.class);
+                i.putExtra("category_id",category_id);
                 i.putExtra("response",new Gson().toJson(response[holder.getAdapterPosition()]));
                 mContext.startActivity(i);
             }

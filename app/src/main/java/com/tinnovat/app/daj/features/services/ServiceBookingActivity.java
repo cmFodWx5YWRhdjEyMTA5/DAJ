@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,11 +26,15 @@ import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
+import com.tinnovat.app.daj.data.network.model.ComplaintListResponseModel;
+import com.tinnovat.app.daj.data.network.model.RequestParams;
 import com.tinnovat.app.daj.data.network.model.Service;
 import com.tinnovat.app.daj.data.network.model.ServiceAvailableDate;
 import com.tinnovat.app.daj.data.network.model.ServiceSlots;
+import com.tinnovat.app.daj.data.network.model.SuccessResponseModel;
 import com.tinnovat.app.daj.utils.CommonUtils;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -37,6 +42,7 @@ import java.util.Objects;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Query;
 
 public class ServiceBookingActivity extends BaseActivity implements ChooseDateAdapter.DateAdapterListener {
 
@@ -46,9 +52,14 @@ public class ServiceBookingActivity extends BaseActivity implements ChooseDateAd
     ImageView servicesImage;
     Button buttonBook;
 
+    int category_id;
+    String selectedDate = null;
+
     private RecyclerView recyclerView;
     private ChooseDateAdapter mAdapter;
-    private List<String> mSelectedTimeSlots = new ArrayList<>();
+    private List<Integer> mSelectedTimeSlots = new ArrayList<>();
+
+    private Service res;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -67,7 +78,11 @@ public class ServiceBookingActivity extends BaseActivity implements ChooseDateAd
         recyclerView = findViewById(R.id.recycler_view);
 
         Intent i = getIntent();
-        setData(new Gson().fromJson( i.getStringExtra("response") ,Service.class ));
+        category_id = i.getIntExtra("category_id",0);
+        res = new Gson().fromJson( i.getStringExtra("response") ,Service.class );
+
+
+        setData(res);
 
         setCalender();
 
@@ -79,11 +94,12 @@ public class ServiceBookingActivity extends BaseActivity implements ChooseDateAd
 
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
         //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
-        Call<ServiceSlots> call = apiInterface.getAvailableTimeSlots("1","2","2018-06-28");
+        Call<ServiceSlots> call = apiInterface.getAvailableTimeSlots(category_id,res.getId(),CommonUtils.getInstance().getDate( CalendarDay.today().getCalendar()));
         call.enqueue(new Callback<ServiceSlots>() {
             @Override
             public void onResponse(Call<ServiceSlots> call, Response<ServiceSlots> response) {
                 showMessage("Data Fetched Successfully");
+
                 /*if (response.body() != null && response.body().getServiceCategory() != null) {
 
 
@@ -139,7 +155,7 @@ public class ServiceBookingActivity extends BaseActivity implements ChooseDateAd
         };
         cal.setTitleMonths(months);
         cal.setDayFormatter(day);
-        cal.setSelectedDate(CalendarDay.today());
+        cal.setSelectedDate(CalendarDay.today().getCalendar());
         cal.setSelected(true);
         cal.setOnMonthChangedListener(new OnMonthChangedListener() {
             @Override
@@ -156,6 +172,8 @@ public class ServiceBookingActivity extends BaseActivity implements ChooseDateAd
                 cal.setHeaderTextAppearance(R.style.CalenderViewCustomWeekHeading1);
                 //  monthTitle.setText(""+getCurrentMonthWeek(date.getMonth())+" "+date.getYear());
                 monthTitle.setText(CommonUtils.getInstance().getMonthWithYear(date.getCalendar()));
+                selectedDate = CommonUtils.getInstance().getDate(date.getCalendar());
+
             }
         });
 
@@ -175,10 +193,67 @@ public class ServiceBookingActivity extends BaseActivity implements ChooseDateAd
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_book :
-                if (!mSelectedTimeSlots.isEmpty())
-                Log.d("time Slots ===> ", mSelectedTimeSlots.get(0));
+
+                if (mSelectedTimeSlots.isEmpty()){
+                    showMessage(getResources().getString(R.string.select_time));
+                }else {
+                    fetchData();
+                }
+
             break;
         }
+
+    }
+
+    private void fetchData(){
+        EditText noOfGuest = findViewById(R.id.noOfGuest);
+        EditText commentBox = findViewById(R.id.commentBox);
+        if (selectedDate == null){
+            selectedDate = CommonUtils.getInstance().getDate( CalendarDay.today().getCalendar());
+        }
+
+        if ((noOfGuest.getText().toString().isEmpty())){
+            doBooking(category_id,res.getId(), selectedDate ,mSelectedTimeSlots,0,commentBox.getText().toString());
+        }else if (commentBox.getText().toString().isEmpty()){
+            doBooking(category_id,res.getId(), selectedDate ,mSelectedTimeSlots,Integer.parseInt(noOfGuest.getText().toString())," ");
+        }else if ((noOfGuest.getText().toString().isEmpty()) && commentBox.getText().toString().isEmpty()){
+            doBooking(category_id,res.getId(), selectedDate ,mSelectedTimeSlots,0," ");
+
+        }else {
+            doBooking(category_id,res.getId(), selectedDate ,mSelectedTimeSlots,Integer.parseInt(noOfGuest.getText().toString()),commentBox.getText().toString());
+        }
+
+    }
+
+
+    private void doBooking(int category_id , int service_id, String date, List<Integer> timeSlots, int guest_no, String comments){
+
+
+        ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
+        RequestParams.ServiceBookingRequest serviceBookingRequest = new RequestParams().new ServiceBookingRequest(category_id , service_id, date, timeSlots, guest_no, comments);
+
+        Call<SuccessResponseModel> call = apiInterface.serviceBooking(serviceBookingRequest);
+            call.enqueue(new Callback<SuccessResponseModel>() {
+                @Override
+                public void onResponse(Call<SuccessResponseModel> call, Response<SuccessResponseModel> response) {
+                    if (response.body() != null) {
+                        if (response.body().getSuccess()) {
+                            showMessage(response.body().getMessage());
+                        } else {
+                            showMessage(response.body().getMessage());
+                        }
+                        finish();
+                    }else {
+                        showMessage(getResources().getString(R.string.network_problem));
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
+
+                    showMessage(getResources().getString(R.string.network_problem));
+                }
+            });
 
     }
 
@@ -196,7 +271,7 @@ public class ServiceBookingActivity extends BaseActivity implements ChooseDateAd
     }
 
     @Override
-    public void onDateSelected(List<String> selectedTimeSlots) {
+    public void onDateSelected(List<Integer> selectedTimeSlots) {
         mSelectedTimeSlots = selectedTimeSlots;
     }
 }

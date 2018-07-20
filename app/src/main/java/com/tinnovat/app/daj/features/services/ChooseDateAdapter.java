@@ -18,9 +18,8 @@ public class ChooseDateAdapter extends RecyclerView.Adapter<ChooseDateAdapter.My
 
     private Context mContext;
     private List<ServiceAvailableDate> serviceAvailableDates;
-    int[] checkedPositions;
     private DateAdapterListener mListener;
-    private List<String> selectedDates;
+    private List<Integer> selectedDates;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView date;
@@ -43,47 +42,51 @@ public class ChooseDateAdapter extends RecyclerView.Adapter<ChooseDateAdapter.My
                 .inflate(R.layout.choose_date_list_row, parent, false);
         itemView.setOnClickListener(new TestActivity());
         mContext = parent.getContext();
-        checkedPositions = new int[serviceAvailableDates.size()];
-
-        for (int i = 0; i < serviceAvailableDates.size(); i++) {
-            checkedPositions[i] = 0;
-        }
 
         return new MyViewHolder(itemView);
     }
 
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
         final ServiceAvailableDate item = serviceAvailableDates.get(position);
+
         holder.date.setText(item.getSlotsName());
+
+        if (selectedDates != null && !selectedDates.isEmpty())
+        {
+            if (selectedDates.contains(item.getId())){
+                holder.date.setBackgroundResource(R.drawable.curve_small_bg_orange);
+            }else {
+                holder.date.setBackgroundResource(R.drawable.curve_small_bg_white);
+            }
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (selectedDates != null && !selectedDates.isEmpty()) {
+                if (selectedDates == null ) {
                     selectedDates = new ArrayList<>();
-                    selectedDates.add(item.getSlotsName());
+                    selectedDates.add(item.getId());
                     holder.date.setBackgroundResource(R.drawable.curve_small_bg_orange);
-                } else if (selectedDates.contains(item.getSlotsName())) {
-                    selectedDates.remove(item.getSlotsName());
+                } else if (selectedDates.contains(item.getId())) {
+                    selectedDates.remove(item.getId());
                     holder.date.setBackgroundResource(R.drawable.curve_small_bg_white);
                 } else {
-                    selectedDates.add(item.getSlotsName());
-                    holder.date.setBackgroundResource(R.drawable.curve_small_bg_orange);
+                    if (!selectedDates.isEmpty()){
+                        selectedDates.add(item.getId());
+                        holder.date.setBackgroundResource(R.drawable.curve_small_bg_orange);
+                    }else {
+                        selectedDates = new ArrayList<>();
+                        selectedDates.add(item.getId());
+                        holder.date.setBackgroundResource(R.drawable.curve_small_bg_orange);
+                    }
+
                 }
 
                 mListener.onDateSelected(selectedDates);
 
-               /* if (checkedPositions[holder.getAdapterPosition()] == 0) {
-                    checkedPositions[holder.getAdapterPosition()] = 1;
-                    holder.date.setBackgroundResource(R.drawable.curve_small_bg_orange);
-                    mListener.onDateSelected();
-                } else {
-                    checkedPositions[holder.getAdapterPosition()] = 0;
-                    holder.date.setBackgroundResource(R.drawable.curve_small_bg_white);
-                }*/
             }
         });
 
@@ -96,6 +99,6 @@ public class ChooseDateAdapter extends RecyclerView.Adapter<ChooseDateAdapter.My
 
     public interface DateAdapterListener {
 
-        void onDateSelected(List<String> selectedTimeSlots);
+        void onDateSelected(List<Integer> selectedTimeSlots);
     }
 }

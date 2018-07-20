@@ -38,7 +38,7 @@ public class ServiceListActivity extends BaseActivity {
         Intent i = getIntent();
         res = new Gson().fromJson( i.getStringExtra("response") ,Service[].class );
 
-        mAdapter = new ServicesListAdapter(res);
+        mAdapter = new ServicesListAdapter(res, i.getIntExtra("category_id",0) );
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());

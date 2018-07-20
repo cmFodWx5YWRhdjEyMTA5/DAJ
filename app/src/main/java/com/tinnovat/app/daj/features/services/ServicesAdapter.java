@@ -107,6 +107,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.MyView
             public void onClick(View v) {
               //  holder.cat_name.setBackgroundColor(mContext.getResources().getColor(R.color.orange));
                 Intent i = new Intent(mContext, ServiceListActivity.class);
+                i.putExtra("category_id",response.body().getServiceCategory().get(holder.getAdapterPosition()).getId());
                 i.putExtra("response",new Gson().toJson(response.body().getServiceCategory().get(holder.getAdapterPosition()).getServices()));
                 mContext.startActivity(i);
             }
