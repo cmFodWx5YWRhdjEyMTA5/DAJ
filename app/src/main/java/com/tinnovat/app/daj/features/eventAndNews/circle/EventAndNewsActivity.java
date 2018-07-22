@@ -7,13 +7,13 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.kapil.circularlayoutmanager.CircularLayoutManager;
-import com.tinnovat.app.daj.features.eventAndNews.EventNewsActivity;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.AppPreferanceStore;
 import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.EventListModel;
+import com.tinnovat.app.daj.features.eventAndNews.EventNewsActivity;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -6,7 +6,6 @@ import android.widget.TextView;
 
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
-import com.tinnovat.app.daj.data.AppPreferanceStore;
 
 import java.util.Objects;
 

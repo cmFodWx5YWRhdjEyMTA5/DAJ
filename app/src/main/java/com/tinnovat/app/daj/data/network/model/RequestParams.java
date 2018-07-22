@@ -1,6 +1,5 @@
 package com.tinnovat.app.daj.data.network.model;
 
-import java.lang.reflect.Array;
 import java.util.List;
 
 /**

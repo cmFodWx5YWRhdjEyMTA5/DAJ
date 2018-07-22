@@ -1,23 +1,12 @@
 package com.tinnovat.app.daj;
 
-import android.app.Dialog;
-import android.app.ProgressDialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Toast;
 
 import com.tinnovat.app.daj.data.AppPreferanceStore;
-
-import java.util.Objects;
 
 /**
  * Created by Rahul on 08-07-2018.

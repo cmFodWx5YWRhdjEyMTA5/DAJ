@@ -1,13 +1,12 @@
 package com.tinnovat.app.daj.features.services;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
-import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -26,7 +25,6 @@ import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
-import com.tinnovat.app.daj.data.network.model.ComplaintListResponseModel;
 import com.tinnovat.app.daj.data.network.model.RequestParams;
 import com.tinnovat.app.daj.data.network.model.Service;
 import com.tinnovat.app.daj.data.network.model.ServiceAvailableDate;
@@ -34,7 +32,6 @@ import com.tinnovat.app.daj.data.network.model.ServiceSlots;
 import com.tinnovat.app.daj.data.network.model.SuccessResponseModel;
 import com.tinnovat.app.daj.utils.CommonUtils;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -42,7 +39,6 @@ import java.util.Objects;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.Query;
 
 public class ServiceBookingActivity extends BaseActivity implements ChooseDateAdapter.DateAdapterListener {
 

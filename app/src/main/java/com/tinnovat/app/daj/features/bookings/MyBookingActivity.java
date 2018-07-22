@@ -1,8 +1,7 @@
 package com.tinnovat.app.daj.features.bookings;
 
-import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
@@ -19,14 +17,10 @@ import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
-import com.tinnovat.app.daj.data.network.model.ComplaintCategoriesResponseModel;
 import com.tinnovat.app.daj.data.network.model.MyServiceBookingResponseModel;
-import com.tinnovat.app.daj.data.network.model.Service;
-import com.tinnovat.app.daj.features.services.ServicesListAdapter;
 import com.tinnovat.app.daj.utils.CommonUtils;
 
 import java.util.Calendar;
-import java.util.Locale;
 import java.util.Objects;
 
 import retrofit2.Call;

@@ -1,14 +1,7 @@
 package com.tinnovat.app.daj.features.foodAndTaxi;
 
-import android.content.Intent;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 
@@ -17,8 +10,6 @@ import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.FoodResponseModel;
-import com.tinnovat.app.daj.data.network.model.FuturePhasesResponseModel;
-import com.tinnovat.app.daj.testing.MoviesAdapter;
 
 import java.util.Objects;
 

@@ -1,12 +1,9 @@
 package com.tinnovat.app.daj.features.authentication;
 
-import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -19,11 +16,8 @@ import com.tinnovat.app.daj.BaseFragment;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
-import com.tinnovat.app.daj.data.network.model.ComplaintListResponseModel;
-import com.tinnovat.app.daj.data.network.model.LoginResponseModel;
 import com.tinnovat.app.daj.data.network.model.RequestParams;
 import com.tinnovat.app.daj.data.network.model.SuccessResponseModel;
-import com.tinnovat.app.daj.features.dashboard.MainActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -12,7 +12,6 @@ import com.google.gson.Gson;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.model.Service;
-import com.tinnovat.app.daj.data.network.model.ServicesResponseModel;
 
 import java.util.Objects;
 

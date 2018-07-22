@@ -13,10 +13,7 @@ import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.model.Service;
-import com.tinnovat.app.daj.data.network.model.ServicesResponseModel;
 import com.tinnovat.app.daj.testing.TestActivity;
-
-import retrofit2.Response;
 
 public class ServicesListAdapter extends RecyclerView.Adapter<ServicesListAdapter.MyViewHolder> {
 

@@ -38,6 +38,9 @@
     <string name="arabic">العَرَبِيَّة</string>
 
     <string name="formatter">Reg No: %d</string>//
+    <string name="formatter_number">%d %s</string>//
+    <string name="am">AM</string>//
+    <string name="pm">PM</string>//
     <string name="network_problem">Network Problem</string>//
     <string name="password_mismatch">Password Mismatch</string>//
     <string name="fil_all_fields">Fill All Fields</string>//

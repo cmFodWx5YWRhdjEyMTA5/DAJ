@@ -72,11 +72,11 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".features.complaint.RegisterComplaintActivity"
+            android:name=".features.Complaint.RegisterComplaintActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.features.complaint.MyComplaintListActivity" />
+                android:value="com.tinnovat.app.daj.features.Complaint.MyComplaintListActivity" />
         </activity>
         <activity
             android:name=".features.bookings.MyBookingActivity"
@@ -107,14 +107,14 @@
                 android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
-            android:name=".features.complaint.MyComplaintActivity"
+            android:name=".features.Complaint.MyComplaintActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".features.complaint.MyComplaintActivity" />
+                android:value=".features.Complaint.MyComplaintActivity" />
         </activity>
         <activity
-            android:name=".features.complaint.MyComplaintListActivity"
+            android:name=".features.Complaint.MyComplaintListActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -150,14 +150,14 @@
         </activity>
 
         <activity
-            android:name=".features.emergencyContact.EmergencyContactActivity"
+            android:name=".features.EmergencyContact.EmergencyContactActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
-            android:name=".Activity.GuestRegistrationActivity"
+            android:name=".features.bookings.GuestRegistrationActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

@@ -18,7 +18,6 @@ import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.AppPreferanceStore;
 import com.tinnovat.app.daj.features.eventAndNews.EventAndNewsListAdapter;
 import com.tinnovat.app.daj.testing.Movie;
-import com.tinnovat.app.daj.testing.MoviesAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

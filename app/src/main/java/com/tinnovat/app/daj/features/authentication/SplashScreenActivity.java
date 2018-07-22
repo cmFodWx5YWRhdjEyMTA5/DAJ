@@ -3,12 +3,10 @@ package com.tinnovat.app.daj.features.authentication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
-import com.tinnovat.app.daj.features.dashboard.MainActivity;
 
 public class SplashScreenActivity extends BaseActivity {
 

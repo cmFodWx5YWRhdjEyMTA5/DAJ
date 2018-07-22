@@ -1,4 +1,4 @@
-package com.tinnovat.app.daj.features.complaint;
+package com.tinnovat.app.daj.features.Complaint;
 
 import android.Manifest;
 import android.app.Activity;
@@ -7,9 +7,9 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Build;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
-import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;

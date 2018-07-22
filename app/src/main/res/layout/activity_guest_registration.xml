@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/bg"
-    tools:context=".Activity.GuestRegistrationActivity">
+    tools:context=".features.bookings.GuestRegistrationActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -83,52 +83,11 @@
 
             <RelativeLayout style="@style/boxStyle">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="10dp"
-                    android:gravity="center">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="30dp"
-                        android:textStyle="bold"
-                        android:layout_weight="1"
-                        android:text="10.00 am"
-                        android:gravity="center"
-                        android:textColor="@color/black" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="30dp"
-                        android:textStyle="bold"
-                        android:layout_weight="1"
-                        android:text="11.00 am"
-                        android:gravity="center"
-                        android:textColor="@color/black" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="30dp"
-                        android:textStyle="bold"
-                        android:layout_weight="1"
-                        android:text="12.00 pm"
-                        android:gravity="center"
-                        android:background="@drawable/curve_small_bg_orange"
-                        android:textColor="@color/white" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="30dp"
-                        android:textStyle="bold"
-                        android:layout_weight="1"
-                        android:text="01.00 pm"
-                        android:gravity="center"
-                        android:textColor="@color/black" />
-                </LinearLayout>
+                    />
 
             </RelativeLayout>
             <TextView

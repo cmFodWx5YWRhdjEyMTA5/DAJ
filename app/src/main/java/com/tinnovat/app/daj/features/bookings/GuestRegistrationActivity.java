@@ -1,10 +1,13 @@
-package com.tinnovat.app.daj.Activity;
+package com.tinnovat.app.daj.features.bookings;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
-import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
@@ -22,13 +25,17 @@ import java.util.List;
 import java.util.Objects;
 
 
-public class GuestRegistrationActivity extends BaseActivity {
+public class GuestRegistrationActivity extends BaseActivity implements GuestTimeSlotAdapter.DateAdapterListener{
 
     TextView purpose;
     TextView monthTitle;
     MaterialCalendarView cal;
 
     CharSequence purposeList[];
+
+    private RecyclerView recyclerView;
+    private GuestTimeSlotAdapter mAdapter;
+    private List<Integer> mSelectedTimeSlots = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,6 +56,8 @@ public class GuestRegistrationActivity extends BaseActivity {
         cal = findViewById(R.id.calendarView);
         monthTitle = findViewById(R.id.monthTitle);
         purpose = findViewById(R.id.purpose);
+
+        recyclerView = findViewById(R.id.recycler_view);
 
         purpose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +110,16 @@ public class GuestRegistrationActivity extends BaseActivity {
                 monthTitle.setText(CommonUtils.getInstance().getMonthWithYear(date.getCalendar()));
             }
         });
+
+        setTimeSlot();
+    }
+
+    private void setTimeSlot(){
+        mAdapter = new GuestTimeSlotAdapter(this, this);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(mAdapter);
     }
 
     @Override
@@ -118,6 +137,12 @@ public class GuestRegistrationActivity extends BaseActivity {
     public void onClick(View v) {
 
     }
+
+    @Override
+    public void onDateSelected(int selectedTimeSlots) {
+
+    }
+
 
     public class ViewDialog {
 

@@ -5,13 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.kapil.circularlayoutmanager.OnItemClickListener;
-import com.tinnovat.app.daj.BaseFragment;
 import com.tinnovat.app.daj.R;
-
-import java.util.List;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHolder> {
 

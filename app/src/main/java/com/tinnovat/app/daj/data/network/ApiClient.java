@@ -6,8 +6,6 @@ package com.tinnovat.app.daj.data.network;
  */
 
 
-import android.util.Log;
-
 import java.io.IOException;
 
 import okhttp3.Interceptor;

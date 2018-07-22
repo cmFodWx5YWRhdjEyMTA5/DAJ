@@ -1,15 +1,11 @@
 package com.tinnovat.app.daj.features.authentication;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
-
-import java.util.Objects;
 
 public class ResetPasswordActivity extends BaseActivity {
 
