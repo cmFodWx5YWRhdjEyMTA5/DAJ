@@ -1,4 +1,4 @@
-package com.tinnovat.app.daj.features.emergencyContact;
+package com.tinnovat.app.daj.features.EmergencyContact;
 
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -11,6 +11,7 @@ import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.ContactResponseModel;
+import com.tinnovat.app.daj.features.EmergencyContact.ContactListAdapter;
 
 import java.util.Objects;
 

@@ -71,7 +71,16 @@
 
             <RelativeLayout style="@style/boxStyleNew">
 
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginBottom="10dp" />
+
                 <LinearLayout
+                    android:layout_below="@+id/recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"

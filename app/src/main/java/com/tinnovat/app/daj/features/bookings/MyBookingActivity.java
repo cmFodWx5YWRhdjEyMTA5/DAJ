@@ -1,11 +1,16 @@
 package com.tinnovat.app.daj.features.bookings;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
@@ -16,6 +21,8 @@ import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.ComplaintCategoriesResponseModel;
 import com.tinnovat.app.daj.data.network.model.MyServiceBookingResponseModel;
+import com.tinnovat.app.daj.data.network.model.Service;
+import com.tinnovat.app.daj.features.services.ServicesListAdapter;
 import com.tinnovat.app.daj.utils.CommonUtils;
 
 import java.util.Calendar;
@@ -28,19 +35,44 @@ import retrofit2.Response;
 
 public class MyBookingActivity extends BaseActivity {
 
-    MaterialCalendarView cal;
-    TextView todayDate;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_booking);
         Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.my_booking));
-        cal = findViewById(R.id.calendarView);
+
 
         fetchMyBooking();
 
-        todayDate = findViewById(R.id.todayDate);
+        SetCalenderView();
+
+    }
+
+    @Override
+    public void initialiseViews() {
+
+    }
+
+    @Override
+    public void initialiseEventListners() {
+
+    }
+
+    private void setDate(Calendar calendar) {
+        TextView todayDate = findViewById(R.id.todayDate);
+        todayDate.setText(CommonUtils.getInstance().getDateMonth(calendar));
+    }
+
+    @Override
+    public void onClick(View v) {
+
+    }
+
+    private void SetCalenderView(){
+        MaterialCalendarView cal = findViewById(R.id.calendarView);
+
         cal.setSelectedDate(CalendarDay.today());
         cal.setSelected(true);
         if(getLanguage()){
@@ -70,6 +102,7 @@ public class MyBookingActivity extends BaseActivity {
         cal.setTitleMonths(months);
 
         cal.setDayFormatter(day);
+
         cal.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
@@ -78,25 +111,6 @@ public class MyBookingActivity extends BaseActivity {
                 setDate(date.getCalendar());
             }
         });
-    }
-
-    @Override
-    public void initialiseViews() {
-
-    }
-
-    @Override
-    public void initialiseEventListners() {
-
-    }
-
-    private void setDate(Calendar calendar) {
-        todayDate.setText(CommonUtils.getInstance().getDateMonth(calendar));
-    }
-
-    @Override
-    public void onClick(View v) {
-
     }
 
     private void fetchMyBooking() {
@@ -109,6 +123,8 @@ public class MyBookingActivity extends BaseActivity {
             public void onResponse(Call<MyServiceBookingResponseModel> call, Response<MyServiceBookingResponseModel> response) {
                 showMessage("Category list Successfully");
                 //setData(response);
+
+                setData(response);
             }
 
             @Override
@@ -117,5 +133,17 @@ public class MyBookingActivity extends BaseActivity {
                 showMessage("Category list Failed");
             }
         });
+    }
+
+    private void setData(Response<MyServiceBookingResponseModel> response){
+        RecyclerView recyclerView;
+        MyBookingsAdapter mAdapter;
+        recyclerView = findViewById(R.id.recycler_view);
+
+        mAdapter = new MyBookingsAdapter(response.body());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(mAdapter);
     }
 }

@@ -86,20 +86,21 @@ public class ServiceBookingActivity extends BaseActivity implements ChooseDateAd
 
         setCalender();
 
-        fetchServiceAvailableSlots();
+
 
     }
 
-    private void fetchServiceAvailableSlots() {
+    private void fetchServiceAvailableSlots(String selectedDate) {
 
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
         //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
-        Call<ServiceSlots> call = apiInterface.getAvailableTimeSlots(category_id,res.getId(),CommonUtils.getInstance().getDate( CalendarDay.today().getCalendar()));
+        Call<ServiceSlots> call = apiInterface.getAvailableTimeSlots(category_id,res.getId(),selectedDate);
         call.enqueue(new Callback<ServiceSlots>() {
             @Override
             public void onResponse(Call<ServiceSlots> call, Response<ServiceSlots> response) {
                 showMessage("Data Fetched Successfully");
 
+                setDateCategory(response.body().getServiceAvailableDates());
                 /*if (response.body() != null && response.body().getServiceCategory() != null) {
 
 
@@ -121,6 +122,7 @@ public class ServiceBookingActivity extends BaseActivity implements ChooseDateAd
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+        mAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(mAdapter);
     }
 
@@ -173,6 +175,8 @@ public class ServiceBookingActivity extends BaseActivity implements ChooseDateAd
                 //  monthTitle.setText(""+getCurrentMonthWeek(date.getMonth())+" "+date.getYear());
                 monthTitle.setText(CommonUtils.getInstance().getMonthWithYear(date.getCalendar()));
                 selectedDate = CommonUtils.getInstance().getDate(date.getCalendar());
+
+                fetchServiceAvailableSlots(selectedDate);
 
             }
         });
