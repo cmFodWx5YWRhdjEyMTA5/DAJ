@@ -22,6 +22,8 @@
     <string name="total_area">المساحة الكلية لأرض المشروع</string>
     <string name="completed">منجز</string>
     <string name="formatter">ريج لا: %d </string>
+    <string name="required">مطلوب</string>
+    <string name="choose_time">اختر الوقت</string>
 
     <string name="network_problem">مشكلة شبكة</string>
     <string name="password_mismatch">عدم تطابق كلمة المرور</string>

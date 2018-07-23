@@ -46,7 +46,6 @@ public class GuestTimeSlotAdapter extends RecyclerView.Adapter<GuestTimeSlotAdap
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-
         if (position < 12) {
 
             holder.date.setText(String.format(mContext.getString(R.string.formatter_number), position + 1, mContext.getString(R.string.am)));
@@ -60,14 +59,6 @@ public class GuestTimeSlotAdapter extends RecyclerView.Adapter<GuestTimeSlotAdap
         }else {
             holder.date.setBackgroundResource(R.drawable.curve_small_bg_white);
         }
-       /* if (selectedDates != null && !selectedDates.isEmpty()) {
-            if (selectedDates.contains(item.getId())) {
-                holder.date.setBackgroundResource(R.drawable.curve_small_bg_orange);
-            } else {
-                holder.date.setBackgroundResource(R.drawable.curve_small_bg_white);
-            }
-        }*/
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,18 +66,16 @@ public class GuestTimeSlotAdapter extends RecyclerView.Adapter<GuestTimeSlotAdap
                 if (timeSlot == 0){
                     timeSlot = holder.getAdapterPosition()+1;
                     holder.date.setBackgroundResource(R.drawable.curve_small_bg_orange);
-                }else if (timeSlot != holder.getAdapterPosition()+1){
-                    timeSlot = holder.getAdapterPosition()+1;
-                    holder.date.setBackgroundResource(R.drawable.curve_small_bg_orange);
-                } else if (timeSlot == holder.getAdapterPosition()+1){
+                }else if (timeSlot == holder.getAdapterPosition()+1){
                     timeSlot = 0;
                     holder.date.setBackgroundResource(R.drawable.curve_small_bg_white);
                 }else {
-                    holder.date.setBackgroundResource(R.drawable.curve_small_bg_white);
+                    timeSlot = holder.getAdapterPosition()+1;
+                    holder.date.setBackgroundResource(R.drawable.curve_small_bg_orange);
                 }
 
-                timeSlot = holder.getAdapterPosition()+1;
                 mListener.onDateSelected(timeSlot);
+                notifyDataSetChanged();
 
             }
         });

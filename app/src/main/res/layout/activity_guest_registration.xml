@@ -16,19 +16,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <!--<android.support.design.widget.TextInputLayout
-                android:id="@+id/input_layout_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="10dp"
-                android:theme="@style/EditTextHint">-->
             <TextView
                 android:text="@string/guest_name"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 style="@style/heading1"/>
+            <com.pchmn.androidverify.InputValidator
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:required="true"
+                app:requiredMessage="@string/required"
+                android:elevation="5dp">
 
                 <EditText
                     android:id="@+id/input_name"
@@ -36,13 +35,14 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/curve_small_bg_gray"
                     android:hint="@string/guest_name"
-                    android:layout_margin="10dp"
+
                     android:padding="10dp"
                     android:textSize="18sp"
                     android:singleLine="true"
                     android:textColor="@color/black"
-                    android:elevation="5dp"
+
                    />
+            </com.pchmn.androidverify.InputValidator>
            <!-- </android.support.design.widget.TextInputLayout>-->
 
 
@@ -138,19 +138,25 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 style="@style/heading1"/>
+            <com.pchmn.androidverify.InputValidator
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:required="true"
+                app:requiredMessage="@string/required"
+                android:elevation="5dp">
 
                 <EditText
                     android:id="@+id/vehicle_no"
                     android:background="@drawable/curve_small_bg_gray"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
                     android:padding="10dp"
                     android:hint="@string/vehicle_no"
                     android:singleLine="true"
                     android:textSize="18sp"
-                    android:textColor="@color/black"
-                    android:elevation="5dp"/>
+                    android:textColor="@color/black"/>
+            </com.pchmn.androidverify.InputValidator>
 
 
             <RelativeLayout

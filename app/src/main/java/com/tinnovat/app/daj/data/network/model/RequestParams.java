@@ -57,4 +57,20 @@ public class RequestParams {
             this.comments = comments;
         }
     }
+
+    public class GuestRegistrationRequest {
+        private String name;
+        private String date;
+        private String time;
+        private int purpose;
+        private String vehicleNo;
+        public GuestRegistrationRequest(String name,String date,String time, int purpose , String vehicleNo ){
+            this.name = name;
+            this.date = date;
+            this.time = time;
+            this.purpose = purpose;
+            this.vehicleNo = vehicleNo;
+
+        }
+    }
 }

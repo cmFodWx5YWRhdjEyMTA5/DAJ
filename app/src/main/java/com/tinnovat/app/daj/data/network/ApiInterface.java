@@ -11,6 +11,7 @@ import com.tinnovat.app.daj.data.network.model.ContactResponseModel;
 import com.tinnovat.app.daj.data.network.model.EventListModel;
 import com.tinnovat.app.daj.data.network.model.FoodResponseModel;
 import com.tinnovat.app.daj.data.network.model.FuturePhasesResponseModel;
+import com.tinnovat.app.daj.data.network.model.GuestRegistrationResponseModel;
 import com.tinnovat.app.daj.data.network.model.LoginResponseModel;
 import com.tinnovat.app.daj.data.network.model.MyServiceBookingResponseModel;
 import com.tinnovat.app.daj.data.network.model.RequestParams;
@@ -37,6 +38,10 @@ public interface ApiInterface {
     //Service Booking
     @POST("/Dar_alJewar/api/serviceBooking")
     Call<SuccessResponseModel> serviceBooking(@Body RequestParams.ServiceBookingRequest serviceBookingRequest);
+
+    //guestRegister
+    @POST("/Dar_alJewar/api/guestRegister")
+    Call<GuestRegistrationResponseModel> guestRegistration(@Body RequestParams.GuestRegistrationRequest guestRegistrationRequest);
 
     //Get Change Password
     @POST("/Dar_alJewar/api/changePassword")

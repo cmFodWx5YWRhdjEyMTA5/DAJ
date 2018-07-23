@@ -41,11 +41,13 @@
     <string name="formatter_number">%d %s</string>//
     <string name="am">AM</string>//
     <string name="pm">PM</string>//
+    <string name="required">Required</string>//
     <string name="network_problem">Network Problem</string>//
     <string name="password_mismatch">Password Mismatch</string>//
     <string name="fil_all_fields">Fill All Fields</string>//
     <string name="select_time">Select Time</string>//
     <string name="total_area">Total Area of the project land</string>//
+    <string name="choose_time">Choose Time</string>
 
 
 

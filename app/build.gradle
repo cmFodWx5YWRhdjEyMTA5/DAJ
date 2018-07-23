@@ -61,4 +61,6 @@ dependencies {
 
     //loader
     implementation 'com.tuyenmonkey:mkloader:1.4.0'
+    //Validation
+    implementation 'com.github.pchmn:AndroidVerify:1.0.2'
 }
