@@ -16,41 +16,54 @@
 
         <ImageView
             android:id="@+id/logo_en"
-            android:layout_width="150dp"
+            android:layout_width="160dp"
             android:layout_height="150dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
             android:background="@drawable/sidebar_logo" />
 
+        <com.pchmn.androidverify.InputValidator
+            style="@style/Validator"
+            app:required="true"
+            app:requiredMessage="@string/required"
+            android:layout_above="@+id/val">
         <EditText
             android:id="@+id/userName"
             style="@style/EditTextField"
-            android:layout_above="@+id/password"
             android:drawableStart="@drawable/user_small_green"
             android:hint="@string/user_name"
+            android:text="jainy"
             android:textAlignment="viewStart"/>
+        </com.pchmn.androidverify.InputValidator>
 
 
+        <com.pchmn.androidverify.InputValidator
+            android:id="@+id/val"
+            style="@style/Validator"
+            app:required="true"
+            app:requiredMessage="@string/required"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true">
         <EditText
             android:id="@+id/password"
             style="@style/EditTextField"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="10dp"
             android:drawableStart="@drawable/password_small_green"
             android:hint="@string/password"
+            android:text="12345"
             android:inputType="textPassword"
             android:textAlignment="viewStart"/>
+        </com.pchmn.androidverify.InputValidator>
 
         <TextView
             android:id="@+id/forgotPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_below="@+id/password"
+            android:layout_below="@+id/val"
             android:layout_margin="20dp"
-            android:gravity="right"
+            android:gravity="end"
             android:text="@string/forgot_password"
             android:textColor="@color/black" />
 

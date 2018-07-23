@@ -11,9 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.pchmn.androidverify.Form;
 import com.tinnovat.app.daj.BaseFragment;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.AppPreferanceStore;
@@ -38,6 +40,10 @@ public class LoginFragment extends BaseFragment {
 
     private boolean language;
     private AppPreferanceStore appPreferanceStore;
+
+    Form form;
+   private EditText userName ;
+   private EditText password;
 
     public static Fragment getInstance() {
         return new LoginFragment();
@@ -66,6 +72,13 @@ public class LoginFragment extends BaseFragment {
         TextView english = rootView.findViewById(R.id.english);
         TextView arabic = rootView.findViewById(R.id.arabic);
 
+         userName = rootView.findViewById(R.id.userName);
+        password = rootView.findViewById(R.id.password);
+
+        form = new Form.Builder(getContext(), rootView)
+                .showErrors(true)
+                .build();
+
         signIn.setOnClickListener(this);
         forgotPassword.setOnClickListener(this);
 
@@ -75,6 +88,8 @@ public class LoginFragment extends BaseFragment {
 
         english.setOnClickListener(this);
         arabic.setOnClickListener(this);
+
+
     }
 
     @Override
@@ -88,7 +103,8 @@ public class LoginFragment extends BaseFragment {
 
             case R.id.signIn:
                // fetchEventList();
-                invokeLoginService();
+                doValidation();
+
                 break;
 
             case R.id.english:
@@ -143,11 +159,32 @@ public class LoginFragment extends BaseFragment {
         }
     }
 
+    private void doValidation(){
+
+
+// or initiate from a fragment or from what you want by providing your own root view
+      /*  Form form = new Form.Builder(getContext(), v)
+                .showErrors(true)
+                .build();*/
+
+// validate the form
+        if(form.isValid()) {
+            // the form is valid
+            invokeLoginService();
+        }
+        else {
+            // the form is not valid
+        }
+    }
+
     private void invokeLoginService() {
+
+
+
         startLoading();
 
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        RequestParams.LoginReequest loginReequest = new RequestParams().new LoginReequest("jainy", "12345", "en");
+        RequestParams.LoginReequest loginReequest = new RequestParams().new LoginReequest(userName.getText().toString(), password.getText().toString(), "en");
         Call<LoginResponseModel> call = apiInterface.login(loginReequest);
         call.enqueue(new Callback<LoginResponseModel>() {
             @Override
