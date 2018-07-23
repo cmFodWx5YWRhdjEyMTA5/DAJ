@@ -7,4 +7,6 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen tools:override="true" name="design_navigation_icon_padding">10dp</dimen>
     <dimen name="activity_margin">16dp</dimen>
+    <dimen name="dp24">24dp</dimen>
+    <dimen name="dp30">30dp</dimen>
 </resources>

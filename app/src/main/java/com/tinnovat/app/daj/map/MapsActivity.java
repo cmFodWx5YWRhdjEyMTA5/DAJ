@@ -1,13 +1,16 @@
 package com.tinnovat.app.daj.map;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.CheckableImageButton;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
@@ -48,6 +51,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
     private LocationRequest mLocationRequest;
     private Location mLastLocation;
     private Marker mCurrLocationMarker;
+    private FloatingActionButton mButtonDirection;
     private double latitude;
     private double longitude;
     private int PROXIMITY_RADIUS = 10000;
@@ -57,12 +61,12 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-      //  Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.map));
-      // ActionBar actionBar.setDisplayHomeAsUpEnabled(true);
+        //  Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.map));
+        // ActionBar actionBar.setDisplayHomeAsUpEnabled(true);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        if (getSupportActionBar() != null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
             getSupportActionBar().setTitle(getText(R.string.map));
@@ -73,10 +77,14 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
         image3 = findViewById(R.id.image3);
         image4 = findViewById(R.id.image4);
 
+        mButtonDirection = findViewById(R.id.fab_direction);
+
         image1.setOnClickListener(this);
         image2.setOnClickListener(this);
         image3.setOnClickListener(this);
         image4.setOnClickListener(this);
+
+        mButtonDirection.setOnClickListener(this);
 
         LinearLayout layoutBottomSheet = findViewById(R.id.bottom_sheet);
         BottomSheetBehavior<LinearLayout> sheetBehavior = BottomSheetBehavior.from(layoutBottomSheet);
@@ -151,6 +159,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
         }
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // handle arrow click here
@@ -364,7 +373,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
                 Toast.makeText(MapsActivity.this, "Nearby Hospitals", Toast.LENGTH_LONG).show();
                 break;
 
-                case R.id.image4:
+            case R.id.image4:
                 mMap.clear();
                 url = getUrl(latitude, longitude, "supermarket");
                 dataTransfer = new Object[2];
@@ -374,6 +383,12 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
                 getNearbyPlacesData = new GetNearbyPlacesData();
                 getNearbyPlacesData.execute(dataTransfer);
                 Toast.makeText(MapsActivity.this, "Nearby Shopping", Toast.LENGTH_LONG).show();
+                break;
+
+            case R.id.fab_direction:
+                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                        Uri.parse("http://maps.google.com/maps?daddr=20.5666,45.345"));
+                startActivity(intent);
                 break;
         }
     }

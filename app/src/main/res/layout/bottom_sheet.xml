@@ -4,171 +4,194 @@
     android:id="@+id/bottom_sheet"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#fff"
     android:orientation="vertical"
-    android:padding="@dimen/activity_margin"
     app:behavior_hideable="true"
     app:behavior_peekHeight="56dp"
     app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <TextView
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_direction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_margin="@dimen/nav_header_vertical_spacing"
+            android:src="@drawable/tennis_bat" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_margin"
-            android:layout_weight="2"
-            android:gravity="center_horizontal"
-            android:text="@string/search_nearby"
-            android:textColor="#444"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
-        <LinearLayout
-            android:id="@+id/layout1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_marginTop="@dimen/dp30"
+            android:background="#fff"
             android:orientation="vertical"
-            android:layout_marginEnd="15dp">
-        <android.support.design.widget.CheckableImageButton
-            android:id="@+id/image1"
-            android:background="@drawable/blue_circle"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:tint="@color/white"
-            app:srcCompat="@drawable/food"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/restaurants"
-            android:textColor="@color/black"
-            />
-        </LinearLayout>
+            android:padding="@dimen/activity_margin">
 
-        <LinearLayout
-            android:id="@+id/layout2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:layout_toEndOf="@+id/layout1"
-            android:layout_marginEnd="15dp">
-            <android.support.design.widget.CheckableImageButton
-                android:id="@+id/image2"
-                android:background="@drawable/red_circle"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                app:srcCompat="@drawable/petrol"/>
+
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/petrol"
-                android:textColor="@color/black"
-                />
-        </LinearLayout>
+                android:layout_marginBottom="@dimen/activity_margin"
+                android:layout_weight="2"
+                android:gravity="center_horizontal"
+                android:text="@string/search_nearby"
+                android:textColor="#444"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
-        <LinearLayout
-            android:id="@+id/layout3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:layout_toEndOf="@+id/layout2"
-            android:layout_marginEnd="15dp">
-            <android.support.design.widget.CheckableImageButton
-                android:id="@+id/image3"
-                android:background="@drawable/green_circle_small"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:tint="@color/white"
-                app:srcCompat="@drawable/hall"/>
-            <TextView
-                android:layout_width="wrap_content"
+
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/hospitals"
-                android:textColor="@color/black"
-                />
+                android:gravity="center">
+
+                <LinearLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <android.support.design.widget.CheckableImageButton
+                        android:id="@+id/image1"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/blue_circle"
+                        android:tint="@color/white"
+                        app:srcCompat="@drawable/food" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/restaurants"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:layout_toEndOf="@+id/layout1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <android.support.design.widget.CheckableImageButton
+                        android:id="@+id/image2"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/red_circle"
+                        app:srcCompat="@drawable/petrol" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/petrol"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:layout_toEndOf="@+id/layout2"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <android.support.design.widget.CheckableImageButton
+                        android:id="@+id/image3"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/green_circle_small"
+                        android:tint="@color/white"
+                        app:srcCompat="@drawable/hall" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hospitals"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/layout3"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <android.support.design.widget.CheckableImageButton
+                        android:id="@+id/image4"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/orenge_circle"
+                        app:srcCompat="@drawable/shopping" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/shopping"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+
+                <!-- <android.support.design.widget.CheckableImageButton
+                     android:id="@+id/image2"
+                     android:background="@drawable/red_circle"
+                     android:layout_width="40dp"
+                     android:layout_height="40dp"
+                     android:tint="@color/white"
+                     app:srcCompat="@drawable/car"
+                     android:layout_toEndOf="@+id/image1"
+                     android:layout_marginEnd="40dp"/>
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="gggggg"
+                     android:textColor="@color/black"
+
+                     android:layout_below="@+id/image2"
+                     />
+
+                 <android.support.design.widget.CheckableImageButton
+                     android:id="@+id/image3"
+                     android:background="@drawable/green_circle"
+                     android:layout_width="40dp"
+                     android:layout_height="40dp"
+                     android:tint="@color/white"
+                     app:srcCompat="@drawable/food"
+                     android:layout_toEndOf="@+id/image2"
+                     android:layout_marginEnd="40dp"/>
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="@string/restaurants"
+                     android:textColor="@color/black"
+                     android:layout_below="@+id/image3"
+                     />
+                 <android.support.design.widget.CheckableImageButton
+                     android:id="@+id/image4"
+                     android:background="@drawable/orenge_circle"
+                     android:layout_width="40dp"
+                     android:layout_height="40dp"
+                     android:tint="@color/white"
+                     app:srcCompat="@drawable/service"
+                     android:layout_toEndOf="@+id/image3"/>
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="@string/restaurants"
+                     android:textColor="@color/black"
+                     android:layout_below="@+id/image4"
+                     />
+         -->
+            </RelativeLayout>
+
         </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layout4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:layout_toEndOf="@+id/layout3">
-            <android.support.design.widget.CheckableImageButton
-                android:id="@+id/image4"
-                android:background="@drawable/orenge_circle"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                app:srcCompat="@drawable/shopping"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/shopping"
-                android:textColor="@color/black"
-                />
-        </LinearLayout>
-
-
-
-
-       <!-- <android.support.design.widget.CheckableImageButton
-            android:id="@+id/image2"
-            android:background="@drawable/red_circle"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:tint="@color/white"
-            app:srcCompat="@drawable/car"
-            android:layout_toEndOf="@+id/image1"
-            android:layout_marginEnd="40dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="gggggg"
-            android:textColor="@color/black"
-
-            android:layout_below="@+id/image2"
-            />
-
-        <android.support.design.widget.CheckableImageButton
-            android:id="@+id/image3"
-            android:background="@drawable/green_circle"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:tint="@color/white"
-            app:srcCompat="@drawable/food"
-            android:layout_toEndOf="@+id/image2"
-            android:layout_marginEnd="40dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/restaurants"
-            android:textColor="@color/black"
-            android:layout_below="@+id/image3"
-            />
-        <android.support.design.widget.CheckableImageButton
-            android:id="@+id/image4"
-            android:background="@drawable/orenge_circle"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:tint="@color/white"
-            app:srcCompat="@drawable/service"
-            android:layout_toEndOf="@+id/image3"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/restaurants"
-            android:textColor="@color/black"
-            android:layout_below="@+id/image4"
-            />
--->
-    </RelativeLayout>
-
+    </FrameLayout>
 </LinearLayout>
