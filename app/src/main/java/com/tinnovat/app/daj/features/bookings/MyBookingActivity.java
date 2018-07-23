@@ -108,6 +108,7 @@ public class MyBookingActivity extends BaseActivity {
     }
 
     private void fetchMyBooking() {
+        startLoading();
 
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
         //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
@@ -115,6 +116,7 @@ public class MyBookingActivity extends BaseActivity {
         call.enqueue(new Callback<MyServiceBookingResponseModel>() {
             @Override
             public void onResponse(Call<MyServiceBookingResponseModel> call, Response<MyServiceBookingResponseModel> response) {
+                endLoading();
                 showMessage("Category list Successfully");
                 //setData(response);
 
@@ -123,6 +125,7 @@ public class MyBookingActivity extends BaseActivity {
 
             @Override
             public void onFailure(Call<MyServiceBookingResponseModel> call, Throwable t) {
+                endLoading();
 
                 showMessage("Category list Failed");
             }

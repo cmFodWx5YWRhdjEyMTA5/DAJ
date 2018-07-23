@@ -1,4 +1,4 @@
-package com.tinnovat.app.daj.features.EmergencyContact;
+package com.tinnovat.app.daj.features.emergencyContact;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

@@ -82,6 +82,7 @@ public class EventAndNewsActivity extends BaseActivity {
     }
 
     private void fetchEventList() {
+        startLoading();
 
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
         //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
@@ -89,6 +90,7 @@ public class EventAndNewsActivity extends BaseActivity {
         call.enqueue(new Callback<EventListModel>() {
             @Override
             public void onResponse(Call<EventListModel> call, Response<EventListModel> response) {
+                endLoading();
                 showMessage("Data Fetched Successfully");
                 if (response.body() != null && response.body().getCategory() != null) {
 
@@ -100,6 +102,7 @@ public class EventAndNewsActivity extends BaseActivity {
             @Override
             public void onFailure(Call<EventListModel> call, Throwable t) {
 
+                endLoading();
                 showMessage("Login Failed");
             }
         });
@@ -137,7 +140,7 @@ public class EventAndNewsActivity extends BaseActivity {
             @Override
             public void OnItemClick(RecyclerView parent, int childIndex) {
                 showMessage(""+childIndex);
-                if (childIndex == 3){
+                if (childIndex == 4){
                     Intent i = new Intent(EventAndNewsActivity.this, EventNewsActivity.class);
                     startActivity(i);
                 }

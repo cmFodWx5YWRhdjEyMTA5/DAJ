@@ -5,16 +5,18 @@
     android:layout_height="match_parent"
     android:background="@mipmap/bg"
     android:orientation="vertical"
-    tools:context=".Activity.FuturePhaseInfoDetailActivity">
+    tools:context=".features.futurePhase.FuturePhaseInfoDetailActivity">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:layout_marginBottom="20dp"
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/bannerText"
                 style="@style/headingMain"
                 android:layout_marginBottom="10dp"
                 android:text="@string/lorem_ipsum" />
@@ -23,10 +25,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="@string/lorem_ipsum_medium"
+                android:text="@string/total_area"
                 android:textColor="@color/black" />
 
             <TextView
+                android:id="@+id/area"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -39,6 +42,7 @@
                 android:text="@string/description" />
 
             <TextView
+                android:id="@+id/descriptionText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -51,33 +55,16 @@
                 android:layout_marginBottom="10dp"
                 android:src="@drawable/map"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp">
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_weight="1"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/future1" />
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_weight="1"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/future2" />
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/future3" />
-            </LinearLayout>
+                    android:layout_marginBottom="20dp"
+                    android:elevation="5dp"
+                    />
+
         </LinearLayout>
     </ScrollView>

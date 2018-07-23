@@ -32,6 +32,7 @@ public class OrderFoodActivity extends BaseActivity {
 
     private void fetchFoodApps() {
 
+        startLoading();
         ImageView banner = findViewById(R.id.banner);
         banner.setImageResource(R.drawable.order_food);
 
@@ -41,6 +42,7 @@ public class OrderFoodActivity extends BaseActivity {
         call.enqueue(new Callback<FoodResponseModel>() {
             @Override
             public void onResponse(Call<FoodResponseModel> call, Response<FoodResponseModel> response) {
+                endLoading();
                 showMessage("FoodApps Successfully");
                 setData(response);
             }
@@ -48,6 +50,7 @@ public class OrderFoodActivity extends BaseActivity {
             @Override
             public void onFailure(Call<FoodResponseModel> call, Throwable t) {
 
+                endLoading();
                 showMessage("FoodApps Failed");
             }
         });

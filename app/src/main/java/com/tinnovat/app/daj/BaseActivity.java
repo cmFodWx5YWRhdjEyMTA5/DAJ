@@ -1,8 +1,11 @@
 package com.tinnovat.app.daj;
 
+import android.app.Dialog;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
 import android.widget.Toast;
 
 import com.tinnovat.app.daj.data.AppPreferanceStore;
@@ -12,6 +15,7 @@ import java.util.Objects;
 public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
     private AppPreferanceStore appPreferenceStore;
+     private Dialog progressDialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,7 +28,23 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         initialiseViews();
         initialiseEventListners();
 
-        //getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+        appPreferenceStore = new AppPreferanceStore(this);
+        appPreferenceStore.changeLocaleLanguage(appPreferenceStore.getLanguage());
+        progressDialog = new Dialog(Objects.requireNonNull(this));
+        progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        progressDialog.setContentView(R.layout.dialog_progress);
+        Objects.requireNonNull(progressDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        progressDialog.setCancelable(false);
+    }
+    public void startLoading(){
+        progressDialog.show();
+    }
+
+    public void endLoading() {
+        if (progressDialog != null) {
+            progressDialog.cancel();
+            progressDialog.hide();
+        }
     }
 
     public abstract void initialiseViews();

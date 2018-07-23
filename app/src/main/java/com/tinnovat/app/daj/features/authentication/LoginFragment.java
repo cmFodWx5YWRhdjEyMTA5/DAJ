@@ -144,6 +144,8 @@ public class LoginFragment extends BaseFragment {
     }
 
     private void invokeLoginService() {
+        startLoading();
+
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         RequestParams.LoginReequest loginReequest = new RequestParams().new LoginReequest("jainy", "12345", "en");
         Call<LoginResponseModel> call = apiInterface.login(loginReequest);
@@ -151,6 +153,7 @@ public class LoginFragment extends BaseFragment {
             @Override
             public void onResponse(Call<LoginResponseModel> call, Response<LoginResponseModel> response) {
                // showMessage("Login Successful");
+                endLoading();
                 if (response.body() != null) {
                     if (response.body().getData() != null) {
                         seData(response);
@@ -168,6 +171,7 @@ public class LoginFragment extends BaseFragment {
 
             @Override
             public void onFailure(Call<LoginResponseModel> call, Throwable t) {
+                endLoading();
                 showMessage(getResources().getString(R.string.network_problem));
             }
         });

@@ -51,8 +51,6 @@ public class ServiceBookingActivity extends BaseActivity implements ChooseDateAd
     int category_id;
     String selectedDate = null;
 
-    private RecyclerView recyclerView;
-    private ChooseDateAdapter mAdapter;
     private List<Integer> mSelectedTimeSlots = new ArrayList<>();
 
     private Service res;
@@ -71,7 +69,6 @@ public class ServiceBookingActivity extends BaseActivity implements ChooseDateAd
         buttonBook = findViewById(R.id.button_book);
         buttonBook.setOnClickListener(this);
 
-        recyclerView = findViewById(R.id.recycler_view);
 
         Intent i = getIntent();
         category_id = i.getIntExtra("category_id",0);
@@ -87,6 +84,7 @@ public class ServiceBookingActivity extends BaseActivity implements ChooseDateAd
     }
 
     private void fetchServiceAvailableSlots(String selectedDate) {
+        startLoading();
 
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
         //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
@@ -94,6 +92,7 @@ public class ServiceBookingActivity extends BaseActivity implements ChooseDateAd
         call.enqueue(new Callback<ServiceSlots>() {
             @Override
             public void onResponse(Call<ServiceSlots> call, Response<ServiceSlots> response) {
+                endLoading();
                 showMessage("Data Fetched Successfully");
 
                 setDateCategory(response.body().getServiceAvailableDates());
@@ -107,6 +106,7 @@ public class ServiceBookingActivity extends BaseActivity implements ChooseDateAd
 
             @Override
             public void onFailure(Call<ServiceSlots> call, Throwable t) {
+                endLoading();
 
                 showMessage("ServiceAvailableSlots Failed");
             }
@@ -114,7 +114,8 @@ public class ServiceBookingActivity extends BaseActivity implements ChooseDateAd
     }
 
     private void setDateCategory(List<ServiceAvailableDate> serviceAvailableDate){
-        mAdapter = new ChooseDateAdapter(this, this, serviceAvailableDate);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        ChooseDateAdapter mAdapter = new ChooseDateAdapter(this, this, serviceAvailableDate);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -228,6 +229,8 @@ public class ServiceBookingActivity extends BaseActivity implements ChooseDateAd
 
     private void doBooking(int category_id , int service_id, String date, List<Integer> timeSlots, int guest_no, String comments){
 
+        startLoading();
+
 
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
         RequestParams.ServiceBookingRequest serviceBookingRequest = new RequestParams().new ServiceBookingRequest(category_id , service_id, date, timeSlots, guest_no, comments);
@@ -236,6 +239,7 @@ public class ServiceBookingActivity extends BaseActivity implements ChooseDateAd
             call.enqueue(new Callback<SuccessResponseModel>() {
                 @Override
                 public void onResponse(Call<SuccessResponseModel> call, Response<SuccessResponseModel> response) {
+                    endLoading();
                     if (response.body() != null) {
                         if (response.body().getSuccess()) {
                             showMessage(response.body().getMessage());
@@ -250,6 +254,7 @@ public class ServiceBookingActivity extends BaseActivity implements ChooseDateAd
 
                 @Override
                 public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
+                    endLoading();
 
                     showMessage(getResources().getString(R.string.network_problem));
                 }

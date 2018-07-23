@@ -96,6 +96,7 @@ public class ResetPasswordFragment extends BaseFragment {
     }
 
     private void invokeResetPassword(String userName, String email) {
+        startLoading();
 
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         RequestParams.ResetPasswordRequest resetPasswordRequest = new RequestParams().new ResetPasswordRequest(userName, email);
@@ -104,6 +105,7 @@ public class ResetPasswordFragment extends BaseFragment {
         call.enqueue(new Callback<SuccessResponseModel>() {
             @Override
             public void onResponse(Call<SuccessResponseModel> call, Response<SuccessResponseModel> response) {
+                endLoading();
                 if (response.body() != null) {
                     if (response.body().getSuccess()) {
                         showMessage(response.body().getMessage());
@@ -118,6 +120,7 @@ public class ResetPasswordFragment extends BaseFragment {
             @Override
             public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
 
+                endLoading();
                 showMessage(getResources().getString(R.string.network_problem));
             }
         });

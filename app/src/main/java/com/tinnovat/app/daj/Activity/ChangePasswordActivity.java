@@ -73,6 +73,7 @@ public class ChangePasswordActivity extends BaseActivity {
 
     }
     private void invokeChangePassword(String oldPassword, String newPassword) {
+        startLoading();
 
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
         //ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
@@ -81,6 +82,7 @@ public class ChangePasswordActivity extends BaseActivity {
         call.enqueue(new Callback<SuccessResponseModel>() {
             @Override
             public void onResponse(Call<SuccessResponseModel> call, Response<SuccessResponseModel> response) {
+                endLoading();
                 if (response.body() != null) {
                     if (response.body().getSuccess()) {
                         showMessage(response.body().getMessage());
@@ -94,6 +96,7 @@ public class ChangePasswordActivity extends BaseActivity {
 
             @Override
             public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
+                endLoading();
                 showMessage(getResources().getString(R.string.network_problem));
             }
         });

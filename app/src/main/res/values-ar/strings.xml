@@ -19,6 +19,7 @@
     <string name="logout">تسجيل الخروج  </string>//
     <string name="dashboard">لوحة المعلومات</string>
 
+    <string name="total_area">المساحة الكلية لأرض المشروع</string>
     <string name="completed">منجز</string>
     <string name="formatter">ريج لا: %d </string>
 

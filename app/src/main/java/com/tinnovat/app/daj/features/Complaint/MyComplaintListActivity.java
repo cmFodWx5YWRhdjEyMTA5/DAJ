@@ -1,4 +1,4 @@
-package com.tinnovat.app.daj.features.Complaint;
+package com.tinnovat.app.daj.features.complaint;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -54,12 +54,15 @@ public class MyComplaintListActivity extends BaseActivity {
 
     private void fetchContactList() {
 
+        startLoading();
+
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
         //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
         Call<ComplaintListResponseModel> call = apiInterface.getComplaintList("en");
         call.enqueue(new Callback<ComplaintListResponseModel>() {
             @Override
             public void onResponse(Call<ComplaintListResponseModel> call, Response<ComplaintListResponseModel> response) {
+                endLoading();
                 showMessage("ContactList Successfully");
                 setData(response);
             }
@@ -67,6 +70,7 @@ public class MyComplaintListActivity extends BaseActivity {
             @Override
             public void onFailure(Call<ComplaintListResponseModel> call, Throwable t) {
 
+                endLoading();
                 showMessage("ContactList Failed");
             }
         });

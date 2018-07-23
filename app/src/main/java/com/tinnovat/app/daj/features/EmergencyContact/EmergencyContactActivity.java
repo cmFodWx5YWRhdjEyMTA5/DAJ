@@ -1,4 +1,4 @@
-package com.tinnovat.app.daj.features.EmergencyContact;
+package com.tinnovat.app.daj.features.emergencyContact;
 
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -11,6 +11,7 @@ import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.ContactResponseModel;
+import com.tinnovat.app.daj.features.emergencyContact.ContactListAdapter;
 
 import java.util.Objects;
 
@@ -32,6 +33,7 @@ public class EmergencyContactActivity extends BaseActivity {
     }
 
     private void fetchContactList() {
+        startLoading();
 
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
         //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
@@ -39,6 +41,7 @@ public class EmergencyContactActivity extends BaseActivity {
         call.enqueue(new Callback<ContactResponseModel>() {
             @Override
             public void onResponse(Call<ContactResponseModel> call, Response<ContactResponseModel> response) {
+                endLoading();
                 showMessage("ContactList Successfully");
                 setData(response);
             }
@@ -46,6 +49,7 @@ public class EmergencyContactActivity extends BaseActivity {
             @Override
             public void onFailure(Call<ContactResponseModel> call, Throwable t) {
 
+                endLoading();
                 showMessage("ContactList Failed");
             }
         });

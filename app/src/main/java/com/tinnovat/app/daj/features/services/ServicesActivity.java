@@ -124,12 +124,15 @@ public class ServicesActivity extends BaseActivity {
 
     private void fetchServiceList() {
 
+        startLoading();
+
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
         //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
         Call<ServicesResponseModel> call = apiInterface.getServiceList("en");
         call.enqueue(new Callback<ServicesResponseModel>() {
             @Override
             public void onResponse(Call<ServicesResponseModel> call, Response<ServicesResponseModel> response) {
+                endLoading();
                 showMessage("Data Fetched Successfully");
                 if (response.body() != null && response.body().getServiceCategory() != null) {
 
@@ -141,6 +144,7 @@ public class ServicesActivity extends BaseActivity {
 
             @Override
             public void onFailure(Call<ServicesResponseModel> call, Throwable t) {
+                endLoading();
 
                 showMessage("Login Failed");
             }

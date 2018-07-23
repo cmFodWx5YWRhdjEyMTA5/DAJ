@@ -1,4 +1,4 @@
-package com.tinnovat.app.daj.features.Complaint;
+package com.tinnovat.app.daj.features.complaint;
 
 import android.Manifest;
 import android.app.Activity;
@@ -59,12 +59,14 @@ public class RegisterComplaintActivity extends BaseActivity  {
 
     private void fetchCategory() {
 
+        startLoading();
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
         //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
         Call<ComplaintCategoriesResponseModel> call = apiInterface.getComplaintCategory("en");
         call.enqueue(new Callback<ComplaintCategoriesResponseModel>() {
             @Override
             public void onResponse(Call<ComplaintCategoriesResponseModel> call, Response<ComplaintCategoriesResponseModel> response) {
+                endLoading();
                 showMessage("Category list Successfully");
                 setData(response);
             }
@@ -72,6 +74,7 @@ public class RegisterComplaintActivity extends BaseActivity  {
             @Override
             public void onFailure(Call<ComplaintCategoriesResponseModel> call, Throwable t) {
 
+                endLoading();
                 showMessage("Category list Failed");
             }
         });

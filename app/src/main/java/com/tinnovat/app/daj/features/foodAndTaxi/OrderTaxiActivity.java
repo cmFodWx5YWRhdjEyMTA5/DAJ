@@ -30,6 +30,7 @@ public class OrderTaxiActivity extends BaseActivity {
 
     private void fetchTaxiApps() {
 
+        startLoading();
         ImageView banner = findViewById(R.id.banner);
         banner.setImageResource(R.drawable.order_car);
 
@@ -39,6 +40,7 @@ public class OrderTaxiActivity extends BaseActivity {
         call.enqueue(new Callback<FoodResponseModel>() {
             @Override
             public void onResponse(Call<FoodResponseModel> call, Response<FoodResponseModel> response) {
+                endLoading();
                 showMessage("TaxiApps Successfully");
                 setData(response);
             }
@@ -46,6 +48,7 @@ public class OrderTaxiActivity extends BaseActivity {
             @Override
             public void onFailure(Call<FoodResponseModel> call, Throwable t) {
 
+                endLoading();
                 showMessage("TaxiApps Failed");
             }
         });
