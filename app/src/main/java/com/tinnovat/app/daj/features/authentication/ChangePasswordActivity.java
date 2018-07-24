@@ -1,10 +1,11 @@
-package com.tinnovat.app.daj.Activity;
+package com.tinnovat.app.daj.features.authentication;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.pchmn.androidverify.Form;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.ApiClient;
@@ -46,7 +47,6 @@ public class ChangePasswordActivity extends BaseActivity {
 
         switch (v.getId()){
             case R.id.submit:
-
                 checkValidation();
 
                 break;
@@ -60,7 +60,22 @@ public class ChangePasswordActivity extends BaseActivity {
         EditText newPassword = findViewById(R.id.newPassword);
         EditText cnfrmPassword = findViewById(R.id.cnfrmPassword);
 
-        if (newPassword.getText().toString().matches("") || newPassword.getText().toString().matches("") ||newPassword.getText().toString().matches("")){
+
+        Form form = new Form.Builder(this)
+                .showErrors(true)
+                .build();
+
+        // validate the form
+        if (form.isValid()) {
+            if (newPassword.getText().toString().equals(cnfrmPassword.getText().toString())){
+
+                invokeChangePassword(currentPassword.getText().toString(),newPassword.getText().toString());
+            }else {
+                showMessage(getResources().getString(R.string.password_mismatch));
+            }
+        }
+
+       /* if (newPassword.getText().toString().matches("") || newPassword.getText().toString().matches("") ||newPassword.getText().toString().matches("")){
             showMessage(getResources().getString(R.string.fil_all_fields));
         }else {
             if (newPassword.getText().toString().equals(cnfrmPassword.getText().toString())){
@@ -69,7 +84,7 @@ public class ChangePasswordActivity extends BaseActivity {
             }else {
                 showMessage(getResources().getString(R.string.password_mismatch));
             }
-        }
+        }*/
 
     }
     private void invokeChangePassword(String oldPassword, String newPassword) {
@@ -86,18 +101,20 @@ public class ChangePasswordActivity extends BaseActivity {
                 if (response.body() != null) {
                     if (response.body().getSuccess()) {
                         showMessage(response.body().getMessage());
+                        finish();
                     } else {
                         showMessage(response.body().getMessage());
+                        finish();
                     }
                 }else {
-                    showMessage(getResources().getString(R.string.network_problem));
+                    showMessage("1 "+getResources().getString(R.string.network_problem));
                 }
             }
 
             @Override
             public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
                 endLoading();
-                showMessage(getResources().getString(R.string.network_problem));
+                showMessage("2 "+getResources().getString(R.string.network_problem));
             }
         });
     }

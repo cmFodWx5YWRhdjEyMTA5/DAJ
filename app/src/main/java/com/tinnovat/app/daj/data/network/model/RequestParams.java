@@ -21,11 +21,11 @@ public class RequestParams {
     }
 
     public class ResetPasswordRequest {
-        String userName;
+        String UserName;
         String email;
 
         public ResetPasswordRequest(String userName, String email) {
-            this.userName = userName;
+            this.UserName = userName;
             this.email = email;
         }
     }

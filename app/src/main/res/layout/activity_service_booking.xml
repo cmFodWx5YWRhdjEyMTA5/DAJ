@@ -67,6 +67,7 @@
                 android:layout_marginTop="20dp"
                 android:text="@string/date_and_time"
                 android:textStyle="bold"
+                android:textSize="15sp"
                 android:textColor="@color/black" />
 
             <RelativeLayout
@@ -124,7 +125,7 @@
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
+                        android:textSize="15sp"
                         android:text="@string/number_of_guest"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
@@ -134,7 +135,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:hint="No"
+                        android:textSize="15sp"
+                        android:hint="@string/no"
                         android:maxLength="4"
                         android:inputType="number" />
                 </LinearLayout>

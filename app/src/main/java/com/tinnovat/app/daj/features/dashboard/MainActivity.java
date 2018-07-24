@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.tinnovat.app.daj.Activity.ChangePasswordActivity;
+import com.tinnovat.app.daj.features.authentication.ChangePasswordActivity;
 import com.tinnovat.app.daj.features.futurePhase.FuturePhaseInfoListActivity;
 import com.tinnovat.app.daj.Activity.ProfileActivity;
 import com.tinnovat.app.daj.Activity.SurveillanceActivity;
@@ -86,9 +86,11 @@ public class MainActivity extends BaseActivity
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle(getText(R.string.dashboard));
         }
+<<<<<<< HEAD
+        
+=======
 
-        showMessage(,"HEllllloooooooooooo");
-
+>>>>>>> d7ee93f3137585a1801f9ac08f7efe0528634d3e
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);

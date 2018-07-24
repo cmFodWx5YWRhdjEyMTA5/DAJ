@@ -248,7 +248,7 @@ public class ServiceBookingActivity extends BaseActivity implements ChooseDateAd
                         }
                         finish();
                     }else {
-                        showMessage(getResources().getString(R.string.network_problem));
+                        showMessage("1 "+getResources().getString(R.string.network_problem));
                     }
                 }
 
@@ -256,7 +256,7 @@ public class ServiceBookingActivity extends BaseActivity implements ChooseDateAd
                 public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
                     endLoading();
 
-                    showMessage(getResources().getString(R.string.network_problem));
+                    showMessage("2 "+getResources().getString(R.string.network_problem));
                 }
             });
 

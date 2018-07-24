@@ -150,11 +150,12 @@ public class LoginFragment extends BaseFragment {
                 break;
 
             case R.id.forgotPassword:
-                FragmentTransaction transaction = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.content_frame, ResetPasswordFragment.getInstance()).addToBackStack(null);
                 transaction.commit();
 //                intent = new Intent(this.getActivity(), ResetPasswordActivity.class);
 //                startActivity(intent);
+
                 break;
         }
     }
@@ -189,7 +190,7 @@ public class LoginFragment extends BaseFragment {
         call.enqueue(new Callback<LoginResponseModel>() {
             @Override
             public void onResponse(Call<LoginResponseModel> call, Response<LoginResponseModel> response) {
-               // showMessage("Login Successful");
+                //showMessage("Login Successful");
                 endLoading();
                 if (response.body() != null) {
                     if (response.body().getData() != null) {
