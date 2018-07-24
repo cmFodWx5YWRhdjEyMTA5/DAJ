@@ -171,7 +171,7 @@
                 android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
-            android:name=".Activity.ChangePasswordActivity"
+            android:name=".features.authentication.ChangePasswordActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

@@ -124,7 +124,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
       /*  Snackbar mySnackbar = Snackbar.make(view,
                 message, Snackbar.LENGTH_SHORT);
         mySnackbar.show();*/
-//        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 
     public void showMessage(View view, String message) {
