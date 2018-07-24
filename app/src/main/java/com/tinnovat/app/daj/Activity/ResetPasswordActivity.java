@@ -1,4 +1,4 @@
-package com.tinnovat.app.daj.features.authentication;
+package com.tinnovat.app.daj.Activity;
 
 import android.os.Bundle;
 import android.view.MenuItem;

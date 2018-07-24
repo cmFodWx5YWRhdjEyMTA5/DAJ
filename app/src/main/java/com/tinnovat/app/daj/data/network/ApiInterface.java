@@ -86,4 +86,8 @@ public interface ApiInterface {
     //Get My Booking services
     @GET("/Dar_alJewar/api/myBookingServices")
     Call<MyServiceBookingResponseModel> getBookingServices(@Query("language") String language);
+
+    //Get My Booking services
+    @GET("/Dar_alJewar/api/myBookingDate")
+    Call<MyServiceBookingResponseModel> getBookingAnotherDate(@Query("language") String language,@Query("date") String date);
 }

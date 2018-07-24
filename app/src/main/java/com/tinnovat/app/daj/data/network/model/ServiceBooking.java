@@ -20,7 +20,7 @@ public class ServiceBooking {
     private Integer gustNo;
     @SerializedName("bookingDate")
     @Expose
-    private ServiceBookingDate bookingDate;
+    private String bookingDate;
     @SerializedName("Comments")
     @Expose
     private String comments;
@@ -60,11 +60,11 @@ public class ServiceBooking {
         this.gustNo = gustNo;
     }
 
-    public ServiceBookingDate getServiceBookingDate() {
+    public String getServiceBookingDate() {
         return bookingDate;
     }
 
-    public void setServiceBookingDate(ServiceBookingDate bookingDate) {
+    public void setServiceBookingDate(String bookingDate) {
         this.bookingDate = bookingDate;
     }
 

@@ -37,7 +37,7 @@
     <string name="english">English</string>
     <string name="arabic">العَرَبِيَّة</string>
 
-    <string name="formatter">Reg No: %d</string>//
+    <string name="formatter">Reg No: CMP%d</string>//
     <string name="formatter_number">%d %s</string>//
     <string name="am">AM</string>//
     <string name="pm">PM</string>//
@@ -66,7 +66,7 @@
     <string name="location">Location</string>
     <string name="submit">Submit</string>
     <string name="wedding_reception">Wedding Reception</string>
-    <string name="upcoming_event">Upcoming Events</string>
+    <string name="upcoming_bookings">Upcoming Bookings</string>
     <string name="lorem_ipsum">Lorem Ipsum</string>
     <string name="lorem_ipsum_medium">Lorem Ipsum is simply dummy text of the printing</string>
     <string name="lorem_ipsum_large">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</string>

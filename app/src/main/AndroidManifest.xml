@@ -178,7 +178,7 @@
                 android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
-            android:name=".features.authentication.ResetPasswordActivity"
+            android:name=".Activity.ResetPasswordActivity"
             android:screenOrientation="portrait">
 
             <!--

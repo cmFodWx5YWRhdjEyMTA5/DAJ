@@ -27,10 +27,32 @@ public class CommonUtils {
         return month_date.format(calendar.getTime());
     }
 
+    public String getDate2(Calendar calendar) {
+        SimpleDateFormat month_date = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+        return month_date.format(calendar.getTime());
+    }
+
 
     public String getMonthWithYear(Calendar calendar) {
         SimpleDateFormat month_date = new SimpleDateFormat("MMMM yyyy", Locale.US);
         return month_date.format(calendar.getTime());
+    }
+
+    public String getDateIntoString(String inputDate){
+        SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+        Date dt1 = null;
+        try {
+            dt1 = format1.parse(inputDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        DateFormat format2;
+     //   if (isDay)
+            format2 = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+       /* else
+            format2 = new Time("MMM", Locale.US);*/
+
+        return format2.format(dt1);
     }
 
     public String getDate(String inputDate, boolean isDay) {
