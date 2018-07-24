@@ -12,9 +12,9 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.tinnovat.app.daj.Activity.EventDetailActivity;
 import com.tinnovat.app.daj.BaseFragment;
 import com.tinnovat.app.daj.R;
+import com.tinnovat.app.daj.activity.EventDetailActivity;
 import com.tinnovat.app.daj.data.AppPreferanceStore;
 import com.tinnovat.app.daj.features.eventAndNews.EventAndNewsListAdapter;
 import com.tinnovat.app.daj.testing.Movie;
@@ -36,13 +36,13 @@ public class TabFragment1 extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-         inflater.inflate(R.layout.fragment_tab_1, container, false);
+        inflater.inflate(R.layout.fragment_tab_1, container, false);
         View view = inflater.inflate(R.layout.fragment_tab_1, container, false);
 
         appPreferanceStore = new AppPreferanceStore(getContext());
         setView(view);
 
-        Button btn =view.findViewById(R.id.btn);
+        Button btn = view.findViewById(R.id.btn);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,19 +63,19 @@ public class TabFragment1 extends BaseFragment {
         return view;
     }
 
-    private void setView(View view){
+    private void setView(View view) {
         TextView banner = view.findViewById(R.id.banner);
 
         recyclerView = view.findViewById(R.id.recycler_view);
 
         mAdapter = new EventAndNewsListAdapter(movieList);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL, false);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
 
         if (appPreferanceStore.getDataEventAndNews().body() != null &&
-                appPreferanceStore.getDataEventAndNews().body().getCategory() != null){
+                appPreferanceStore.getDataEventAndNews().body().getCategory() != null) {
 
             banner.setText(appPreferanceStore.getDataEventAndNews().body().getCategory().get(0).getCategoryName());
 
@@ -84,6 +84,7 @@ public class TabFragment1 extends BaseFragment {
         prepareMovieData();
 
     }
+
     private void prepareMovieData() {
         Movie movie = new Movie("Mad Max: Fury Road", "Action & Adventure", "2015");
         movieList.add(movie);
@@ -135,6 +136,7 @@ public class TabFragment1 extends BaseFragment {
 
         mAdapter.notifyDataSetChanged();
     }
+
     @Override
     public void initialiseViews(View view) {
 

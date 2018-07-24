@@ -8,6 +8,7 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature android:name="android.hardware.camera" android:required="false" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -100,7 +101,7 @@
                 android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
-            android:name=".Activity.SurveillanceActivity"
+            android:name=".activity.SurveillanceActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -142,7 +143,7 @@
                 android:value=".features.eventAndNews.circle.EventAndNewsActivity" />
         </activity>
         <activity
-            android:name=".Activity.EventDetailActivity"
+            android:name=".activity.EventDetailActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -150,7 +151,7 @@
         </activity>
 
         <activity
-            android:name=".features.emergencyContact.EmergencyContactActivity"
+            android:name=".features.emergencycontact.EmergencyContactActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -164,7 +165,7 @@
                 android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
-            android:name=".Activity.ProfileActivity"
+            android:name=".activity.ProfileActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -178,7 +179,7 @@
                 android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
-            android:name=".Activity.ResetPasswordActivity"
+            android:name=".activity.ResetPasswordActivity"
             android:screenOrientation="portrait">
 
             <!--

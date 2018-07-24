@@ -73,4 +73,20 @@ public class RequestParams {
 
         }
     }
+
+    public class ComplaintRequest {
+        private String language;
+        private String category;
+        private String description;
+        private List<String> base64_image;
+        private String locationCoordinates;
+
+        public ComplaintRequest(String language, String category, String description, List<String> base64_image, String locationCoordinates) {
+            this.language = language;
+            this.category = category;
+            this.description = description;
+            this.base64_image = base64_image;
+            this.locationCoordinates = locationCoordinates;
+        }
+    }
 }

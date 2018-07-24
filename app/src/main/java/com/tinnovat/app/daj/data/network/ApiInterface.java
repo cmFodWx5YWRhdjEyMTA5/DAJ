@@ -7,6 +7,7 @@ package com.tinnovat.app.daj.data.network;
 
 import com.tinnovat.app.daj.data.network.model.ComplaintCategoriesResponseModel;
 import com.tinnovat.app.daj.data.network.model.ComplaintListResponseModel;
+import com.tinnovat.app.daj.data.network.model.CompllaintUpdateResponseModel;
 import com.tinnovat.app.daj.data.network.model.ContactResponseModel;
 import com.tinnovat.app.daj.data.network.model.EventListModel;
 import com.tinnovat.app.daj.data.network.model.FoodResponseModel;
@@ -90,4 +91,8 @@ public interface ApiInterface {
     //Get My Booking services
     @GET("/Dar_alJewar/api/myBookingDate")
     Call<MyServiceBookingResponseModel> getBookingAnotherDate(@Query("language") String language,@Query("date") String date);
+
+    //Register Complaint
+    @POST("/Dar_alJewar/api/complaintRegister")
+    Call<CompllaintUpdateResponseModel> registerComplaintService(@Body RequestParams.ComplaintRequest serviceBookingRequest);
 }

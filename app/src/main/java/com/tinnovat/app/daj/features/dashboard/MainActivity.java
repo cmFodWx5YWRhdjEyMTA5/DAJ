@@ -14,20 +14,20 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.tinnovat.app.daj.features.authentication.ChangePasswordActivity;
-import com.tinnovat.app.daj.features.futurePhase.FuturePhaseInfoListActivity;
-import com.tinnovat.app.daj.Activity.ProfileActivity;
-import com.tinnovat.app.daj.Activity.SurveillanceActivity;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
+import com.tinnovat.app.daj.activity.ProfileActivity;
+import com.tinnovat.app.daj.activity.SurveillanceActivity;
+import com.tinnovat.app.daj.features.authentication.ChangePasswordActivity;
 import com.tinnovat.app.daj.features.authentication.LoginActivity;
 import com.tinnovat.app.daj.features.bookings.GuestRegistrationActivity;
 import com.tinnovat.app.daj.features.bookings.MyBookingActivity;
 import com.tinnovat.app.daj.features.complaint.MyComplaintListActivity;
-import com.tinnovat.app.daj.features.emergencyContact.EmergencyContactActivity;
+import com.tinnovat.app.daj.features.emergencycontact.EmergencyContactActivity;
 import com.tinnovat.app.daj.features.eventAndNews.circle.EventAndNewsActivity;
 import com.tinnovat.app.daj.features.foodAndTaxi.OrderFoodActivity;
 import com.tinnovat.app.daj.features.foodAndTaxi.OrderTaxiActivity;
+import com.tinnovat.app.daj.features.futurePhase.FuturePhaseInfoListActivity;
 import com.tinnovat.app.daj.features.services.ServicesActivity;
 import com.tinnovat.app.daj.map.MapsActivity;
 
@@ -66,10 +66,10 @@ public class MainActivity extends BaseActivity
         super.onCreate(savedInstanceState);
 
         String languageToLoad;
-        if (getLanguage()){
-            languageToLoad  = "en"; // english
-        }else {
-            languageToLoad  = "ar"; // arabic
+        if (getLanguage()) {
+            languageToLoad = "en"; // english
+        } else {
+            languageToLoad = "ar"; // arabic
         }
 
         Locale locale = new Locale(languageToLoad);
@@ -110,7 +110,6 @@ public class MainActivity extends BaseActivity
         projects = findViewById(R.id.projects);
 
 
-
         arcEventAr = findViewById(R.id.arcEventAr);
         arcEventEn = findViewById(R.id.arcEventEn);
 
@@ -129,7 +128,7 @@ public class MainActivity extends BaseActivity
         arcProjectAr = findViewById(R.id.arcProjectAr);
         arcProjectEn = findViewById(R.id.arcProjectEn);
 
-        if (!getLanguage()){
+        if (!getLanguage()) {
             //for arabic
             navigationView.getMenu().getItem(0).setIcon(R.drawable.home_ar_nav);
             navigationView.getMenu().getItem(1).setIcon(R.drawable.event_ar_nav);
@@ -162,7 +161,7 @@ public class MainActivity extends BaseActivity
 
             arcProjectAr.setVisibility(View.VISIBLE);
             arcProjectEn.setVisibility(View.INVISIBLE);
-        }else {
+        } else {
             //for Eng
 
             navigationView.getMenu().getItem(0).setIcon(R.drawable.home_nav);
@@ -199,13 +198,10 @@ public class MainActivity extends BaseActivity
         }
 
 
-
-
-
-       facebook.setOnClickListener(new View.OnClickListener() {
+        facebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // Toast.makeText(MainActivity.this,"facebook clicked",Toast.LENGTH_SHORT).show();
+                // Toast.makeText(MainActivity.this,"facebook clicked",Toast.LENGTH_SHORT).show();
                 Intent followIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/MadinahKEC/"));
                 startActivity(followIntent);
             }
@@ -321,12 +317,10 @@ public class MainActivity extends BaseActivity
         if (id == R.id.home) {
 
 
-
-
-           // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+            // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
             // Handle the camera action
-           // item.setIcon(R.layout.dialog_guest);
-           // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+            // item.setIcon(R.layout.dialog_guest);
+            // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
 
            /* Intent i = new Intent(MainActivity.this, MainActivity.class);
             startActivity(i);*/
@@ -337,18 +331,18 @@ public class MainActivity extends BaseActivity
                 item.setIcon(R.drawable.icon_slection_english);
             }*/
         } else if (id == R.id.events) {
-           // setLanguage(true);
-           // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+            // setLanguage(true);
+            // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
             Intent i = new Intent(MainActivity.this, EventAndNewsActivity.class);
             startActivity(i);
 
         } else if (id == R.id.services) {
             Intent i = new Intent(MainActivity.this, ServicesActivity.class);
             startActivity(i);
-           // setLanguage(false);
+            // setLanguage(false);
            /* Intent i = new Intent(MainActivity.this, TestActivity.class);
             startActivity(i);*/
-           // finish();
+            // finish();
         } else if (id == R.id.guest_registration) {
             Intent i = new Intent(MainActivity.this, GuestRegistrationActivity.class);
             startActivity(i);
@@ -361,39 +355,39 @@ public class MainActivity extends BaseActivity
             Intent i = new Intent(MainActivity.this, MapsActivity.class);
             startActivity(i);
 
-        }else if (id == R.id.projects) {
+        } else if (id == R.id.projects) {
             Intent i = new Intent(MainActivity.this, FuturePhaseInfoListActivity.class);
             startActivity(i);
 
-        }else if (id == R.id.my_bookings) {
+        } else if (id == R.id.my_bookings) {
             Intent i = new Intent(MainActivity.this, MyBookingActivity.class);
             startActivity(i);
 
-        }else if (id == R.id.view_profile) {
+        } else if (id == R.id.view_profile) {
             Intent i = new Intent(MainActivity.this, ProfileActivity.class);
             startActivity(i);
 
-        }else if (id == R.id.food) {
+        } else if (id == R.id.food) {
             Intent i = new Intent(MainActivity.this, OrderFoodActivity.class);
             startActivity(i);
 
-        }else if (id == R.id.taxi) {
+        } else if (id == R.id.taxi) {
             Intent i = new Intent(MainActivity.this, OrderTaxiActivity.class);
             startActivity(i);
 
-        }else if (id == R.id.complaint) {
+        } else if (id == R.id.complaint) {
             Intent i = new Intent(MainActivity.this, MyComplaintListActivity.class);
             startActivity(i);
-        }else if (id == R.id.emergency_contact) {
+        } else if (id == R.id.emergency_contact) {
             Intent i = new Intent(MainActivity.this, EmergencyContactActivity.class);
             startActivity(i);
 
-        }else if (id == R.id.change_password) {
+        } else if (id == R.id.change_password) {
             Intent i = new Intent(MainActivity.this, ChangePasswordActivity.class);
             startActivity(i);
-           // Toast.makeText(this,""+getLanguage(),Toast.LENGTH_SHORT).show();
-        }else if (id == R.id.logout) {
-           // Toast.makeText(this,""+getLanguage(),Toast.LENGTH_SHORT).show();
+            // Toast.makeText(this,""+getLanguage(),Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.logout) {
+            // Toast.makeText(this,""+getLanguage(),Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();

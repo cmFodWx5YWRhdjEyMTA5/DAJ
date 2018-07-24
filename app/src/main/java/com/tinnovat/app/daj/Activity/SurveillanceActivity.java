@@ -1,4 +1,4 @@
-package com.tinnovat.app.daj.Activity;
+package com.tinnovat.app.daj.activity;
 
 import android.os.Bundle;
 import android.view.View;

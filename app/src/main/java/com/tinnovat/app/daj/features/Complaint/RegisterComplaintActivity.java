@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -13,18 +14,27 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
+import com.tinnovat.app.daj.data.AppPreferanceStore;
 import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.ComplaintCategoriesResponseModel;
+import com.tinnovat.app.daj.data.network.model.CompllaintUpdateResponseModel;
+import com.tinnovat.app.daj.data.network.model.RequestParams;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -33,14 +43,23 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RegisterComplaintActivity extends BaseActivity  {
+public class RegisterComplaintActivity extends BaseActivity implements ImagesAdapter.ImageAdapterListener {
 
     TextView category;
     List<String> listItems;
 
     private static final int CAMERA_REQUEST = 1888;
-    private ImageView imageView;
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
+    private Button buttonSubmit;
+    private ArrayList<Bitmap> images;
+    private GoogleApiClient mGoogleApiClient;
+    private String lattitude;
+    private String longitude;
+    private AppPreferanceStore appPreferanceStore;
+    private RecyclerView recyclerViewImages;
+    private ImagesAdapter mAdapter;
+    private TextView textAddress;
+    private LocationManager mLocationManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,13 +67,25 @@ public class RegisterComplaintActivity extends BaseActivity  {
         setContentView(R.layout.activity_register_complaint);
         Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.reg_complaint));
 
+        appPreferanceStore = new AppPreferanceStore(getApplicationContext());
         LinearLayout takeImage = findViewById(R.id.takeImage);
+        buttonSubmit = findViewById(R.id.button_submit);
+        textAddress = findViewById(R.id.text_address);
+        buttonSubmit.setOnClickListener(this);
 
         takeImage.setOnClickListener(this);
 
+        recyclerViewImages = findViewById(R.id.recycler_view_images);
+        mAdapter = new ImagesAdapter(getApplicationContext(), this);
+
+        recyclerViewImages.setVisibility(View.GONE);
+        images = new ArrayList<>();
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerViewImages.setLayoutManager(mLayoutManager);
+        recyclerViewImages.setItemAnimator(new DefaultItemAnimator());
+        recyclerViewImages.setAdapter(mAdapter);
 
         fetchCategory();
-
     }
 
     private void fetchCategory() {
@@ -80,11 +111,11 @@ public class RegisterComplaintActivity extends BaseActivity  {
         });
     }
 
-    private void setData(Response<ComplaintCategoriesResponseModel> response){
-         listItems = new ArrayList<String>();
+    private void setData(Response<ComplaintCategoriesResponseModel> response) {
+        listItems = new ArrayList<String>();
 
         //Todo check chenge for loop
-        for(int i=0 ; i<response.body().getCategories().size();i++) {
+        for (int i = 0; i < response.body().getCategories().size(); i++) {
             listItems.add(response.body().getCategories().get(i).getCategoryName());
         }
 
@@ -112,7 +143,7 @@ public class RegisterComplaintActivity extends BaseActivity  {
 
     }
 
-    private void takePhoto(){
+    private void takePhoto() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.CAMERA)
                     != PackageManager.PERMISSION_GRANTED) {
@@ -127,15 +158,58 @@ public class RegisterComplaintActivity extends BaseActivity  {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.takeImage:
                 takePhoto();
                 break;
 
-                default:
-                    break;
+            case R.id.button_submit:
+                registerComplaint();
+                break;
+
+            default:
+                break;
         }
 
+    }
+
+    private void registerComplaint() {
+
+        List<String> imageArray = new ArrayList<>();
+        if (images != null && !images.isEmpty()) {
+
+            for (Bitmap bitmap : images) {
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                imageArray.add(Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT));
+            }
+        }
+
+        startLoading();
+
+        RequestParams.ComplaintRequest request = new RequestParams().new ComplaintRequest(
+                appPreferanceStore.getLanguage() ? "en" : "ar", "1", "test",
+                imageArray, String.format("%s,%s", lattitude, longitude));
+
+        ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
+
+        //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
+        Call<CompllaintUpdateResponseModel> call = apiInterface.registerComplaintService(request);
+        call.enqueue(new Callback<CompllaintUpdateResponseModel>() {
+            @Override
+            public void onResponse(Call<CompllaintUpdateResponseModel> call, Response<CompllaintUpdateResponseModel> response) {
+                endLoading();
+                showMessage("Complaint Registered Successfully");
+
+            }
+
+            @Override
+            public void onFailure(Call<CompllaintUpdateResponseModel> call, Throwable t) {
+                endLoading();
+
+                showMessage("Complaint Registration failed");
+            }
+        });
     }
 
     @Override
@@ -150,38 +224,65 @@ public class RegisterComplaintActivity extends BaseActivity  {
             } else {
                 Toast.makeText(this, "camera permission denied", Toast.LENGTH_LONG).show();
             }
-
         }
     }
 
-        public void onActivityResult(int requestCode, int resultCode, Intent data) {
-            if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
-                imageView = findViewById(R.id.pto);
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
 
-                Bitmap photo = (Bitmap) data.getExtras().get("data");
-                imageView.setImageBitmap(photo);
-            }
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            images.add(photo);
+            mAdapter.setData(images);
+            recyclerViewImages.setVisibility(View.VISIBLE);
         }
+    }
 
-        public class ViewDialog {
+    @Override
+    public void interactClick(final Bitmap bitmapImage) {
+        final Dialog dialog = new Dialog(RegisterComplaintActivity.this, android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
 
-        public void showDialog(){
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(true);
+        dialog.setContentView(R.layout.image_dialog);
+
+        ImageButton delete = dialog.findViewById(R.id.button_delete);
+        ImageView imageView = dialog.findViewById(R.id.image);
+
+        imageView.setImageBitmap(bitmapImage);
+
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                images.remove(bitmapImage);
+                mAdapter.setData(images);
+                if (images.size() > 0)
+                    recyclerViewImages.setVisibility(View.VISIBLE);
+                else
+                    recyclerViewImages.setVisibility(View.GONE);
+
+
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+    public class ViewDialog {
+
+        public void showDialog() {
             final Dialog dialog = new Dialog(RegisterComplaintActivity.this);
             dialog.setContentView(R.layout.dialog_reg_complaint);
-
-
-            RecyclerView recyclerView= dialog.findViewById(R.id.recycler_view);
+            RecyclerView recyclerView = dialog.findViewById(R.id.recycler_view);
             ComplaintCategoryAdapter mAdapter = new ComplaintCategoryAdapter(listItems);
 
-            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL, false);
+            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
             recyclerView.setLayoutManager(mLayoutManager);
             recyclerView.setItemAnimator(new DefaultItemAnimator());
             recyclerView.setAdapter(mAdapter);
-
             dialog.show();
 
         }
 
     }
-
 }
