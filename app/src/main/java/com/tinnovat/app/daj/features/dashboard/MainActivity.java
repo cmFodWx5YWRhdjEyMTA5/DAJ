@@ -86,11 +86,7 @@ public class MainActivity extends BaseActivity
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle(getText(R.string.dashboard));
         }
-<<<<<<< HEAD
-        
-=======
 
->>>>>>> d7ee93f3137585a1801f9ac08f7efe0528634d3e
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
