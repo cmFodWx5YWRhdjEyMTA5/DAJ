@@ -3,6 +3,7 @@ package com.tinnovat.app.daj;
 import android.app.Dialog;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
@@ -119,7 +120,17 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         return appPreferenceStore.getVillaNo();
     }
 
-    public void showMessage(String message) {
-        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+    public void showMessage( String message) {
+      /*  Snackbar mySnackbar = Snackbar.make(view,
+                message, Snackbar.LENGTH_SHORT);
+        mySnackbar.show();*/
+//        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    public void showMessage(View view, String message) {
+        Snackbar mySnackbar = Snackbar.make(view,
+                message, Snackbar.LENGTH_SHORT);
+        mySnackbar.show();
+//        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 }

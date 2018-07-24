@@ -48,14 +48,19 @@
                 android:layout_marginBottom="10dp"
                 android:text="@string/lorem_ipsum_large"
                 android:textColor="@color/black" />
-            <ImageView
+
+            <include
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                layout="@layout/content_map"
+                android:layout_marginBottom="10dp"/>
+
+          <!--  <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:scaleType="centerCrop"
                 android:layout_marginBottom="10dp"
-                android:src="@drawable/map"/>
-
-
+                android:src="@drawable/map"/>-->
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/recycler_view"
