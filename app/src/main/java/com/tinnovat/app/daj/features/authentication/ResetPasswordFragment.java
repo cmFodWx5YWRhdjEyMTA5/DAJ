@@ -85,7 +85,7 @@ public class ResetPasswordFragment extends BaseFragment {
                         @Override
                         public void onResponse(Call<SuccessResponseModel> call, Response<SuccessResponseModel> response) {
                             endLoading();
-                            //showMessage("Successful");
+                            showMessage("Successful");
                             Objects.requireNonNull(getActivity()).getSupportFragmentManager().popBackStack();
 
                             //todo change
@@ -105,7 +105,7 @@ public class ResetPasswordFragment extends BaseFragment {
                         public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
 
                             endLoading();
-                            //  showMessage(getResources().getString(R.string.network_problem));
+                              showMessage(getResources().getString(R.string.network_problem));
                         }
                     });
 

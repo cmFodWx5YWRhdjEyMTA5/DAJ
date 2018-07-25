@@ -127,6 +127,9 @@ public class FuturePhaseInfoDetailActivity extends BaseActivity implements OnMap
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
         mCurrLocationMarker = mMap.addMarker(markerOptions);
 
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
+
+
         //move map camera
       /*  mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(11));

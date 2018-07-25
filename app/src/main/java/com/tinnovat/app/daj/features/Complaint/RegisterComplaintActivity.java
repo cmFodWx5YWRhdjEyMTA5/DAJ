@@ -5,11 +5,14 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -36,7 +39,10 @@ import com.tinnovat.app.daj.data.network.model.CompllaintUpdateResponseModel;
 import com.tinnovat.app.daj.data.network.model.RequestParams;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -57,7 +63,7 @@ public class RegisterComplaintActivity extends BaseActivity implements ImagesAda
     private Button buttonSubmit;
     private ArrayList<Bitmap> images;
     private GoogleApiClient mGoogleApiClient;
-    private String lattitude ="7.724600";
+    private String lattitude = "7.724600";
     private String longitude = "20.418335";
     private AppPreferanceStore appPreferanceStore;
     private RecyclerView recyclerViewImages;
@@ -66,6 +72,7 @@ public class RegisterComplaintActivity extends BaseActivity implements ImagesAda
     private LocationManager mLocationManager;
 
     List<String> sam = new ArrayList<>();
+    private Uri imageUri;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -127,7 +134,7 @@ public class RegisterComplaintActivity extends BaseActivity implements ImagesAda
             catIds.add(response.body().getCategories().get(i).getId());
         }
 
-       // CharSequence categoryList[] = listItems.toArray(new CharSequence[listItems.size()]);
+        // CharSequence categoryList[] = listItems.toArray(new CharSequence[listItems.size()]);
 
         category = findViewById(R.id.category);
 
@@ -158,8 +165,19 @@ public class RegisterComplaintActivity extends BaseActivity implements ImagesAda
                 requestPermissions(new String[]{Manifest.permission.CAMERA},
                         MY_CAMERA_PERMISSION_CODE);
             } else {
-                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(cameraIntent, CAMERA_REQUEST);
+                StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+                StrictMode.setVmPolicy(builder.build());
+                String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+                File file = new File(Environment.getExternalStorageDirectory(), timeStamp + ".png");
+                //"/DAJ_Files" + "/reference_img_" +
+                imageUri = Uri.fromFile(file);
+
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+                startActivityForResult(intent, CAMERA_REQUEST);
+                /*
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent, CAMERA_REQUEST);*/
             }
         }
     }
@@ -182,10 +200,10 @@ public class RegisterComplaintActivity extends BaseActivity implements ImagesAda
 
     }
 
-    private void doValidation(){
-        if (mCatId == 0){
+    private void doValidation() {
+        if (mCatId == 0) {
             showMessage(getResources().getString(R.string.choose_category));
-        }else {
+        } else {
             registerComplaint();
         }
     }
@@ -198,7 +216,7 @@ public class RegisterComplaintActivity extends BaseActivity implements ImagesAda
             for (Bitmap bitmap : images) {
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                imageArray.add("data:image/jpeg;base64,"+Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT));
+                imageArray.add("data:image/jpeg;base64," + Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT));
             }
         }
 
@@ -252,8 +270,14 @@ public class RegisterComplaintActivity extends BaseActivity implements ImagesAda
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
 
-            Bitmap photo = (Bitmap) data.getExtras().get("data");
-            images.add(photo);
+            try {
+                Bitmap thumbnail = MediaStore.Images.Media.getBitmap(
+                        getContentResolver(), imageUri);
+                images.add(thumbnail);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+//            images.add(srcBmp);
             mAdapter.setData(images);
             recyclerViewImages.setVisibility(View.VISIBLE);
         }
@@ -290,13 +314,14 @@ public class RegisterComplaintActivity extends BaseActivity implements ImagesAda
         dialog.show();
     }
 
-    public class ViewDialog implements ComplaintCategoryAdapter.CategoryAdapterListener{
-         Dialog dialog;
+    public class ViewDialog implements ComplaintCategoryAdapter.CategoryAdapterListener {
+        Dialog dialog;
+
         public void showDialog() {
             dialog = new Dialog(RegisterComplaintActivity.this);
             dialog.setContentView(R.layout.dialog_reg_complaint);
             RecyclerView recyclerView = dialog.findViewById(R.id.recycler_view);
-            ComplaintCategoryAdapter mAdapter = new ComplaintCategoryAdapter(listItems,catIds,this);
+            ComplaintCategoryAdapter mAdapter = new ComplaintCategoryAdapter(listItems, catIds, this);
 
             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
             recyclerView.setLayoutManager(mLayoutManager);
@@ -307,10 +332,18 @@ public class RegisterComplaintActivity extends BaseActivity implements ImagesAda
         }
 
         @Override
-        public void interactClick(String mCategory,int catId) {
+        public void interactClick(String mCategory, int catId) {
             mCatId = catId;
             category.setText(mCategory);
             dialog.dismiss();
         }
+    }
+
+    public String getRealPathFromURI(Uri contentUri) {
+        String[] proj = {MediaStore.Images.Media.DATA};
+        Cursor cursor = managedQuery(contentUri, proj, null, null, null);
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        return cursor.getString(column_index);
     }
 }
