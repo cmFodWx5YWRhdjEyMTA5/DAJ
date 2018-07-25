@@ -387,7 +387,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
 
             case R.id.fab_direction:
                 Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                        Uri.parse("http://maps.google.com/maps?daddr=20.5666,45.345"));
+                        Uri.parse("http://maps.google.com/maps?daddr=9.438330,77.555490"));
                 startActivity(intent);
                 break;
         }

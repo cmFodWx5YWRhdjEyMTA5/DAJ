@@ -6,12 +6,6 @@
     android:orientation="vertical"
     android:layout_marginTop="10dp">
 
-    <!--<RelativeLayout
-        android:id="@+id/row1"
-        android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:layout_margin="10dp">-->
-
         <ImageView
             android:id="@+id/servicesImage"
             android:layout_width="match_parent"
@@ -23,6 +17,5 @@
             android:id="@+id/serviceName"
             style="@style/futureListBanner"
             android:text="@string/lorem_ipsum" />
-   <!-- </RelativeLayout>-->
 
 </RelativeLayout>

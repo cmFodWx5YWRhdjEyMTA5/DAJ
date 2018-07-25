@@ -52,9 +52,10 @@ public class FuturePhaseInfoDetailActivity extends BaseActivity implements OnMap
     private LocationRequest mLocationRequest;
     private Location mLastLocation;
     private Marker mCurrLocationMarker;
-    private double latitude;
-    private double longitude;
     private int PROXIMITY_RADIUS = 10000;
+    private double lat = 0;
+    private double lng = 0;
+    private String banner = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,10 +70,13 @@ public class FuturePhaseInfoDetailActivity extends BaseActivity implements OnMap
         Intent i = getIntent();
         Futurephase res = new Gson().fromJson(i.getStringExtra("response"), Futurephase.class);
 
+        lat = Double.parseDouble(res.getLocationlat());
+        lng = Double.parseDouble(res.getLocationlng());
+
         TextView bannerText = findViewById(R.id.bannerText);
         TextView area = findViewById(R.id.area);
         TextView descriptionText = findViewById(R.id.descriptionText);
-
+        banner = res.getPhaseName();
         bannerText.setText(res.getPhaseName());
         area.setText(res.getArea());
         descriptionText.setText(res.getDesc());
@@ -116,10 +120,10 @@ public class FuturePhaseInfoDetailActivity extends BaseActivity implements OnMap
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
 
-        LatLng latLng = new LatLng(40, 18.00);
+        LatLng latLng = new LatLng(lat, lng);
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
-        markerOptions.title("Current Position");
+        markerOptions.title(banner);
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
         mCurrLocationMarker = mMap.addMarker(markerOptions);
 
