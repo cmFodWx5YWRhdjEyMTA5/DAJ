@@ -209,7 +209,7 @@ public class AppPreferanceStore {
      * Get Laguage
      * */
     public boolean getLanguage(){
-        return pref.getBoolean(IS_ENGLISH, false);
+        return pref.getBoolean(IS_ENGLISH, true);
     }
 
 }

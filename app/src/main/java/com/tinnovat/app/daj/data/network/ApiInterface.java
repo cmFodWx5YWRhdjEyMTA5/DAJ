@@ -23,6 +23,7 @@ import com.tinnovat.app.daj.data.network.model.SuccessResponseModel;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -93,6 +94,7 @@ public interface ApiInterface {
     Call<MyServiceBookingResponseModel> getBookingAnotherDate(@Query("language") String language,@Query("date") String date);
 
     //Register Complaint
+    @Headers({"Accept: application/json"})
     @POST("/Dar_alJewar/api/complaintRegister")
     Call<CompllaintUpdateResponseModel> registerComplaintService(@Body RequestParams.ComplaintRequest serviceBookingRequest);
 }

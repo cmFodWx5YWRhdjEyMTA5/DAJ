@@ -153,8 +153,6 @@ public class LoginFragment extends BaseFragment {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.content_frame, ResetPasswordFragment.getInstance()).addToBackStack(null);
                 transaction.commit();
-//                intent = new Intent(this.getActivity(), ResetPasswordActivity.class);
-//                startActivity(intent);
 
                 break;
         }

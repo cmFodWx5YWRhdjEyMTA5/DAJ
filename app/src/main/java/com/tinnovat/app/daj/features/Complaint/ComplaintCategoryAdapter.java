@@ -1,6 +1,7 @@
 package com.tinnovat.app.daj.features.complaint;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,8 @@ public class ComplaintCategoryAdapter extends RecyclerView.Adapter<ComplaintCate
 
     private  Context mContext;
     private List<String> listItems;
+    private List<Integer> catIds;
+    private CategoryAdapterListener listener;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView category;
@@ -28,8 +31,10 @@ public class ComplaintCategoryAdapter extends RecyclerView.Adapter<ComplaintCate
 
 
 
-    public ComplaintCategoryAdapter(List<String> listItems) {
+    public ComplaintCategoryAdapter(List<String> listItems,List<Integer> catIds,CategoryAdapterListener listener) {
         this.listItems = listItems;
+        this.listener = listener;
+        this.catIds = catIds;
     }
 
     @Override
@@ -48,9 +53,8 @@ public class ComplaintCategoryAdapter extends RecyclerView.Adapter<ComplaintCate
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // holder.title.setBackgroundColor(mContext.getResources().getColor(R.color.orange));
 
-                //TODO check set this value in activity
+                listener.interactClick(listItems.get(holder.getAdapterPosition()),catIds.get(holder.getAdapterPosition()));
             }
         });
 
@@ -59,5 +63,9 @@ public class ComplaintCategoryAdapter extends RecyclerView.Adapter<ComplaintCate
     @Override
     public int getItemCount() {
         return listItems.size();
+    }
+
+    public interface CategoryAdapterListener {
+        void interactClick(String mCategory, int catId);
     }
 }

@@ -101,7 +101,7 @@
                 android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
-            android:name=".activity.SurveillanceActivity"
+            android:name=".features.surveillance.SurveillanceActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -143,7 +143,7 @@
                 android:value=".features.eventAndNews.circle.EventAndNewsActivity" />
         </activity>
         <activity
-            android:name=".activity.EventDetailActivity"
+            android:name=".features.eventAndNews.EventDetailActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -151,7 +151,7 @@
         </activity>
 
         <activity
-            android:name=".features.emergencycontact.EmergencyContactActivity"
+            android:name=".features.emergencyContact.EmergencyContactActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -165,7 +165,7 @@
                 android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
-            android:name=".activity.ProfileActivity"
+            android:name=".features.profile.ProfileActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -178,16 +178,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
-        <activity
-            android:name=".activity.ResetPasswordActivity"
-            android:screenOrientation="portrait">
 
-            <!--
-                <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.features.authentication.LoginActivity" />
-            -->
-        </activity>
         <activity
             android:name=".map.MapsActivity"
             android:label="@string/map"

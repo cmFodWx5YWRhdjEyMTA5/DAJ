@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -47,19 +48,24 @@ public class RegisterComplaintActivity extends BaseActivity implements ImagesAda
 
     TextView category;
     List<String> listItems;
+    List<Integer> catIds;
+    ViewDialog alert;
+    int mCatId = 0;
 
     private static final int CAMERA_REQUEST = 1888;
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
     private Button buttonSubmit;
     private ArrayList<Bitmap> images;
     private GoogleApiClient mGoogleApiClient;
-    private String lattitude;
-    private String longitude;
+    private String lattitude ="7.724600";
+    private String longitude = "20.418335";
     private AppPreferanceStore appPreferanceStore;
     private RecyclerView recyclerViewImages;
     private ImagesAdapter mAdapter;
     private TextView textAddress;
     private LocationManager mLocationManager;
+
+    List<String> sam = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -113,13 +119,15 @@ public class RegisterComplaintActivity extends BaseActivity implements ImagesAda
 
     private void setData(Response<ComplaintCategoriesResponseModel> response) {
         listItems = new ArrayList<String>();
+        catIds = new ArrayList<Integer>();
 
         //Todo check chenge for loop
         for (int i = 0; i < response.body().getCategories().size(); i++) {
             listItems.add(response.body().getCategories().get(i).getCategoryName());
+            catIds.add(response.body().getCategories().get(i).getId());
         }
 
-        CharSequence categoryList[] = listItems.toArray(new CharSequence[listItems.size()]);
+       // CharSequence categoryList[] = listItems.toArray(new CharSequence[listItems.size()]);
 
         category = findViewById(R.id.category);
 
@@ -127,7 +135,7 @@ public class RegisterComplaintActivity extends BaseActivity implements ImagesAda
         category.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ViewDialog alert = new ViewDialog();
+                alert = new ViewDialog();
                 alert.showDialog();
             }
         });
@@ -164,13 +172,22 @@ public class RegisterComplaintActivity extends BaseActivity implements ImagesAda
                 break;
 
             case R.id.button_submit:
-                registerComplaint();
+                doValidation();
+                //registerComplaint();
                 break;
 
             default:
                 break;
         }
 
+    }
+
+    private void doValidation(){
+        if (mCatId == 0){
+            showMessage(getResources().getString(R.string.choose_category));
+        }else {
+            registerComplaint();
+        }
     }
 
     private void registerComplaint() {
@@ -181,14 +198,19 @@ public class RegisterComplaintActivity extends BaseActivity implements ImagesAda
             for (Bitmap bitmap : images) {
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                imageArray.add(Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT));
+                imageArray.add("data:image/jpeg;base64,"+Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT));
             }
         }
 
-        startLoading();
+      /*  ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.cctv);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] imageBytes = baos.toByteArray();
+        sam .add( "data:image/png;base64,"+Base64.encodeToString(imageBytes, Base64.DEFAULT));*/
 
+        startLoading();
         RequestParams.ComplaintRequest request = new RequestParams().new ComplaintRequest(
-                appPreferanceStore.getLanguage() ? "en" : "ar", "1", "test",
+                appPreferanceStore.getLanguage() ? "en" : "ar", mCatId, "test",
                 imageArray, String.format("%s,%s", lattitude, longitude));
 
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
@@ -268,13 +290,13 @@ public class RegisterComplaintActivity extends BaseActivity implements ImagesAda
         dialog.show();
     }
 
-    public class ViewDialog {
-
+    public class ViewDialog implements ComplaintCategoryAdapter.CategoryAdapterListener{
+         Dialog dialog;
         public void showDialog() {
-            final Dialog dialog = new Dialog(RegisterComplaintActivity.this);
+            dialog = new Dialog(RegisterComplaintActivity.this);
             dialog.setContentView(R.layout.dialog_reg_complaint);
             RecyclerView recyclerView = dialog.findViewById(R.id.recycler_view);
-            ComplaintCategoryAdapter mAdapter = new ComplaintCategoryAdapter(listItems);
+            ComplaintCategoryAdapter mAdapter = new ComplaintCategoryAdapter(listItems,catIds,this);
 
             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
             recyclerView.setLayoutManager(mLayoutManager);
@@ -284,5 +306,11 @@ public class RegisterComplaintActivity extends BaseActivity implements ImagesAda
 
         }
 
+        @Override
+        public void interactClick(String mCategory,int catId) {
+            mCatId = catId;
+            category.setText(mCategory);
+            dialog.dismiss();
+        }
     }
 }

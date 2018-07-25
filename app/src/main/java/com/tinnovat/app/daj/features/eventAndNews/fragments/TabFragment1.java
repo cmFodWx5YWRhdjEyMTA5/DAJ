@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.tinnovat.app.daj.BaseFragment;
 import com.tinnovat.app.daj.R;
-import com.tinnovat.app.daj.activity.EventDetailActivity;
+import com.tinnovat.app.daj.features.eventAndNews.EventDetailActivity;
 import com.tinnovat.app.daj.data.AppPreferanceStore;
 import com.tinnovat.app.daj.features.eventAndNews.EventAndNewsListAdapter;
 import com.tinnovat.app.daj.testing.Movie;
