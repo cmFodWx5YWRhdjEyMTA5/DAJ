@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.google.gson.Gson;
 import com.kapil.circularlayoutmanager.CircularLayoutManager;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
@@ -86,7 +87,7 @@ public class EventAndNewsActivity extends BaseActivity {
 
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
         //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
-        Call<EventListModel> call = apiInterface.getEventsAndNews("en");
+        Call<EventListModel> call = apiInterface.getEventsAndNews(appPreferanceStore.getLanguage() ? "en" : "ar");
         call.enqueue(new Callback<EventListModel>() {
             @Override
             public void onResponse(Call<EventListModel> call, Response<EventListModel> response) {
@@ -129,12 +130,12 @@ public class EventAndNewsActivity extends BaseActivity {
        // initializeList();
 
 
-        recyclerView.setAdapter(new RecyclerViewAdapter(getApplicationContext(), list));
+        recyclerView.setAdapter(new RecyclerViewAdapter(getApplicationContext(), list,response));
         recyclerView.addItemDecoration(new RecyclerItemDecoration());
         recyclerView.setLayoutManager(new CircularLayoutManager(getApplicationContext(), 300, -100));
 
 
-
+/*
         recyclerView.addOnItemTouchListener(new OnRecyclerItemClickListener(getApplicationContext(),
                 new OnRecyclerItemClickListener.OnItemClickListener() {
             @Override
@@ -142,11 +143,12 @@ public class EventAndNewsActivity extends BaseActivity {
                 showMessage(""+childIndex);
                 if (childIndex == 4){
                     Intent i = new Intent(EventAndNewsActivity.this, EventNewsActivity.class);
+                  //  i.putExtra("response",new Gson().toJson(response.body().getCategory());
                     startActivity(i);
                 }
 
             }
-        }));
+        }));*/
 
 
     }

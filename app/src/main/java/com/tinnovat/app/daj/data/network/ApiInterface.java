@@ -38,58 +38,72 @@ public interface ApiInterface {
     Call<SuccessResponseModel> resetPassword( @Body RequestParams.ResetPasswordRequest resetPasswordRequest);
 
     //Service Booking
+    @Headers({"Accept: application/json"})
     @POST("/Dar_alJewar/api/serviceBooking")
     Call<SuccessResponseModel> serviceBooking(@Body RequestParams.ServiceBookingRequest serviceBookingRequest);
 
     //guestRegister
+    @Headers({"Accept: application/json"})
     @POST("/Dar_alJewar/api/guestRegister")
     Call<GuestRegistrationResponseModel> guestRegistration(@Body RequestParams.GuestRegistrationRequest guestRegistrationRequest);
 
     //Get Change Password
+    @Headers({"Accept: application/json"})
     @POST("/Dar_alJewar/api/changePassword")
     Call<SuccessResponseModel> postChangePassword(@Body RequestParams.ChangePasswordRequest passwordRequest);
 
     //Get Events and News
+    @Headers({"Accept: application/json"})
     @GET("/Dar_alJewar/api/eventNews")
     Call<EventListModel> getEventsAndNews( @Query("language") String language);
 
     //Get Service List
+    @Headers({"Accept: application/json"})
     @GET("/Dar_alJewar/api/serviceList")
     Call<ServicesResponseModel> getServiceList(@Query("language") String language);
 
     //Get Service Available Time Slots
+    @Headers({"Accept: application/json"})
     @GET("/Dar_alJewar/api/availableTimeslots")
     Call<ServiceSlots> getAvailableTimeSlots(@Query("category") int category_id, @Query("service_type") int service_type_id, @Query("date")String date);
 
     //Get Future Phases Info
+    @Headers({"Accept: application/json"})
     @GET("/Dar_alJewar/api/futurePhases")
     Call<FuturePhasesResponseModel> getFuturePhasesInfo(@Query("language") String language);
 
     //Get Food Apps
+    @Headers({"Accept: application/json"})
     @GET("/Dar_alJewar/api/appFood")
     Call<FoodResponseModel> getFoodApps(@Query("language") String language, @Query("device") String device);
 
     //Get Taxi Apps
+    @Headers({"Accept: application/json"})
     @GET("/Dar_alJewar/api/appTaxi")
     Call<FoodResponseModel> getTaxiApps(@Query("language") String language, @Query("device") String device);
 
     //Get ContactList
+    @Headers({"Accept: application/json"})
     @GET("/Dar_alJewar/api/contactList")
     Call<ContactResponseModel> getContactList(@Query("language") String language);
 
     //Get My Complaint list
+    @Headers({"Accept: application/json"})
     @GET("/Dar_alJewar/api/complaintList")
     Call<ComplaintListResponseModel> getComplaintList(@Query("language") String language);
 
     //Get Complaint Category
+    @Headers({"Accept: application/json"})
     @GET("/Dar_alJewar/api/complaintCategory")
     Call<ComplaintCategoriesResponseModel> getComplaintCategory(@Query("language") String language);
 
     //Get My Booking services
+    @Headers({"Accept: application/json"})
     @GET("/Dar_alJewar/api/myBookingServices")
     Call<MyServiceBookingResponseModel> getBookingServices(@Query("language") String language);
 
     //Get My Booking services
+    @Headers({"Accept: application/json"})
     @GET("/Dar_alJewar/api/myBookingDate")
     Call<MyServiceBookingResponseModel> getBookingAnotherDate(@Query("language") String language,@Query("date") String date);
 

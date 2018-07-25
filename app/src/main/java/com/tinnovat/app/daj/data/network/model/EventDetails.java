@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-class EventDetails {
+public class EventDetails {
 
     @SerializedName("id")
     @Expose

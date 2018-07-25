@@ -1,26 +1,35 @@
 package com.tinnovat.app.daj.features.eventAndNews;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
+import com.google.gson.Gson;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
+import com.tinnovat.app.daj.data.network.model.EventDetails;
 
+import java.util.List;
 import java.util.Objects;
 
 public class EventNewsActivity extends BaseActivity implements TabLayout.OnTabSelectedListener {
 
     private ViewPager viewPager;
     private PagerAdapter adapter;
+    private List<EventDetails> eventDetailsList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_event_news);
         super.onCreate(savedInstanceState);
         Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.event_news));
+
+        Intent i = getIntent();
+        new Gson().fromJson( i.getStringExtra("response"), EventDetails.class );
+        showMessage("te");
     }
 
     @Override
