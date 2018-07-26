@@ -3,8 +3,11 @@ package com.tinnovat.app.daj.features.bookings;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +19,7 @@ import com.tinnovat.app.daj.utils.CommonUtils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -25,11 +29,14 @@ public class MyBookingsAdapter extends RecyclerView.Adapter<MyBookingsAdapter.My
     private int size = 0;
     private MyServiceBookingResponseModel response;
     private String date;
+    private SelectAdapterListener mListener;
+    private List<Integer> selectedBookings = new ArrayList<>();;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView time;
         public TextView serviceName;
         public LinearLayout linearLayout;
+        public CheckBox checkBox;
 
 
         public MyViewHolder(View view) {
@@ -37,13 +44,15 @@ public class MyBookingsAdapter extends RecyclerView.Adapter<MyBookingsAdapter.My
             time = view.findViewById(R.id.time);
             serviceName = view.findViewById(R.id.serviceName);
             linearLayout = view.findViewById(R.id.linearLayout);
+            checkBox = view.findViewById(R.id.checkBox);
         }
     }
 
 
-    public MyBookingsAdapter(MyServiceBookingResponseModel responseModel,String date) {
+    public MyBookingsAdapter(MyServiceBookingResponseModel responseModel,String date,SelectAdapterListener mListener) {
         this.response = responseModel;
         this.date = date;
+        this.mListener = mListener;
     }
 
     @Override
@@ -67,11 +76,43 @@ public class MyBookingsAdapter extends RecyclerView.Adapter<MyBookingsAdapter.My
             holder.linearLayout.setVisibility(View.GONE);
         }
 
+        holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    selectedBookings.add(response.getServiceBooking().get(holder.getAdapterPosition()).getId());
+                    mListener.onBookingSelected(selectedBookings);
+                }else if (selectedBookings.contains(response.getServiceBooking().get(holder.getAdapterPosition()).getId())) {
+                    selectedBookings.remove(response.getServiceBooking().get(holder.getAdapterPosition()).getId());
+                }
+                /*if (selectedBookings == null){
+                    selectedBookings = new ArrayList<>();
+                    selectedBookings.add(response.getServiceBooking().get(holder.getAdapterPosition()).getId());
+                }else if (selectedBookings.contains(response.getServiceBooking().get(holder.getAdapterPosition()).getId())) {
+                    selectedBookings.remove(response.getServiceBooking().get(holder.getAdapterPosition()).getId());
+                }else {
+                    if (!selectedBookings.isEmpty()){
+                        selectedBookings.add(response.getServiceBooking().get(holder.getAdapterPosition()).getId());
+                    }else {
+                        selectedBookings = new ArrayList<>();
+                        selectedBookings.add(response.getServiceBooking().get(holder.getAdapterPosition()).getId());
+                    }
 
+                }*/
+            }
+        });
+
+
+       // mListener.onBookingSelected(selectedBookings);
     }
 
     @Override
     public int getItemCount() {
         return response.getServiceBooking().size();
+    }
+
+    public interface SelectAdapterListener {
+
+        void onBookingSelected(List<Integer> selectedBookings);
     }
 }

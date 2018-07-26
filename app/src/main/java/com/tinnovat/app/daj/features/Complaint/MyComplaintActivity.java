@@ -83,7 +83,7 @@ public class MyComplaintActivity extends BaseActivity {
 
             TextView locationText = findViewById(R.id.locationText);
 
-            LinearLayout banner = findViewById(R.id.banner);
+            LinearLayout banner = findViewById(R.id.bannerText);
 
 
             if (getAddress(complaintList.getLocation().getLat(), complaintList.getLocation().getLong()) != null) {

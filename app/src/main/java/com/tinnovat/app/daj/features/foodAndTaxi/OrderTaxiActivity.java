@@ -31,7 +31,7 @@ public class OrderTaxiActivity extends BaseActivity {
     private void fetchTaxiApps() {
 
         startLoading();
-        ImageView banner = findViewById(R.id.banner);
+        ImageView banner = findViewById(R.id.bannerText);
         banner.setImageResource(R.drawable.order_car);
 
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);

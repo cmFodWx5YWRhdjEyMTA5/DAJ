@@ -33,7 +33,7 @@ public class OrderFoodActivity extends BaseActivity {
     private void fetchFoodApps() {
 
         startLoading();
-        ImageView banner = findViewById(R.id.banner);
+        ImageView banner = findViewById(R.id.bannerText);
         banner.setImageResource(R.drawable.order_food);
 
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);

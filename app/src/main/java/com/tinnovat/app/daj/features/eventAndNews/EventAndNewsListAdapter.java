@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.model.EventCategory;
-import com.tinnovat.app.daj.testing.Movie;
 import com.tinnovat.app.daj.testing.TestActivity;
 
 import java.util.List;
@@ -38,7 +37,7 @@ public class EventAndNewsListAdapter extends RecyclerView.Adapter<EventAndNewsLi
 
         public MyViewHolder(View view) {
             super(view);
-            title =  view.findViewById(R.id.title);
+            title =  view.findViewById(R.id.bannerText);
         }
     }
 
@@ -58,7 +57,8 @@ public class EventAndNewsListAdapter extends RecyclerView.Adapter<EventAndNewsLi
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.movie_list_row, parent, false);
+                .inflate(R.layout.event_news_list_row
+                        , parent, false);
         itemView.setOnClickListener(new TestActivity());
         mContext = parent.getContext();
 

@@ -8,7 +8,7 @@
     tools:context=".features.foodAndTaxi.OrderTaxiActivity">
 
     <ImageView
-        android:id="@+id/banner"
+        android:id="@+id/bannerText"
         android:layout_width="wrap_content"
         android:layout_height="200dp"
         android:scaleType="centerCrop"
@@ -18,7 +18,7 @@
         android:id="@+id/row1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/banner"
+        android:layout_below="@+id/bannerText"
         android:layout_marginTop="20dp">
 
         <ImageView

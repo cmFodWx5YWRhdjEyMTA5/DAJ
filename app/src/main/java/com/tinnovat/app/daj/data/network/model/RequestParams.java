@@ -40,6 +40,14 @@ public class RequestParams {
         }
     }
 
+    public class DeleteServiceBookingRequest {
+        private List<Integer> booking_id;
+
+        public DeleteServiceBookingRequest(List<Integer> booking_id) {
+            this.booking_id = booking_id;
+        }
+    }
+
     public class ServiceBookingRequest {
         private int category_id;
         private int service_id;

@@ -7,6 +7,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -19,21 +20,30 @@ import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.MyServiceBookingResponseModel;
+import com.tinnovat.app.daj.data.network.model.RequestParams;
+import com.tinnovat.app.daj.data.network.model.SuccessResponseModel;
 import com.tinnovat.app.daj.utils.CommonUtils;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MyBookingActivity extends BaseActivity {
+public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter.SelectAdapterListener{
 
 
     RelativeLayout relativeLayout;
     TextView upComingBanner;
     String anotherDate = null;
+    List<Integer> mSelectedBookings = new ArrayList<>();
+    List<Integer> mSelectedBookings1 = new ArrayList<>();
+    UpcomingMyBookingsAdapter mAdapter;
+    MyBookingsAdapter mMyBookingAdapter;
+    RecyclerView recyclerView;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,16 +52,19 @@ public class MyBookingActivity extends BaseActivity {
 
         relativeLayout= findViewById(R.id.relativeLayout);
         upComingBanner= findViewById(R.id.upComingBanner);
-
+        ImageView delete = findViewById(R.id.delete);
 
         fetchMyBooking();
 
         SetCalenderView();
 
+        delete.setOnClickListener(this);
+
     }
 
     @Override
     public void initialiseViews() {
+
 
     }
 
@@ -67,6 +80,12 @@ public class MyBookingActivity extends BaseActivity {
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.delete:
+                mSelectedBookings1.add(51);
+                invokeDeleteBooking(mSelectedBookings);
+                break;
+        }
 
     }
 
@@ -178,21 +197,21 @@ public class MyBookingActivity extends BaseActivity {
     }
 
     private void setData(Response<MyServiceBookingResponseModel> response ,String date){
-        RecyclerView recyclerView;
-        MyBookingsAdapter mAdapter;
+      //  RecyclerView recyclerView;
+
         recyclerView = findViewById(R.id.recycler_view);
 
-        mAdapter = new MyBookingsAdapter(response.body(),date);
+        mMyBookingAdapter = new MyBookingsAdapter(response.body(),date,this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        mAdapter.notifyDataSetChanged();
-        recyclerView.setAdapter(mAdapter);
+        mMyBookingAdapter.notifyDataSetChanged();
+        recyclerView.setAdapter(mMyBookingAdapter);
     }
 
     private void setUpComingData(Response<MyServiceBookingResponseModel> response){
-        RecyclerView recyclerView;
-        UpcomingMyBookingsAdapter mAdapter;
+
+        //UpcomingMyBookingsAdapter mAdapter;
         recyclerView = findViewById(R.id.recycler_view2);
 
         mAdapter = new UpcomingMyBookingsAdapter(response.body());
@@ -201,5 +220,46 @@ public class MyBookingActivity extends BaseActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         mAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(mAdapter);
+    }
+
+
+    private void invokeDeleteBooking(List<Integer> booking_id) {
+        startLoading();
+
+        ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
+        //ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        RequestParams.DeleteServiceBookingRequest deleteServiceBookingRequest = new RequestParams().new DeleteServiceBookingRequest(booking_id);
+        Call<SuccessResponseModel> call = apiInterface.deleteServiceBooking(deleteServiceBookingRequest);
+        call.enqueue(new Callback<SuccessResponseModel>() {
+            @Override
+            public void onResponse(Call<SuccessResponseModel> call, Response<SuccessResponseModel> response) {
+                endLoading();
+                if (response.body() != null) {
+                    if (response.body().getSuccess()) {
+                        showMessage(response.body().getMessage());
+                        //finish();
+                        mMyBookingAdapter.notifyDataSetChanged();
+                        recyclerView.setAdapter(mMyBookingAdapter);
+                    } else {
+                        showMessage(response.body().getMessage());
+                       // finish();
+                    }
+                }else {
+                    showMessage("1 "+getResources().getString(R.string.network_problem));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
+                endLoading();
+                showMessage("2 "+getResources().getString(R.string.network_problem));
+            }
+        });
+    }
+
+    @Override
+    public void onBookingSelected(List<Integer> selectedBookings) {
+        mSelectedBookings = selectedBookings;
+
     }
 }

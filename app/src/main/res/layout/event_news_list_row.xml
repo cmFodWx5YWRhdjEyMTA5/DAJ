@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical"
+    android:layout_margin="10dp">
+
+    <RelativeLayout
+        android:id="@+id/a1"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:background="@drawable/curve_small_bg_gray">
+        <ImageView
+            android:id="@+id/bannerImage"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/event_details_bg"/>
+        <TextView
+            android:id="@+id/bannerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_below="@+id/bannerImage"
+            android:text="@string/lorem_ipsum"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bannerText"
+            android:layout_marginStart="5dp"
+            android:textColor="@color/greenText"
+            android:text="@string/lorem_ipsum"/>
+
+        <TextView
+            android:id="@+id/interested"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/bannerImage"
+            android:text="@string/lorem_ipsum"
+            android:textColor="@color/greenText"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:padding="5dp"
+            android:elevation="3dp"
+            android:background="@drawable/curve_small_bg_white"/>
+    </RelativeLayout>
+
+</RelativeLayout>

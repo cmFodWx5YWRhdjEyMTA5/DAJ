@@ -6,7 +6,7 @@
     tools:context=".features.foodAndTaxi.OrderTaxiActivity"
     android:background="@mipmap/bg">
     <ImageView
-        android:id="@+id/banner"
+        android:id="@+id/bannerText"
         android:layout_width="wrap_content"
         android:layout_height="200dp"
         android:src="@drawable/order_food"
@@ -23,7 +23,7 @@
         android:verticalSpacing="20dp"
         android:horizontalSpacing="0dp"
         android:stretchMode="spacingWidthUniform"
-        android:layout_below="@+id/banner"
+        android:layout_below="@+id/bannerText"
         />
 
 </RelativeLayout>

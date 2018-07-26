@@ -52,6 +52,11 @@ public interface ApiInterface {
     @POST("/Dar_alJewar/api/changePassword")
     Call<SuccessResponseModel> postChangePassword(@Body RequestParams.ChangePasswordRequest passwordRequest);
 
+    //Delete service Booking
+    @Headers({"Accept: application/json"})
+    @POST("/Dar_alJewar/api/deleteBooking")
+    Call<SuccessResponseModel> deleteServiceBooking(@Body RequestParams.DeleteServiceBookingRequest deleteServiceBookingRequest);
+
     //Get Events and News
     @Headers({"Accept: application/json"})
     @GET("/Dar_alJewar/api/eventNews")

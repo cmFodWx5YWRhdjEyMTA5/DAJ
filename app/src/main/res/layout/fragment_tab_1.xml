@@ -39,7 +39,7 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/event_details_bg"/>
             <TextView
-                android:id="@+id/banner"
+                android:id="@+id/bannerText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
@@ -52,7 +52,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/banner"
+                android:layout_below="@+id/bannerText"
                 android:layout_marginStart="5dp"
                 android:textColor="@color/greenText"
                 android:text="@string/lorem_ipsum"/>
