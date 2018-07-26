@@ -24,6 +24,7 @@ import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.AppPreferanceStore;
 import com.tinnovat.app.daj.data.network.model.EventListModel;
 import com.tinnovat.app.daj.features.emergencyContact.EmergencyContactActivity;
+import com.tinnovat.app.daj.features.eventAndNews.EventNewsActivity;
 import com.tinnovat.app.daj.features.futurePhase.FuturePhaseListAdapter;
 import com.tinnovat.app.daj.features.profile.ProfileActivity;
 import com.tinnovat.app.daj.features.surveillance.SurveillanceActivity;
@@ -238,7 +239,6 @@ public class MainActivity extends BaseActivity
             case "4":
                fetchServices();
                 break;
-
             case "5":
                 fetchGuestRegistration();
                 break;
@@ -281,22 +281,6 @@ public class MainActivity extends BaseActivity
     }
 
     private void initializeList() {
-        /*for (int i = 0; i < 15; i++) {
-            Model model = new Model();
-            if (i < 3) {
-                model.setEvent("");
-            } else if (i > 11) {
-                model.setEvent("");
-            } else {
-
-                model.setEvent(event + (i + 1));
-            }
-
-
-            list.add(model);
-        }*/
-
-
         eventName = new ArrayList<>();
 
 
@@ -435,8 +419,13 @@ public class MainActivity extends BaseActivity
     }
 
 
+    private void fetchHome() {
+        Intent i = new Intent(MainActivity.this, MainActivity.class);
+        startActivity(i);
+    }
+
     private void fetchEvents() {
-        Intent i = new Intent(MainActivity.this, EventAndNewsActivity.class);
+        Intent i = new Intent(MainActivity.this, EventNewsActivity.class);
         startActivity(i);
     }
 

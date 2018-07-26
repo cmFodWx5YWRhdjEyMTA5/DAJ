@@ -46,13 +46,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".features.dashboard.EventAndNewsActivity"
-            android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
-        </activity>
-        <activity
             android:name=".testing.TestActivity"
             android:screenOrientation="portrait">
            <!-- <intent-filter>
@@ -140,7 +133,7 @@
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".features.dashboard.EventAndNewsActivity" />
+                android:value=".features.dashboard.MainActivity" />
         </activity>
         <activity
             android:name=".features.eventAndNews.EventDetailActivity"

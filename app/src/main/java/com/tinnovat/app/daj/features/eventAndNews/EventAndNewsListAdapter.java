@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.tinnovat.app.daj.R;
+import com.tinnovat.app.daj.data.network.model.EventCategory;
 import com.tinnovat.app.daj.testing.Movie;
 import com.tinnovat.app.daj.testing.TestActivity;
 
@@ -30,7 +31,7 @@ public class EventAndNewsListAdapter extends RecyclerView.Adapter<EventAndNewsLi
 
 
 
-    private List<Movie> moviesList;
+    private List<EventCategory> mEventCategories;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title;
@@ -50,8 +51,8 @@ public class EventAndNewsListAdapter extends RecyclerView.Adapter<EventAndNewsLi
     }
 
 
-    public EventAndNewsListAdapter(List<Movie> moviesList) {
-        this.moviesList = moviesList;
+    public EventAndNewsListAdapter(List<EventCategory> eventCategories) {
+        this.mEventCategories = eventCategories;
     }
 
     @Override
@@ -66,8 +67,7 @@ public class EventAndNewsListAdapter extends RecyclerView.Adapter<EventAndNewsLi
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        Movie movie = moviesList.get(position);
-        holder.title.setText("10Am - 11am");
+        holder.title.setText(mEventCategories.get(position).getCategoryName());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +80,6 @@ public class EventAndNewsListAdapter extends RecyclerView.Adapter<EventAndNewsLi
 
     @Override
     public int getItemCount() {
-        return moviesList.size();
+        return mEventCategories.size();
     }
 }

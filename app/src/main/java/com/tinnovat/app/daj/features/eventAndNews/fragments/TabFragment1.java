@@ -14,15 +14,17 @@ import android.widget.TextView;
 
 import com.tinnovat.app.daj.BaseFragment;
 import com.tinnovat.app.daj.R;
+import com.tinnovat.app.daj.data.network.model.EventCategory;
 import com.tinnovat.app.daj.features.eventAndNews.EventDetailActivity;
 import com.tinnovat.app.daj.data.AppPreferanceStore;
 import com.tinnovat.app.daj.features.eventAndNews.EventAndNewsListAdapter;
+import com.tinnovat.app.daj.features.eventAndNews.EventNewsActivity;
 import com.tinnovat.app.daj.testing.Movie;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TabFragment1 extends BaseFragment {
+public class TabFragment1 extends BaseFragment implements EventNewsActivity.EventAndNewsListener{
 
     RelativeLayout a1;
     RelativeLayout a2;
@@ -32,7 +34,9 @@ public class TabFragment1 extends BaseFragment {
     private RecyclerView recyclerView;
     private EventAndNewsListAdapter mAdapter;
 
+    private List<EventCategory> mEventCategories;
     private AppPreferanceStore appPreferanceStore;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -40,6 +44,7 @@ public class TabFragment1 extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_tab_1, container, false);
 
         appPreferanceStore = new AppPreferanceStore(getContext());
+
         setView(view);
 
         Button btn = view.findViewById(R.id.btn);
@@ -67,21 +72,20 @@ public class TabFragment1 extends BaseFragment {
         TextView banner = view.findViewById(R.id.banner);
 
         recyclerView = view.findViewById(R.id.recycler_view);
-
-        mAdapter = new EventAndNewsListAdapter(movieList);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        mAdapter = new EventAndNewsListAdapter(mEventCategories);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
 
-        if (appPreferanceStore.getDataEventAndNews().body() != null &&
+        /*if (appPreferanceStore.getDataEventAndNews().body() != null &&
                 appPreferanceStore.getDataEventAndNews().body().getCategory() != null) {
 
             banner.setText(appPreferanceStore.getDataEventAndNews().body().getCategory().get(0).getCategoryName());
 
-        }
+        }*/
 
-        prepareMovieData();
+       // prepareMovieData();
 
     }
 
@@ -149,6 +153,12 @@ public class TabFragment1 extends BaseFragment {
 
     @Override
     public void onClick(View v) {
+
+    }
+
+    @Override
+    public void EventCategories(List<EventCategory> eventCategories) {
+        mEventCategories = eventCategories;
 
     }
 }
