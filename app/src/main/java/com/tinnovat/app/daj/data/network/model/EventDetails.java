@@ -2,7 +2,9 @@ package com.tinnovat.app.daj.data.network.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.tinnovat.app.daj.utils.CommonUtils;
 
+import java.util.Calendar;
 import java.util.List;
 
 public class EventDetails {
@@ -40,6 +42,7 @@ public class EventDetails {
     @SerializedName("user_interested")
     @Expose
     private Boolean userInterested;
+    private boolean dateCategory;
 
     public Integer getId() {
         return id;
@@ -128,5 +131,42 @@ public class EventDetails {
 
     public void setUserInterested(Boolean userInterested) {
         this.userInterested = userInterested;
+    }
+
+    public String getDateCategory() {
+
+        String category = "NULL";
+        Calendar today = Calendar.getInstance();
+        Calendar startDate = CommonUtils.getInstance().getDateFromServerResponse(getStartDatetime());
+        Calendar endDate = CommonUtils.getInstance().getDateFromServerResponse(getEndDatetime());
+        if (today.DATE == startDate.DATE || today.DATE == endDate.DATE) {
+            category = "TODAY";
+        } else {
+            if (today.YEAR == startDate.YEAR && today.YEAR == endDate.YEAR) {
+                if (today.MONTH == startDate.MONTH && today.MONTH == endDate.MONTH) {
+                    if (startDate.DAY_OF_MONTH > today.DAY_OF_MONTH) {
+                        if (startDate.DAY_OF_MONTH + 1 == today.DAY_OF_MONTH)
+                            category = "TOMORROW";
+                    }
+                }
+            } else if (today.YEAR == endDate.YEAR ) {
+                if (today.MONTH == endDate.MONTH) {
+                    if (today.DAY_OF_MONTH == endDate.DAY_OF_MONTH) {
+                        category = "TODAY";
+                    }else if (today.DAY_OF_MONTH == endDate.DAY_OF_MONTH+1) {
+                        category = "TOMORROW";
+                    }
+                }
+            } else if (today.YEAR == startDate.YEAR ) {
+                if (today.MONTH == startDate.MONTH) {
+                    if (today.DAY_OF_MONTH == startDate.DAY_OF_MONTH) {
+                        category = "TODAY";
+                    } else if (today.DAY_OF_MONTH == startDate.DAY_OF_MONTH+1) {
+                        category = "TOMORROW";
+                    }
+                }
+            }
+        }
+        return category;
     }
 }

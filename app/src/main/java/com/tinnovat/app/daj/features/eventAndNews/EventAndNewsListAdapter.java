@@ -9,49 +9,39 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.tinnovat.app.daj.R;
-import com.tinnovat.app.daj.data.network.model.EventCategory;
+import com.tinnovat.app.daj.data.network.model.EventDetails;
 import com.tinnovat.app.daj.testing.TestActivity;
 
 import java.util.List;
 
 public class EventAndNewsListAdapter extends RecyclerView.Adapter<EventAndNewsListAdapter.MyViewHolder> {
 
-    private  Context mContext;
+    private Context mContext;
 
-    /*@Override
-    public void onCreate() {
-        super.onCreate();
-        mContext = this;
-    }*/
-
-    /*public static Context getContext(){
-        return mContext;
-    }*/
-
-
-
-    private List<EventCategory> mEventCategories;
+    private List<EventDetails> eventDetailsList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title;
 
         public MyViewHolder(View view) {
             super(view);
-            title =  view.findViewById(R.id.bannerText);
+            title = view.findViewById(R.id.bannerText);
         }
     }
 
     class ViewPagerViewHolder extends RecyclerView.ViewHolder {
         ViewPager viewPager;
+
         public ViewPagerViewHolder(View view) {
             super(view);
-            viewPager =  view.findViewById(R.id.pager);
+            viewPager = view.findViewById(R.id.pager);
         }
     }
 
 
-    public EventAndNewsListAdapter(List<EventCategory> eventCategories) {
-        this.mEventCategories = eventCategories;
+    public void setData(List<EventDetails> eventDetails) {
+        this.eventDetailsList = eventDetails;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -67,19 +57,21 @@ public class EventAndNewsListAdapter extends RecyclerView.Adapter<EventAndNewsLi
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        holder.title.setText(mEventCategories.get(position).getCategoryName());
+        if (eventDetailsList != null && !eventDetailsList.isEmpty()) {
+            holder.title.setText(eventDetailsList.get(position).getEventsName());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                holder.title.setBackgroundColor(mContext.getResources().getColor(R.color.orange));
-            }
-        });
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    holder.title.setBackgroundColor(mContext.getResources().getColor(R.color.orange));
+                }
+            });
+        }
 
     }
 
     @Override
     public int getItemCount() {
-        return mEventCategories.size();
+        return eventDetailsList == null ? 0 : eventDetailsList.size();
     }
 }

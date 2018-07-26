@@ -2,169 +2,177 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:layout_margin="20dp"
-    android:background="@color/transparentWhite">
+    android:background="@color/transparentWhite"
+    android:orientation="vertical">
+
     <Button
         android:id="@+id/btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="click"/>
+        android:text="click"
+        android:visibility="gone" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="wrap_content" />
+
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="visible">
+        android:visibility="gone">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@android:color/transparent">
+            <RelativeLayout
+                android:id="@+id/a1"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:background="@drawable/curve_small_bg_gray">
 
-        <RelativeLayout
-            android:id="@+id/a1"
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
-            android:background="@drawable/curve_small_bg_gray">
-            <ImageView
-                android:id="@+id/bannerImage"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/event_details_bg"/>
-            <TextView
-                android:id="@+id/bannerText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_below="@+id/bannerImage"
-                android:text="@string/lorem_ipsum"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/bannerText"
-                android:layout_marginStart="5dp"
-                android:textColor="@color/greenText"
-                android:text="@string/lorem_ipsum"/>
+                <ImageView
+                    android:id="@+id/bannerImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/event_details_bg" />
 
-            <TextView
-                android:id="@+id/interested"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_below="@+id/bannerImage"
-                android:text="@string/lorem_ipsum"
-                android:textColor="@color/greenText"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="10dp"
-                android:padding="5dp"
-                android:elevation="3dp"
-                android:background="@drawable/curve_small_bg_white"/>
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/bannerText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/bannerImage"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/lorem_ipsum"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
 
-        <RelativeLayout
-            android:id="@+id/a2"
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/curve_small_bg_gray">
-            <ImageView
-                android:id="@+id/bannerImage1"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/future1"/>
-            <TextView
-                android:id="@+id/banner1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_below="@+id/bannerImage1"
-                android:text="@string/lorem_ipsum"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/banner1"
-                android:layout_marginStart="5dp"
-                android:textColor="@color/greenText"
-                android:text="@string/lorem_ipsum"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/bannerText"
+                    android:layout_marginStart="5dp"
+                    android:text="@string/lorem_ipsum"
+                    android:textColor="@color/greenText" />
 
-            <TextView
-                android:id="@+id/interested1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_below="@+id/bannerImage1"
-                android:text="@string/lorem_ipsum"
-                android:textColor="@color/greenText"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="10dp"
-                android:padding="5dp"
-                android:elevation="3dp"
-                android:background="@drawable/curve_small_bg_white"/>
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/interested"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@+id/bannerImage"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/curve_small_bg_white"
+                    android:elevation="3dp"
+                    android:padding="5dp"
+                    android:text="@string/lorem_ipsum"
+                    android:textColor="@color/greenText" />
+            </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/a3"
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/curve_small_bg_gray">
-            <ImageView
-                android:id="@+id/bannerImage2"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/future3"/>
-            <TextView
-                android:id="@+id/banner2"
+            <RelativeLayout
+                android:id="@+id/a2"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_below="@+id/bannerImage2"
-                android:text="@string/lorem_ipsum"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/banner2"
-                android:layout_marginStart="5dp"
-                android:textColor="@color/greenText"
-                android:text="@string/lorem_ipsum"/>
+                android:layout_height="200dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/curve_small_bg_gray">
 
-            <TextView
-                android:id="@+id/interested2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_below="@+id/bannerImage2"
-                android:text="@string/lorem_ipsum"
-                android:textColor="@color/greenText"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="10dp"
-                android:padding="5dp"
-                android:elevation="3dp"
-                android:background="@drawable/curve_small_bg_white"/>
-        </RelativeLayout>
+                <ImageView
+                    android:id="@+id/bannerImage1"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/future1" />
 
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/banner1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/bannerImage1"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/lorem_ipsum"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/banner1"
+                    android:layout_marginStart="5dp"
+                    android:text="@string/lorem_ipsum"
+                    android:textColor="@color/greenText" />
+
+                <TextView
+                    android:id="@+id/interested1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@+id/bannerImage1"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/curve_small_bg_white"
+                    android:elevation="3dp"
+                    android:padding="5dp"
+                    android:text="@string/lorem_ipsum"
+                    android:textColor="@color/greenText" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/a3"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/curve_small_bg_gray">
+
+                <ImageView
+                    android:id="@+id/bannerImage2"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/future3" />
+
+                <TextView
+                    android:id="@+id/banner2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/bannerImage2"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/lorem_ipsum"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/banner2"
+                    android:layout_marginStart="5dp"
+                    android:text="@string/lorem_ipsum"
+                    android:textColor="@color/greenText" />
+
+                <TextView
+                    android:id="@+id/interested2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@+id/bannerImage2"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/curve_small_bg_white"
+                    android:elevation="3dp"
+                    android:padding="5dp"
+                    android:text="@string/lorem_ipsum"
+                    android:textColor="@color/greenText" />
+            </RelativeLayout>
+
+        </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

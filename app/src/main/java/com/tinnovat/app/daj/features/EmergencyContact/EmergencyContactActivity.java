@@ -1,4 +1,4 @@
-package com.tinnovat.app.daj.features.emergencyContact;
+package com.tinnovat.app.daj.features.emergencycontact;
 
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;

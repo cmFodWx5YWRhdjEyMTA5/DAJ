@@ -71,4 +71,19 @@ public class CommonUtils {
 
         return format2.format(dt1);
     }
+
+    public Calendar getDateFromServerResponse(String inputDate) {
+        SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yy hh:mm a", Locale.US);
+        Date dt1 = null;
+        try {
+            dt1 = format1.parse(inputDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(dt1.getTime());
+
+        return calendar;
+    }
 }

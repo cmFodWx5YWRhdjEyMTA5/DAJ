@@ -1,14 +1,11 @@
 package com.tinnovat.app.daj.features.eventAndNews;
 
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
-import com.google.gson.Gson;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.AppPreferanceStore;
@@ -17,8 +14,8 @@ import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.EventCategory;
 import com.tinnovat.app.daj.data.network.model.EventDetails;
 import com.tinnovat.app.daj.data.network.model.EventListModel;
-import com.tinnovat.app.daj.features.services.ChooseDateAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -110,8 +107,14 @@ public class EventNewsActivity extends BaseActivity implements TabLayout.OnTabSe
                 showMessage("Data Fetched Successfully");
                 if (response.body() != null && response.body().getCategory() != null) {
 
-                    setData(response);
+                    List<EventDetails> eventDetails = new ArrayList<>();
+                    for (EventCategory category : response.body().getCategory()) {
+                        for (EventDetails details : category.getEvents()) {
+                            eventDetails.add(details);
+                        }
+                    }
 
+                    adapter.setData(eventDetails);
                 }
             }
 
@@ -122,12 +125,6 @@ public class EventNewsActivity extends BaseActivity implements TabLayout.OnTabSe
                 showMessage("Login Failed");
             }
         });
-    }
-
-    private void setData(Response<EventListModel> mResponse){
-
-        mEventAndNewsListener.EventCategories( mResponse.body().getCategory());
-
     }
 
     public interface EventAndNewsListener {

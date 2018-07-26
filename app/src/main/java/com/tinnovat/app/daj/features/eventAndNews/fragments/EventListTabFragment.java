@@ -14,17 +14,16 @@ import android.widget.TextView;
 
 import com.tinnovat.app.daj.BaseFragment;
 import com.tinnovat.app.daj.R;
-import com.tinnovat.app.daj.data.network.model.EventCategory;
+import com.tinnovat.app.daj.data.network.model.EventDetails;
 import com.tinnovat.app.daj.features.eventAndNews.EventDetailActivity;
 import com.tinnovat.app.daj.data.AppPreferanceStore;
 import com.tinnovat.app.daj.features.eventAndNews.EventAndNewsListAdapter;
-import com.tinnovat.app.daj.features.eventAndNews.EventNewsActivity;
 import com.tinnovat.app.daj.testing.Movie;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TabFragment1 extends BaseFragment implements EventNewsActivity.EventAndNewsListener{
+public class EventListTabFragment extends BaseFragment {
 
     RelativeLayout a1;
     RelativeLayout a2;
@@ -34,8 +33,9 @@ public class TabFragment1 extends BaseFragment implements EventNewsActivity.Even
     private RecyclerView recyclerView;
     private EventAndNewsListAdapter mAdapter;
 
-    private List<EventCategory> mEventCategories;
     private AppPreferanceStore appPreferanceStore;
+    private List<EventDetails> eventDetailsList;
+    private int selectedPosition;
 
 
     @Override
@@ -44,6 +44,36 @@ public class TabFragment1 extends BaseFragment implements EventNewsActivity.Even
         View view = inflater.inflate(R.layout.fragment_tab_1, container, false);
 
         appPreferanceStore = new AppPreferanceStore(getContext());
+
+        List<EventDetails> list = new ArrayList();
+        if (eventDetailsList != null && !eventDetailsList.isEmpty()) {
+            switch (selectedPosition) {
+                case 0 :
+                    for (EventDetails details : eventDetailsList) {
+                        if (details.getDateCategory().equalsIgnoreCase("TODAY"))  {
+                            list.add(details);
+                        }
+                    }
+                    break;
+                case 1 :
+                    for (EventDetails details : eventDetailsList) {
+                        if (details.getDateCategory().equalsIgnoreCase("TOMORROW"))  {
+                            list.add(details);
+                        }
+                    }
+                    break;
+                case 2 :
+                    for (EventDetails details : eventDetailsList) {
+                        if (details.getDateCategory().equalsIgnoreCase("WEEKEND"))  {
+                            list.add(details);
+                        }
+                    }
+                    break;
+            }
+        }
+
+
+        eventDetailsList = list;
 
         setView(view);
 
@@ -72,11 +102,13 @@ public class TabFragment1 extends BaseFragment implements EventNewsActivity.Even
         TextView banner = view.findViewById(R.id.bannerText);
 
         recyclerView = view.findViewById(R.id.recycler_view);
-        mAdapter = new EventAndNewsListAdapter(mEventCategories);
+        mAdapter = new EventAndNewsListAdapter();
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
+
+        mAdapter.setData(eventDetailsList);
 
         /*if (appPreferanceStore.getDataEventAndNews().body() != null &&
                 appPreferanceStore.getDataEventAndNews().body().getCategory() != null) {
@@ -105,9 +137,10 @@ public class TabFragment1 extends BaseFragment implements EventNewsActivity.Even
 
     }
 
-    @Override
-    public void EventCategories(List<EventCategory> eventCategories) {
-        mEventCategories = eventCategories;
-
+    public static EventListTabFragment getNewInstance(List<EventDetails> data, int position) {
+        EventListTabFragment fragment = new EventListTabFragment();
+        fragment.eventDetailsList = data;
+        fragment.selectedPosition = position;
+        return fragment;
     }
 }

@@ -8,42 +8,35 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.kapil.circularlayoutmanager.CircularLayoutManager;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.AppPreferanceStore;
-import com.tinnovat.app.daj.data.network.model.EventListModel;
-import com.tinnovat.app.daj.features.emergencyContact.EmergencyContactActivity;
-import com.tinnovat.app.daj.features.eventAndNews.EventNewsActivity;
-import com.tinnovat.app.daj.features.futurePhase.FuturePhaseListAdapter;
-import com.tinnovat.app.daj.features.profile.ProfileActivity;
-import com.tinnovat.app.daj.features.surveillance.SurveillanceActivity;
 import com.tinnovat.app.daj.features.authentication.ChangePasswordActivity;
 import com.tinnovat.app.daj.features.authentication.LoginActivity;
-import com.tinnovat.app.daj.features.bookings.GuestRegistrationActivity;
+import com.tinnovat.app.daj.features.bookings.GuestRegistrationActivityMain;
 import com.tinnovat.app.daj.features.bookings.MyBookingActivity;
 import com.tinnovat.app.daj.features.complaint.MyComplaintListActivity;
+import com.tinnovat.app.daj.features.emergencycontact.EmergencyContactActivity;
+import com.tinnovat.app.daj.features.eventAndNews.EventNewsActivity;
 import com.tinnovat.app.daj.features.foodAndTaxi.OrderFoodActivity;
 import com.tinnovat.app.daj.features.foodAndTaxi.OrderTaxiActivity;
 import com.tinnovat.app.daj.features.futurePhase.FuturePhaseInfoListActivity;
+import com.tinnovat.app.daj.features.profile.ProfileActivity;
 import com.tinnovat.app.daj.features.services.ServicesActivity;
+import com.tinnovat.app.daj.features.surveillance.SurveillanceActivity;
 import com.tinnovat.app.daj.map.MapsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
-import retrofit2.Response;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -72,7 +65,6 @@ public class MainActivity extends BaseActivity
     ImageView arcNavEn;
     ImageView arcProjectAr;
     ImageView arcProjectEn;*/
-
 
 
     private List<String> eventName;
@@ -205,13 +197,13 @@ public class MainActivity extends BaseActivity
     private void setViews(List<String> eventName) {
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         // recyclerView.setAdapter(new RecyclerViewAdapter(getApplicationContext(), list));
-        RecyclerViewAdapter mAdapter = new RecyclerViewAdapter(getApplicationContext(), eventName,getLanguage());
+        RecyclerViewAdapter mAdapter = new RecyclerViewAdapter(getApplicationContext(), eventName, getLanguage());
         recyclerView.addItemDecoration(new RecyclerItemDecoration());
         /*RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);*/
         recyclerView.setLayoutManager(new CircularLayoutManager(getApplicationContext(), 300, -100));
 
-      //  recyclerView.setItemAnimator(new DefaultItemAnimator());
+        //  recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         mAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(mAdapter);
@@ -237,7 +229,7 @@ public class MainActivity extends BaseActivity
                 fetchEvents();
                 break;
             case "4":
-               fetchServices();
+                fetchServices();
                 break;
             case "5":
                 fetchGuestRegistration();
@@ -435,7 +427,7 @@ public class MainActivity extends BaseActivity
     }
 
     private void fetchGuestRegistration() {
-        Intent i = new Intent(MainActivity.this, GuestRegistrationActivity.class);
+        Intent i = new Intent(MainActivity.this, GuestRegistrationActivityMain.class);
         startActivity(i);
     }
 
