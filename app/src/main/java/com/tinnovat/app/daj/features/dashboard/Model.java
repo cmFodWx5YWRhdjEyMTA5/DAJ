@@ -1,4 +1,4 @@
-package com.tinnovat.app.daj.features.eventAndNews.circle;
+package com.tinnovat.app.daj.features.dashboard;
 
 /**
  * Dummy list item model.

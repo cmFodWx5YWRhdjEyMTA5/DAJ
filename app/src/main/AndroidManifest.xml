@@ -46,7 +46,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".features.eventAndNews.circle.EventAndNewsActivity"
+            android:name=".features.dashboard.EventAndNewsActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -140,7 +140,7 @@
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".features.eventAndNews.circle.EventAndNewsActivity" />
+                android:value=".features.dashboard.EventAndNewsActivity" />
         </activity>
         <activity
             android:name=".features.eventAndNews.EventDetailActivity"

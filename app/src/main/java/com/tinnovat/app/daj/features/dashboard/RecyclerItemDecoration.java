@@ -1,4 +1,4 @@
-package com.tinnovat.app.daj.features.eventAndNews.circle;
+package com.tinnovat.app.daj.features.dashboard;
 
 import android.content.Context;
 import android.graphics.Rect;
@@ -15,14 +15,14 @@ class RecyclerItemDecoration extends RecyclerView.ItemDecoration {
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
         outRect.top = (int) DpToPx(parent.getContext(), 0);
-        outRect.bottom = (int) DpToPx(parent.getContext(), 20);
+        outRect.bottom = (int) DpToPx(parent.getContext(), 50);
 
         if (parent.getChildAdapterPosition(view) == 0) {
             outRect.top = (int) DpToPx(parent.getContext(), 0);
-            outRect.bottom = (int) DpToPx(parent.getContext(), -20);
+          //  outRect.bottom = (int) DpToPx(parent.getContext(), 0);
         }
         if (parent.getChildAdapterPosition(view) == parent.getAdapter().getItemCount() - 1) {
-            outRect.bottom = (int) DpToPx(parent.getContext(), 100);
+            outRect.bottom = (int) DpToPx(parent.getContext(), 0);
         }
     }
 

@@ -8,15 +8,23 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.kapil.circularlayoutmanager.CircularLayoutManager;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
+import com.tinnovat.app.daj.data.AppPreferanceStore;
+import com.tinnovat.app.daj.data.network.model.EventListModel;
 import com.tinnovat.app.daj.features.emergencyContact.EmergencyContactActivity;
+import com.tinnovat.app.daj.features.futurePhase.FuturePhaseListAdapter;
 import com.tinnovat.app.daj.features.profile.ProfileActivity;
 import com.tinnovat.app.daj.features.surveillance.SurveillanceActivity;
 import com.tinnovat.app.daj.features.authentication.ChangePasswordActivity;
@@ -24,14 +32,17 @@ import com.tinnovat.app.daj.features.authentication.LoginActivity;
 import com.tinnovat.app.daj.features.bookings.GuestRegistrationActivity;
 import com.tinnovat.app.daj.features.bookings.MyBookingActivity;
 import com.tinnovat.app.daj.features.complaint.MyComplaintListActivity;
-import com.tinnovat.app.daj.features.eventAndNews.circle.EventAndNewsActivity;
 import com.tinnovat.app.daj.features.foodAndTaxi.OrderFoodActivity;
 import com.tinnovat.app.daj.features.foodAndTaxi.OrderTaxiActivity;
 import com.tinnovat.app.daj.features.futurePhase.FuturePhaseInfoListActivity;
 import com.tinnovat.app.daj.features.services.ServicesActivity;
 import com.tinnovat.app.daj.map.MapsActivity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
+
+import retrofit2.Response;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -39,7 +50,7 @@ public class MainActivity extends BaseActivity
     ImageView facebook;
     ImageView twitter;
     ImageView instagram;
-    RelativeLayout events;
+    /*RelativeLayout events;
     RelativeLayout services;
     RelativeLayout guest_registration;
     RelativeLayout view_camera;
@@ -59,7 +70,15 @@ public class MainActivity extends BaseActivity
     ImageView arcNavAr;
     ImageView arcNavEn;
     ImageView arcProjectAr;
-    ImageView arcProjectEn;
+    ImageView arcProjectEn;*/
+
+
+
+    private List<String> eventName;
+    private AppPreferanceStore appPreferanceStore;
+
+    ImageView logoEn;
+    ImageView logoAr;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -87,13 +106,13 @@ public class MainActivity extends BaseActivity
             getSupportActionBar().setTitle(getText(R.string.dashboard));
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(0).setChecked(true);
         navigationView.setItemIconTintList(null);
@@ -102,31 +121,6 @@ public class MainActivity extends BaseActivity
         twitter = findViewById(R.id.twitter);
         instagram = findViewById(R.id.instagram);
 
-        events = findViewById(R.id.events);
-        services = findViewById(R.id.services);
-        guest_registration = findViewById(R.id.guest_registration);
-        view_camera = findViewById(R.id.view_camera);
-        navigation = findViewById(R.id.navigation);
-        projects = findViewById(R.id.projects);
-
-
-        arcEventAr = findViewById(R.id.arcEventAr);
-        arcEventEn = findViewById(R.id.arcEventEn);
-
-        arcServicesAr = findViewById(R.id.arcServicesAr);
-        arcServicesEn = findViewById(R.id.arcServicesEn);
-
-        arcGuestAr = findViewById(R.id.arcGuestAr);
-        arcGuestEn = findViewById(R.id.arcGuestEn);
-
-        arcCameraAr = findViewById(R.id.arcCameraAr);
-        arcCameraEn = findViewById(R.id.arcCameraEn);
-
-        arcNavAr = findViewById(R.id.arcNavAr);
-        arcNavEn = findViewById(R.id.arcNavEn);
-
-        arcProjectAr = findViewById(R.id.arcProjectAr);
-        arcProjectEn = findViewById(R.id.arcProjectEn);
 
         if (!getLanguage()) {
             //for arabic
@@ -144,23 +138,6 @@ public class MainActivity extends BaseActivity
             navigationView.getMenu().getItem(11).setIcon(R.drawable.complaint_ar_nav);
             navigationView.getMenu().getItem(12).setIcon(R.drawable.contact_ar_nav);
 
-            arcEventAr.setVisibility(View.VISIBLE);
-            arcEventEn.setVisibility(View.INVISIBLE);
-
-            arcServicesAr.setVisibility(View.VISIBLE);
-            arcServicesEn.setVisibility(View.INVISIBLE);
-
-            arcGuestAr.setVisibility(View.VISIBLE);
-            arcGuestEn.setVisibility(View.INVISIBLE);
-
-            arcCameraAr.setVisibility(View.VISIBLE);
-            arcCameraEn.setVisibility(View.INVISIBLE);
-
-            arcNavAr.setVisibility(View.VISIBLE);
-            arcNavEn.setVisibility(View.INVISIBLE);
-
-            arcProjectAr.setVisibility(View.VISIBLE);
-            arcProjectEn.setVisibility(View.INVISIBLE);
         } else {
             //for Eng
 
@@ -178,23 +155,6 @@ public class MainActivity extends BaseActivity
             navigationView.getMenu().getItem(11).setIcon(R.drawable.complaint_nav);
             navigationView.getMenu().getItem(12).setIcon(R.drawable.contact_nav);
 
-            arcEventAr.setVisibility(View.INVISIBLE);
-            arcEventEn.setVisibility(View.VISIBLE);
-
-            arcServicesAr.setVisibility(View.INVISIBLE);
-            arcServicesEn.setVisibility(View.VISIBLE);
-
-            arcGuestAr.setVisibility(View.INVISIBLE);
-            arcGuestEn.setVisibility(View.VISIBLE);
-
-            arcCameraAr.setVisibility(View.INVISIBLE);
-            arcCameraEn.setVisibility(View.VISIBLE);
-
-            arcNavAr.setVisibility(View.INVISIBLE);
-            arcNavEn.setVisibility(View.VISIBLE);
-
-            arcProjectAr.setVisibility(View.INVISIBLE);
-            arcProjectEn.setVisibility(View.VISIBLE);
         }
 
 
@@ -221,49 +181,148 @@ public class MainActivity extends BaseActivity
             }
         });
 
-        events.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, EventAndNewsActivity.class);
-                startActivity(i);
 
+        appPreferanceStore = new AppPreferanceStore(this);
+
+
+        logoEn = findViewById(R.id.logo_en);
+        logoAr = findViewById(R.id.logo_ar);
+        if (getLanguage()) {
+            logoEn.setVisibility(View.VISIBLE);
+            logoAr.setVisibility(View.INVISIBLE);
+        } else {
+            logoEn.setVisibility(View.INVISIBLE);
+            logoAr.setVisibility(View.VISIBLE);
+        }
+
+        initializeList();
+
+
+        // fetchEventList();//for api
+    }
+
+    private void setViews(List<String> eventName) {
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        // recyclerView.setAdapter(new RecyclerViewAdapter(getApplicationContext(), list));
+        RecyclerViewAdapter mAdapter = new RecyclerViewAdapter(getApplicationContext(), eventName,getLanguage());
+        recyclerView.addItemDecoration(new RecyclerItemDecoration());
+        /*RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(mLayoutManager);*/
+        recyclerView.setLayoutManager(new CircularLayoutManager(getApplicationContext(), 300, -100));
+
+      //  recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+        mAdapter.notifyDataSetChanged();
+        recyclerView.setAdapter(mAdapter);
+
+        recyclerView.addOnItemTouchListener(new OnRecyclerItemClickListener(getApplicationContext(),
+                new OnRecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void OnItemClick(RecyclerView parent, int childIndex) {
+                        if (childIndex == 3) {
+
+                            performClick(((TextView) parent.getChildAt(childIndex).findViewById(R.id.item)).getText().toString());
+                        }
+
+
+                    }
+                }));
+    }
+
+    private void performClick(String option) {
+        switch (option) {
+
+            case "3":
+                fetchEvents();
+                break;
+            case "4":
+               fetchServices();
+                break;
+
+            case "5":
+                fetchGuestRegistration();
+                break;
+            case "6 ":
+                fetchCamera();
+                break;
+            case "7":
+                fetchMaps();
+                break;
+            case "8":
+                fetchFuturePhase();
+                break;
+            case "9":
+                fetchMyBooking();
+                break;
+            case "10":
+                fetchProfile();
+                break;
+            case "11":
+                fetchOrderFood();
+                break;
+            case "12":
+                fetchOrderTaxi();
+                break;
+            case "13":
+                fetchMyComplaintList();
+                break;
+            case "14":
+                fetchEmergencyContact();
+                break;
+            case "15":
+                fetchChangePassword();
+                break;
+            case "16":
+                fetchLogout();
+                break;
+
+
+        }
+    }
+
+    private void initializeList() {
+        /*for (int i = 0; i < 15; i++) {
+            Model model = new Model();
+            if (i < 3) {
+                model.setEvent("");
+            } else if (i > 11) {
+                model.setEvent("");
+            } else {
+
+                model.setEvent(event + (i + 1));
             }
-        });
-        services.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, ServicesActivity.class);
-                startActivity(i);
-            }
-        });
-        guest_registration.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, GuestRegistrationActivity.class);
-                startActivity(i);
-            }
-        });
-        view_camera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, SurveillanceActivity.class);
-                startActivity(i);
-            }
-        });
-        navigation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, MapsActivity.class);
-                startActivity(i);
-            }
-        });
-        projects.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, FuturePhaseInfoListActivity.class);
-                startActivity(i);
-            }
-        });
+
+
+            list.add(model);
+        }*/
+
+
+        eventName = new ArrayList<>();
+
+
+        eventName.add("");
+        eventName.add("");
+        eventName.add("");
+        eventName.add(getResources().getString(R.string.events));
+        eventName.add(getResources().getString(R.string.services));
+        eventName.add(getResources().getString(R.string.guest_reg));
+        eventName.add(getResources().getString(R.string.view_camera));
+        eventName.add(getResources().getString(R.string.navigation));
+        eventName.add(getResources().getString(R.string.projects));
+        eventName.add(getResources().getString(R.string.my_bookings));
+        eventName.add(getResources().getString(R.string.my_profile));
+        eventName.add(getResources().getString(R.string.order_food));
+        eventName.add(getResources().getString(R.string.order_taxi));
+        eventName.add(getResources().getString(R.string.complaint));
+        eventName.add(getResources().getString(R.string.emergency_contact));
+        eventName.add(getResources().getString(R.string.change_password));
+        eventName.add(getResources().getString(R.string.logout));
+        eventName.add("");
+        eventName.add("");
+        eventName.add("");
+
+
+        setViews(eventName);
     }
 
     @Override
@@ -278,7 +337,7 @@ public class MainActivity extends BaseActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -331,71 +390,120 @@ public class MainActivity extends BaseActivity
                 item.setIcon(R.drawable.icon_slection_english);
             }*/
         } else if (id == R.id.events) {
-            // setLanguage(true);
-            // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
-            Intent i = new Intent(MainActivity.this, EventAndNewsActivity.class);
-            startActivity(i);
+            fetchEvents();
 
         } else if (id == R.id.services) {
-            Intent i = new Intent(MainActivity.this, ServicesActivity.class);
-            startActivity(i);
-            // setLanguage(false);
-           /* Intent i = new Intent(MainActivity.this, TestActivity.class);
-            startActivity(i);*/
-            // finish();
+            fetchServices();
         } else if (id == R.id.guest_registration) {
-            Intent i = new Intent(MainActivity.this, GuestRegistrationActivity.class);
-            startActivity(i);
+            fetchGuestRegistration();
 
         } else if (id == R.id.view_camera) {
-            Intent i = new Intent(MainActivity.this, SurveillanceActivity.class);
-            startActivity(i);
+            fetchCamera();
 
         } else if (id == R.id.navigation) {
-            Intent i = new Intent(MainActivity.this, MapsActivity.class);
-            startActivity(i);
+            fetchMaps();
 
         } else if (id == R.id.projects) {
-            Intent i = new Intent(MainActivity.this, FuturePhaseInfoListActivity.class);
-            startActivity(i);
+            fetchFuturePhase();
 
         } else if (id == R.id.my_bookings) {
-            Intent i = new Intent(MainActivity.this, MyBookingActivity.class);
-            startActivity(i);
+            fetchMyBooking();
 
         } else if (id == R.id.view_profile) {
-            Intent i = new Intent(MainActivity.this, ProfileActivity.class);
-            startActivity(i);
+            fetchProfile();
 
         } else if (id == R.id.food) {
-            Intent i = new Intent(MainActivity.this, OrderFoodActivity.class);
-            startActivity(i);
+            fetchOrderFood();
 
         } else if (id == R.id.taxi) {
-            Intent i = new Intent(MainActivity.this, OrderTaxiActivity.class);
-            startActivity(i);
+            fetchOrderTaxi();
 
         } else if (id == R.id.complaint) {
-            Intent i = new Intent(MainActivity.this, MyComplaintListActivity.class);
-            startActivity(i);
+            fetchMyComplaintList();
         } else if (id == R.id.emergency_contact) {
-            Intent i = new Intent(MainActivity.this, EmergencyContactActivity.class);
-            startActivity(i);
+            fetchEmergencyContact();
 
         } else if (id == R.id.change_password) {
-            Intent i = new Intent(MainActivity.this, ChangePasswordActivity.class);
-            startActivity(i);
-            // Toast.makeText(this,""+getLanguage(),Toast.LENGTH_SHORT).show();
+            fetchChangePassword();
         } else if (id == R.id.logout) {
-            // Toast.makeText(this,""+getLanguage(),Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity(intent);
-            finish();
+            fetchLogout();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    private void fetchEvents() {
+        Intent i = new Intent(MainActivity.this, EventAndNewsActivity.class);
+        startActivity(i);
+    }
+
+    private void fetchServices() {
+        Intent i = new Intent(MainActivity.this, ServicesActivity.class);
+        startActivity(i);
+    }
+
+    private void fetchGuestRegistration() {
+        Intent i = new Intent(MainActivity.this, GuestRegistrationActivity.class);
+        startActivity(i);
+    }
+
+    private void fetchCamera() {
+        Intent i = new Intent(MainActivity.this, SurveillanceActivity.class);
+        startActivity(i);
+    }
+
+    private void fetchMaps() {
+        Intent i = new Intent(MainActivity.this, MapsActivity.class);
+        startActivity(i);
+    }
+
+    private void fetchFuturePhase() {
+        Intent i = new Intent(MainActivity.this, FuturePhaseInfoListActivity.class);
+        startActivity(i);
+    }
+
+    private void fetchMyBooking() {
+        Intent i = new Intent(MainActivity.this, MyBookingActivity.class);
+        startActivity(i);
+    }
+
+    private void fetchProfile() {
+        Intent i = new Intent(MainActivity.this, ProfileActivity.class);
+        startActivity(i);
+    }
+
+    private void fetchOrderFood() {
+        Intent i = new Intent(MainActivity.this, OrderFoodActivity.class);
+        startActivity(i);
+    }
+
+    private void fetchOrderTaxi() {
+        Intent i = new Intent(MainActivity.this, OrderTaxiActivity.class);
+        startActivity(i);
+    }
+
+    private void fetchMyComplaintList() {
+        Intent i = new Intent(MainActivity.this, MyComplaintListActivity.class);
+        startActivity(i);
+    }
+
+    private void fetchEmergencyContact() {
+        Intent i = new Intent(MainActivity.this, EmergencyContactActivity.class);
+        startActivity(i);
+    }
+
+    private void fetchChangePassword() {
+        Intent i = new Intent(MainActivity.this, ChangePasswordActivity.class);
+        startActivity(i);
+    }
+
+    private void fetchLogout() {
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override

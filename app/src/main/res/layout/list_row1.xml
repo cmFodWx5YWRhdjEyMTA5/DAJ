@@ -10,7 +10,13 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginEnd="10dp"
-        android:src="@drawable/festival"/>
+        android:tint="@color/white"/>
+    <TextView
+        android:id="@+id/item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"/>
+
 
     <TextView
         android:id="@+id/event"
@@ -18,10 +24,10 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/img"
-        android:gravity="end"
+        android:gravity="start"
         android:scaleX="-1"
-        android:text="@string/tennis_court"
+        android:textStyle="bold"
         android:textColor="@color/white"
-        android:textSize="15sp" />
+        android:textSize="18sp" />
 
 </RelativeLayout>

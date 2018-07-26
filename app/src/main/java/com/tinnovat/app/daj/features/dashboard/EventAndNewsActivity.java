@@ -1,12 +1,10 @@
-package com.tinnovat.app.daj.features.eventAndNews.circle;
+package com.tinnovat.app.daj.features.dashboard;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.google.gson.Gson;
 import com.kapil.circularlayoutmanager.CircularLayoutManager;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
@@ -14,7 +12,6 @@ import com.tinnovat.app.daj.data.AppPreferanceStore;
 import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.EventListModel;
-import com.tinnovat.app.daj.features.eventAndNews.EventNewsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -130,7 +127,7 @@ public class EventAndNewsActivity extends BaseActivity {
        // initializeList();
 
 
-        recyclerView.setAdapter(new RecyclerViewAdapter(getApplicationContext(), list,response));
+       // recyclerView.setAdapter(new RecyclerViewAdapter(getApplicationContext(), list,response));
         recyclerView.addItemDecoration(new RecyclerItemDecoration());
         recyclerView.setLayoutManager(new CircularLayoutManager(getApplicationContext(), 300, -100));
 

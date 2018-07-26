@@ -39,6 +39,7 @@
 
     <string name="formatter">Reg No: CMP%d</string>//
     <string name="formatter_number">%d %s</string>//
+    <string name="number">%d</string>//
     <string name="am">AM</string>//
     <string name="pm">PM</string>//
     <string name="required">Required</string>//

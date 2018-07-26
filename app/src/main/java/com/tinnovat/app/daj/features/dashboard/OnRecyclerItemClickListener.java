@@ -1,4 +1,4 @@
-package com.tinnovat.app.daj.features.eventAndNews.circle;
+package com.tinnovat.app.daj.features.dashboard;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

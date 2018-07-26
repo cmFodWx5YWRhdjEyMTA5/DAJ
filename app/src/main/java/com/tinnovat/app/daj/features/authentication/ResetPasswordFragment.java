@@ -57,10 +57,9 @@ public class ResetPasswordFragment extends BaseFragment {
     }
 
 
-
     @Override
     public void initialiseViews(View view) {
-        form = new Form.Builder(getActivity(),view)
+        form = new Form.Builder(getActivity(), view)
                 .showErrors(true)
                 .build();
 
@@ -85,27 +84,26 @@ public class ResetPasswordFragment extends BaseFragment {
                         @Override
                         public void onResponse(Call<SuccessResponseModel> call, Response<SuccessResponseModel> response) {
                             endLoading();
-                            showMessage("Successful");
-                            Objects.requireNonNull(getActivity()).getSupportFragmentManager().popBackStack();
 
                             //todo change
-               /* if (response.body() != null) {
-                    if (response.body().getSuccess()) {
+                            if (response.body() != null) {
+                                if (response.body().getSuccess()) {
 
-                        showMessage(response.body().getMessage());
-                    } else {
-                        showMessage(response.body().getMessage());
-                    }
-                }else {
-                    showMessage(getResources().getString(R.string.network_problem));
-                }*/
+                                    showMessage(response.body().getMessage());
+                                    Objects.requireNonNull(getActivity()).getSupportFragmentManager().popBackStack();
+                                } else {
+                                    showMessage(response.body().getMessage());
+                                }
+                            } else {
+                                showMessage(getResources().getString(R.string.network_problem));
+                            }
                         }
 
                         @Override
                         public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
 
                             endLoading();
-                              showMessage(getResources().getString(R.string.network_problem));
+                            showMessage(getResources().getString(R.string.network_problem));
                         }
                     });
 
@@ -124,14 +122,14 @@ public class ResetPasswordFragment extends BaseFragment {
     public void onClick(View view) {
 
         if (getActivity() != null)
-        getActivity().onBackPressed();
+            getActivity().onBackPressed();
 
-        switch (view.getId()){
+        switch (view.getId()) {
 
             case R.id.submit:
                 //fetchData(view);
                 if (form.isValid()) {
-                  //  invokeResetPassword(userName.getText().toString(),email.getText().toString());
+                    //  invokeResetPassword(userName.getText().toString(),email.getText().toString());
                     startLoading();
 
                     ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
@@ -142,7 +140,7 @@ public class ResetPasswordFragment extends BaseFragment {
                         @Override
                         public void onResponse(Call<SuccessResponseModel> call, Response<SuccessResponseModel> response) {
                             endLoading();
-                              //showMessage("Successful");
+                            //showMessage("Successful");
                             getActivity().getFragmentManager().popBackStack();
 
                             //todo change
@@ -173,19 +171,18 @@ public class ResetPasswordFragment extends BaseFragment {
 
     }
 
-    private void fetchData(View view){
+    private void fetchData(View view) {
        /* EditText userName = view.findViewById(R.id.userName);
         EditText email = view.findViewById(R.id.email);*/
 
 
-
         // validate the form
         if (form.isValid()) {
-            invokeResetPassword(userName.getText().toString(),email.getText().toString());
+            invokeResetPassword(userName.getText().toString(), email.getText().toString());
 
-        }else {
-           // showMessage(view,"testtt");
-           // showMessage("testtt");
+        } else {
+            // showMessage(view,"testtt");
+            // showMessage("testtt");
         }
 
 
@@ -209,7 +206,7 @@ public class ResetPasswordFragment extends BaseFragment {
             @Override
             public void onResponse(Call<SuccessResponseModel> call, Response<SuccessResponseModel> response) {
                 endLoading();
-             //   showMessage("Login Successful");
+                //   showMessage("Login Successful");
                 getActivity().getFragmentManager().popBackStack();
 
                 //todo change
@@ -229,7 +226,7 @@ public class ResetPasswordFragment extends BaseFragment {
             public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
 
                 endLoading();
-              //  showMessage(getResources().getString(R.string.network_problem));
+                //  showMessage(getResources().getString(R.string.network_problem));
             }
         });
     }
