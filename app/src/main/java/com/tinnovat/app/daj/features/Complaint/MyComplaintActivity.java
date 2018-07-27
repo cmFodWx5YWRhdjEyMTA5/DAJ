@@ -116,7 +116,7 @@ public class MyComplaintActivity extends BaseActivity {
                 case 3:
                     Picasso.get().load(complaintList.getImages().get(0).getPath()).into(image1);
                     Picasso.get().load(complaintList.getImages().get(1).getPath()).into(image2);
-                    Picasso.get().load(complaintList.getImages().get(3).getPath()).into(image3);
+                    Picasso.get().load(complaintList.getImages().get(2).getPath()).into(image3);
                     image4.setVisibility(View.GONE);
                     break;
 

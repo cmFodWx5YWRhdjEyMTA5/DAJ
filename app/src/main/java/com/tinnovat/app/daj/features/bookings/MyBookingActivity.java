@@ -17,6 +17,7 @@ import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 import com.prolificinteractive.materialcalendarview.format.DayFormatter;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
+import com.tinnovat.app.daj.data.AppPreferanceStore;
 import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.MyServiceBookingResponseModel;
@@ -44,6 +45,7 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
     UpcomingMyBookingsAdapter mAdapter;
     MyBookingsAdapter mMyBookingAdapter;
     RecyclerView recyclerView;
+    private AppPreferanceStore appPreferanceStore;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +55,8 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
         relativeLayout= findViewById(R.id.relativeLayout);
         upComingBanner= findViewById(R.id.upComingBanner);
         ImageView delete = findViewById(R.id.delete);
+
+        appPreferanceStore = new AppPreferanceStore(this);
 
         fetchMyBooking();
 
@@ -148,7 +152,7 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
 
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
         //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
-        Call<MyServiceBookingResponseModel> call = apiInterface.getBookingAnotherDate("en",date);
+        Call<MyServiceBookingResponseModel> call = apiInterface.getBookingAnotherDate(appPreferanceStore.getLanguage() ? "en" : "ar",date);
         call.enqueue(new Callback<MyServiceBookingResponseModel>() {
             @Override
             public void onResponse(Call<MyServiceBookingResponseModel> call, Response<MyServiceBookingResponseModel> response) {
@@ -176,7 +180,7 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
 
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
         //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
-        Call<MyServiceBookingResponseModel> call = apiInterface.getBookingServices("en");
+        Call<MyServiceBookingResponseModel> call = apiInterface.getBookingServices(appPreferanceStore.getLanguage() ? "en" : "ar");
         call.enqueue(new Callback<MyServiceBookingResponseModel>() {
             @Override
             public void onResponse(Call<MyServiceBookingResponseModel> call, Response<MyServiceBookingResponseModel> response) {

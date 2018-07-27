@@ -183,7 +183,7 @@ public class LoginFragment extends BaseFragment {
         startLoading();
 
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        RequestParams.LoginReequest loginReequest = new RequestParams().new LoginReequest(userName.getText().toString(), password.getText().toString(), "en");
+        RequestParams.LoginReequest loginReequest = new RequestParams().new LoginReequest(userName.getText().toString(), password.getText().toString(), appPreferanceStore.getLanguage() ? "en" : "ar");
         Call<LoginResponseModel> call = apiInterface.login(loginReequest);
         call.enqueue(new Callback<LoginResponseModel>() {
             @Override

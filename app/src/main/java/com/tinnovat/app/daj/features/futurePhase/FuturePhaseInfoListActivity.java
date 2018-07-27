@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
+import com.tinnovat.app.daj.data.AppPreferanceStore;
 import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.FuturePhasesResponseModel;
@@ -21,6 +22,7 @@ import retrofit2.Response;
 public class FuturePhaseInfoListActivity extends BaseActivity {
 
     private RecyclerView recyclerView;
+    private AppPreferanceStore appPreferanceStore;
 
 
     @Override
@@ -31,6 +33,8 @@ public class FuturePhaseInfoListActivity extends BaseActivity {
 
         recyclerView = findViewById(R.id.recycler_view);
 
+        appPreferanceStore = new AppPreferanceStore(this);
+
         fetchFuturePhasesInfo();
     }
     private void fetchFuturePhasesInfo() {
@@ -38,7 +42,7 @@ public class FuturePhaseInfoListActivity extends BaseActivity {
 
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
         //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
-        Call<FuturePhasesResponseModel> call = apiInterface.getFuturePhasesInfo("en");
+        Call<FuturePhasesResponseModel> call = apiInterface.getFuturePhasesInfo(appPreferanceStore.getLanguage() ? "en" : "ar");
         call.enqueue(new Callback<FuturePhasesResponseModel>() {
             @Override
             public void onResponse(Call<FuturePhasesResponseModel> call, Response<FuturePhasesResponseModel> response) {

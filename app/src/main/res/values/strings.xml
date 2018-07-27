@@ -49,6 +49,7 @@
     <string name="select_time">Select Time</string>//
     <string name="total_area">Total Area of the project land</string>//
     <string name="choose_time">Choose Time</string>//
+    <string name="please_upload_image">Please Upload image</string>//
 
 
 
@@ -118,7 +119,7 @@
 
     <string name="today1">TODAY</string>
     <string name="tomorrow">TOMORROW</string>
-    <string name="weekend">WEEKEND</string>
+    <string name="weekend">ALL</string>
 
     <string name="family">Family</string>
     <string name="friend">Friend</string>

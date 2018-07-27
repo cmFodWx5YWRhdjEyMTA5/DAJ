@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
+import com.tinnovat.app.daj.data.AppPreferanceStore;
 import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.ServicesResponseModel;
@@ -23,6 +24,7 @@ public class ServicesActivity extends BaseActivity {
 
     private RecyclerView recyclerView;
     private ServicesAdapter mAdapter;
+    private AppPreferanceStore appPreferanceStore;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class ServicesActivity extends BaseActivity {
 
         recyclerView = findViewById(R.id.recycler_view);
 
+        appPreferanceStore = new AppPreferanceStore(this);
         fetchServiceList();
 
     }
@@ -42,7 +45,7 @@ public class ServicesActivity extends BaseActivity {
 
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
         //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
-        Call<ServicesResponseModel> call = apiInterface.getServiceList("en");
+        Call<ServicesResponseModel> call = apiInterface.getServiceList(appPreferanceStore.getLanguage() ? "en" : "ar");
         call.enqueue(new Callback<ServicesResponseModel>() {
             @Override
             public void onResponse(Call<ServicesResponseModel> call, Response<ServicesResponseModel> response) {

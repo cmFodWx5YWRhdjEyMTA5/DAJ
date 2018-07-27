@@ -1,6 +1,7 @@
 package com.tinnovat.app.daj.features.eventAndNews;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -80,12 +81,13 @@ public class EventAndNewsListAdapter extends RecyclerView.Adapter<EventAndNewsLi
             holder.startDate.setText(startDate[0]);
             holder.endDate.setText(endDate[0]);
 
-            /*holder.itemView.setOnClickListener(new View.OnClickListener() {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    holder.title.setBackgroundColor(mContext.getResources().getColor(R.color.orange));
+                    Intent i = new Intent(mContext, EventDetailActivity.class);
+                    mContext.startActivity(i);
                 }
-            });*/
+            });
         }
 
     }

@@ -10,8 +10,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -64,14 +67,18 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
 
         buttonAdd = findViewById(R.id.add);
 
+
         table = findViewById(R.id.tab_layout);
         row = (TableRow) LayoutInflater.from(this).inflate(R.layout.content_form_guest_registration, null);
 
         table.addView(row);
 
-        buttonAdd.setOnClickListener(this);
-    }
 
+        buttonAdd.setOnClickListener(this);
+
+
+
+    }
 
     private void setCalender() {
 
@@ -203,8 +210,9 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
             }
         });
 
-    }
 
+
+    }
 
     @Override
     public void initialiseViews() {
@@ -235,7 +243,9 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
             case R.id.add:
                 if (table != null) {
                     row = (TableRow) LayoutInflater.from(this).inflate(R.layout.content_form_guest_registration, null);
+
                     table.addView(row);
+
                 }
                 break;
         }
@@ -250,7 +260,7 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
 
     public class ViewDialog {
 
-        public void showDialog(Activity activity, String msg) {
+        public int showDialog(Activity activity, String msg ) {
             final Dialog dialog = new Dialog(GuestRegistrationActivityMain.this);
             dialog.setContentView(R.layout.dialog_guest);
             final TextView family = dialog.findViewById(R.id.family);
@@ -264,7 +274,8 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
                 @Override
                 public void onClick(View v) {
                     purposeId = 1;
-                    purpose.setText(family.getText());
+                    purpose.setText(family.getText().toString());
+                    //purpose.setText();
                     dialog.dismiss();
                 }
             });
@@ -273,7 +284,8 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
                 @Override
                 public void onClick(View v) {
                     purposeId = 2;
-                    purpose.setText(friend.getText());
+                    purpose.setText(friend.getText().toString());
+                   // purpose.setText(friend.getText());
                     dialog.dismiss();
                 }
             });
@@ -282,7 +294,8 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
                 @Override
                 public void onClick(View v) {
                     purposeId = 3;
-                    purpose.setText(maintenance.getText());
+                    purpose.setText(maintenance.getText().toString());
+                    //purpose.setText(maintenance.getText());
                     dialog.dismiss();
                 }
             });
@@ -290,7 +303,8 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
                 @Override
                 public void onClick(View v) {
                     purposeId = 4;
-                    purpose.setText(taxi.getText());
+                    purpose.setText(taxi.getText().toString());
+                    //purpose.setText(taxi.getText());
                     dialog.dismiss();
                 }
             });
@@ -298,12 +312,15 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
                 @Override
                 public void onClick(View v) {
                     purposeId = 5;
-                    purpose.setText(delivery.getText());
+                    purpose.setText(delivery.getText().toString());
+                   // purpose.setText(delivery.getText());
                     dialog.dismiss();
                 }
             });
 
             dialog.show();
+
+        return purposeId;
         }
     }
 }

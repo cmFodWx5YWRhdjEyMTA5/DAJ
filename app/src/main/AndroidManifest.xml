@@ -11,7 +11,6 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature android:name="android.hardware.camera" android:required="false" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -144,7 +143,7 @@
         </activity>
 
         <activity
-            android:name=".features.emergencycontact.EmergencyContactActivity"
+            android:name=".features.emergencyContact.EmergencyContactActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -181,7 +180,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
-        <activity android:name=".features.services.ServiceListActivity"></activity>
+        <activity android:name=".features.services.ServiceListActivity"/>
     </application>
 
 </manifest>

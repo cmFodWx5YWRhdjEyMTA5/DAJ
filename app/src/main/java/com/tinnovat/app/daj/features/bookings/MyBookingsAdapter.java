@@ -66,11 +66,23 @@ public class MyBookingsAdapter extends RecyclerView.Adapter<MyBookingsAdapter.My
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
+        String times = "";
 
         if ( date.equals(response.getServiceBooking().get(position).getServiceBookingDate()) ){
             holder.itemView.setVisibility(View.VISIBLE);
             holder.serviceName.setText(response.getServiceBooking().get(position).getServiceCategory());
-            holder.time.setText("");
+            if (response.getServiceBooking().get(position).getTimeSlots().size() != 0){
+                for (int i = 0 ; i< response.getServiceBooking().get(position).getTimeSlots().size();i++){
+                    if (i == 0){
+                        times = times+response.getServiceBooking().get(position).getTimeSlots().get(i).getSlots();
+                    }else{
+                    times = times+"\n"+response.getServiceBooking().get(position).getTimeSlots().get(i).getSlots();
+                    }
+
+                }
+                holder.time.setText(times);
+            }
+
             holder.linearLayout.setVisibility(View.VISIBLE);
         }else {
             holder.linearLayout.setVisibility(View.GONE);

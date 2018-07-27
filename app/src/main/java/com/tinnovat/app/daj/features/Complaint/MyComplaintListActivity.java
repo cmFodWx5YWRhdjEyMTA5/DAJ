@@ -11,6 +11,7 @@ import android.view.View;
 
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
+import com.tinnovat.app.daj.data.AppPreferanceStore;
 import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.ComplaintListResponseModel;
@@ -23,12 +24,15 @@ import retrofit2.Response;
 
 public class MyComplaintListActivity extends BaseActivity {
 
+    private AppPreferanceStore appPreferanceStore;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_complaint_list);
         Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.my_complaint_list));
+
+        appPreferanceStore = new AppPreferanceStore(this);
 
         fetchContactList();
 
@@ -58,7 +62,7 @@ public class MyComplaintListActivity extends BaseActivity {
 
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
         //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
-        Call<ComplaintListResponseModel> call = apiInterface.getComplaintList("en");
+        Call<ComplaintListResponseModel> call = apiInterface.getComplaintList(appPreferanceStore.getLanguage() ? "en" : "ar");
         call.enqueue(new Callback<ComplaintListResponseModel>() {
             @Override
             public void onResponse(Call<ComplaintListResponseModel> call, Response<ComplaintListResponseModel> response) {

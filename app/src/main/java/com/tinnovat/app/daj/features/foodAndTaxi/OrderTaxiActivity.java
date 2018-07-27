@@ -7,6 +7,7 @@ import android.widget.ImageView;
 
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
+import com.tinnovat.app.daj.data.AppPreferanceStore;
 import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.FoodResponseModel;
@@ -19,11 +20,14 @@ import retrofit2.Response;
 
 public class OrderTaxiActivity extends BaseActivity {
 
+    private AppPreferanceStore appPreferanceStore;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_food);
         Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.order_taxi));
+
+        appPreferanceStore = new AppPreferanceStore(this);
 
         fetchTaxiApps();
     }
@@ -36,7 +40,7 @@ public class OrderTaxiActivity extends BaseActivity {
 
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
         //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
-        Call<FoodResponseModel> call = apiInterface.getTaxiApps("en","android");
+        Call<FoodResponseModel> call = apiInterface.getTaxiApps(appPreferanceStore.getLanguage() ? "en" : "ar","android");
         call.enqueue(new Callback<FoodResponseModel>() {
             @Override
             public void onResponse(Call<FoodResponseModel> call, Response<FoodResponseModel> response) {

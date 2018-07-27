@@ -105,7 +105,7 @@
 
     <string name="today1">اليوم</string>//
     <string name="tomorrow">غداً</string>//
-    <string name="weekend">عطلة نهاية الأسبوع</string>//
+    <string name="weekend">الكل</string>//
 
     <string name="family">العائلة </string>//
     <string name="friend">الأصدقاء</string>//
@@ -139,6 +139,7 @@
     <string name="male">ذكر</string>//
     <string name="female">انثى</string>//
     <string name="villa_no_045">رقم الفيلا: </string>//
+    <string name="please_upload_image">يرجى تحميل الصورة</string>//
 
     <string name="saudi_arabia">المملكة العربية السعودية</string>
     <string name="dar_al_jewar_hall">دار الجوير -</string>

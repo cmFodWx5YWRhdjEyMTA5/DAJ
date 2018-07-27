@@ -3,10 +3,15 @@ package com.tinnovat.app.daj.features.complaint;
 import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
@@ -15,6 +20,8 @@ import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,6 +29,7 @@ import android.util.Base64;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -29,6 +37,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.pchmn.androidverify.Form;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.AppPreferanceStore;
@@ -37,6 +46,7 @@ import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.ComplaintCategoriesResponseModel;
 import com.tinnovat.app.daj.data.network.model.CompllaintUpdateResponseModel;
 import com.tinnovat.app.daj.data.network.model.RequestParams;
+import com.tinnovat.app.daj.features.dashboard.MainActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -44,13 +54,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RegisterComplaintActivity extends BaseActivity implements ImagesAdapter.ImageAdapterListener {
+public class RegisterComplaintActivity extends BaseActivity implements ImagesAdapter.ImageAdapterListener ,LocationListener {
 
     TextView category;
     List<String> listItems;
@@ -58,21 +69,26 @@ public class RegisterComplaintActivity extends BaseActivity implements ImagesAda
     ViewDialog alert;
     int mCatId = 0;
 
+
     private static final int CAMERA_REQUEST = 1888;
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
     private Button buttonSubmit;
     private ArrayList<Bitmap> images;
     private GoogleApiClient mGoogleApiClient;
-    private String lattitude = "7.724600";
-    private String longitude = "20.418335";
+    private double lattitude ;
+    private double longitude ;
     private AppPreferanceStore appPreferanceStore;
     private RecyclerView recyclerViewImages;
     private ImagesAdapter mAdapter;
     private TextView textAddress;
+    private ImageView location;
+    private EditText commentBox;
     private LocationManager mLocationManager;
 
     List<String> sam = new ArrayList<>();
     private Uri imageUri;
+    LocationManager locationManager;
+    Form form;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -84,6 +100,8 @@ public class RegisterComplaintActivity extends BaseActivity implements ImagesAda
         LinearLayout takeImage = findViewById(R.id.takeImage);
         buttonSubmit = findViewById(R.id.button_submit);
         textAddress = findViewById(R.id.text_address);
+        commentBox = findViewById(R.id.commentBox);
+        location = findViewById(R.id.location);
         buttonSubmit.setOnClickListener(this);
 
         takeImage.setOnClickListener(this);
@@ -98,7 +116,32 @@ public class RegisterComplaintActivity extends BaseActivity implements ImagesAda
         recyclerViewImages.setItemAnimator(new DefaultItemAnimator());
         recyclerViewImages.setAdapter(mAdapter);
 
+        location.setOnClickListener(this);
+
+        form = new Form.Builder(this)
+                .showErrors(true)
+                .build();
+
+        getLocation();
+
         fetchCategory();
+    }
+
+    private void getLocation() {
+
+        if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION}, 101);
+
+        }
+
+        try {
+            locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 5, this);
+        }
+        catch(SecurityException e) {
+            e.printStackTrace();
+        }
     }
 
     private void fetchCategory() {
@@ -106,7 +149,7 @@ public class RegisterComplaintActivity extends BaseActivity implements ImagesAda
         startLoading();
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
         //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
-        Call<ComplaintCategoriesResponseModel> call = apiInterface.getComplaintCategory("en");
+        Call<ComplaintCategoriesResponseModel> call = apiInterface.getComplaintCategory(appPreferanceStore.getLanguage() ? "en" : "ar");
         call.enqueue(new Callback<ComplaintCategoriesResponseModel>() {
             @Override
             public void onResponse(Call<ComplaintCategoriesResponseModel> call, Response<ComplaintCategoriesResponseModel> response) {
@@ -190,8 +233,16 @@ public class RegisterComplaintActivity extends BaseActivity implements ImagesAda
                 break;
 
             case R.id.button_submit:
-                doValidation();
+                if(form.isValid()) {
+                    // the form is valid
+                    doValidation();
+                }
+
                 //registerComplaint();
+                break;
+
+            case R.id.location:
+                getLocation();
                 break;
 
             default:
@@ -204,21 +255,29 @@ public class RegisterComplaintActivity extends BaseActivity implements ImagesAda
         if (mCatId == 0) {
             showMessage(getResources().getString(R.string.choose_category));
         } else {
-            registerComplaint();
+            startLoading();
+            List<String> imageArray = new ArrayList<>();
+            if (images != null && !images.isEmpty()) {
+
+                for (Bitmap bitmap : images) {
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 30, baos);
+                    imageArray.add("data:image/jpeg;base64," + Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT));
+                }
+
+                registerComplaint(imageArray);
+            }else {
+                endLoading();
+                showMessage(getResources().getString(R.string.please_upload_image));
+            }
+
+
+
         }
     }
 
-    private void registerComplaint() {
+    private void registerComplaint(List<String> imageArray) {
 
-        List<String> imageArray = new ArrayList<>();
-        if (images != null && !images.isEmpty()) {
-
-            for (Bitmap bitmap : images) {
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                imageArray.add("data:image/jpeg;base64," + Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT));
-            }
-        }
 
       /*  ByteArrayOutputStream baos = new ByteArrayOutputStream();
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.cctv);
@@ -226,9 +285,9 @@ public class RegisterComplaintActivity extends BaseActivity implements ImagesAda
         byte[] imageBytes = baos.toByteArray();
         sam .add( "data:image/png;base64,"+Base64.encodeToString(imageBytes, Base64.DEFAULT));*/
 
-        startLoading();
+
         RequestParams.ComplaintRequest request = new RequestParams().new ComplaintRequest(
-                appPreferanceStore.getLanguage() ? "en" : "ar", mCatId, "test",
+                appPreferanceStore.getLanguage() ? "en" : "ar", mCatId, commentBox.getText() == null ? " " :commentBox.getText().toString() ,
                 imageArray, String.format("%s,%s", lattitude, longitude));
 
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
@@ -239,7 +298,16 @@ public class RegisterComplaintActivity extends BaseActivity implements ImagesAda
             @Override
             public void onResponse(Call<CompllaintUpdateResponseModel> call, Response<CompllaintUpdateResponseModel> response) {
                 endLoading();
-                showMessage("Complaint Registered Successfully");
+                if (response.body() != null) {
+                    if (response.body().isStatus()) {
+                        showMessage(response.body().getMessage());
+                    } else {
+                        showMessage(response.body().getMessage());
+                    }
+                    finish();
+                } else {
+                    showMessage(getResources().getString(R.string.network_problem));
+                }
 
             }
 
@@ -312,6 +380,39 @@ public class RegisterComplaintActivity extends BaseActivity implements ImagesAda
         });
 
         dialog.show();
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+       // textAddress.setText("Latitude: " + location.getLatitude() + "\n Longitude: " + location.getLongitude());
+         lattitude = location.getLatitude();
+        longitude = location.getLongitude();
+
+        try {
+            Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+            List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+            textAddress.setText(addresses.get(0).getAddressLine(0)+", "+
+                    addresses.get(0).getAddressLine(1)+", "+addresses.get(0).getAddressLine(2));
+        }catch(Exception e)
+        {
+
+        }
+
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+        showMessage("Please Enable GPS and Internet");
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+
     }
 
     public class ViewDialog implements ComplaintCategoryAdapter.CategoryAdapterListener {

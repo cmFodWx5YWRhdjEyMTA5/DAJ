@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
+import com.tinnovat.app.daj.data.AppPreferanceStore;
 import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.ContactResponseModel;
@@ -20,14 +21,14 @@ import retrofit2.Response;
 
 public class EmergencyContactActivity extends BaseActivity {
 
-
+    private AppPreferanceStore appPreferanceStore;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_list);
         Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.emergency_contact));
-
+        appPreferanceStore = new AppPreferanceStore(this);
         fetchContactList();
     }
 
@@ -36,7 +37,7 @@ public class EmergencyContactActivity extends BaseActivity {
 
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
         //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
-        Call<ContactResponseModel> call = apiInterface.getContactList("en");
+        Call<ContactResponseModel> call = apiInterface.getContactList(appPreferanceStore.getLanguage() ? "en" : "ar");
         call.enqueue(new Callback<ContactResponseModel>() {
             @Override
             public void onResponse(Call<ContactResponseModel> call, Response<ContactResponseModel> response) {
@@ -56,7 +57,7 @@ public class EmergencyContactActivity extends BaseActivity {
 
     public void setData(Response<ContactResponseModel> response){
         RecyclerView recyclerView= findViewById(R.id.recycler_view);
-        com.tinnovat.app.daj.features.emergencycontact.ContactListAdapter mAdapter = new com.tinnovat.app.daj.features.emergencycontact.ContactListAdapter(response);
+        ContactListAdapter mAdapter = new ContactListAdapter(response);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);

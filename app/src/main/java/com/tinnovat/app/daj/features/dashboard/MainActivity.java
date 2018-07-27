@@ -234,7 +234,7 @@ public class MainActivity extends BaseActivity
             case "5":
                 fetchGuestRegistration();
                 break;
-            case "6 ":
+            case "6":
                 fetchCamera();
                 break;
             case "7":

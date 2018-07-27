@@ -59,15 +59,23 @@
                 android:padding="10dp"
                 android:textColor="@color/black" />
 
+            <com.pchmn.androidverify.InputValidator
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/curve_small_bg_gray"
+                android:layout_marginTop="20dp"
+                app:required="true"
+                app:requiredMessage="@string/required">
+
             <EditText
                 android:id="@+id/commentBox"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:layout_marginTop="20dp"
                 android:background="@drawable/curve_small_bg_gray"
                 android:gravity="start"
                 android:hint="@string/comments"
                 android:padding="10dp" />
+            </com.pchmn.androidverify.InputValidator>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -88,6 +96,7 @@
                 android:layout_height="40dp">
 
                 <ImageView
+                    android:id="@+id/location"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_centerHorizontal="true"
