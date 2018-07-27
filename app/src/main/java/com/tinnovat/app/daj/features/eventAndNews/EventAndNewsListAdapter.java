@@ -6,8 +6,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.model.EventDetails;
 import com.tinnovat.app.daj.testing.TestActivity;
@@ -22,10 +25,18 @@ public class EventAndNewsListAdapter extends RecyclerView.Adapter<EventAndNewsLi
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title;
+        public TextView startDate;
+        public TextView endDate;
+        public Button interested;
+        public ImageView bannerImage;
 
         public MyViewHolder(View view) {
             super(view);
             title = view.findViewById(R.id.bannerText);
+            startDate = view.findViewById(R.id.startDate);
+            endDate = view.findViewById(R.id.endDate);
+            interested = view.findViewById(R.id.interested);
+            bannerImage = view.findViewById(R.id.bannerImage);
         }
     }
 
@@ -58,14 +69,23 @@ public class EventAndNewsListAdapter extends RecyclerView.Adapter<EventAndNewsLi
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         if (eventDetailsList != null && !eventDetailsList.isEmpty()) {
-            holder.title.setText(eventDetailsList.get(position).getEventsName());
+            if (!eventDetailsList.get(position).getEventsImages().isEmpty()){
+                Picasso.get().load(eventDetailsList.get(position).getEventsImages().get(0).getImgPath()).into(holder.bannerImage);
+            }
 
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
+            String[] startDate = eventDetailsList.get(position).getStartDatetime().split(" ");
+            String[] endDate = eventDetailsList.get(position).getEndDatetime().split(" ");
+
+            holder.title.setText(eventDetailsList.get(position).getEventsName());
+            holder.startDate.setText(startDate[0]);
+            holder.endDate.setText(endDate[0]);
+
+            /*holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     holder.title.setBackgroundColor(mContext.getResources().getColor(R.color.orange));
                 }
-            });
+            });*/
         }
 
     }

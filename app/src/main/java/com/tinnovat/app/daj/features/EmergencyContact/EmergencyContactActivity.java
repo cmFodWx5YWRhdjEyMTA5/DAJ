@@ -1,4 +1,4 @@
-package com.tinnovat.app.daj.features.emergencycontact;
+package com.tinnovat.app.daj.features.emergencyContact;
 
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -56,7 +56,7 @@ public class EmergencyContactActivity extends BaseActivity {
 
     public void setData(Response<ContactResponseModel> response){
         RecyclerView recyclerView= findViewById(R.id.recycler_view);
-        ContactListAdapter mAdapter = new ContactListAdapter(response);
+        com.tinnovat.app.daj.features.emergencycontact.ContactListAdapter mAdapter = new com.tinnovat.app.daj.features.emergencycontact.ContactListAdapter(response);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);

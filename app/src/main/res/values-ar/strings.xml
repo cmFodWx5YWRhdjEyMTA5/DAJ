@@ -164,6 +164,7 @@
     <string name="password_mailed">الرجاء تسجيل الدخول بكلمة المرور الجديدة المرسلة إلى البريد الالكتروني الخاص بك</string>
     <string name="bulb_is_not_working">لمبة لا يعمل</string>
     <string name="no">لا</string>//
+    <string name="to">إلى</string>
 
 
 </resources>

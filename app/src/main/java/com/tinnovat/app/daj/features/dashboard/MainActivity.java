@@ -24,7 +24,7 @@ import com.tinnovat.app.daj.features.authentication.LoginActivity;
 import com.tinnovat.app.daj.features.bookings.GuestRegistrationActivityMain;
 import com.tinnovat.app.daj.features.bookings.MyBookingActivity;
 import com.tinnovat.app.daj.features.complaint.MyComplaintListActivity;
-import com.tinnovat.app.daj.features.emergencycontact.EmergencyContactActivity;
+import com.tinnovat.app.daj.features.emergencyContact.EmergencyContactActivity;
 import com.tinnovat.app.daj.features.eventAndNews.EventNewsActivity;
 import com.tinnovat.app.daj.features.foodAndTaxi.OrderFoodActivity;
 import com.tinnovat.app.daj.features.foodAndTaxi.OrderTaxiActivity;

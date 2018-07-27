@@ -176,5 +176,6 @@
     <string name="search_nearby">Search Nearby</string>
     <string name="bulb_is_not_working">Bulb is not working</string>
     <string name="no">No</string>
+    <string name="to">to</string>
 
 </resources>

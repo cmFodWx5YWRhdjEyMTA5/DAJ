@@ -11,7 +11,7 @@
     <RelativeLayout
         android:id="@+id/a1"
         android:layout_width="wrap_content"
-        android:layout_height="200dp"
+        android:layout_height="210dp"
         android:background="@drawable/curve_small_bg_gray">
         <ImageView
             android:id="@+id/bannerImage"
@@ -27,28 +27,55 @@
             android:textStyle="bold"
             android:layout_below="@+id/bannerImage"
             android:text="@string/lorem_ipsum"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             />
         <TextView
+            android:id="@+id/startDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/bannerText"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="5dp"
             android:textColor="@color/greenText"
+            android:layout_alignParentBottom="true"
+            android:textStyle="bold"
             android:text="@string/lorem_ipsum"/>
 
         <TextView
-            android:id="@+id/interested"
+            android:id="@+id/to"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:text="@string/to"
+            android:textColor="@color/greenText" />
+
+        <TextView
+            android:id="@+id/endDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/greenText"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:text="@string/lorem_ipsum"
+            android:layout_marginBottom="5dp"
+            android:textStyle="bold"
+            android:layout_marginEnd="10dp"/>
+
+        <Button
+            android:id="@+id/interested"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/bannerImage"
             android:text="@string/lorem_ipsum"
             android:textColor="@color/greenText"
+            android:layout_marginEnd="5dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="10dp"
-            android:padding="5dp"
+            android:textSize="12sp"
+
             android:elevation="3dp"
             android:background="@drawable/curve_small_bg_white"/>
     </RelativeLayout>
