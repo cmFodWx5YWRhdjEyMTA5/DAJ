@@ -104,8 +104,25 @@
             android:layout_marginStart="10dp"
             android:text="@string/purpose" />
 
+        <Spinner
+            android:id="@+id/spinner_purpose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/curve_small_bg_gray"
+            android:drawableEnd="@drawable/arrow_down"
+            android:elevation="5dp"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textSize="18sp">
+
+        </Spinner>
+
         <TextView
             android:id="@+id/purpose"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
