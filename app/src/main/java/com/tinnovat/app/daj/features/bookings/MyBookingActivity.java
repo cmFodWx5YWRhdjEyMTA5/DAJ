@@ -34,7 +34,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter.SelectAdapterListener{
+public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter.SelectAdapterListener,UpcomingMyBookingsAdapter.DeleteEventListener{
 
 
     RelativeLayout relativeLayout;
@@ -218,7 +218,7 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
         //UpcomingMyBookingsAdapter mAdapter;
         recyclerView = findViewById(R.id.recycler_view2);
 
-        mAdapter = new UpcomingMyBookingsAdapter(response.body());
+        mAdapter = new UpcomingMyBookingsAdapter(response.body(),this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -242,8 +242,9 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
                     if (response.body().getSuccess()) {
                         showMessage(response.body().getMessage());
                         //finish();
-                        mMyBookingAdapter.notifyDataSetChanged();
-                        recyclerView.setAdapter(mMyBookingAdapter);
+                      //  mMyBookingAdapter.notifyDataSetChanged();
+                       // recyclerView.setAdapter(mMyBookingAdapter);
+                        fetchMyBooking();
                     } else {
                         showMessage(response.body().getMessage());
                        // finish();
@@ -264,6 +265,12 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
     @Override
     public void onBookingSelected(List<Integer> selectedBookings) {
         mSelectedBookings = selectedBookings;
+
+    }
+
+    @Override
+    public void onDeleteItemSelected(List<Integer> selectedItems) {
+        invokeDeleteBooking(selectedItems);
 
     }
 }

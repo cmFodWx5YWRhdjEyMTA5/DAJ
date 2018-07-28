@@ -74,6 +74,7 @@ public class MyBookingsAdapter extends RecyclerView.Adapter<MyBookingsAdapter.My
             if (response.getServiceBooking().get(position).getTimeSlots().size() != 0){
                 for (int i = 0 ; i< response.getServiceBooking().get(position).getTimeSlots().size();i++){
                     if (i == 0){
+                        //Todo change
                         times = times+response.getServiceBooking().get(position).getTimeSlots().get(i).getSlots();
                     }else{
                     times = times+"\n"+response.getServiceBooking().get(position).getTimeSlots().get(i).getSlots();
