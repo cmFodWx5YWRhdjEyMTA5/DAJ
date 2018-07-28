@@ -131,17 +131,20 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
 
 //                setDate(date.getDay(),date.getMonth());
-
-                if (CommonUtils.getInstance().getDate2(CalendarDay.today().getCalendar()).equals(date) ){
-                    relativeLayout.setVisibility(View.VISIBLE);
-                    upComingBanner.setVisibility(View.VISIBLE);
-                }else {
-                    relativeLayout.setVisibility(View.GONE);
-                    upComingBanner.setVisibility(View.GONE);
-                }
                 anotherDate =CommonUtils.getInstance().getDate2(date.getCalendar()) ;
                 setDate(date.getCalendar());
                 fetchMyBookingOnAnotherDate(CommonUtils.getInstance().getDate(date.getCalendar()));
+
+                if (CommonUtils.getInstance().getDate2(CalendarDay.today().getCalendar()).equals(anotherDate) ){
+                    relativeLayout.setVisibility(View.VISIBLE);
+                    upComingBanner.setVisibility(View.VISIBLE);
+                    fetchMyBooking();
+                }else {
+                    fetchMyBookingOnAnotherDate(CommonUtils.getInstance().getDate(date.getCalendar()));
+                    relativeLayout.setVisibility(View.GONE);
+                    upComingBanner.setVisibility(View.GONE);
+                }
+
             }
         });
     }
