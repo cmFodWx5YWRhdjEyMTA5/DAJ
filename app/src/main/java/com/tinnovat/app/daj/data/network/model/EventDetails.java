@@ -4,8 +4,11 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.tinnovat.app.daj.utils.CommonUtils;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class EventDetails {
 
@@ -135,38 +138,44 @@ public class EventDetails {
 
     public String getDateCategory() {
 
-        String category = "NULL";
-        Calendar today = Calendar.getInstance();
-        Calendar startDate = CommonUtils.getInstance().getDateFromServerResponse(getStartDatetime());
-        Calendar endDate = CommonUtils.getInstance().getDateFromServerResponse(getEndDatetime());
-        if (today.DATE == startDate.DATE || today.DATE == endDate.DATE) {
-            category = "TODAY";
+        CommonUtils commonUtils = CommonUtils.getInstance();
+        SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+
+        Calendar today;
+
+        try {
+            format1.parse(commonUtils.getDate2(Calendar.getInstance()));
+        } catch (ParseException e) {
+        }
+       today = format1.getCalendar();
+
+        Calendar startDate = commonUtils.getDateFromServerResponse(getStartDatetime());
+        Calendar endDate = commonUtils.getDateFromServerResponse(getEndDatetime());
+        if (endDate.equals(startDate)) {
+            if (endDate.equals(today))
+                return "TODAY";
+            else if (endDate.before(today))
+                return "NULL";
+            else {
+                if (today.get(Calendar.YEAR) == startDate.get(Calendar.YEAR) &&
+                        today.get(Calendar.MONTH) == startDate.get(Calendar.MONTH) &&
+                        today.get(Calendar.DAY_OF_MONTH) + 1 == startDate.get(Calendar.DAY_OF_MONTH)) {
+                    return "TOMORROW";
+                }
+            }
         } else {
-            if (today.YEAR == startDate.YEAR && today.YEAR == endDate.YEAR) {
-                if (today.MONTH == startDate.MONTH && today.MONTH == endDate.MONTH) {
-                    if (startDate.DAY_OF_MONTH > today.DAY_OF_MONTH) {
-                        if (startDate.DAY_OF_MONTH + 1 == today.DAY_OF_MONTH)
-                            category = "TOMORROW";
-                    }
-                }
-            } else if (today.YEAR == endDate.YEAR ) {
-                if (today.MONTH == endDate.MONTH) {
-                    if (today.DAY_OF_MONTH == endDate.DAY_OF_MONTH) {
-                        category = "TODAY";
-                    }else if (today.DAY_OF_MONTH == endDate.DAY_OF_MONTH+1) {
-                        category = "TOMORROW";
-                    }
-                }
-            } else if (today.YEAR == startDate.YEAR ) {
-                if (today.MONTH == startDate.MONTH) {
-                    if (today.DAY_OF_MONTH == startDate.DAY_OF_MONTH) {
-                        category = "TODAY";
-                    } else if (today.DAY_OF_MONTH == startDate.DAY_OF_MONTH+1) {
-                        category = "TOMORROW";
-                    }
+            if (endDate.equals(today) || startDate.equals(today)) {
+                return "TODAY";
+            } else if (endDate.before(today)) {
+                return "NULL";
+            } else if (startDate.after(today)){
+                if (today.get(Calendar.YEAR) == startDate.get(Calendar.YEAR) &&
+                        today.get(Calendar.MONTH) == startDate.get(Calendar.MONTH) &&
+                        today.get(Calendar.DAY_OF_MONTH)+1 == startDate.get(Calendar.DAY_OF_MONTH)) {
+                    return "TOMORROW";
                 }
             }
         }
-        return category;
+        return "NULL";
     }
 }

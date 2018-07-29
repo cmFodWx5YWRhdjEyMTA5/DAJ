@@ -73,7 +73,7 @@ public class CommonUtils {
     }
 
     public Calendar getDateFromServerResponse(String inputDate) {
-        SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yy hh:mm a", Locale.US);
+        SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
         Date dt1 = null;
         try {
             dt1 = format1.parse(inputDate);

@@ -63,11 +63,7 @@ public class EventListTabFragment extends BaseFragment {
                     }
                     break;
                 case 2 :
-                    for (EventDetails details : eventDetailsList) {
-                        if (details.getDateCategory().equalsIgnoreCase("WEEKEND"))  {
-                            list.add(details);
-                        }
-                    }
+                    list = eventDetailsList;
                     break;
             }
         }
@@ -109,16 +105,6 @@ public class EventListTabFragment extends BaseFragment {
         recyclerView.setAdapter(mAdapter);
 
         mAdapter.setData(eventDetailsList);
-
-        /*if (appPreferanceStore.getDataEventAndNews().body() != null &&
-                appPreferanceStore.getDataEventAndNews().body().getCategory() != null) {
-
-            banner.setText(appPreferanceStore.getDataEventAndNews().body().getCategory().get(0).getCategoryName());
-
-        }*/
-
-       // prepareMovieData();
-
     }
 
 
