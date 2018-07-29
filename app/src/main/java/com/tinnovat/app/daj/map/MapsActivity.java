@@ -51,7 +51,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
     private LocationRequest mLocationRequest;
     private Location mLastLocation;
     private Marker mCurrLocationMarker;
-    private FloatingActionButton mButtonDirection;
+   // private FloatingActionButton mButtonDirection;
     private double latitude;
     private double longitude;
     private int PROXIMITY_RADIUS = 10000;
@@ -77,14 +77,14 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
         image3 = findViewById(R.id.image3);
         image4 = findViewById(R.id.image4);
 
-        mButtonDirection = findViewById(R.id.fab_direction);
+       // mButtonDirection = findViewById(R.id.fab_direction);
 
         image1.setOnClickListener(this);
         image2.setOnClickListener(this);
         image3.setOnClickListener(this);
         image4.setOnClickListener(this);
 
-        mButtonDirection.setOnClickListener(this);
+       // mButtonDirection.setOnClickListener(this);
 
         LinearLayout layoutBottomSheet = findViewById(R.id.bottom_sheet);
         BottomSheetBehavior<LinearLayout> sheetBehavior = BottomSheetBehavior.from(layoutBottomSheet);
@@ -385,11 +385,11 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
                 Toast.makeText(MapsActivity.this, "Nearby Shopping", Toast.LENGTH_LONG).show();
                 break;
 
-            case R.id.fab_direction:
+           /* case R.id.fab_direction:
                 Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
                         Uri.parse("http://maps.google.com/maps?daddr=9.438330,77.555490"));
                 startActivity(intent);
-                break;
+                break;*/
         }
     }
 }
