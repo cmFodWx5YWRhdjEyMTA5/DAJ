@@ -87,6 +87,13 @@ public class GuestRegistrationActivity extends BaseActivity implements GuestTime
 
     private void setCalender() {
 
+        cal.state().edit()
+                .setMinimumDate(CalendarDay.from(CalendarDay.today().getYear(), CalendarDay.today().getMonth(), CalendarDay.today().getDay()))
+                .commit();
+
+        cal.setSelectedDate(CalendarDay.today());
+        cal.setSelected(true);
+
         if (getLanguage()) {
             cal.setRightArrowMask(ContextCompat.getDrawable(this, R.drawable.arrow_right));
             cal.setLeftArrowMask(ContextCompat.getDrawable(this, R.drawable.arrow_left));
@@ -109,8 +116,6 @@ public class GuestRegistrationActivity extends BaseActivity implements GuestTime
         };
         cal.setTitleMonths(months);
         cal.setDayFormatter(day);
-        cal.setSelectedDate(CalendarDay.today().getCalendar());
-        cal.setSelected(true);
         cal.setOnMonthChangedListener(new OnMonthChangedListener() {
             @Override
             public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
