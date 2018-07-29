@@ -124,6 +124,8 @@ public class ServiceBookingActivity extends BaseActivity implements ChooseDateAd
     }
 
     private void setData(Service res){
+        Objects.requireNonNull(getSupportActionBar()).setTitle(String.format(getResources().getString(R.string.header_formatter) ,res.getName(),getResources().getString(R.string.booking )));
+
         locationText.setText(res.getName());
         Picasso.get().load(res.getServiceImages()).into(servicesImage);
 

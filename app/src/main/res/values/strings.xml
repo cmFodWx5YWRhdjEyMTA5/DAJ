@@ -37,6 +37,8 @@
     <string name="english">English</string>
     <string name="arabic">العَرَبِيَّة</string>
 
+    <string name="header_formatter">%S %S</string>//
+
     <string name="formatter">Reg No: CMP%d</string>//
     <string name="formatter_number">%d %s</string>//
     <string name="number">%d</string>//
@@ -178,5 +180,7 @@
     <string name="bulb_is_not_working">Bulb is not working</string>
     <string name="no">No</string>
     <string name="to">to</string>
+    <string name="booking">Booking</string>
+
 
 </resources>

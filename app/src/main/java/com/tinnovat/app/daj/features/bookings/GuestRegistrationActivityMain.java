@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,7 +44,6 @@ import retrofit2.Response;
 
 public class GuestRegistrationActivityMain extends BaseActivity implements GuestTimeSlotAdapter.DateAdapterListener {
 
-    TextView purpose;
     int purposeId = 0;
     TextView monthTitle;
     MaterialCalendarView cal;
@@ -61,7 +61,7 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
     private TableRow row;
 
     List<String> selectedDatesList = new ArrayList<>();
-    List<TextView> tvListPurpose = new ArrayList<>();
+    //List<TextView> tvListPurpose = new ArrayList<>();
     List<TextView> tvListMonthTitle = new ArrayList<>();
     List<MaterialCalendarView> calendarViewList = new ArrayList<>();
     List<Spinner> purposeSpinnerList = new ArrayList<>();
@@ -81,6 +81,7 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
 
         List<String> listItems = new ArrayList<String>();
 
+        listItems.add(getResources().getString(R.string.choose_purpose));
         listItems.add(getResources().getString(R.string.family));
         listItems.add(getResources().getString(R.string.friend));
         listItems.add(getResources().getString(R.string.maintenance));
@@ -98,14 +99,14 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
         row = (TableRow) LayoutInflater.from(this).inflate(R.layout.content_form_guest_registration, null);
         cal = row.findViewById(R.id.calendarView);
         monthTitle = row.findViewById(R.id.monthTitle);
-        purpose = row.findViewById(R.id.purpose);
+        //purpose = row.findViewById(R.id.purpose);
         EditText inputName = row.findViewById(R.id.input_name);
         EditText vehicleNumber = row.findViewById(R.id.vehicle_no);
         Spinner spinner = row.findViewById(R.id.spinner_purpose);
 
         calendarViewList.add(cal);
         tvListMonthTitle.add(monthTitle);
-        tvListPurpose.add(purpose);
+        //tvListPurpose.add(purpose);
         purposeSpinnerList.add(spinner);
         tvInputNameList.add(inputName);
         tvVehicleNumberList.add(vehicleNumber);
@@ -114,8 +115,23 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
         setCalender(rowPosition);
 //        setTimeSlot(recyclerView);
 
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if (i==0){
+                    showMessage("nothing");
+                }else {
+                    showMessage("selected");
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         table.addView(row);
-        purpose.setOnClickListener(this);
 
     }
 
@@ -123,6 +139,13 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
 
         MaterialCalendarView cal = calendarViewList.get(position);
         final TextView monthTitle = tvListMonthTitle.get(position);
+
+        cal.state().edit()
+                .setMinimumDate(CalendarDay.from(CalendarDay.today().getYear(), CalendarDay.today().getMonth(), CalendarDay.today().getDay()))
+                .commit();
+
+        cal.setSelectedDate(CalendarDay.today());
+        cal.setSelected(true);
 
         if (getLanguage()) {
             cal.setRightArrowMask(ContextCompat.getDrawable(this, R.drawable.arrow_right));
@@ -146,8 +169,6 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
         };
         cal.setTitleMonths(months);
         cal.setDayFormatter(day);
-        cal.setSelectedDate(CalendarDay.today().getCalendar());
-        cal.setSelected(true);
         cal.setOnMonthChangedListener(new OnMonthChangedListener() {
             @Override
             public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
@@ -271,12 +292,6 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
                 validation();
                 break;
 
-            case R.id.purpose:
-
-                ViewDialog alert = new ViewDialog();
-                alert.showDialog(GuestRegistrationActivityMain.this, "");
-                break;
-
             case R.id.add:
                 if (table != null) {
                     createNewRow(table.getChildCount());
@@ -293,69 +308,5 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
     }
 
 
-    public class ViewDialog {
 
-        public int showDialog(Activity activity, String msg) {
-            final Dialog dialog = new Dialog(GuestRegistrationActivityMain.this);
-            dialog.setContentView(R.layout.dialog_guest);
-            final TextView family = dialog.findViewById(R.id.family);
-            final TextView friend = dialog.findViewById(R.id.friend);
-            final TextView maintenance = dialog.findViewById(R.id.maintenance);
-            final TextView taxi = dialog.findViewById(R.id.taxi);
-            final TextView delivery = dialog.findViewById(R.id.delivery);
-
-
-            family.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    purposeId = 1;
-                    purpose.setText(family.getText().toString());
-                    //purpose.setText();
-                    dialog.dismiss();
-                }
-            });
-
-            friend.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    purposeId = 2;
-                    purpose.setText(friend.getText().toString());
-                    // purpose.setText(friend.getText());
-                    dialog.dismiss();
-                }
-            });
-
-            maintenance.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    purposeId = 3;
-                    purpose.setText(maintenance.getText().toString());
-                    //purpose.setText(maintenance.getText());
-                    dialog.dismiss();
-                }
-            });
-            taxi.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    purposeId = 4;
-                    purpose.setText(taxi.getText().toString());
-                    //purpose.setText(taxi.getText());
-                    dialog.dismiss();
-                }
-            });
-            delivery.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    purposeId = 5;
-                    purpose.setText(delivery.getText().toString());
-                    // purpose.setText(delivery.getText());
-                    dialog.dismiss();
-                }
-            });
-
-            dialog.show();
-
-            return purposeId;
-        }
-    }
 }

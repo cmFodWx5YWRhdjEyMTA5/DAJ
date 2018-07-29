@@ -166,6 +166,7 @@
     <string name="bulb_is_not_working">لمبة لا يعمل</string>
     <string name="no">لا</string>//
     <string name="to">إلى</string>
+    <string name="booking">الحجز</string>
 
 
 </resources>
