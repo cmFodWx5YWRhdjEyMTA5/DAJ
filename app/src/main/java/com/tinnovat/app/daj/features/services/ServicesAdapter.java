@@ -1,7 +1,8 @@
 package com.tinnovat.app.daj.features.services;
 
 import android.content.Context;
-import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,46 +12,48 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.model.ServiceCategory;
-import com.tinnovat.app.daj.data.network.model.ServicesResponseModel;
 import com.tinnovat.app.daj.testing.TestActivity;
 
-import retrofit2.Response;
+import java.util.List;
 
 public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.MyViewHolder> {
 
-    private  Context mContext;
-    private Response<ServicesResponseModel> response;
-    private Boolean language;
+    private final ServicesMainCategoryFragment.OnCategoryListFragmentInteractionListener mListener;
+    private Context mContext;
+    private List<ServiceCategory> mDataList;
+    private boolean mLanguage;
+
+    public ServicesAdapter(List<ServiceCategory> data, Context context, ServicesMainCategoryFragment.OnCategoryListFragmentInteractionListener listener, boolean language) {
+        mDataList = data;
+        mContext = context;
+        mListener = listener;
+        mLanguage = language;
+    }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView cat_name;
+        private ServiceCategory mItem;
+        private TextView cat_name;
         private RelativeLayout rowBackBg;
-        public LinearLayout rowBackBgDesign;
-        public ImageView  circle;
-        public ImageView  icon;
-        public ImageView  arcHall;
+        private LinearLayout rowBackBgDesign;
+        private ImageView circle;
+        private ImageView icon;
+        private ImageView arcHall;
 
         private MyViewHolder(View view) {
             super(view);
-            cat_name =  view.findViewById(R.id.cat_name);
-            rowBackBg =  view.findViewById(R.id.hall);
-            rowBackBgDesign =  view.findViewById(R.id.rowBackBgDesign);
-            circle =  view.findViewById(R.id.circle);
-            icon =  view.findViewById(R.id.icon);
-            arcHall =  view.findViewById(R.id.arcHall);
+            cat_name = view.findViewById(R.id.cat_name);
+            rowBackBg = view.findViewById(R.id.hall);
+            rowBackBgDesign = view.findViewById(R.id.rowBackBgDesign);
+            circle = view.findViewById(R.id.circle);
+            icon = view.findViewById(R.id.icon);
+            arcHall = view.findViewById(R.id.arcHall);
 
         }
     }
 
-
-    public ServicesAdapter(Response<ServicesResponseModel> response, Boolean language) {
-        this.response = response;
-        this.language = language;
-    }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -63,26 +66,28 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.MyView
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
 
-        final ServiceCategory category = response.body().getServiceCategory().get(position);
-       // Movie movie = moviesList.get(position);
-        Picasso.get().load(category.getIcon()).into(holder.icon);
-        holder.cat_name.setText(category.getName());
+        holder.mItem = mDataList.get(position);
+        // Movie movie = moviesList.get(position);
+        Picasso.get().load(holder.mItem.getIcon())
+                .placeholder(ContextCompat.getDrawable(mContext, R.drawable.ic_photo_place_holder))
+                .into(holder.icon);
+        holder.cat_name.setText(holder.mItem.getName());
 
-        if (this.language){
+        if (mLanguage) {
             holder.arcHall.setImageResource(R.drawable.arc_left);
             holder.arcHall.setScaleType(ImageView.ScaleType.FIT_END);
-        }else {
+        } else {
             holder.arcHall.setImageResource(R.drawable.arc_right);
             holder.arcHall.setScaleType(ImageView.ScaleType.FIT_START);
         }
 
-        if (position%2 == 0){
+        if (position % 2 == 0) {
             holder.rowBackBg.setBackground(mContext.getResources().getDrawable(R.drawable.curve_small_bg_green));
             holder.rowBackBgDesign.setBackground(mContext.getResources().getDrawable(R.drawable.green_bg));
             holder.circle.setImageResource(R.drawable.green_circle);
-        }else {
+        } else {
             holder.rowBackBg.setBackground(mContext.getResources().getDrawable(R.drawable.curve_small_bg_golden));
             holder.rowBackBgDesign.setBackground(mContext.getResources().getDrawable(R.drawable.golden_bg));
             holder.circle.setImageResource(R.drawable.golden_circle);
@@ -92,11 +97,10 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.MyView
         holder.rowBackBg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  holder.cat_name.setBackgroundColor(mContext.getResources().getColor(R.color.orange));
-                Intent i = new Intent(mContext, ServiceListActivity.class);
-                i.putExtra("category_id",response.body().getServiceCategory().get(holder.getAdapterPosition()).getId());
-                i.putExtra("response",new Gson().toJson(response.body().getServiceCategory().get(holder.getAdapterPosition()).getServices()));
-                mContext.startActivity(i);
+                if (null != mListener) {
+                    mListener.onCategoryListFragmentInteraction(holder.mItem);
+                }
+                //  holder.cat_name.setBackgroundColor(mContext.getResources().getColor(R.color.orange));
             }
         });
 
@@ -104,7 +108,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.MyView
 
     @Override
     public int getItemCount() {
-        return response.body().getServiceCategory().size();
-       // return 5;
+        return mDataList.size();
+        // return 5;
     }
 }

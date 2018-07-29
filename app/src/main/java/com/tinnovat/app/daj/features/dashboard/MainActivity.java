@@ -32,6 +32,7 @@ import com.tinnovat.app.daj.features.futurePhase.FuturePhaseInfoListActivity;
 import com.tinnovat.app.daj.features.futurePhase.FuturePhaseMainActivity;
 import com.tinnovat.app.daj.features.profile.ProfileActivity;
 import com.tinnovat.app.daj.features.services.ServicesActivity;
+import com.tinnovat.app.daj.features.services.ServicesMainActivity;
 import com.tinnovat.app.daj.features.surveillance.SurveillanceActivity;
 import com.tinnovat.app.daj.map.MapsActivity;
 
@@ -423,7 +424,7 @@ public class MainActivity extends BaseActivity
     }
 
     private void fetchServices() {
-        Intent i = new Intent(MainActivity.this, ServicesActivity.class);
+        Intent i = new Intent(MainActivity.this, ServicesMainActivity.class);
         startActivity(i);
     }
 

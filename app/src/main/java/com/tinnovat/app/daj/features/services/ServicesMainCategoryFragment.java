@@ -1,4 +1,4 @@
-package com.tinnovat.app.daj.features.futurePhase;
+package com.tinnovat.app.daj.features.services;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -16,8 +16,8 @@ import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.AppPreferanceStore;
 import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
-import com.tinnovat.app.daj.data.network.model.FuturePhasesResponseModel;
-import com.tinnovat.app.daj.data.network.model.Futurephase;
+import com.tinnovat.app.daj.data.network.model.ServiceCategory;
+import com.tinnovat.app.daj.data.network.model.ServicesResponseModel;
 
 import java.util.List;
 
@@ -28,16 +28,16 @@ import retrofit2.Response;
 /**
  * A fragment representing a list of Items.
  * <p/>
- * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
+ * Activities containing this fragment MUST implement the {@link OnCategoryListFragmentInteractionListener}
  * interface.
  */
-public class FuturePhaseInfoFragment extends BaseFragment {
+public class ServicesMainCategoryFragment extends BaseFragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters
     private int mColumnCount = 1;
-    private OnListFragmentInteractionListener mListener;
+    private OnCategoryListFragmentInteractionListener mListener;
     private AppPreferanceStore appPreferanceStore;
     private RecyclerView recyclerView;
 
@@ -45,13 +45,13 @@ public class FuturePhaseInfoFragment extends BaseFragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public FuturePhaseInfoFragment() {
+    public ServicesMainCategoryFragment() {
     }
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static FuturePhaseInfoFragment newInstance(int columnCount) {
-        FuturePhaseInfoFragment fragment = new FuturePhaseInfoFragment();
+    public static ServicesMainCategoryFragment newInstance(int columnCount) {
+        ServicesMainCategoryFragment fragment = new ServicesMainCategoryFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -85,9 +85,9 @@ public class FuturePhaseInfoFragment extends BaseFragment {
             getActivity().getActionBar().setTitle(getString(R.string.future_phase_info_list));
 
         appPreferanceStore = new AppPreferanceStore(getContext());
-        mListener.setTitle(getString(R.string.future_phase_info_list));
+        mListener.setTitle(getString(R.string.services));
 
-        fetchFuturePhasesInfo();
+        fetchServiceList();
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
@@ -101,29 +101,30 @@ public class FuturePhaseInfoFragment extends BaseFragment {
         return view;
     }
 
-    private void fetchFuturePhasesInfo() {
+    private void fetchServiceList() {
+
         startLoading();
 
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
         //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
-        Call<FuturePhasesResponseModel> call = apiInterface.getFuturePhasesInfo(appPreferanceStore.getLanguage() ? "en" : "ar");
-        call.enqueue(new Callback<FuturePhasesResponseModel>() {
+        Call<ServicesResponseModel> call = apiInterface.getServiceList(appPreferanceStore.getLanguage() ? "en" : "ar");
+        call.enqueue(new Callback<ServicesResponseModel>() {
             @Override
-            public void onResponse(@NonNull Call<FuturePhasesResponseModel> call, @NonNull Response<FuturePhasesResponseModel> response) {
+            public void onResponse(@NonNull Call<ServicesResponseModel> call, @NonNull Response<ServicesResponseModel> response) {
                 endLoading();
-                FuturePhasesResponseModel responseData = response.body();
-                if (responseData != null && responseData.getFuturephases() != null) {
-                    showMessage("Future PhasesInfo Successfully");
-                    setData(responseData.getFuturephases());
-                }
+                showMessage("Data Fetched Successfully");
 
+                ServicesResponseModel responseBody = response.body();
+                if (responseBody != null && responseBody.getServiceCategory() != null) {
+                    setData(responseBody.getServiceCategory());
+                }
             }
 
             @Override
-            public void onFailure(@NonNull Call<FuturePhasesResponseModel> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<ServicesResponseModel> call, @NonNull Throwable t) {
                 endLoading();
 
-                showMessage("FuturePhasesInfo Failed");
+                showMessage("Login Failed");
             }
         });
     }
@@ -131,8 +132,8 @@ public class FuturePhaseInfoFragment extends BaseFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) context;
+        if (context instanceof OnCategoryListFragmentInteractionListener) {
+            mListener = (OnCategoryListFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnListFragmentInteractionListener");
@@ -150,17 +151,17 @@ public class FuturePhaseInfoFragment extends BaseFragment {
 
     }
 
-    public void setData(List<Futurephase> data) {
+    public void setData(List<ServiceCategory> data) {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(new FuturePhaseRecyclerViewAdapter(data, getActivity(), mListener));
+        recyclerView.setAdapter(new ServicesAdapter(data, getActivity(), mListener, getLanguage()));
     }
 
-    public interface OnListFragmentInteractionListener {
+    public interface OnCategoryListFragmentInteractionListener {
 
         void setTitle(String title);
 
-        void onListFragmentInteraction(Futurephase item);
+        void onCategoryListFragmentInteraction(ServiceCategory item);
     }
 }

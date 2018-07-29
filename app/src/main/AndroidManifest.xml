@@ -185,6 +185,7 @@
         <activity
             android:name=".features.futurePhase.FuturePhaseMainActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".features.services.ServicesMainActivity" />
     </application>
 
 </manifest>

@@ -18,7 +18,7 @@ public class FuturePhaseMainActivity extends BaseActivity
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_future_phase_main);
+        setContentView(R.layout.activity_frame_main);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
@@ -41,7 +41,7 @@ public class FuturePhaseMainActivity extends BaseActivity
 
     @Override
     public void setTitle(String title) {
-        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.future_phase_info_list));
+        Objects.requireNonNull(getSupportActionBar()).setTitle(title);
 
     }
 

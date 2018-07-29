@@ -69,11 +69,11 @@ public class ServicesActivity extends BaseActivity {
     }
 
     public void setData(Response<ServicesResponseModel> response){
-        mAdapter = new ServicesAdapter(response,getLanguage());
+       /* mAdapter = new ServicesAdapter(response,getLanguage());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
+        recyclerView.setAdapter(mAdapter);*/
     }
 
     @Override
