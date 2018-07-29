@@ -19,6 +19,7 @@
     <color name="red">#EC4028</color>
     <color name="blue">#0E7AFF</color>
     <color name="transparentWhite">#00ffffff</color>
+    <color name="colorPlaceHolderBackground">#CCC2A15A</color>
 
     <color name="black_overlay">#66000000</color>
 </resources>

@@ -29,6 +29,7 @@ import com.tinnovat.app.daj.features.eventAndNews.EventNewsActivity;
 import com.tinnovat.app.daj.features.foodAndTaxi.OrderFoodActivity;
 import com.tinnovat.app.daj.features.foodAndTaxi.OrderTaxiActivity;
 import com.tinnovat.app.daj.features.futurePhase.FuturePhaseInfoListActivity;
+import com.tinnovat.app.daj.features.futurePhase.FuturePhaseMainActivity;
 import com.tinnovat.app.daj.features.profile.ProfileActivity;
 import com.tinnovat.app.daj.features.services.ServicesActivity;
 import com.tinnovat.app.daj.features.surveillance.SurveillanceActivity;
@@ -442,7 +443,7 @@ public class MainActivity extends BaseActivity
     }
 
     private void fetchFuturePhase() {
-        Intent i = new Intent(MainActivity.this, FuturePhaseInfoListActivity.class);
+        Intent i = new Intent(MainActivity.this, FuturePhaseMainActivity.class);
         startActivity(i);
     }
 
