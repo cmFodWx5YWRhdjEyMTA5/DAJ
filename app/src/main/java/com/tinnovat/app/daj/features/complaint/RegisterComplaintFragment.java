@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.Paint;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -21,35 +22,42 @@ import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.pchmn.androidverify.Form;
-import com.tinnovat.app.daj.BaseActivity;
+import com.squareup.picasso.Picasso;
+import com.tinnovat.app.daj.BaseFragment;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.AppPreferanceStore;
 import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.ComplaintCategoriesResponseModel;
+import com.tinnovat.app.daj.data.network.model.ComplaintList;
 import com.tinnovat.app.daj.data.network.model.CompllaintUpdateResponseModel;
 import com.tinnovat.app.daj.data.network.model.RequestParams;
-import com.tinnovat.app.daj.features.dashboard.MainActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -61,8 +69,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RegisterComplaintActivity extends BaseActivity
-        implements ImagesAdapter.ImageAdapterListener ,LocationListener {
+
+public class RegisterComplaintFragment extends BaseFragment  implements ImagesAdapter.ImageAdapterListener ,LocationListener {
 
     TextView category;
     List<String> listItems;
@@ -90,36 +98,52 @@ public class RegisterComplaintActivity extends BaseActivity
     private Uri imageUri;
     LocationManager locationManager;
     Form form;
+    private OnFragmentInteractionListener mListener;
+
+    public RegisterComplaintFragment() {
+        // Required empty public constructor
+    }
+
+    public static Fragment newInstance() {
+        RegisterComplaintFragment fragment = new RegisterComplaintFragment();
+        return fragment;
+    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_complaint);
-        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.reg_complaint));
+    }
 
-        appPreferanceStore = new AppPreferanceStore(getApplicationContext());
-        LinearLayout takeImage = findViewById(R.id.takeImage);
-        buttonSubmit = findViewById(R.id.button_submit);
-        textAddress = findViewById(R.id.text_address);
-        commentBox = findViewById(R.id.commentBox);
-        location = findViewById(R.id.location);
+    @Override
+    public void initialiseViews(View view) {
+        mListener.setTitle(getString(R.string.reg_complaint));
+
+        appPreferanceStore = new AppPreferanceStore(getContext());
+        LinearLayout takeImage = view.findViewById(R.id.takeImage);
+        buttonSubmit = view.findViewById(R.id.button_submit);
+        textAddress = view.findViewById(R.id.text_address);
+        commentBox = view.findViewById(R.id.commentBox);
+        location = view.findViewById(R.id.location);
+        category = view.findViewById(R.id.category);
+
         buttonSubmit.setOnClickListener(this);
 
         takeImage.setOnClickListener(this);
 
-        recyclerViewImages = findViewById(R.id.recycler_view_images);
-        mAdapter = new ImagesAdapter(getApplicationContext(), this);
+        recyclerViewImages = view.findViewById(R.id.recycler_view_images);
+        mAdapter = new ImagesAdapter(getContext(), this);
 
         recyclerViewImages.setVisibility(View.GONE);
         images = new ArrayList<>();
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerViewImages.setLayoutManager(mLayoutManager);
         recyclerViewImages.setItemAnimator(new DefaultItemAnimator());
         recyclerViewImages.setAdapter(mAdapter);
 
         location.setOnClickListener(this);
 
-        form = new Form.Builder(this)
+        form = new Form.Builder(getActivity())
                 .showErrors(true)
                 .build();
 
@@ -128,16 +152,48 @@ public class RegisterComplaintActivity extends BaseActivity
         fetchCategory();
     }
 
+    @Override
+    public void initialiseEventListners() {
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_register_complaint, container, false);
+
+        initialiseViews(view);
+        // Inflate the layout for this fragment
+        return view;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnFragmentInteractionListener) {
+            mListener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
     private void getLocation() {
 
-        if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
-            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION}, 101);
+            ActivityCompat.requestPermissions(getActivity(), new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION}, 101);
 
         }
 
         try {
-            locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 5, this);
         }
         catch(SecurityException e) {
@@ -180,7 +236,6 @@ public class RegisterComplaintActivity extends BaseActivity
 
         // CharSequence categoryList[] = listItems.toArray(new CharSequence[listItems.size()]);
 
-        category = findViewById(R.id.category);
 
 
         category.setOnClickListener(new View.OnClickListener() {
@@ -192,19 +247,9 @@ public class RegisterComplaintActivity extends BaseActivity
         });
     }
 
-    @Override
-    public void initialiseViews() {
-
-    }
-
-    @Override
-    public void initialiseEventListners() {
-
-    }
-
     private void takePhoto() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (checkSelfPermission(Manifest.permission.CAMERA)
+            if (getActivity().checkSelfPermission(Manifest.permission.CAMERA)
                     != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(new String[]{Manifest.permission.CAMERA},
                         MY_CAMERA_PERMISSION_CODE);
@@ -279,14 +324,6 @@ public class RegisterComplaintActivity extends BaseActivity
 
     private void registerComplaint(List<String> imageArray) {
 
-
-      /*  ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.cctv);
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        byte[] imageBytes = baos.toByteArray();
-        sam .add( "data:image/png;base64,"+Base64.encodeToString(imageBytes, Base64.DEFAULT));*/
-
-
         RequestParams.ComplaintRequest request = new RequestParams().new ComplaintRequest(
                 appPreferanceStore.getLanguage() ? "en" : "ar", mCatId, commentBox.getText() == null ? " " :commentBox.getText().toString() ,
                 imageArray, String.format("%s,%s", lattitude, longitude));
@@ -305,7 +342,7 @@ public class RegisterComplaintActivity extends BaseActivity
                     } else {
                         showMessage(response.body().getMessage());
                     }
-                    finish();
+                    getActivity().finish();
                 } else {
                     showMessage(getResources().getString(R.string.network_problem));
                 }
@@ -326,12 +363,12 @@ public class RegisterComplaintActivity extends BaseActivity
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == MY_CAMERA_PERMISSION_CODE) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "camera permission granted", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "camera permission granted", Toast.LENGTH_LONG).show();
                 Intent cameraIntent = new
                         Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(cameraIntent, CAMERA_REQUEST);
             } else {
-                Toast.makeText(this, "camera permission denied", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "camera permission denied", Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -341,7 +378,7 @@ public class RegisterComplaintActivity extends BaseActivity
 
             try {
                 Bitmap thumbnail = MediaStore.Images.Media.getBitmap(
-                        getContentResolver(), imageUri);
+                        getActivity().getContentResolver(), imageUri);
                 images.add(thumbnail);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -354,7 +391,7 @@ public class RegisterComplaintActivity extends BaseActivity
 
     @Override
     public void interactClick(final Bitmap bitmapImage) {
-        final Dialog dialog = new Dialog(RegisterComplaintActivity.this, android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
+        final Dialog dialog = new Dialog(getContext(), android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
 
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(true);
@@ -385,12 +422,12 @@ public class RegisterComplaintActivity extends BaseActivity
 
     @Override
     public void onLocationChanged(Location location) {
-       // textAddress.setText("Latitude: " + location.getLatitude() + "\n Longitude: " + location.getLongitude());
-         lattitude = location.getLatitude();
+        // textAddress.setText("Latitude: " + location.getLatitude() + "\n Longitude: " + location.getLongitude());
+        lattitude = location.getLatitude();
         longitude = location.getLongitude();
 
         try {
-            Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+            Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
             List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
             textAddress.setText(addresses.get(0).getAddressLine(0)+", "+
                     addresses.get(0).getAddressLine(1)+", "+addresses.get(0).getAddressLine(2));
@@ -420,12 +457,12 @@ public class RegisterComplaintActivity extends BaseActivity
         Dialog dialog;
 
         public void showDialog() {
-            dialog = new Dialog(RegisterComplaintActivity.this);
+            dialog = new Dialog(getContext());
             dialog.setContentView(R.layout.dialog_reg_complaint);
             RecyclerView recyclerView = dialog.findViewById(R.id.recycler_view);
             ComplaintCategoryAdapter mAdapter = new ComplaintCategoryAdapter(listItems, catIds, this);
 
-            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
             recyclerView.setLayoutManager(mLayoutManager);
             recyclerView.setItemAnimator(new DefaultItemAnimator());
             recyclerView.setAdapter(mAdapter);
@@ -443,9 +480,14 @@ public class RegisterComplaintActivity extends BaseActivity
 
     public String getRealPathFromURI(Uri contentUri) {
         String[] proj = {MediaStore.Images.Media.DATA};
-        Cursor cursor = managedQuery(contentUri, proj, null, null, null);
+        Cursor cursor = getActivity().managedQuery(contentUri, proj, null, null, null);
         int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
         cursor.moveToFirst();
         return cursor.getString(column_index);
+    }
+
+public interface OnFragmentInteractionListener {
+
+        void setTitle(String title);
     }
 }

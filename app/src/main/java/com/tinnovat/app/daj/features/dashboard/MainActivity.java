@@ -23,6 +23,7 @@ import com.tinnovat.app.daj.features.authentication.ChangePasswordActivity;
 import com.tinnovat.app.daj.features.authentication.LoginActivity;
 import com.tinnovat.app.daj.features.bookings.GuestRegistrationActivityMain;
 import com.tinnovat.app.daj.features.bookings.MyBookingActivity;
+import com.tinnovat.app.daj.features.complaint.ComplaintMainActivity;
 import com.tinnovat.app.daj.features.complaint.MyComplaintListActivity;
 import com.tinnovat.app.daj.features.contact.EmergencyContactActivity;
 import com.tinnovat.app.daj.features.eventAndNews.EventNewsActivity;
@@ -469,7 +470,7 @@ public class MainActivity extends BaseActivity
     }
 
     private void fetchMyComplaintList() {
-        Intent i = new Intent(MainActivity.this, MyComplaintListActivity.class);
+        Intent i = new Intent(MainActivity.this, ComplaintMainActivity.class);
         startActivity(i);
     }
 

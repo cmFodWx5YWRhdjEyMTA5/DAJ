@@ -13,21 +13,16 @@ import com.tinnovat.app.daj.testing.TestActivity;
 
 public class StatusListAdapter extends RecyclerView.Adapter<StatusListAdapter.MyViewHolder> {
 
+    private final ComplaintDetailFragment.OnFragmentInteractionListener mListener;
     private  Context mContext;
 
-    /*@Override
-    public void onCreate() {
-        super.onCreate();
-        mContext = this;
-    }*/
+    private ComplaintList responseData;
 
-    /*public static Context getContext(){
-        return mContext;
-    }*/
+    public StatusListAdapter(ComplaintList complaintList, ComplaintDetailFragment.OnFragmentInteractionListener listener) {
 
-
-
-    private ComplaintList response;
+        responseData = complaintList;
+        mListener = listener;
+    }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView headingSubmitted;
@@ -45,10 +40,10 @@ public class StatusListAdapter extends RecyclerView.Adapter<StatusListAdapter.My
     }
 
 
-    public StatusListAdapter(ComplaintList response) {
+   /* public StatusListAdapter(ComplaintList response) {
         this.response = response;
     }
-
+*/
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -62,7 +57,7 @@ public class StatusListAdapter extends RecyclerView.Adapter<StatusListAdapter.My
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         /*Movie movie = moviesList.get(position);*/
-        switch (response.getLogDetails().get(position).getComplaintStatus()) {
+        switch (responseData.getLogDetails().get(position).getComplaintStatus()) {
             case 0:
                 holder.headingSubmitted.setText(R.string.submitted);
                 holder.lineGreen.setBackgroundColor(mContext.getResources().getColor(R.color.greenText));
@@ -78,9 +73,9 @@ public class StatusListAdapter extends RecyclerView.Adapter<StatusListAdapter.My
                 holder.lineGreen.setBackgroundColor(mContext.getResources().getColor(R.color.red));
                 break;
         }
-        if (response.getLogDetails().get(position).getComplaintsLogNote() != null)
-        holder.logNote.setText(response.getLogDetails().get(position).getComplaintsLogNote().toString());
-        holder.submittedDate.setText(response.getLogDetails().get(position).getSubmittedDate());
+        if (responseData.getLogDetails().get(position).getComplaintsLogNote() != null)
+        holder.logNote.setText(responseData.getLogDetails().get(position).getComplaintsLogNote().toString());
+        holder.submittedDate.setText(responseData.getLogDetails().get(position).getSubmittedDate());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,6 +88,6 @@ public class StatusListAdapter extends RecyclerView.Adapter<StatusListAdapter.My
 
     @Override
     public int getItemCount() {
-        return response.getLogDetails().size();
+        return responseData.getLogDetails().size();
     }
 }

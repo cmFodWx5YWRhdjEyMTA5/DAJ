@@ -186,6 +186,9 @@
             android:name=".features.futurePhase.FuturePhaseMainActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".features.services.ServicesMainActivity" />
+        <activity
+            android:name=".features.complaint.ComplaintMainActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

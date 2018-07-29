@@ -10,19 +10,25 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.tinnovat.app.daj.R;
-import com.tinnovat.app.daj.data.network.model.ComplaintListResponseModel;
+import com.tinnovat.app.daj.data.network.model.ComplaintList;
 import com.tinnovat.app.daj.testing.TestActivity;
 import com.tinnovat.app.daj.utils.CommonUtils;
 
-import retrofit2.Response;
+import java.util.List;
 
 public class ComplaintListAdapter extends RecyclerView.Adapter<ComplaintListAdapter.MyViewHolder> {
 
+    private final List<ComplaintList> mComplaintList;
+    private final ComplaintListFragment.OnFragmentInteractionListener mListener;
     private Context mContext;
-    private Response<ComplaintListResponseModel> response;
 
+    public ComplaintListAdapter(List<ComplaintList> responseList, ComplaintListFragment.OnFragmentInteractionListener listener) {
+        mComplaintList = responseList;
+        mListener = listener;
+    }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
+        private ComplaintList complaintListItem;
         public View line;
         public TextView day;
         public TextView month;
@@ -42,11 +48,6 @@ public class ComplaintListAdapter extends RecyclerView.Adapter<ComplaintListAdap
         }
     }
 
-
-    public ComplaintListAdapter(Response<ComplaintListResponseModel> response) {
-        this.response = response;
-    }
-
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -60,14 +61,15 @@ public class ComplaintListAdapter extends RecyclerView.Adapter<ComplaintListAdap
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
+        holder.complaintListItem = mComplaintList.get(position);
 
 
-        holder.day.setText(CommonUtils.getInstance().getDate(response.body().getComplaints().get(position).getSubmittedDate(),true));
-        holder.month.setText(CommonUtils.getInstance().getDate(response.body().getComplaints().get(position).getSubmittedDate(),false));
-        holder.complaint.setText(response.body().getComplaints().get(position).getCategoryName());
-        holder.complaintId.setText(String.format(mContext.getString(R.string.formatter) , response.body().getComplaints().get(position).getRegisterNo()));
+        holder.day.setText(CommonUtils.getInstance().getDate(holder.complaintListItem.getSubmittedDate(), true));
+        holder.month.setText(CommonUtils.getInstance().getDate(holder.complaintListItem.getSubmittedDate(), false));
+        holder.complaint.setText(holder.complaintListItem.getCategoryName());
+        holder.complaintId.setText(String.format(mContext.getString(R.string.formatter), holder.complaintListItem.getRegisterNo()));
 
-        switch (response.body().getComplaints().get(position).getComplaintStatus()) {
+        switch (holder.complaintListItem.getComplaintStatus()) {
             case 0:
                 holder.status.setText(R.string.submitted);
                 holder.status.setBackgroundResource(R.drawable.curve_small_bg_green);
@@ -85,14 +87,12 @@ public class ComplaintListAdapter extends RecyclerView.Adapter<ComplaintListAdap
         }
 
 
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(mContext, MyComplaintActivity.class);
-                i.putExtra("response",new Gson().toJson(response.body().getComplaints().get(position)));
-
-                mContext.startActivity(i);
+                if (null != mListener) {
+                    mListener.onListItemClickListener(holder.complaintListItem);
+                }
             }
         });
 
@@ -100,6 +100,6 @@ public class ComplaintListAdapter extends RecyclerView.Adapter<ComplaintListAdap
 
     @Override
     public int getItemCount() {
-        return response.body().getComplaints().size();
+        return mComplaintList.size();
     }
 }

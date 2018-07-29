@@ -152,13 +152,13 @@ public class MyComplaintActivity extends BaseActivity {
     }
 
     public void setStatus(ComplaintList response) {
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+       /* RecyclerView recyclerView = findViewById(R.id.recycler_view);
         StatusListAdapter mAdapter = new StatusListAdapter(response);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
+        recyclerView.setAdapter(mAdapter);*/
     }
 
     @Override

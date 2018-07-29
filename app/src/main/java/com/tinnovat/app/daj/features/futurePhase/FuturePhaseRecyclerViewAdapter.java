@@ -13,15 +13,9 @@ import com.squareup.picasso.Picasso;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.model.Futurephase;
 import com.tinnovat.app.daj.features.futurePhase.FuturePhaseInfoFragment.OnListFragmentInteractionListener;
-import com.tinnovat.app.daj.features.futurePhase.dummy.DummyContent.DummyItem;
 
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
- */
 public class FuturePhaseRecyclerViewAdapter extends RecyclerView.Adapter<FuturePhaseRecyclerViewAdapter.ViewHolder> {
 
     private final List<Futurephase> mValues;

@@ -81,13 +81,13 @@ public class MyComplaintListActivity extends BaseActivity {
     }
 
     public void setData(Response<ComplaintListResponseModel> response){
-        RecyclerView recyclerView= findViewById(R.id.recycler_view);
+       /* RecyclerView recyclerView= findViewById(R.id.recycler_view);
         ComplaintListAdapter mAdapter = new ComplaintListAdapter(response);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
+        recyclerView.setAdapter(mAdapter);*/
     }
 
 

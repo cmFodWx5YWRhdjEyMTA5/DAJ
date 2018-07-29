@@ -1,0 +1,101 @@
+package com.tinnovat.app.daj.features.complaint;
+
+import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
+import android.view.MenuItem;
+import android.view.View;
+
+import com.tinnovat.app.daj.BaseActivity;
+import com.tinnovat.app.daj.R;
+import com.tinnovat.app.daj.data.network.model.ComplaintList;
+import com.tinnovat.app.daj.data.network.model.Service;
+import com.tinnovat.app.daj.data.network.model.ServiceCategory;
+import com.tinnovat.app.daj.features.services.ServiceBookingFragment;
+import com.tinnovat.app.daj.features.services.ServicesMainCategoryFragment;
+import com.tinnovat.app.daj.features.services.ServicesSelectedCategoryFragment;
+
+import java.util.Objects;
+
+public class ComplaintMainActivity extends BaseActivity implements
+        ComplaintListFragment.OnFragmentInteractionListener,
+        ComplaintDetailFragment.OnFragmentInteractionListener,
+        RegisterComplaintFragment.OnFragmentInteractionListener{
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_frame_main);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public void initialiseViews() {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_frame, ComplaintListFragment.newInstance());
+        transaction.commit();
+    }
+
+    @Override
+    public void initialiseEventListners() {
+
+    }
+
+    @Override
+    public void onClick(View v) {
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        onBackPressed();
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    public void onListItemClickListener(ComplaintList complaintList) {
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_frame, ComplaintDetailFragment.newInstance(complaintList));
+        transaction.addToBackStack(null).commit();
+       /*
+        Intent i = new Intent(mContext, MyComplaintActivity.class);
+        i.putExtra("response", new Gson().toJson(response.body().getComplaints().get(position)));
+
+        mContext.startActivity(i);*/
+    }
+
+    @Override
+    public void onFabButtonActionListener() {
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_frame, RegisterComplaintFragment.newInstance());
+        transaction.addToBackStack(null).commit();
+
+
+//        Intent i = new Intent(getActivity(), RegisterComplaintActivity.class);
+//        startActivity(i);
+
+    }
+
+    @Override
+    public void setTitle(String title) {
+        Objects.requireNonNull(getSupportActionBar()).setTitle(title);
+    }
+
+   /* @Override
+    public void onServiceListFragmentInteraction(Service item, int categoryId) {
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_frame, ServiceBookingFragment.newInstance(item, categoryId));
+        transaction.addToBackStack(null).commit();
+    }
+
+    @Override
+    public void onCategoryListFragmentInteraction(ServiceCategory item) {
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_frame, ServicesSelectedCategoryFragment.newInstance(1,item));
+        transaction.addToBackStack(null).commit();
+    }*/
+}
