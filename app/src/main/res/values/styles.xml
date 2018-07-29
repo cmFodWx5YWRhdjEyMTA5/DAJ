@@ -297,6 +297,7 @@
     <style name="dashboardArcLeft">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">70dp</item>
+        <item name="android:layout_marginEnd">-10dp</item>
         <item name="android:src">@drawable/arc_left</item>
         <item name="android:scaleType">fitEnd</item>
     </style>
