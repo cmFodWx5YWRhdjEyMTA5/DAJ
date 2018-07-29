@@ -57,7 +57,7 @@
                 app:mcv_dateTextAppearance="@style/CalenderViewCustom"
                 app:mcv_headerTextAppearance="@style/CalenderViewCustom"
                 app:mcv_selectionColor="@color/orange"
-                app:mcv_showOtherDates="none"
+                app:mcv_showOtherDates="out_of_range"
                 app:mcv_weekDayTextAppearance="@style/CalenderViewCustom"
                 />
         </LinearLayout>

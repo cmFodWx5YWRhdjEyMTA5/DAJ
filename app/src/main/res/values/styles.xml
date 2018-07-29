@@ -14,8 +14,7 @@
 
     <style name="CalenderViewCustom" >
         <item name="android:textColor">@color/nav_calender_selection_text</item>
-
-
+        <item name="android:textColorTertiaryInverse">@color/test</item>
     </style>
 
     <style name="CalenderViewCustomWeek" >

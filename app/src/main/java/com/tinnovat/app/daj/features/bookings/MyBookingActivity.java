@@ -96,6 +96,10 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
     private void SetCalenderView(){
         MaterialCalendarView cal = findViewById(R.id.calendarView);
 
+        cal.state().edit()
+                .setMinimumDate(CalendarDay.from(CalendarDay.today().getYear(), CalendarDay.today().getMonth(), CalendarDay.today().getDay()))
+                .commit();
+
         cal.setSelectedDate(CalendarDay.today());
         cal.setSelected(true);
         if(getLanguage()){
