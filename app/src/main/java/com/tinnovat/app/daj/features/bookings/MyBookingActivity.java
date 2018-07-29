@@ -58,7 +58,7 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
 
         appPreferanceStore = new AppPreferanceStore(this);
 
-        fetchMyBooking();
+        fetchMyBookingService();
 
         SetCalenderView();
 
@@ -142,7 +142,7 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
                 if (CommonUtils.getInstance().getDate2(CalendarDay.today().getCalendar()).equals(anotherDate) ){
                     relativeLayout.setVisibility(View.VISIBLE);
                     upComingBanner.setVisibility(View.VISIBLE);
-                    fetchMyBooking();
+                    fetchMyBookingService();
                 }else {
                     fetchMyBookingOnAnotherDate(CommonUtils.getInstance().getDate(date.getCalendar()));
                     relativeLayout.setVisibility(View.GONE);
@@ -182,7 +182,7 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
         });
     }
 
-    private void fetchMyBooking() {
+    void fetchMyBookingService() {
         startLoading();
 
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
@@ -251,7 +251,7 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
                         //finish();
                       //  mMyBookingAdapter.notifyDataSetChanged();
                        // recyclerView.setAdapter(mMyBookingAdapter);
-                        fetchMyBooking();
+                        fetchMyBookingService();
                     } else {
                         showMessage(response.body().getMessage());
                        // finish();

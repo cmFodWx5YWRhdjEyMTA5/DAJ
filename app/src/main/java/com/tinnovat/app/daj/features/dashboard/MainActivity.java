@@ -41,8 +41,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class MainActivity extends BaseActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseActivity {
+//        implements NavigationView.OnNavigationItemSelectedListener {
 
     ImageView facebook;
     ImageView twitter;
@@ -346,7 +346,7 @@ public class MainActivity extends BaseActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
+  /*  @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -360,14 +360,14 @@ public class MainActivity extends BaseActivity
             // item.setIcon(R.layout.dialog_guest);
             // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
 
-           /* Intent i = new Intent(MainActivity.this, MainActivity.class);
-            startActivity(i);*/
+           *//* Intent i = new Intent(MainActivity.this, MainActivity.class);
+            startActivity(i);*//*
 
-           /* if (a==1) {
+           *//* if (a==1) {
                 item.setIcon(R.drawable.icon_slection_arabic);
             }else {
                 item.setIcon(R.drawable.icon_slection_english);
-            }*/
+            }*//*
         } else if (id == R.id.events) {
             fetchEvents();
 
@@ -489,7 +489,7 @@ public class MainActivity extends BaseActivity
         startActivity(intent);
         finish();
     }
-
+*/
     @Override
     public void onClick(View v) {
 

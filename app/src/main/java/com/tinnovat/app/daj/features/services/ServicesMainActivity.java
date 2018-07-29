@@ -1,6 +1,7 @@
 package com.tinnovat.app.daj.features.services;
 
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +23,11 @@ ServicesSelectedCategoryFragment.OnListFragmentInteractionListener, ServiceBooki
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_frame_main);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().getItem(0).setChecked(true);
+        navigationView.setItemIconTintList(null);
     }
 
     @Override
