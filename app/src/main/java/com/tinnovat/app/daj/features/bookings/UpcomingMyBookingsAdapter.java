@@ -1,14 +1,12 @@
 package com.tinnovat.app.daj.features.bookings;
 
 import android.content.Context;
-import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.prolificinteractive.materialcalendarview.CalendarDay;
@@ -37,7 +35,7 @@ public class UpcomingMyBookingsAdapter extends RecyclerView.Adapter<UpcomingMyBo
         public MyViewHolder(View view) {
             super(view);
             time = view.findViewById(R.id.time1);
-            date = view.findViewById(R.id.date);
+            date = view.findViewById(R.id.startDate);
             serviceName = view.findViewById(R.id.title1);
             relativeLayout = view.findViewById(R.id.relativeLayout);
             delete = view.findViewById(R.id.delete1);

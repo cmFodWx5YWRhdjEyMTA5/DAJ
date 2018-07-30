@@ -19,7 +19,7 @@
             android:background="@color/blackLight">
 
             <RelativeLayout
-                android:id="@+id/date"
+                android:id="@+id/startDate"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight=".4">

@@ -26,7 +26,7 @@ public class ChooseDateAdapter extends RecyclerView.Adapter<ChooseDateAdapter.My
 
         public MyViewHolder(View view) {
             super(view);
-            date = view.findViewById(R.id.date);
+            date = view.findViewById(R.id.startDate);
         }
     }
 

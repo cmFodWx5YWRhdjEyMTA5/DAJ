@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.model.EventDetails;
@@ -85,6 +86,7 @@ public class EventAndNewsListAdapter extends RecyclerView.Adapter<EventAndNewsLi
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(mContext, EventDetailActivity.class);
+                    i.putExtra("response",new Gson().toJson(eventDetailsList.get(holder.getAdapterPosition())));
                     mContext.startActivity(i);
                 }
             });

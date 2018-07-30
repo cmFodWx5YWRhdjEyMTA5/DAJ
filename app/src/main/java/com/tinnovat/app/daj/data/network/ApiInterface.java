@@ -52,6 +52,11 @@ public interface ApiInterface {
     @POST("/Dar_alJewar/api/changePassword")
     Call<SuccessResponseModel> postChangePassword(@Body RequestParams.ChangePasswordRequest passwordRequest);
 
+    //Get Event Interset
+    @Headers({"Accept: application/json"})
+    @POST("/Dar_alJewar/api/eventInterset")
+    Call<SuccessResponseModel> postEventInterset(@Query("event_id") int event_id);
+
     //Delete service Booking
     @Headers({"Accept: application/json"})
     @POST("/Dar_alJewar/api/deleteBooking")
