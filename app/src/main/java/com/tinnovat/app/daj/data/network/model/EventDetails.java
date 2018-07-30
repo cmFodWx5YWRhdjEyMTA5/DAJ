@@ -136,7 +136,7 @@ public class EventDetails {
         this.userInterested = userInterested;
     }
 
-    public String getDateCategory() {
+   /* public String getDateCategory() {
 
         CommonUtils commonUtils = CommonUtils.getInstance();
         SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
@@ -177,5 +177,66 @@ public class EventDetails {
             }
         }
         return "NULL";
+    }*/
+
+    public String getDateCategory(int pos) {
+
+        CommonUtils commonUtils = CommonUtils.getInstance();
+        SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+
+        Calendar today;
+
+        try {
+            format1.parse(commonUtils.getDate2(Calendar.getInstance()));
+        } catch (ParseException e) {
+        }
+        today = format1.getCalendar();
+
+        Calendar startDate = commonUtils.getDateFromServerResponse(getStartDatetime());
+        Calendar endDate = commonUtils.getDateFromServerResponse(getEndDatetime());
+        if (pos == 0) {
+            if (getIsTodaysEvent(startDate, endDate, today))
+                return "TODAY";
+            else return "NULL";
+        } else if (pos == 1) {
+            if (getIsTomorrowsEvent(startDate, endDate, today))
+                return "TOMORROW";
+            else
+                return "NULL";
+        }
+
+
+        return "NULL";
     }
+
+
+    private boolean getIsTodaysEvent(Calendar startDate, Calendar endDate, Calendar today) {
+        if (endDate.equals(startDate)) {
+            if (endDate.equals(today))
+                return true;
+        } else if (endDate.equals(today) || startDate.equals(today)) {
+            return true;
+        } else if (startDate.before(today) && endDate.after(today)) {
+            return true;
+        }
+        return false;
+    }
+
+
+    private boolean getIsTomorrowsEvent(Calendar startDate, Calendar endDate, Calendar today) {
+        Calendar tomorrow = today;
+        tomorrow.add(Calendar.DAY_OF_YEAR, 1);
+        if (endDate.equals(startDate)) {
+            if (endDate.equals(tomorrow))
+                return true;
+        } else if (endDate.equals(tomorrow) || startDate.equals(tomorrow)) {
+            return true;
+        } else if (startDate.before(tomorrow) && endDate.after(tomorrow)) {
+            return true;
+        }
+        return false;
+    }
+
 }
+
+

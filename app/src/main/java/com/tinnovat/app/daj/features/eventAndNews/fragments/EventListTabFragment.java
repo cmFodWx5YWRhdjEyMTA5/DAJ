@@ -50,14 +50,14 @@ public class EventListTabFragment extends BaseFragment {
             switch (selectedPosition) {
                 case 0 :
                     for (EventDetails details : eventDetailsList) {
-                        if (details.getDateCategory().equalsIgnoreCase("TODAY"))  {
+                        if (details.getDateCategory(0).equalsIgnoreCase("TODAY"))  {
                             list.add(details);
                         }
                     }
                     break;
                 case 1 :
                     for (EventDetails details : eventDetailsList) {
-                        if (details.getDateCategory().equalsIgnoreCase("TOMORROW"))  {
+                        if (details.getDateCategory(1).equalsIgnoreCase("TOMORROW"))  {
                             list.add(details);
                         }
                     }
