@@ -75,7 +75,6 @@
             android:layout_marginEnd="5dp"
             android:layout_marginTop="5dp"
             android:textSize="12sp"
-
             android:elevation="3dp"
             android:background="@drawable/curve_small_bg_white"/>
     </RelativeLayout>

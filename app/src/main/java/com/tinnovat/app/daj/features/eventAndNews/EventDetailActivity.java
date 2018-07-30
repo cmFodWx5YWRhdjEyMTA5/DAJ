@@ -27,6 +27,7 @@ import retrofit2.Response;
 public class EventDetailActivity extends BaseActivity {
     private EventDetails mEventDetailsList;
     private int mId = 0;
+    private Button interested;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,7 @@ public class EventDetailActivity extends BaseActivity {
         showMessage("done");
         mId = mEventDetailsList.getId();
 
-        Button interested = findViewById(R.id.interested);
+        interested = findViewById(R.id.interested);
         TextView startDate = findViewById(R.id.startDate);
         TextView endDate = findViewById(R.id.endDate);
         TextView startTime = findViewById(R.id.startTime);
@@ -55,12 +56,19 @@ public class EventDetailActivity extends BaseActivity {
         TextView description = findViewById(R.id.discrptn);
         ImageView backBg = findViewById(R.id.backBg);
 
+        if (mEventDetailsList.getInterest()){
+            if (mEventDetailsList.getUserInterested()){
+                doInterested(true);
+            }else {
+                doInterested(false);
+            }
+        }else {
+            doInterested(true);
+        }
 
         if (mEventDetailsList.getEventsImages().size() != 0){
             Picasso.get().load(mEventDetailsList.getEventsImages().get(0).getImgPath()).into(backBg);
         }
-
-
 
         String[] startDateTime = mEventDetailsList.getStartDatetime().split(" ");
         String[] endDateTime = mEventDetailsList.getEndDatetime().split(" ");
@@ -74,6 +82,18 @@ public class EventDetailActivity extends BaseActivity {
         description.setText(mEventDetailsList.getEventsDescription());
 
         interested.setOnClickListener(this);
+    }
+
+    private void doInterested(boolean interest){
+       if (interest){
+           interested.setEnabled(false);
+           interested.setText(getResources().getString(R.string.interested));
+           interested.setBackground(getResources().getDrawable(R.drawable.curve_small_bg_disable));
+       }else {
+           interested.setEnabled(true);
+           interested.setText(getResources().getString(R.string.interest_to_attend));
+           interested.setBackground(getResources().getDrawable(R.drawable.curve_small_bg_green));
+       }
     }
 
     private void actionInterested(){
@@ -90,6 +110,7 @@ public class EventDetailActivity extends BaseActivity {
                 if (response.body() != null) {
                     if (response.body().getSuccess()) {
                         showMessage(response.body().getMessage());
+                        doInterested(true);
                         //finish();
                         //  mMyBookingAdapter.notifyDataSetChanged();
                         // recyclerView.setAdapter(mMyBookingAdapter);

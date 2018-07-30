@@ -90,6 +90,22 @@ public class EventAndNewsListAdapter extends RecyclerView.Adapter<EventAndNewsLi
                     mContext.startActivity(i);
                 }
             });
+
+            if (eventDetailsList.get(position).getInterest()){
+                if (eventDetailsList.get(position).getUserInterested()){
+                    holder.interested.setEnabled(false);
+                    holder.interested.setText(mContext.getResources().getString(R.string.interested));
+                    holder.interested.setTextColor(mContext.getResources().getColor(R.color.gray));
+                }else {
+                    holder.interested.setEnabled(false);
+                    holder.interested.setText(mContext.getResources().getString(R.string.interest_to_attend));
+                    holder.interested.setTextColor(mContext.getResources().getColor(R.color.greenText));
+                }
+            }else {
+                holder.interested.setEnabled(false);
+                holder.interested.setText(mContext.getResources().getString(R.string.interested));
+                holder.interested.setTextColor(mContext.getResources().getColor(R.color.gray));
+            }
         }
 
     }
