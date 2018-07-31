@@ -9,7 +9,7 @@
     <string name="dashboard">DASHBOARD</string>
     <string name="home">HOME</string>
     <string name="events">EVENTS</string>
-    <string name="services">SERVICES</string>
+    <string name="services">BOOKING SERVICES</string>
     <string name="services_list">SERVICES LIST</string>
     <string name="guest_reg">GUEST REGISTRATION</string>
     <string name="view_camera">VIEW CAMERA</string>
@@ -35,7 +35,7 @@
     <string name="sign_in">Sign In</string>
     <string name="follow_us">Follow Us</string>
     <string name="english">English</string>
-    <string name="arabic">العَرَبِيَّة</string>
+    <string name="arabic">عربي</string>
 
     <string name="header_formatter">%S %S</string>//
 

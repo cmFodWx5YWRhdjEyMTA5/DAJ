@@ -1,6 +1,7 @@
 package com.tinnovat.app.daj.features.complaint;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.location.Address;
 import android.location.Geocoder;
@@ -19,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.ceylonlabs.imageviewpopup.ImagePopup;
 import com.squareup.picasso.Picasso;
 import com.tinnovat.app.daj.BaseFragment;
 import com.tinnovat.app.daj.R;
@@ -36,6 +38,11 @@ public class ComplaintDetailFragment extends BaseFragment {
     private OnFragmentInteractionListener mListener;
     private TextView locationText;
     private RecyclerView recyclerView;
+    ImagePopup imagePopup;
+    ImageView image1;
+    ImageView image2;
+    ImageView image3;
+    ImageView image4;
 
     public ComplaintDetailFragment() {
         // Required empty public constructor
@@ -66,6 +73,10 @@ public class ComplaintDetailFragment extends BaseFragment {
         TextView status = view.findViewById(R.id.status);
         TextView description = view.findViewById(R.id.description);
 
+        imagePopup = new ImagePopup(getActivity());
+        imagePopup.setBackgroundColor(Color.BLACK);
+        imagePopup.setFullScreen(true);
+
 
         complaintTitle.setText(mComplaintList.getCategoryName());
         complaintDate.setText(mComplaintList.getSubmittedDate());
@@ -89,10 +100,10 @@ public class ComplaintDetailFragment extends BaseFragment {
         }
 
         if (mComplaintList.getImages().size() != 0) {
-            ImageView image1 = view.findViewById(R.id.image1);
-            ImageView image2 = view.findViewById(R.id.image2);
-            ImageView image3 = view.findViewById(R.id.image3);
-            ImageView image4 = view.findViewById(R.id.image4);
+            image1 = view.findViewById(R.id.image1);
+            image2 = view.findViewById(R.id.image2);
+            image3 = view.findViewById(R.id.image3);
+            image4 = view.findViewById(R.id.image4);
             LinearLayout secondRow = view.findViewById(R.id.secondRow);
             RelativeLayout imageLayout = view.findViewById(R.id.photoLayout);
 
@@ -117,6 +128,9 @@ public class ComplaintDetailFragment extends BaseFragment {
                     Picasso.get().load(mComplaintList.getImages().get(0).getPath())
                             .placeholder(ContextCompat.getDrawable(getContext(), R.drawable.ic_photo_place_holder))
                             .into(image1);
+
+
+
                     break;
 
                 case 2:
@@ -152,10 +166,51 @@ public class ComplaintDetailFragment extends BaseFragment {
             }
 
 
+            image1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    imagePopup.initiatePopup(image1.getDrawable());
+                    imagePopup.viewPopup();
+
+                }
+            });
+
+            image2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    imagePopup.initiatePopup(image2.getDrawable());
+                    imagePopup.viewPopup();
+
+                }
+            });
+
+            image3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    imagePopup.initiatePopup(image3.getDrawable());
+                    imagePopup.viewPopup();
+
+                }
+            });
+
+            image4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    imagePopup.initiatePopup(image4.getDrawable());
+                    imagePopup.viewPopup();
+
+                }
+            });
+
+
         } else {
             RelativeLayout imageLayout = view.findViewById(R.id.photoLayout);
             imageLayout.setVisibility(View.GONE);
         }
+
+
+
+
 
         setStatus(mComplaintList);
     }
