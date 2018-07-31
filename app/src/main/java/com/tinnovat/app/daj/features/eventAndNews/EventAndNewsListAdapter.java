@@ -102,9 +102,15 @@ public class EventAndNewsListAdapter extends RecyclerView.Adapter<EventAndNewsLi
                     holder.interested.setTextColor(mContext.getResources().getColor(R.color.greenText));
                 }
             }else {
-                holder.interested.setEnabled(false);
-                holder.interested.setText(mContext.getResources().getString(R.string.interested));
-                holder.interested.setTextColor(mContext.getResources().getColor(R.color.gray));
+                if (eventDetailsList.get(position).getUserInterested()){
+                    holder.interested.setEnabled(false);
+                    holder.interested.setText(mContext.getResources().getString(R.string.interested));
+                    holder.interested.setTextColor(mContext.getResources().getColor(R.color.gray));
+                }else {
+                    holder.interested.setEnabled(false);
+                    holder.interested.setText(mContext.getResources().getString(R.string.fully_booked));
+                    holder.interested.setTextColor(mContext.getResources().getColor(R.color.gray));
+                }
             }
         }
 

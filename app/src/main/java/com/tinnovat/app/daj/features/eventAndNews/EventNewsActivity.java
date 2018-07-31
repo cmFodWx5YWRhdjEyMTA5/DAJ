@@ -122,7 +122,7 @@ public class EventNewsActivity extends BaseActivity implements TabLayout.OnTabSe
             public void onFailure(Call<EventListModel> call, Throwable t) {
 
                 endLoading();
-                showMessage("Login Failed");
+                showMessage("EventsAndNews Failed");
             }
         });
     }

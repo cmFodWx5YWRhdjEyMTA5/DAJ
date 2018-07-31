@@ -2,6 +2,9 @@ package com.tinnovat.app.daj.features.eventAndNews;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -16,6 +19,7 @@ import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.EventDetails;
 import com.tinnovat.app.daj.data.network.model.RequestParams;
 import com.tinnovat.app.daj.data.network.model.SuccessResponseModel;
+import com.tinnovat.app.daj.features.futurePhase.ImageListAdapter;
 
 import java.util.List;
 import java.util.Objects;
@@ -43,7 +47,6 @@ public class EventDetailActivity extends BaseActivity {
     private void setData(){
         Intent i = getIntent();
         mEventDetailsList = new Gson().fromJson( i.getStringExtra("response") , EventDetails.class );
-        showMessage("done");
         mId = mEventDetailsList.getId();
 
         interested = findViewById(R.id.interested);
@@ -63,7 +66,14 @@ public class EventDetailActivity extends BaseActivity {
                 doInterested(false);
             }
         }else {
-            doInterested(true);
+            if (mEventDetailsList.getUserInterested()){
+                doInterested(true);
+            }else {
+                interested.setEnabled(false);
+                interested.setText(getResources().getString(R.string.fully_booked));
+                interested.setBackground(getResources().getDrawable(R.drawable.curve_small_bg_disable));
+            }
+
         }
 
         if (mEventDetailsList.getEventsImages().size() != 0){
@@ -75,13 +85,25 @@ public class EventDetailActivity extends BaseActivity {
 
         startDate.setText(startDateTime[0]);
         endDate.setText(endDateTime[0]);
-        startTime.setText(startDateTime[1]+" "+endDateTime[2]);
-        endTime.setText(endDateTime[1]+" "+endDateTime[2]);
+        startTime.setText(String.format(getResources().getString(R.string.time_formatter),startDateTime[1],startDateTime[2]));
+        endTime.setText(String.format(getResources().getString(R.string.time_formatter),endDateTime[1],endDateTime[2]));
+
         venue.setText(mEventDetailsList.getEventsVenue());
         tittle.setText(mEventDetailsList.getEventsName());
         description.setText(mEventDetailsList.getEventsDescription());
 
         interested.setOnClickListener(this);
+        setAdapter();
+    }
+
+    private void setAdapter(){
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        EventImageListAdapter mAdapter = new EventImageListAdapter(mEventDetailsList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        mAdapter.notifyDataSetChanged();
+        recyclerView.setAdapter(mAdapter);
     }
 
     private void doInterested(boolean interest){
@@ -93,6 +115,7 @@ public class EventDetailActivity extends BaseActivity {
            interested.setEnabled(true);
            interested.setText(getResources().getString(R.string.interest_to_attend));
            interested.setBackground(getResources().getDrawable(R.drawable.curve_small_bg_green));
+
        }
     }
 

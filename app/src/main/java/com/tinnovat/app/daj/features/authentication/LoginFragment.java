@@ -135,17 +135,17 @@ public class LoginFragment extends BaseFragment {
                 break;
 
             case R.id.facebook:
-                Intent followIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/MadinahKEC/"));
+                Intent followIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/DarJewar/?ref=br_rs"));
                 startActivity(followIntent);
                 break;
 
             case R.id.twitter:
-                followIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/MadinahKEC"));
+                followIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/darjewar?lang=en"));
                 startActivity(followIntent);
                 break;
 
             case R.id.instagram:
-                followIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/madinahkec/"));
+                followIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/darjewar/"));
                 startActivity(followIntent);
                 break;
 

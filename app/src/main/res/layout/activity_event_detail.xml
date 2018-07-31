@@ -32,33 +32,52 @@
         android:layout_height="wrap_content"
         android:padding="20dp"
         android:elevation="3dp">
+        <ImageView
+            android:id="@+id/calnderIcon"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_marginBottom="5dp"
+            app:srcCompat="@drawable/calender"
+            android:tint="@color/greenText"
+            android:layout_marginEnd="3dp"/>
         <TextView
             android:id="@+id/startDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/greenText"
             android:layout_marginBottom="5dp"
-            android:textStyle="bold"
-            android:text="Wednesday , Nov 28"/>
+            android:layout_toEndOf="@+id/calnderIcon"
+            android:textStyle="bold"/>
+
+        <ImageView
+            android:id="@+id/calIcon2"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_marginBottom="5dp"
+            app:srcCompat="@drawable/calender"
+            android:tint="@color/greenText"
+            android:layout_alignParentEnd="true"
+           />
         <TextView
             android:id="@+id/endDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/greenText"
             android:layout_marginBottom="5dp"
-            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="3dp"
+            android:layout_toStartOf="@+id/calIcon2"
             android:textStyle="bold"
-            android:text="Wednesday , Nov 28"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:textColor="@color/greenText"
             android:text="@string/to"/>
         <ImageView
             android:id="@+id/timeIcon"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
             android:layout_marginBottom="5dp"
             app:srcCompat="@drawable/time"
             android:tint="@color/greenText"
@@ -71,28 +90,27 @@
             android:textColor="@color/black"
             android:layout_below="@+id/startDate"
             android:layout_toEndOf="@+id/timeIcon"
-            android:layout_marginStart="3dp"
-            android:text="10.00 AM"/>
+            android:layout_marginStart="3dp"/>
 
         <ImageView
             android:id="@+id/timeIconEnd"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
             android:layout_marginBottom="5dp"
             app:srcCompat="@drawable/time"
             android:tint="@color/greenText"
             android:layout_below="@+id/endDate"
-            android:layout_marginEnd="3dp"
-            android:layout_toStartOf="@+id/endTime"/>
+            android:layout_alignParentEnd="true"
+            />
         <TextView
             android:id="@+id/endTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:textColor="@color/black"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/endDate"
-            android:text="10.00 AM"/>
+            android:layout_marginEnd="3dp"
+            android:layout_toStartOf="@+id/timeIconEnd"
+            android:layout_below="@+id/endDate"/>
        <!-- <ImageView
             android:id="@+id/navIcon"
             android:layout_width="40dp"
@@ -145,47 +163,26 @@
             android:id="@+id/more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
+            android:textColor="@color/greenText"
             android:textStyle="bold"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:text="@string/more_images"
             android:layout_below="@+id/discrptn"/>
-        <LinearLayout
-            android:id="@+id/images"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:orientation="horizontal"
-            android:layout_below="@+id/more">
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:scaleType="centerCrop"
-            android:layout_marginEnd="20dp"
-            android:src="@drawable/event_details_bg"
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/more"
+            android:layout_marginBottom="20dp"
+            android:elevation="5dp"
             />
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                android:scaleType="centerCrop"
-                android:layout_marginEnd="20dp"
-                android:src="@drawable/event_details_bg"
-                />
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                android:scaleType="centerCrop"
-                android:src="@drawable/event_details_bg"
-                />
-        </LinearLayout>
         <Button
             android:id="@+id/interested"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/images"
+            android:layout_below="@+id/recycler_view"
             android:textColor="@color/white"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"

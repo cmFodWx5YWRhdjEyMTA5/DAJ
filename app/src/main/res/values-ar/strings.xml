@@ -71,7 +71,7 @@
     <string name="status">الحالة</string>//
     <string name="description">الوصف</string>//
     <string name="enjoy_our_events">استمتع بالفعاليات</string>//
-    <string name="more_images">المزيد من الصور</string>//
+    <string name="more_images">صور</string>//
     <string name="today_events">فعاليات اليوم </string>//
     <string name="guest_name">اسم الزائر</string>//
     <string name="vehicle_no">رقم لوحة المركبة</string>//
@@ -168,6 +168,7 @@
     <string name="to">إلى</string>
     <string name="booking">الحجز</string>
     <string name="interested">يستفد</string>
+    <string name="fully_booked">محجوز بالكامل</string>
 
 
 </resources>

@@ -50,6 +50,8 @@ public class FuturePhaseDetailFragment extends BaseFragment implements OnMapRead
 
     @Override
     public void initialiseViews(View view) {
+        mListener.setTitle(futurePhaseItem.getPhaseName());
+
         TextView bannerText = view.findViewById(R.id.bannerText);
         TextView area = view.findViewById(R.id.area);
         TextView descriptionText = view.findViewById(R.id.descriptionText);
@@ -90,7 +92,7 @@ public class FuturePhaseDetailFragment extends BaseFragment implements OnMapRead
         View view = inflater.inflate(R.layout.fragment_future_phase_detail, container, false);
 
         initialiseViews(view);
-        mListener.setTitle(getString(R.string.future_phase_info_details));
+        //mListener.setTitle(getString(R.string.future_phase_info_details));
         // Inflate the layout for this fragment
         return view;
     }

@@ -35,7 +35,7 @@ public class MyComplaintActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_complaint);
-        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.my_complaint));
+
         locationText = findViewById(R.id.locationText);
 
         locationText.setPaintFlags(locationText.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
@@ -46,6 +46,7 @@ public class MyComplaintActivity extends BaseActivity {
     }
 
     public void setData(ComplaintList complaintList) {
+        Objects.requireNonNull(getSupportActionBar()).setTitle(complaintList.getCategoryName());
         TextView complaintTitle = findViewById(R.id.complaintTitle);
         TextView complaintDate = findViewById(R.id.complaintDate);
         TextView status = findViewById(R.id.status);

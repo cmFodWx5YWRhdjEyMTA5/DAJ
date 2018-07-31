@@ -61,7 +61,7 @@ public class FuturePhaseInfoDetailActivity extends BaseActivity implements OnMap
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_future_phase_info_detail);
-        Objects.requireNonNull(getSupportActionBar()).setTitle(getText(R.string.future_phase_info_details));
+       // Objects.requireNonNull(getSupportActionBar()).setTitle(getText(R.string.future_phase_info_details));
 
         setData();
     }
@@ -90,6 +90,7 @@ public class FuturePhaseInfoDetailActivity extends BaseActivity implements OnMap
 
     }
     private void setAdapter(Futurephase futurephase){
+        Objects.requireNonNull(getSupportActionBar()).setTitle(futurephase.getPhaseName());
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         ImageListAdapter mAdapter = new ImageListAdapter(futurephase);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL, false);

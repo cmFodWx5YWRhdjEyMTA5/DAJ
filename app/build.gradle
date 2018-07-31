@@ -63,4 +63,6 @@ dependencies {
     implementation 'com.tuyenmonkey:mkloader:1.4.0'
     //Validation
     implementation 'com.github.pchmn:AndroidVerify:1.0.2'
+    //image popup
+    implementation 'com.github.chathuralakmal:AndroidImagePopup:1.2.1'
 }

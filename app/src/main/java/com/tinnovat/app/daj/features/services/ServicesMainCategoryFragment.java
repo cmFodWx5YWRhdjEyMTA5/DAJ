@@ -81,8 +81,8 @@ public class ServicesMainCategoryFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
-        if (getActivity() != null && getActivity().getActionBar() != null)
-            getActivity().getActionBar().setTitle(getString(R.string.future_phase_info_list));
+       /* if (getActivity() != null && getActivity().getActionBar() != null)
+            getActivity().getActionBar().setTitle(getString(R.string.future_phase_info_list));*/
 
         appPreferanceStore = new AppPreferanceStore(getContext());
         mListener.setTitle(getString(R.string.services));
@@ -124,7 +124,7 @@ public class ServicesMainCategoryFragment extends BaseFragment {
             public void onFailure(@NonNull Call<ServicesResponseModel> call, @NonNull Throwable t) {
                 endLoading();
 
-                showMessage("Login Failed");
+                showMessage("ServiceList Failed");
             }
         });
     }

@@ -61,6 +61,7 @@ public class ServiceBookingFragment extends BaseFragment implements ChooseDateAd
     private RecyclerView recyclerView;
     private EditText noOfGuest;
     private EditText commentBox;
+    private ChooseDateAdapter mAdapter;
 
 
     public ServiceBookingFragment() {
@@ -110,7 +111,9 @@ public class ServiceBookingFragment extends BaseFragment implements ChooseDateAd
         View view = inflater.inflate(R.layout.activity_service_booking, container, false);
 
         initialiseViews(view);
-        mListener.setTitle(getString(R.string.service_booking));
+        //mListener.setTitle(getString(R.string.service_booking));
+        mListener.setTitle(String.format(getResources().getString(R.string.header_formatter), mServiceItem.getName(), getResources().getString(R.string.booking)));
+
         // Inflate the layout for this fragment
         return view;
     }
@@ -133,7 +136,7 @@ public class ServiceBookingFragment extends BaseFragment implements ChooseDateAd
     }
 
     private void setDateCategory(List<ServiceAvailableDate> serviceAvailableDate) {
-        ChooseDateAdapter mAdapter = new ChooseDateAdapter(getActivity(), this, serviceAvailableDate);
+        mAdapter = new ChooseDateAdapter(getActivity(), this, serviceAvailableDate);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -142,12 +145,13 @@ public class ServiceBookingFragment extends BaseFragment implements ChooseDateAd
     }
 
     private void setData() {
-        mListener.setTitle(String.format(getResources().getString(R.string.header_formatter), mServiceItem.getName(), getResources().getString(R.string.booking)));
 
         locationText.setText(mServiceItem.getName());
         Picasso.get().load(mServiceItem.getServiceImages()).into(servicesImage);
 
-        setDateCategory(mServiceItem.getServiceAvailableDates());
+       // setDateCategory(mServiceItem.getServiceAvailableDates());
+
+        fetchServiceAvailableSlots(CommonUtils.getInstance().getDate(CalendarDay.today().getCalendar()));
     }
 
     private void setCalender() {
@@ -284,6 +288,7 @@ public class ServiceBookingFragment extends BaseFragment implements ChooseDateAd
                 if (response.body() != null) {
                     if (response.body().getSuccess()) {
                         showMessage(response.body().getMessage());
+                        mAdapter.notifyDataSetChanged();
                     } else {
                         showMessage(response.body().getMessage());
                     }

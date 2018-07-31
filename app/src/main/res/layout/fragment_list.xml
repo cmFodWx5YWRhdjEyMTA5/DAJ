@@ -8,4 +8,8 @@
     android:layout_height="match_parent"
     app:layoutManager="LinearLayoutManager"
     tools:context="com.tinnovat.app.daj.features.futurePhase.FuturePhaseInfoFragment"
-    tools:listitem="@layout/fragment_item" />
+    tools:listitem="@layout/fragment_item"
+    android:background="@mipmap/bg"
+    android:paddingStart="10dp"
+    android:paddingEnd="10dp"
+    android:paddingBottom="10dp"/>

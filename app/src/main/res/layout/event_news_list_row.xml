@@ -74,9 +74,12 @@
             android:textColor="@color/greenText"
             android:layout_marginEnd="5dp"
             android:layout_marginTop="5dp"
+            android:paddingEnd="5dp"
+            android:paddingStart="5dp"
             android:textSize="12sp"
-            android:elevation="3dp"
-            android:background="@drawable/curve_small_bg_white"/>
+            android:elevation="5dp"
+            android:background="@drawable/curve_small_bg_gray"/>
+
     </RelativeLayout>
 
 </RelativeLayout>

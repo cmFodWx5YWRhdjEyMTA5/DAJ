@@ -86,7 +86,6 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.delete:
-                mSelectedBookings1.add(51);
                 invokeDeleteBooking(mSelectedBookings);
                 break;
         }

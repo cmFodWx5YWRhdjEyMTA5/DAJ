@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:elevation="5dp"
+            android:background="@drawable/curve_small_bg_gray"
             app:required="true"
             app:requiredMessage="@string/required">
 
@@ -58,7 +59,7 @@
                 app:mcv_dateTextAppearance="@style/CalenderViewCustomWeek"
                 app:mcv_headerTextAppearance="@style/CalenderViewCustomWeekHeading"
                 app:mcv_selectionColor="@color/orange"
-                app:mcv_showOtherDates="decorated_disabled"
+                app:mcv_showOtherDates="all"
                 app:mcv_tileHeight="30dp"
                 app:mcv_weekDayTextAppearance="@style/CalenderViewCustomWeekText" />
 
