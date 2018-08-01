@@ -73,6 +73,7 @@ public class RegisterComplaintActivity extends BaseActivity
 
     private static final int CAMERA_REQUEST = 1888;
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
+    private static final int MY_EXT_STORAGE_PERMISSION_CODE = 101;
     private Button buttonSubmit;
     private ArrayList<Bitmap> images;
     private GoogleApiClient mGoogleApiClient;
@@ -135,7 +136,11 @@ public class RegisterComplaintActivity extends BaseActivity
             ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION}, 101);
 
         }
-
+      /*  boolean gpsStatus = locmanager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        if (!gpsStatus) {
+            Settings.Secure.putString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED, "network,gps");
+        }
+*/
         try {
             locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 5, this);
@@ -204,11 +209,27 @@ public class RegisterComplaintActivity extends BaseActivity
 
     private void takePhoto() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (checkSelfPermission(Manifest.permission.CAMERA)
-                    != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(new String[]{Manifest.permission.CAMERA},
+
+            String[] PERMISSIONS = {
+                    android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    android.Manifest.permission.CAMERA
+            };
+
+            if(!hasPermissions(this, PERMISSIONS)){
+                ActivityCompat.requestPermissions(this, PERMISSIONS, MY_CAMERA_PERMISSION_CODE);
+            }
+          /*  if (checkSelfPermission(Manifest.permission.CAMERA)
+                    != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED ) {
+                requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE},
                         MY_CAMERA_PERMISSION_CODE);
-            } else {
+            } *//*else if ( checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED ) {
+                requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        MY_EXT_STORAGE_PERMISSION_CODE);
+            }*/else {
                 StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
                 StrictMode.setVmPolicy(builder.build());
                 String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -250,6 +271,17 @@ public class RegisterComplaintActivity extends BaseActivity
                 break;
         }
 
+    }
+
+    public static boolean hasPermissions(Context context, String... permissions) {
+        if (context != null && permissions != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     private void doValidation() {
@@ -297,13 +329,14 @@ public class RegisterComplaintActivity extends BaseActivity
         Call<CompllaintUpdateResponseModel> call = apiInterface.registerComplaintService(request);
         call.enqueue(new Callback<CompllaintUpdateResponseModel>() {
             @Override
-            public void onResponse(Call<CompllaintUpdateResponseModel> call, Response<CompllaintUpdateResponseModel> response) {
+            public void onResponse(@NonNull Call<CompllaintUpdateResponseModel> call, @NonNull Response<CompllaintUpdateResponseModel> response) {
                 endLoading();
-                if (response.body() != null) {
-                    if (response.body().isStatus()) {
-                        showMessage(response.body().getMessage());
+                CompllaintUpdateResponseModel responseBody = response.body();
+                if (responseBody != null) {
+                    if (responseBody.isStatus()) {
+                        showMessage(responseBody.getMessage());
                     } else {
-                        showMessage(response.body().getMessage());
+                        showMessage(responseBody.getMessage());
                     }
                     finish();
                 } else {
@@ -313,7 +346,7 @@ public class RegisterComplaintActivity extends BaseActivity
             }
 
             @Override
-            public void onFailure(Call<CompllaintUpdateResponseModel> call, Throwable t) {
+            public void onFailure(@NonNull Call<CompllaintUpdateResponseModel> call, @NonNull Throwable t) {
                 endLoading();
 
                 showMessage("Complaint Registration failed");
@@ -327,9 +360,21 @@ public class RegisterComplaintActivity extends BaseActivity
         if (requestCode == MY_CAMERA_PERMISSION_CODE) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(this, "camera permission granted", Toast.LENGTH_LONG).show();
-                Intent cameraIntent = new
+               /* Intent cameraIntent = new
                         Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(cameraIntent, CAMERA_REQUEST);
+                startActivityForResult(cameraIntent, CAMERA_REQUEST);*/
+               takePhoto();
+            } else {
+                Toast.makeText(this, "camera permission denied", Toast.LENGTH_LONG).show();
+            }
+        }
+        if (requestCode == MY_EXT_STORAGE_PERMISSION_CODE) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                takePhoto();
+
+                /*Intent cameraIntent = new
+                        Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(cameraIntent, CAMERA_REQUEST);*/
             } else {
                 Toast.makeText(this, "camera permission denied", Toast.LENGTH_LONG).show();
             }

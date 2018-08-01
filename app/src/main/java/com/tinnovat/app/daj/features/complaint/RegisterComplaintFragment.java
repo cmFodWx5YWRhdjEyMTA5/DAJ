@@ -1,6 +1,5 @@
 package com.tinnovat.app.daj.features.complaint;
 
-import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -8,7 +7,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.Paint;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -28,7 +26,6 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,40 +37,35 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.pchmn.androidverify.Form;
-import com.squareup.picasso.Picasso;
 import com.tinnovat.app.daj.BaseFragment;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.AppPreferanceStore;
 import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.ComplaintCategoriesResponseModel;
-import com.tinnovat.app.daj.data.network.model.ComplaintList;
 import com.tinnovat.app.daj.data.network.model.CompllaintUpdateResponseModel;
 import com.tinnovat.app.daj.data.network.model.RequestParams;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class RegisterComplaintFragment extends BaseFragment  implements ImagesAdapter.ImageAdapterListener ,LocationListener {
+public class RegisterComplaintFragment extends BaseFragment implements ImagesAdapter.ImageAdapterListener, LocationListener {
 
     TextView category;
     List<String> listItems;
@@ -87,8 +79,8 @@ public class RegisterComplaintFragment extends BaseFragment  implements ImagesAd
     private Button buttonSubmit;
     private ArrayList<Bitmap> images;
     private GoogleApiClient mGoogleApiClient;
-    private double lattitude ;
-    private double longitude ;
+    private double lattitude;
+    private double longitude;
     private AppPreferanceStore appPreferanceStore;
     private RecyclerView recyclerViewImages;
     private ImagesAdapter mAdapter;
@@ -160,18 +152,18 @@ public class RegisterComplaintFragment extends BaseFragment  implements ImagesAd
 
     }
 
-    private void setSpinner(List<String> listItems){
+    private void setSpinner(List<String> listItems) {
 
-        spinner.setAdapter(new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_dropdown_item,listItems));
+        spinner.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, listItems));
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if (i==0){
+                if (i == 0) {
                     showMessage("nothing");
-                }else {
+                } else {
 
-                    mCatId = catIds.get(i-1);
+                    mCatId = catIds.get(i - 1);
                 }
             }
 
@@ -225,8 +217,7 @@ public class RegisterComplaintFragment extends BaseFragment  implements ImagesAd
         try {
             locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 5, this);
-        }
-        catch(SecurityException e) {
+        } catch (SecurityException e) {
             e.printStackTrace();
         }
     }
@@ -281,11 +272,22 @@ public class RegisterComplaintFragment extends BaseFragment  implements ImagesAd
 
     private void takePhoto() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (getActivity().checkSelfPermission(Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED  ) {
+
+            String[] PERMISSIONS = {
+                    android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    android.Manifest.permission.CAMERA
+            };
+
+            if (!hasPermissions(getContext(), PERMISSIONS)) {
+                ActivityCompat.requestPermissions(getActivity(), PERMISSIONS, MY_CAMERA_PERMISSION_CODE);
+            }
+           /* if (getActivity().checkSelfPermission(Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED  ) {
                 requestPermissions(new String[]{Manifest.permission.CAMERA
                         },
                         MY_CAMERA_PERMISSION_CODE);
-            } else {
+            } */
+            else {
                 StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
                 StrictMode.setVmPolicy(builder.build());
                 String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -311,7 +313,7 @@ public class RegisterComplaintFragment extends BaseFragment  implements ImagesAd
                 break;
 
             case R.id.button_submit:
-                if(form.isValid()) {
+                if (form.isValid()) {
                     // the form is valid
                     doValidation();
                 }
@@ -344,11 +346,10 @@ public class RegisterComplaintFragment extends BaseFragment  implements ImagesAd
                 }
 
                 registerComplaint(imageArray);
-            }else {
+            } else {
                 endLoading();
                 showMessage(getResources().getString(R.string.please_upload_image));
             }
-
 
 
         }
@@ -357,7 +358,7 @@ public class RegisterComplaintFragment extends BaseFragment  implements ImagesAd
     private void registerComplaint(List<String> imageArray) {
 
         RequestParams.ComplaintRequest request = new RequestParams().new ComplaintRequest(
-                appPreferanceStore.getLanguage() ? "en" : "ar", mCatId, commentBox.getText() == null ? " " :commentBox.getText().toString() ,
+                appPreferanceStore.getLanguage() ? "en" : "ar", mCatId, commentBox.getText() == null ? " " : commentBox.getText().toString(),
                 imageArray, String.format("%s,%s", lattitude, longitude));
 
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
@@ -421,6 +422,17 @@ public class RegisterComplaintFragment extends BaseFragment  implements ImagesAd
         }
     }
 
+    public static boolean hasPermissions(Context context, String... permissions) {
+        if (context != null && permissions != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     @Override
     public void interactClick(final Bitmap bitmapImage) {
         final Dialog dialog = new Dialog(getContext(), android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
@@ -461,10 +473,9 @@ public class RegisterComplaintFragment extends BaseFragment  implements ImagesAd
         try {
             Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
             List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-            textAddress.setText(addresses.get(0).getAddressLine(0)+", "+
-                    addresses.get(0).getAddressLine(1)+", "+addresses.get(0).getAddressLine(2));
-        }catch(Exception e)
-        {
+            textAddress.setText(addresses.get(0).getAddressLine(0) + ", " +
+                    addresses.get(0).getAddressLine(1) + ", " + addresses.get(0).getAddressLine(2));
+        } catch (Exception e) {
 
         }
 
@@ -518,7 +529,7 @@ public class RegisterComplaintFragment extends BaseFragment  implements ImagesAd
         return cursor.getString(column_index);
     }
 
-public interface OnFragmentInteractionListener {
+    public interface OnFragmentInteractionListener {
 
         void setTitle(String title);
     }
