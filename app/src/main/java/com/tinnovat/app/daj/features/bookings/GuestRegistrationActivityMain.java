@@ -18,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import com.pchmn.androidverify.Form;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
@@ -54,7 +55,7 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
 
     private int timeSlot = 0;
     private String selectedDate = null;
-    private String time = null;
+    //private String time = null;
     private Button buttonAdd;
     private Button buttonSubmit;
     private TableLayout table;
@@ -67,6 +68,13 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
     List<Spinner> purposeSpinnerList = new ArrayList<>();
     List<EditText> tvInputNameList = new ArrayList<>();
     List<EditText> tvVehicleNumberList = new ArrayList<>();
+
+
+    private List<String> name = new ArrayList<>();
+    private List<String> dates = new ArrayList<>();
+    private List<String> time = new ArrayList<>();
+    private List<Integer> purpose = new ArrayList<>();
+    private List<String> vehicleNo = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -210,6 +218,9 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
         // validate the form
         if (form.isValid()) {
 
+            doRegistration(name, dates, time, purpose, vehicleNo);
+
+/*  //todo change
             for (int i = 0; i < table.getChildCount(); i++) {
 
                 // the form is valid
@@ -226,7 +237,7 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
                 }
 
 
-            }
+            }*/
 
 
         } else {
@@ -235,7 +246,7 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
     }
 
 
-    private void doRegistration(String name, String date, String time, int purpose, String vehicleNo) {
+    private void doRegistration(List<String> name, List<String> date, List<String> time, List<Integer> purpose, List<String> vehicleNo) {
 
         startLoading();
 
@@ -286,8 +297,38 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.submit:
+                //purposeSpinnerList
                 for (int i = 0; i < table.getChildCount(); i++) {
-                    EditText editText = table.getChildAt(i).findViewById(R.id.input_name);
+                    EditText userName = table.getChildAt(i).findViewById(R.id.input_name);
+                    TimePicker timePicker = table.getChildAt(i).findViewById(R.id.simpleTimePicker);
+                    Spinner spinner_purpose = table.getChildAt(i).findViewById(R.id.spinner_purpose);
+                    EditText vehicleno = table.getChildAt(i).findViewById(R.id.vehicle_no);
+
+                   name.add(userName.getText().toString());
+                    dates.add(CommonUtils.getInstance().getDate(calendarViewList.get(i).getSelectedDate().getCalendar()));
+                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+
+                        String hr;
+                        String min;
+                        if (timePicker.getHour()<10){
+                            hr = "0"+Integer.toString(timePicker.getHour());
+                            //time.add(""+hr+":"+timePicker.getMinute());
+                        }else {
+                           hr = Integer.toString(timePicker.getHour());
+                        }
+
+                        if (timePicker.getMinute()<10){
+                            min = "0"+Integer.toString(timePicker.getMinute());
+                        }else {
+                            min = Integer.toString(timePicker.getMinute());
+                        }
+                        time.add(hr+":"+min);
+                    }else {
+                        time.add("10:00");
+                    }
+
+                    purpose.add(purposeSpinnerList.get(i).getSelectedItemPosition()-1);
+                    vehicleNo.add(vehicleno.getText().toString());
                 }
                 validation();
                 break;

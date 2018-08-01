@@ -67,12 +67,12 @@ public class RequestParams {
     }
 
     public class GuestRegistrationRequest {
-        private String name;
-        private String date;
-        private String time;
-        private int purpose;
-        private String vehicleNo;
-        public GuestRegistrationRequest(String name,String date,String time, int purpose , String vehicleNo ){
+        private List<String> name;
+        private List<String> date;
+        private List<String> time;
+        private List<Integer> purpose;
+        private List<String> vehicleNo;
+        public GuestRegistrationRequest(List<String> name,List<String> date,List<String> time, List<Integer> purpose , List<String> vehicleNo ){
             this.name = name;
             this.date = date;
             this.time = time;
