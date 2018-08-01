@@ -8,7 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="NavigationTheme" parent="AppTheme">
+    <style name="NavigationTheme" parent="AppTheme.NoActionBar">
         <item name="listPreferredItemHeightSmall">40dp</item><!-- menu item height- vary as u need -->
     </style>
 

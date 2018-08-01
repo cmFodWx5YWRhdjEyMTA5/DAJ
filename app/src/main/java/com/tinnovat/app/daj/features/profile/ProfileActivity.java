@@ -1,6 +1,8 @@
 package com.tinnovat.app.daj.features.profile;
 
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
@@ -30,7 +32,19 @@ public class ProfileActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.my_profile));
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(getText(R.string.my_profile));
+        }
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().getItem(0).setChecked(true);
+        navigationView.setItemIconTintList(null);
+
         appPreferanceStore = new AppPreferanceStore(this);
 
         fetchProfileData();
