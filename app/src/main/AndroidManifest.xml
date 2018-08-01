@@ -170,8 +170,7 @@
         </activity>
         <activity
             android:name=".features.authentication.ChangePasswordActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
