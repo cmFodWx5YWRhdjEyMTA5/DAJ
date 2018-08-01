@@ -181,7 +181,7 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
         });
     }
 
-    void fetchMyBookingService() {
+    public void fetchMyBookingService() {
         startLoading();
 
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);

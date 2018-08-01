@@ -33,12 +33,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -75,7 +78,7 @@ public class RegisterComplaintFragment extends BaseFragment  implements ImagesAd
     TextView category;
     List<String> listItems;
     List<Integer> catIds;
-    ViewDialog alert;
+    //ViewDialog alert;
     int mCatId = 0;
 
 
@@ -93,6 +96,7 @@ public class RegisterComplaintFragment extends BaseFragment  implements ImagesAd
     private ImageView location;
     private EditText commentBox;
     private LocationManager mLocationManager;
+    private Spinner spinner;
 
     List<String> sam = new ArrayList<>();
     private Uri imageUri;
@@ -127,6 +131,8 @@ public class RegisterComplaintFragment extends BaseFragment  implements ImagesAd
         location = view.findViewById(R.id.location);
         category = view.findViewById(R.id.category);
 
+        spinner = view.findViewById(R.id.spinner_purpose);
+
         buttonSubmit.setOnClickListener(this);
 
         takeImage.setOnClickListener(this);
@@ -150,6 +156,30 @@ public class RegisterComplaintFragment extends BaseFragment  implements ImagesAd
         getLocation();
 
         fetchCategory();
+
+
+    }
+
+    private void setSpinner(List<String> listItems){
+
+        spinner.setAdapter(new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_dropdown_item,listItems));
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if (i==0){
+                    showMessage("nothing");
+                }else {
+
+                    mCatId = catIds.get(i-1);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     @Override
@@ -226,6 +256,7 @@ public class RegisterComplaintFragment extends BaseFragment  implements ImagesAd
 
     private void setData(Response<ComplaintCategoriesResponseModel> response) {
         listItems = new ArrayList<String>();
+        listItems.add(getResources().getString(R.string.choose_category));
         catIds = new ArrayList<Integer>();
 
         //Todo check chenge for loop
@@ -236,22 +267,23 @@ public class RegisterComplaintFragment extends BaseFragment  implements ImagesAd
 
         // CharSequence categoryList[] = listItems.toArray(new CharSequence[listItems.size()]);
 
+        setSpinner(listItems);
 
 
-        category.setOnClickListener(new View.OnClickListener() {
+       /* category.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 alert = new ViewDialog();
                 alert.showDialog();
             }
-        });
+        });*/
     }
 
     private void takePhoto() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (getActivity().checkSelfPermission(Manifest.permission.CAMERA)
-                    != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(new String[]{Manifest.permission.CAMERA},
+            if (getActivity().checkSelfPermission(Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED  ) {
+                requestPermissions(new String[]{Manifest.permission.CAMERA
+                        },
                         MY_CAMERA_PERMISSION_CODE);
             } else {
                 StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
@@ -453,7 +485,7 @@ public class RegisterComplaintFragment extends BaseFragment  implements ImagesAd
 
     }
 
-    public class ViewDialog implements ComplaintCategoryAdapter.CategoryAdapterListener {
+    /*public class ViewDialog implements ComplaintCategoryAdapter.CategoryAdapterListener {
         Dialog dialog;
 
         public void showDialog() {
@@ -476,7 +508,7 @@ public class RegisterComplaintFragment extends BaseFragment  implements ImagesAd
             category.setText(mCategory);
             dialog.dismiss();
         }
-    }
+    }*/
 
     public String getRealPathFromURI(Uri contentUri) {
         String[] proj = {MediaStore.Images.Media.DATA};

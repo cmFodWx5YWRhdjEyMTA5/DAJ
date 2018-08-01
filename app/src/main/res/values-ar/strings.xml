@@ -138,7 +138,7 @@
     <string name="gender">الجنس</string>
     <string name="male">ذكر</string>//
     <string name="female">انثى</string>//
-    <string name="villa_no_045">رقم الفيلا: </string>//
+    <string name="villa_no_045">رقم الفيلا: %s</string>//
     <string name="please_upload_image">يرجى تحميل الصورة</string>//
 
     <string name="saudi_arabia">المملكة العربية السعودية</string>

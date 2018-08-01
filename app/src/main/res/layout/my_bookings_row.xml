@@ -26,7 +26,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:paddingTop="10dp"
-                android:text="11AM-11AM"
                 android:textColor="@color/black" />
         </LinearLayout>
 

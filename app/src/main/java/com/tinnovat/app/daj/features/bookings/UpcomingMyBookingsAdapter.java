@@ -63,7 +63,7 @@ public class UpcomingMyBookingsAdapter extends RecyclerView.Adapter<UpcomingMyBo
         if ( !CommonUtils.getInstance().getDate2(CalendarDay.today().getCalendar())
                 .equals(response.getServiceBooking().get(position).getServiceBookingDate()) ){
             holder.itemView.setVisibility(View.VISIBLE);
-            holder.serviceName.setText(response.getServiceBooking().get(position).getServiceCategory());
+            holder.serviceName.setText(response.getServiceBooking().get(position).getService());
             holder.time.setText("");
             holder.relativeLayout.setVisibility(View.VISIBLE);
             holder.date.setText(response.getServiceBooking().get(position).getServiceBookingDate());

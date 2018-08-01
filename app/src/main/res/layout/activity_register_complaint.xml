@@ -48,16 +48,18 @@
                 android:layout_marginTop="5dp"
                 android:background="@color/greenText" />
 
-            <TextView
-                android:id="@+id/category"
+            <Spinner
+                android:id="@+id/spinner_purpose"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/curve_small_bg_gray"
                 android:drawableEnd="@drawable/arrow_down"
-                android:hint="@string/choose_category"
-                android:padding="10dp"
-                android:textColor="@color/black" />
+                android:prompt="@string/choose_purpose"
+                android:textColor="@color/black"
+                android:textSize="18sp">
+
+            </Spinner>
 
             <com.pchmn.androidverify.InputValidator
                 android:layout_width="wrap_content"

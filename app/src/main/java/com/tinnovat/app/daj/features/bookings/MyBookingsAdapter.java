@@ -70,7 +70,7 @@ public class MyBookingsAdapter extends RecyclerView.Adapter<MyBookingsAdapter.My
 
         if ( date.equals(response.getServiceBooking().get(position).getServiceBookingDate()) ){
             holder.itemView.setVisibility(View.VISIBLE);
-            holder.serviceName.setText(response.getServiceBooking().get(position).getServiceCategory());
+            holder.serviceName.setText(response.getServiceBooking().get(position).getService());
             if (response.getServiceBooking().get(position).getTimeSlots().size() != 0){
                 for (int i = 0 ; i< response.getServiceBooking().get(position).getTimeSlots().size();i++){
                     if (i == 0){

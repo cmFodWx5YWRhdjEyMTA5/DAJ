@@ -60,48 +60,68 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
 
         switch (position) {
             case 3:
+                holder.img.setVisibility(View.VISIBLE);
                 holder.img.setImageResource(R.drawable.event);
                 break;
             case 4:
+                holder.img.setVisibility(View.VISIBLE);
                 holder.img.setImageResource(R.drawable.service);
                 break;
 
             case 5:
+                holder.img.setVisibility(View.VISIBLE);
                 holder.img.setImageResource(R.drawable.guest);
                 break;
             case 6:
+                holder.img.setVisibility(View.VISIBLE);
                 holder.img.setImageResource(R.drawable.camera);
                 break;
             case 7:
+                holder.img.setVisibility(View.VISIBLE);
                 holder.img.setImageResource(R.drawable.navigation);
                 break;
             case 8:
+                holder.img.setVisibility(View.VISIBLE);
                 holder.img.setImageResource(R.drawable.projects);
                 break;
             case 9:
+                holder.img.setVisibility(View.VISIBLE);
                 holder.img.setImageResource(R.drawable.my_booking);
                 break;
             case 10:
+                holder.img.setVisibility(View.VISIBLE);
                 holder.img.setImageResource(R.drawable.profile);
                 break;
             case 11:
+                holder.img.setVisibility(View.VISIBLE);
                 holder.img.setImageResource(R.drawable.food);
                 break;
             case 12:
+                holder.img.setVisibility(View.VISIBLE);
                 holder.img.setImageResource(R.drawable.car);
                 break;
             case 13:
+                holder.img.setVisibility(View.VISIBLE);
+                holder.img.setVisibility(View.VISIBLE);
                 holder.img.setImageResource(R.drawable.complaint);
                 break;
             case 14:
+                holder.img.setVisibility(View.VISIBLE);
                 holder.img.setImageResource(R.drawable.phone_golden);
                 break;
             case 15:
+                holder.img.setVisibility(View.VISIBLE);
                 holder.img.setImageResource(R.drawable.key);
                 break;
             case 16:
+                holder.img.setVisibility(View.VISIBLE);
                 holder.img.setImageResource(R.drawable.logout);
                 break;
+
+                default:
+                    holder.img.setImageResource(R.drawable.logout);
+                    holder.img.setVisibility(View.INVISIBLE);
+                    break;
 
 
         }
