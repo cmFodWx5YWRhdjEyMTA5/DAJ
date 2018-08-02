@@ -80,7 +80,7 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guest_registration_main);
-        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.guest_reg));
+//        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.guest_reg));
 
         buttonAdd = findViewById(R.id.add);
         buttonSubmit = findViewById(R.id.submit);
@@ -252,7 +252,8 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
 
 
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
-        RequestParams.GuestRegistrationRequest guestRegistrationRequest = new RequestParams().new GuestRegistrationRequest(name, date, time, purpose, vehicleNo);
+        RequestParams.GuestRegistrationRequest guestRegistrationRequest =
+                new RequestParams().new GuestRegistrationRequest(name, date, time, purpose, vehicleNo);
 
         Call<GuestRegistrationResponseModel> call = apiInterface.guestRegistration(guestRegistrationRequest);
         call.enqueue(new Callback<GuestRegistrationResponseModel>() {
@@ -327,7 +328,7 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
                         time.add("10:00");
                     }
 
-                    purpose.add(purposeSpinnerList.get(i).getSelectedItemPosition()-1);
+                    purpose.add(purposeSpinnerList.get(i).getSelectedItemPosition());
                     vehicleNo.add(vehicleno.getText().toString());
                 }
                 validation();
