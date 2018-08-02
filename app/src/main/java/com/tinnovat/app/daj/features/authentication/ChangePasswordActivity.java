@@ -1,6 +1,8 @@
 package com.tinnovat.app.daj.features.authentication;
 
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,7 +27,18 @@ public class ChangePasswordActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
-        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.change_password));
+        //Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.change_password));
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(getText(R.string.change_password));
+        }
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().getItem(13).setChecked(true);
+        navigationView.setItemIconTintList(null);
 
         Button submit = findViewById(R.id.submit);
         submit.setOnClickListener(this);

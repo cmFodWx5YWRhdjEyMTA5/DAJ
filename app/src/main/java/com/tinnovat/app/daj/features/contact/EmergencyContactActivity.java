@@ -1,9 +1,11 @@
 package com.tinnovat.app.daj.features.contact;
 
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.tinnovat.app.daj.BaseActivity;
@@ -26,8 +28,21 @@ public class EmergencyContactActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_service_list);
-        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.emergency_contact));
+        setContentView(R.layout.activity_contact_list);
+       // Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.emergency_contact));
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(getText(R.string.emergency_contact));
+        }
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().getItem(12).setChecked(true);
+        navigationView.setItemIconTintList(null);
+
         appPreferanceStore = new AppPreferanceStore(this);
         fetchContactList();
     }

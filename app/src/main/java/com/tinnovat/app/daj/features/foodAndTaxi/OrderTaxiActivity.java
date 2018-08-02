@@ -1,6 +1,8 @@
 package com.tinnovat.app.daj.features.foodAndTaxi;
 
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -25,7 +27,18 @@ public class OrderTaxiActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_food);
-        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.order_taxi));
+        //Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.order_taxi));
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(getText(R.string.order_taxi));
+        }
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().getItem(10).setChecked(true);
+        navigationView.setItemIconTintList(null);
 
         appPreferanceStore = new AppPreferanceStore(this);
 

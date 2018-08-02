@@ -1,29 +1,64 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".features.foodAndTaxi.OrderTaxiActivity"
-    android:background="@mipmap/bg">
-    <ImageView
-        android:id="@+id/bannerText"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+
+    <include layout="@layout/app_bar_order_food_content"/>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
         android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:src="@drawable/order_food"
-        android:scaleType="centerCrop"/>
-
-    <GridView
-        android:id="@+id/gridview"
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:columnWidth="100dp"
-        android:numColumns="3"
-        android:layout_marginTop="5dp"
-        android:verticalSpacing="20dp"
-        android:horizontalSpacing="0dp"
-        android:stretchMode="spacingWidthUniform"
-        android:layout_below="@+id/bannerText"
-        />
+        android:layout_gravity="start"
+        android:background="@drawable/bg_with_white"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:itemBackground="@drawable/drawer_selected_item"
+        app:itemTextColor="@color/nav_selction_text"
+        android:textAllCaps="true"
+        app:menu="@menu/activity_main_drawer"
+        android:theme="@style/NavigationTheme">
 
-</RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bg_with_white"/>
+
+            <ImageView
+                android:id="@+id/facebook"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="40dp"
+                android:layout_toStartOf="@+id/twitter"
+                app:srcCompat="@drawable/facebook" />
+
+            <ImageView
+                android:id="@+id/twitter"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:foregroundGravity="center_horizontal"
+                app:srcCompat="@drawable/twitter" />
+
+            <ImageView
+                android:id="@+id/instagram"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="40dp"
+                android:layout_toEndOf="@+id/twitter"
+                app:srcCompat="@drawable/instagram" />
+        </RelativeLayout>
+    </android.support.design.widget.NavigationView>
+</android.support.v4.widget.DrawerLayout>

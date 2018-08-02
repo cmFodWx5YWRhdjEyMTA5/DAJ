@@ -2,8 +2,10 @@ package com.tinnovat.app.daj.features.eventAndNews;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.tinnovat.app.daj.BaseActivity;
@@ -36,7 +38,18 @@ public class EventNewsActivity extends BaseActivity implements TabLayout.OnTabSe
     public void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_event_news);
         super.onCreate(savedInstanceState);
-        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.event_news));
+        //Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.event_news));
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(getText(R.string.event_news));
+        }
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().getItem(1).setChecked(true);
+        navigationView.setItemIconTintList(null);
 
         appPreferanceStore = new AppPreferanceStore(this);
 

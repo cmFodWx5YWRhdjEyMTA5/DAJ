@@ -1,55 +1,64 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".features.eventAndNews.EventNewsActivity"
-    android:background="@mipmap/bg">
-    <RelativeLayout
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+
+    <include layout="@layout/app_bar_event_news_content"/>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/event_details_bg"/>
-        <TextView
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@drawable/bg_with_white"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:itemBackground="@drawable/drawer_selected_item"
+        app:itemTextColor="@color/nav_selction_text"
+        android:textAllCaps="true"
+        app:menu="@menu/activity_main_drawer"
+        android:theme="@style/NavigationTheme">
+
+        <RelativeLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:background="@color/blackLightTrans"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="30sp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="@string/enjoy_our_events"/>
-    </RelativeLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="@color/greenText"/>
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tab_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/grayLight"
-        android:minHeight="?attr/actionBarSize"
-        android:elevation="2dp"
-        app:tabIndicatorHeight="5dp"
-        app:tabTextAppearance="@android:style/TextAppearance.WindowTitle"
-        />
+            android:layout_height="30dp"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bg_with_white"/>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/pager"
-        android:background="@android:color/transparent"
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+            <ImageView
+                android:id="@+id/facebook"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="40dp"
+                android:layout_toStartOf="@+id/twitter"
+                app:srcCompat="@drawable/facebook" />
 
-</LinearLayout>
+            <ImageView
+                android:id="@+id/twitter"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:foregroundGravity="center_horizontal"
+                app:srcCompat="@drawable/twitter" />
+
+            <ImageView
+                android:id="@+id/instagram"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="40dp"
+                android:layout_toEndOf="@+id/twitter"
+                app:srcCompat="@drawable/instagram" />
+        </RelativeLayout>
+    </android.support.design.widget.NavigationView>
+</android.support.v4.widget.DrawerLayout>

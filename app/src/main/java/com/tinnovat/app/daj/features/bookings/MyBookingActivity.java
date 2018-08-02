@@ -2,10 +2,12 @@ package com.tinnovat.app.daj.features.bookings;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -50,7 +52,19 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_booking);
-        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.my_booking));
+       // Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.my_booking));
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(getText(R.string.my_booking));
+        }
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().getItem(7).setChecked(true);
+        navigationView.setItemIconTintList(null);
 
         relativeLayout= findViewById(R.id.relativeLayout);
         upComingBanner= findViewById(R.id.upComingBanner);

@@ -7,7 +7,7 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-    <include layout="@layout/app_bar_change_password_content"/>
+    <include layout="@layout/app_bar_contact_list"/>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
