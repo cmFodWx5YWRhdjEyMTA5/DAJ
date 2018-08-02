@@ -94,6 +94,7 @@
         <activity
             android:name=".features.eventAndNews.EventNewsActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
             >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
