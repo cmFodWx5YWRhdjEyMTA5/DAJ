@@ -54,7 +54,6 @@
                     android:layout_alignParentBottom="true"
                     android:layout_toEndOf="@+id/navIcon"
                     android:gravity="center_vertical"
-                    android:text="@string/dar_al_jewar_hall"
                     android:textColor="@color/white"
                     android:textSize="15sp"
                     android:textStyle="bold" />

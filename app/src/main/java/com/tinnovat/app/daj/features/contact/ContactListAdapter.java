@@ -1,12 +1,20 @@
 package com.tinnovat.app.daj.features.contact;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.model.ContactResponseModel;
@@ -16,7 +24,7 @@ import retrofit2.Response;
 
 public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.MyViewHolder> {
 
-    private  Context mContext;
+    private Context mContext;
     private Response<ContactResponseModel> response;
 
 
@@ -25,13 +33,15 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
         public TextView occupation;
         public TextView number;
         public LinearLayout layoutBackground;
+        public ImageView message;
 
         public MyViewHolder(View view) {
             super(view);
-            name =  view.findViewById(R.id.name);
-            occupation =  view.findViewById(R.id.occupation);
-            number =  view.findViewById(R.id.number);
-            layoutBackground =  view.findViewById(R.id.layoutBackground);
+            name = view.findViewById(R.id.name);
+            occupation = view.findViewById(R.id.occupation);
+            number = view.findViewById(R.id.number);
+            layoutBackground = view.findViewById(R.id.layoutBackground);
+            message = view.findViewById(R.id.message);
         }
     }
 
@@ -59,17 +69,40 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
         holder.number.setText(response.body().getContact().get(position).getNumber());
         holder.name.setText(response.body().getContact().get(position).getName());
 
-        if (position%2 == 0){
+        if (position % 2 == 0) {
             holder.layoutBackground.setBackground(mContext.getResources().getDrawable(R.drawable.curve_small_bg_orange));
 
-        }else {
+        } else {
             holder.layoutBackground.setBackground(mContext.getResources().getDrawable(R.drawable.curve_small_bg_blue));
         }
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.number.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                if (ActivityCompat.checkSelfPermission(mContext, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+                    ActivityCompat.requestPermissions((Activity) mContext, new String[]{android.Manifest.permission.CALL_PHONE}, 1);
+
+                    Toast.makeText(mContext, "enable", Toast.LENGTH_SHORT).show();
+                    return;
+                }else {
+                    Intent intent = new Intent(Intent.ACTION_CALL);
+
+                    intent.setData(Uri.parse("tel:" + response.body().getContact().get(holder.getAdapterPosition()).getNumber()));
+                    mContext.startActivity(intent);
+                }
+
                // holder.title.setBackgroundColor(mContext.getResources().getColor(R.color.orange));
+            }
+        });
+
+        holder.message.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("sms:" + response.body().getContact().get(holder.getAdapterPosition()).getNumber()));
+                mContext.startActivity(new Intent(intent));
             }
         });
 

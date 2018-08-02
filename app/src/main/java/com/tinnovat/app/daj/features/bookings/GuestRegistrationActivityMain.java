@@ -1,13 +1,13 @@
 package com.tinnovat.app.daj.features.bookings;
 
-import android.app.Activity;
-import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -36,7 +36,6 @@ import com.tinnovat.app.daj.utils.CommonUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -79,8 +78,20 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_guest_registration_main);
+        setContentView(R.layout.activity_guest_registration);
 //        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.guest_reg));
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(getText(R.string.guest_reg));
+        }
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().getItem(0).setChecked(true);
+        navigationView.setItemIconTintList(null);
 
         buttonAdd = findViewById(R.id.add);
         buttonSubmit = findViewById(R.id.submit);
