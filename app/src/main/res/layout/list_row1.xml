@@ -7,9 +7,10 @@
 
     <ImageView
         android:id="@+id/img"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="10dp"
+        android:scaleX="-1"
         android:tint="@color/white"/>
     <TextView
         android:id="@+id/item"
@@ -20,7 +21,7 @@
 
     <TextView
         android:id="@+id/event"
-        android:layout_width="150dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/img"
@@ -28,6 +29,6 @@
         android:scaleX="-1"
         android:textStyle="bold"
         android:textColor="@color/white"
-        android:textSize="18sp" />
+        android:textSize="16sp" />
 
 </RelativeLayout>

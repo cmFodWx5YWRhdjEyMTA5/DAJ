@@ -7,6 +7,7 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.CheckableImageButton;
@@ -218,7 +219,8 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
         googlePlacesUrl.append("&radius=" + PROXIMITY_RADIUS);
         googlePlacesUrl.append("&type=" + nearbyPlace);
         googlePlacesUrl.append("&sensor=true");
-        googlePlacesUrl.append("&key=" + "AIzaSyATuUiZUkEc_UgHuqsBJa1oqaODI-3mLs0");
+       // googlePlacesUrl.append("&key=" + "AIzaSyATuUiZUkEc_UgHuqsBJa1oqaODI-3mLs0");
+        googlePlacesUrl.append("&key=" + "AIzaSyDpnPkiTYmi98TS77FIuKutuxYUwZZv1lk");
         Log.d("getUrl", googlePlacesUrl.toString());
         return (googlePlacesUrl.toString());
     }
@@ -340,6 +342,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
 
         switch (v.getId()) {
             case R.id.image1:
+
                 mMap.clear();
                 String url = getUrl(latitude, longitude, "restaurant");
                 Object[] dataTransfer = new Object[2];
@@ -349,17 +352,20 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
                 GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
                 getNearbyPlacesData.execute(dataTransfer);
                 Toast.makeText(MapsActivity.this, "Nearby Restaurants", Toast.LENGTH_LONG).show();
+
+
                 break;
             case R.id.image2:
-                mMap.clear();
-                url = getUrl(latitude, longitude, "gas_station");
-                dataTransfer = new Object[2];
-                dataTransfer[0] = mMap;
-                dataTransfer[1] = url;
-                Log.d("onClick", url);
-                getNearbyPlacesData = new GetNearbyPlacesData();
-                getNearbyPlacesData.execute(dataTransfer);
-                Toast.makeText(MapsActivity.this, "Nearby Petrol", Toast.LENGTH_LONG).show();
+                        mMap.clear();
+                        url = getUrl(latitude, longitude, "gas_station");
+                         dataTransfer = new Object[2];
+                        dataTransfer[0] = mMap;
+                        dataTransfer[1] = url;
+                        Log.d("onClick", url);
+                        getNearbyPlacesData = new GetNearbyPlacesData();
+                        getNearbyPlacesData.execute(dataTransfer);
+                        Toast.makeText(MapsActivity.this, "Nearby Petrol", Toast.LENGTH_LONG).show();
+
                 break;
             case R.id.image3:
                 mMap.clear();

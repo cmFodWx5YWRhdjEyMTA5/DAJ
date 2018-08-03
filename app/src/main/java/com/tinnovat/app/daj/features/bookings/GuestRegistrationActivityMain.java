@@ -115,7 +115,8 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
     }
 
     private void createNewRow(int rowPosition) {
-        row = (TableRow) LayoutInflater.from(this).inflate(R.layout.content_form_guest_registration, null);
+
+            row = (TableRow) LayoutInflater.from(this).inflate(R.layout.content_form_guest_registration, null);
         cal = row.findViewById(R.id.calendarView);
         monthTitle = row.findViewById(R.id.monthTitle);
         //purpose = row.findViewById(R.id.purpose);

@@ -65,18 +65,9 @@
             android:id="@+id/logout"
             android:icon="@drawable/logout_nav"
             android:title="@string/logout" />
-
-        <item
-            android:id="@+id/test"
-            android:title="" />
     </group>
 
-    <!--<item android:title="Communicate">
-        <menu>
-
-
-        </menu>
-    </item>-->
+    <item android:title=""/>
 
 
 </menu>

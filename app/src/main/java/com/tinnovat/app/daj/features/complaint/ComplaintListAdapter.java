@@ -72,7 +72,7 @@ public class ComplaintListAdapter extends RecyclerView.Adapter<ComplaintListAdap
         switch (holder.complaintListItem.getComplaintStatus()) {
             case 0:
                 holder.status.setText(R.string.submitted);
-                holder.status.setBackgroundResource(R.drawable.curve_small_bg_green);
+                holder.status.setBackgroundResource(R.drawable.curve_small_bg_red);
                 break;
 
             case 1:
@@ -82,7 +82,7 @@ public class ComplaintListAdapter extends RecyclerView.Adapter<ComplaintListAdap
 
             case 2:
                 holder.status.setText(R.string.completed);
-                holder.status.setBackgroundResource(R.drawable.curve_small_bg_red);
+                holder.status.setBackgroundResource(R.drawable.curve_small_bg_green);
                 break;
         }
 

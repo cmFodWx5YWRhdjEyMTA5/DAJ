@@ -47,6 +47,7 @@
             android:layout_marginTop="20dp">
 
             <ImageView
+                android:id="@+id/callIcon"
                 android:layout_width="0dp"
                 android:layout_height="20dp"
                 android:layout_marginStart="10dp"

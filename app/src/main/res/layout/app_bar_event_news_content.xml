@@ -27,6 +27,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".features.eventAndNews.EventNewsActivity"
+    android:layout_marginTop="50dp"
     android:background="@mipmap/bg">
     <RelativeLayout
         android:layout_width="wrap_content"

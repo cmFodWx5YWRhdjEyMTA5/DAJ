@@ -43,7 +43,7 @@
                 android:id="@+id/startDate"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight=".4">
+                android:layout_weight=".2">
 
                 <TextView
                     android:id="@+id/today_text"
@@ -54,12 +54,13 @@
                     android:layout_marginTop="5dp"
                     android:text="@string/today_events"
                     android:textColor="@color/white"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/todayDate"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_centerInParent="true"
                     android:background="@drawable/orenge_circle"
                     android:gravity="center"
@@ -71,7 +72,7 @@
                 android:id="@+id/calendarView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".8"
+                android:layout_weight=".6"
                 app:mcv_allowClickDaysOutsideCurrentMonth="false"
                 app:mcv_arrowColor="@color/white"
                 app:mcv_calendarMode="month"

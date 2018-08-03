@@ -25,6 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
+                android:gravity="start"
                 android:paddingTop="10dp"
                 android:textColor="@color/black" />
         </LinearLayout>
@@ -41,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:text="@string/wedding_reception"
+            android:gravity="start"
             android:textColor="@color/black" />
 
     </LinearLayout>

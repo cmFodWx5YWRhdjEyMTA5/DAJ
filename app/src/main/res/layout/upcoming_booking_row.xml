@@ -25,6 +25,7 @@
             android:layout_toStartOf="@+id/time1"
             android:maxLines="1"
             android:text="@string/lorem_ipsum"
+            android:gravity="start"
             android:textColor="@color/black"
             android:textStyle="bold" />
 
@@ -37,6 +38,7 @@
             android:layout_toStartOf="@+id/time1"
             android:maxLines="1"
             android:text="@string/lorem_ipsum"
+            android:gravity="start"
             android:textColor="@color/blackTrans" />
 
         <TextView

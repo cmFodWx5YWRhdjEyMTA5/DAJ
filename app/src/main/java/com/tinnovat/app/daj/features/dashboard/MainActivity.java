@@ -187,7 +187,7 @@ public class MainActivity extends BaseActivity {
         recyclerView.addItemDecoration(new RecyclerItemDecoration());
         /*RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);*/
-        recyclerView.setLayoutManager(new CircularLayoutManager(getApplicationContext(), 300, -100));
+        recyclerView.setLayoutManager(new CircularLayoutManager(getApplicationContext(), 280, -130));
 
         //  recyclerView.setItemAnimator(new DefaultItemAnimator());
 

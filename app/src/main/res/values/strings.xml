@@ -9,12 +9,12 @@
     <string name="dashboard">DASHBOARD</string>
     <string name="home">HOME</string>
     <string name="events">EVENTS</string>
-    <string name="services">BOOKING SERVICES</string>
+    <string name="services">BOOK SERVICES</string>
     <string name="services_list">SERVICES LIST</string>
     <string name="guest_reg">GUEST REGISTRATION</string>
     <string name="view_camera">VIEW CAMERA</string>
     <string name="projects">PROJECTS</string>
-    <string name="my_profile">MY PROFILE</string>
+    <string name="my_profile">VIEW PROFILE</string>
     <string name="food">FOOD</string>
     <string name="taxi">TAXI</string>
     <string name="taxi1">Taxi</string>
@@ -139,7 +139,7 @@
     <string name="my_booking">MY BOOKINGS</string>
     <string name="my_complaint">MY COMPLAINTS</string>
     <string name="reg_complaint">Register Complaint</string>
-    <string name="my_complaint_list">MY COMPLAINT LIST</string>
+    <string name="my_complaint_list">MY COMPLAINTS LIST</string>
     <string name="order_taxi">ORDER TAXI</string>
     <string name="order_food">ORDER FOOD</string>
     <string name="reset_password">RESET PASSWORD</string>
