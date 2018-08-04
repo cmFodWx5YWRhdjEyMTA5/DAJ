@@ -32,7 +32,7 @@ public class SurveillanceActivity extends BaseActivity {
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.getMenu().getItem(0).setChecked(true);
+        navigationView.getMenu().getItem(4).setChecked(true);
         navigationView.setItemIconTintList(null);
 
         arc_gate = findViewById(R.id.arc_gate);

@@ -32,7 +32,7 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
     private boolean mLanguage;
     //  private Response<EventListModel> mResponse;
 
-    RecyclerViewAdapter(Context context, List<String> list,boolean language) {
+    RecyclerViewAdapter(Context context, List<String> list, boolean language) {
         this.context = context;
         this.list = list;
         this.mLanguage = language;
@@ -47,9 +47,9 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
 
-        if (mLanguage){
+        if (mLanguage) {
             holder.event.setGravity(Gravity.END);
-        }else {
+        } else {
             holder.event.setGravity(Gravity.START);
         }
 
@@ -59,6 +59,18 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
         holder.item.setText(pos);
 
         switch (position) {
+            case 0:
+                holder.img.setVisibility(View.INVISIBLE);
+                holder.img.setImageResource(R.drawable.phone_golden);
+                break;
+            case 1:
+                holder.img.setVisibility(View.INVISIBLE);
+                holder.img.setImageResource(R.drawable.key);
+                break;
+            case 2:
+                holder.img.setVisibility(View.INVISIBLE);
+                holder.img.setImageResource(R.drawable.logout);
+                break;
             case 3:
                 holder.img.setVisibility(View.VISIBLE);
                 holder.img.setImageResource(R.drawable.event);
@@ -118,10 +130,18 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
                 holder.img.setImageResource(R.drawable.logout);
                 break;
 
-                default:
-                    holder.img.setImageResource(R.drawable.logout);
-                    holder.img.setVisibility(View.INVISIBLE);
-                    break;
+            case 17:
+                holder.img.setVisibility(View.INVISIBLE);
+                holder.img.setImageResource(R.drawable.phone_golden);
+                break;
+            case 18:
+                holder.img.setVisibility(View.INVISIBLE);
+                holder.img.setImageResource(R.drawable.key);
+                break;
+            case 19:
+                holder.img.setVisibility(View.INVISIBLE);
+                holder.img.setImageResource(R.drawable.logout);
+                break;
 
 
         }

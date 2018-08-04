@@ -90,7 +90,7 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.getMenu().getItem(0).setChecked(true);
+        navigationView.getMenu().getItem(3).setChecked(true);
         navigationView.setItemIconTintList(null);
 
         buttonAdd = findViewById(R.id.add);

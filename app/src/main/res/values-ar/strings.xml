@@ -21,7 +21,7 @@
 
     <string name="total_area">المساحة الكلية لأرض المشروع</string>
     <string name="completed">منجز</string>
-    <string name="formatter">ريج لا: CMP%d </string>
+    <string name="formatter">ريج لا: CMP%S </string>
     <string name="required">مطلوب</string>
     <string name="choose_time">اختر الوقت</string>
 

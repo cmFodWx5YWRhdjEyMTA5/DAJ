@@ -220,7 +220,8 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
         googlePlacesUrl.append("&type=" + nearbyPlace);
         googlePlacesUrl.append("&sensor=true");
        // googlePlacesUrl.append("&key=" + "AIzaSyATuUiZUkEc_UgHuqsBJa1oqaODI-3mLs0");
-        googlePlacesUrl.append("&key=" + "AIzaSyDpnPkiTYmi98TS77FIuKutuxYUwZZv1lk");
+        //googlePlacesUrl.append("&key=" + "AIzaSyDpnPkiTYmi98TS77FIuKutuxYUwZZv1lk");
+        googlePlacesUrl.append("&key=" + "AIzaSyBkdg85XVOxV2emQyzIX7i0NLPkral006k");
         Log.d("getUrl", googlePlacesUrl.toString());
         return (googlePlacesUrl.toString());
     }

@@ -2,6 +2,7 @@ package com.tinnovat.app.daj.features.bookings;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,13 +23,14 @@ public class UpcomingMyBookingsAdapter extends RecyclerView.Adapter<UpcomingMyBo
     private Context mContext;
     private MyServiceBookingResponseModel response;
     private DeleteEventListener mDeleteEventListener;
-
+    private boolean mIsEnglish;
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView time;
         public TextView date;
         public TextView serviceName;
         public LinearLayout relativeLayout;
         public ImageView delete;
+
 
 
 
@@ -43,9 +45,10 @@ public class UpcomingMyBookingsAdapter extends RecyclerView.Adapter<UpcomingMyBo
     }
 
 
-    public UpcomingMyBookingsAdapter(MyServiceBookingResponseModel responseModel,DeleteEventListener deleteEventListener) {
+    public UpcomingMyBookingsAdapter(MyServiceBookingResponseModel responseModel,DeleteEventListener deleteEventListener,boolean isEnglish) {
         this.response = responseModel;
         this.mDeleteEventListener = deleteEventListener;
+        this.mIsEnglish = isEnglish;
     }
 
     @Override
@@ -62,6 +65,13 @@ public class UpcomingMyBookingsAdapter extends RecyclerView.Adapter<UpcomingMyBo
         String times = "";
         if ( !CommonUtils.getInstance().getDate2(CalendarDay.today().getCalendar())
                 .equals(response.getServiceBooking().get(position).getServiceBookingDate()) ){
+
+            if (mIsEnglish){
+                holder.time.setGravity(Gravity.END);
+            }else {
+                holder.time.setGravity(Gravity.START);
+            }
+
             holder.itemView.setVisibility(View.VISIBLE);
             holder.serviceName.setText(response.getServiceBooking().get(position).getService());
             holder.time.setText("");

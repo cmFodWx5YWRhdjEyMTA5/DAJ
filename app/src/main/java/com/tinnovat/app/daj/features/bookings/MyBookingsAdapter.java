@@ -2,6 +2,7 @@ package com.tinnovat.app.daj.features.bookings;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -30,7 +31,8 @@ public class MyBookingsAdapter extends RecyclerView.Adapter<MyBookingsAdapter.My
     private MyServiceBookingResponseModel response;
     private String date;
     private SelectAdapterListener mListener;
-    private List<Integer> selectedBookings = new ArrayList<>();;
+    private List<Integer> selectedBookings = new ArrayList<>();
+    private boolean mIsEnglish;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView time;
@@ -49,10 +51,11 @@ public class MyBookingsAdapter extends RecyclerView.Adapter<MyBookingsAdapter.My
     }
 
 
-    public MyBookingsAdapter(MyServiceBookingResponseModel responseModel,String date,SelectAdapterListener mListener) {
+    public MyBookingsAdapter(MyServiceBookingResponseModel responseModel,String date,SelectAdapterListener mListener,boolean isEnglish) {
         this.response = responseModel;
         this.date = date;
         this.mListener = mListener;
+        this.mIsEnglish = isEnglish;
     }
 
     @Override
@@ -67,6 +70,12 @@ public class MyBookingsAdapter extends RecyclerView.Adapter<MyBookingsAdapter.My
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         String times = "";
+
+        if (mIsEnglish){
+            holder.time.setGravity(Gravity.START);
+        }else {
+            holder.time.setGravity(Gravity.END);
+        }
 
         if ( date.equals(response.getServiceBooking().get(position).getServiceBookingDate()) ){
             holder.itemView.setVisibility(View.VISIBLE);

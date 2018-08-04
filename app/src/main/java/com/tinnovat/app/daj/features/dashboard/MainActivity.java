@@ -199,11 +199,8 @@ public class MainActivity extends BaseActivity {
                     @Override
                     public void OnItemClick(RecyclerView parent, int childIndex) {
                         if (childIndex == 3) {
-
                             performClick(((TextView) parent.getChildAt(childIndex).findViewById(R.id.item)).getText().toString());
                         }
-
-
                     }
                 }));
     }

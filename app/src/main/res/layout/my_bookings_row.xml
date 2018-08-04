@@ -12,7 +12,8 @@
 
         <LinearLayout
             android:layout_width="125dp"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="start">
 
             <CheckBox
                 android:id="@+id/checkBox"
@@ -22,11 +23,12 @@
 
             <TextView
                 android:id="@+id/time"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
+                android:layout_marginBottom="5dp"
                 android:gravity="start"
-                android:paddingTop="10dp"
+                android:text="efiewfio"
                 android:textColor="@color/black" />
         </LinearLayout>
 
@@ -43,6 +45,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:gravity="start"
+            android:text="efiewfio"
             android:textColor="@color/black" />
 
     </LinearLayout>

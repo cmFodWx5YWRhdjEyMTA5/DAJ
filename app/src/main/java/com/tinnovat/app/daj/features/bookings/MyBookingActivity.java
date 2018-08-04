@@ -229,7 +229,7 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
 
         recyclerView = findViewById(R.id.recycler_view);
 
-        mMyBookingAdapter = new MyBookingsAdapter(response.body(),date,this);
+        mMyBookingAdapter = new MyBookingsAdapter(response.body(),date,this,getLanguage());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -242,7 +242,7 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
         //UpcomingMyBookingsAdapter mAdapter;
         recyclerView = findViewById(R.id.recycler_view2);
 
-        mAdapter = new UpcomingMyBookingsAdapter(response.body(),this);
+        mAdapter = new UpcomingMyBookingsAdapter(response.body(),this,getLanguage());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());

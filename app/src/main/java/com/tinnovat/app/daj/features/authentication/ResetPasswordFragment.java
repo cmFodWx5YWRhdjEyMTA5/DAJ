@@ -50,6 +50,8 @@ public class ResetPasswordFragment extends BaseFragment {
         if (getActivity() != null) {
             ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
             if (((AppCompatActivity) getActivity()).getSupportActionBar() != null)
+                ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
                 ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getText(R.string.reset_password));
         }
         toolbar.setNavigationOnClickListener(this);
@@ -230,4 +232,5 @@ public class ResetPasswordFragment extends BaseFragment {
             }
         });
     }
+
 }

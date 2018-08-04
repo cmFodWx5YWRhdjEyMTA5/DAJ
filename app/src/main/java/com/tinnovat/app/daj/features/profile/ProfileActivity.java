@@ -42,7 +42,7 @@ public class ProfileActivity extends BaseActivity {
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.getMenu().getItem(0).setChecked(true);
+        navigationView.getMenu().getItem(8).setChecked(true);
         navigationView.setItemIconTintList(null);
 
         appPreferanceStore = new AppPreferanceStore(this);
