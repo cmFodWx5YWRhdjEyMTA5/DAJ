@@ -211,29 +211,27 @@ public class EventDetails {
 
 
     private boolean getIsTodaysEvent(Calendar startDate, Calendar endDate, Calendar today) {
-        if (endDate.equals(startDate)) {
-            if (endDate.equals(today))
-                return true;
-        } else if (endDate.equals(today) || startDate.equals(today)) {
+        int startDateRep = today.compareTo(startDate);
+        int endDateRep = today.compareTo(endDate);
+        if (startDateRep == 0 || endDateRep == 0)
             return true;
-        } else if (startDate.before(today) && endDate.after(today)) {
+        else if (startDateRep > 0 && endDateRep < 0 )
             return true;
-        }
+
         return false;
     }
 
 
     private boolean getIsTomorrowsEvent(Calendar startDate, Calendar endDate, Calendar today) {
-        Calendar tomorrow = today;
-        tomorrow.add(Calendar.DAY_OF_YEAR, 1);
-        if (endDate.equals(startDate)) {
-            if (endDate.equals(tomorrow))
-                return true;
-        } else if (endDate.equals(tomorrow) || startDate.equals(tomorrow)) {
+        today.add(Calendar.DAY_OF_YEAR, 1);
+
+        int startDateRep = today.compareTo(startDate);
+        int endDateRep = today.compareTo(endDate);
+        if (startDateRep == 0 || endDateRep == 0)
             return true;
-        } else if (startDate.before(tomorrow) && endDate.after(tomorrow)) {
+        else if (startDateRep > 0 && endDateRep < 0 )
             return true;
-        }
+
         return false;
     }
 
