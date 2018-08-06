@@ -2,6 +2,7 @@ package com.tinnovat.app.daj;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -31,6 +32,7 @@ import com.tinnovat.app.daj.features.services.ServicesMainActivity;
 import com.tinnovat.app.daj.features.surveillance.SurveillanceActivity;
 import com.tinnovat.app.daj.map.MapsActivity;
 
+import java.util.Locale;
 import java.util.Objects;
 
 public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
@@ -213,6 +215,8 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
         } else if (id == R.id.change_password) {
             fetchChangePassword();
+        } else if (id == R.id.change_language) {
+            changeLanguage();
         } else if (id == R.id.logout) {
             fetchLogout();
         }
@@ -298,5 +302,28 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    public void changeLanguage(){
+        Boolean language = !getLanguage();
+        appPreferenceStore.setLanguage(language);
+        String languageToLoad;
+        if (getLanguage()) {
+            languageToLoad = "en"; // english
+        } else {
+            languageToLoad = "ar"; // arabic
+        }
+
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
+
+        Intent intent = new Intent(getBaseContext(), MainActivity.class);
+        startActivity(intent);
+        if (getBaseContext() != null)
+            finish();
     }
 }

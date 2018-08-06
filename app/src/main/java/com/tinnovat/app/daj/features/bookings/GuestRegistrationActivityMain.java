@@ -36,6 +36,7 @@ import com.tinnovat.app.daj.utils.CommonUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -80,6 +81,9 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guest_registration);
 //        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.guest_reg));
+
+        Locale.setDefault(Locale.US);
+
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -313,6 +317,7 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
                 //purposeSpinnerList
                 for (int i = 0; i < table.getChildCount(); i++) {
                     EditText userName = table.getChildAt(i).findViewById(R.id.input_name);
+
                     TimePicker timePicker = table.getChildAt(i).findViewById(R.id.simpleTimePicker);
                     Spinner spinner_purpose = table.getChildAt(i).findViewById(R.id.spinner_purpose);
                     EditText vehicleno = table.getChildAt(i).findViewById(R.id.vehicle_no);

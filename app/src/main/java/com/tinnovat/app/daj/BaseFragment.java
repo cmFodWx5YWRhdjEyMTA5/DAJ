@@ -1,16 +1,19 @@
 package com.tinnovat.app.daj;
 
 import android.app.Dialog;
+import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
 
 import com.tinnovat.app.daj.data.AppPreferanceStore;
 
+import java.util.Locale;
 import java.util.Objects;
 
 /**
@@ -62,5 +65,25 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
     public void showMessage(String message) {
         Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    public void changeLanguage(Boolean language){
+        appPreferenceStore.setLanguage(language);
+        String languageToLoad;
+        if (getLanguage()) {
+            languageToLoad = "en"; // english
+        } else {
+            languageToLoad = "ar"; // arabic
+        }
+
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getContext().getResources().updateConfiguration(config,
+                getContext().getResources().getDisplayMetrics());
+
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.detach(this).attach(this).commit();
     }
 }

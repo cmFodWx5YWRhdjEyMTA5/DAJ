@@ -170,5 +170,8 @@
     <string name="interested">يستفد</string>
     <string name="fully_booked">محجوز بالكامل</string>
 
+    <string name="change_language">غير اللغة</string>
+    <string name="am">AM</string>
+    <string name="PM">PM</string>
 
 </resources>

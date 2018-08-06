@@ -91,6 +91,7 @@
                 android:timePickerMode="spinner"
                 android:fadingEdge="vertical"
                 android:fadingEdgeLength="200dp"
+
                 />
 
            <!-- <android.support.v7.widget.RecyclerView

@@ -182,4 +182,5 @@
     <string name="fully_booked">FULLY BOOKED</string>
     <string name="time_formatter">%s %s</string>//
     <string name="name_formatter">%s %s %s</string>//
+    <string name="change_language">CHANGE LANGUAGE</string>
 </resources>

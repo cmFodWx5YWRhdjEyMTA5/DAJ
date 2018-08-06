@@ -65,4 +65,7 @@ dependencies {
     implementation 'com.github.pchmn:AndroidVerify:1.0.2'
     //image popup
     implementation 'com.github.chathuralakmal:AndroidImagePopup:1.2.1'
+    //image Slider
+    implementation 'com.master.android:glideimageview:2.1'
+
 }

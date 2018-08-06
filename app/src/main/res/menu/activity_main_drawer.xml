@@ -60,6 +60,10 @@
             android:id="@+id/change_password"
             android:icon="@drawable/key_nav"
             android:title="@string/change_password" />
+        <item
+            android:id="@+id/change_language"
+            android:icon="@drawable/language_nav"
+            android:title="@string/change_language" />
 
         <item
             android:id="@+id/logout"

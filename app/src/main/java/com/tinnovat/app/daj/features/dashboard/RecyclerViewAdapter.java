@@ -127,12 +127,11 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
                 break;
             case 16:
                 holder.img.setVisibility(View.VISIBLE);
-                holder.img.setImageResource(R.drawable.logout);
+                holder.img.setImageResource(R.drawable.language);
                 break;
-
             case 17:
-                holder.img.setVisibility(View.INVISIBLE);
-                holder.img.setImageResource(R.drawable.phone_golden);
+                holder.img.setVisibility(View.VISIBLE);
+                holder.img.setImageResource(R.drawable.logout);
                 break;
             case 18:
                 holder.img.setVisibility(View.INVISIBLE);
@@ -142,7 +141,10 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
                 holder.img.setVisibility(View.INVISIBLE);
                 holder.img.setImageResource(R.drawable.logout);
                 break;
-
+            case 20:
+                holder.img.setVisibility(View.INVISIBLE);
+                holder.img.setImageResource(R.drawable.phone_golden);
+                break;
 
         }
 

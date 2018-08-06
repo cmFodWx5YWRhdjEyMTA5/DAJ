@@ -248,6 +248,9 @@ public class MainActivity extends BaseActivity {
                 fetchChangePassword();
                 break;
             case "16":
+                changeLanguage();
+                break;
+            case "17":
                 fetchLogout();
                 break;
 
@@ -275,6 +278,7 @@ public class MainActivity extends BaseActivity {
         eventName.add(getResources().getString(R.string.complaint));
         eventName.add(getResources().getString(R.string.emergency_contact));
         eventName.add(getResources().getString(R.string.change_password));
+        eventName.add(getResources().getString(R.string.change_language));
         eventName.add(getResources().getString(R.string.logout));
         eventName.add("");
         eventName.add("");
@@ -326,24 +330,24 @@ public class MainActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-  /*  @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
+    /*  @SuppressWarnings("StatementWithEmptyBody")
+      @Override
+      public boolean onNavigationItemSelected(MenuItem item) {
+          // Handle navigation view item clicks here.
+          int id = item.getItemId();
 
-        if (id == R.id.home) {
+          if (id == R.id.home) {
 
 
-            // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-            // Handle the camera action
-            // item.setIcon(R.layout.dialog_guest);
-            // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+              // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+              // Handle the camera action
+              // item.setIcon(R.layout.dialog_guest);
+              // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
 
-           *//* Intent i = new Intent(MainActivity.this, MainActivity.class);
+             *//* Intent i = new Intent(MainActivity.this, MainActivity.class);
             startActivity(i);*//*
 
-           *//* if (a==1) {
+     *//* if (a==1) {
                 item.setIcon(R.drawable.icon_slection_arabic);
             }else {
                 item.setIcon(R.drawable.icon_slection_english);
