@@ -221,7 +221,8 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
         googlePlacesUrl.append("&sensor=true");
        // googlePlacesUrl.append("&key=" + "AIzaSyATuUiZUkEc_UgHuqsBJa1oqaODI-3mLs0");
         //googlePlacesUrl.append("&key=" + "AIzaSyDpnPkiTYmi98TS77FIuKutuxYUwZZv1lk");
-        googlePlacesUrl.append("&key=" + "AIzaSyBkdg85XVOxV2emQyzIX7i0NLPkral006k");
+//        googlePlacesUrl.append("&key=" + "AIzaSyBkdg85XVOxV2emQyzIX7i0NLPkral006k");
+        googlePlacesUrl.append("&key=" + "AIzaSyCIhx8W-JYw8M5IqE2V6X5YU-V88N-7OE4");
         Log.d("getUrl", googlePlacesUrl.toString());
         return (googlePlacesUrl.toString());
     }
@@ -357,7 +358,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
 
                 break;
             case R.id.image2:
-                        mMap.clear();
+                mMap.clear();
                         url = getUrl(latitude, longitude, "gas_station");
                          dataTransfer = new Object[2];
                         dataTransfer[0] = mMap;
@@ -369,6 +370,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
 
                 break;
             case R.id.image3:
+
                 mMap.clear();
                 url = getUrl(latitude, longitude, "hospital");
                 dataTransfer = new Object[2];
