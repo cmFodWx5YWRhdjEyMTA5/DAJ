@@ -173,5 +173,7 @@
     <string name="change_language">غير اللغة</string>
     <string name="am">AM</string>
     <string name="PM">PM</string>
+    <string name="more">…More</string>
+    <string name="less">…Less</string>
 
 </resources>

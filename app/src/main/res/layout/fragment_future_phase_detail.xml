@@ -40,15 +40,44 @@
             style="@style/heading1"
             android:layout_marginBottom="10dp"
             android:text="@string/description" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
 
         <TextView
             android:id="@+id/descriptionText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+
+            android:maxLines="6"
+            android:ellipsize="end"
             android:text="@string/lorem_ipsum_large"
             android:textColor="@color/black" />
+            <TextView
+                android:id="@+id/readMore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/greenText"
+                android:textStyle="bold"
+                android:layout_below="@+id/descriptionText"
+                android:layout_alignParentEnd="true"
+                android:background="@color/white"
+                android:layout_marginTop="-18dp"
+                android:text="@string/more"/>
 
+            <TextView
+                android:id="@+id/readLess"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/greenText"
+                android:textStyle="bold"
+                android:layout_below="@+id/descriptionText"
+                android:layout_alignParentEnd="true"
+                android:background="@color/white"
+                android:layout_marginTop="-18dp"
+                android:text="@string/less"/>
+    </RelativeLayout>
         <include
             android:layout_width="match_parent"
             android:layout_height="200dp"
