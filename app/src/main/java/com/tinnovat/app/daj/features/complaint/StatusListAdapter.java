@@ -2,6 +2,7 @@ package com.tinnovat.app.daj.features.complaint;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,11 +18,13 @@ public class StatusListAdapter extends RecyclerView.Adapter<StatusListAdapter.My
     private  Context mContext;
 
     private ComplaintList responseData;
+    private boolean mLanguage;
 
-    public StatusListAdapter(ComplaintList complaintList, ComplaintDetailFragment.OnFragmentInteractionListener listener) {
+    public StatusListAdapter(ComplaintList complaintList, ComplaintDetailFragment.OnFragmentInteractionListener listener,boolean language) {
 
         responseData = complaintList;
         mListener = listener;
+        mLanguage = language;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -39,11 +42,6 @@ public class StatusListAdapter extends RecyclerView.Adapter<StatusListAdapter.My
         }
     }
 
-
-   /* public StatusListAdapter(ComplaintList response) {
-        this.response = response;
-    }
-*/
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -56,11 +54,16 @@ public class StatusListAdapter extends RecyclerView.Adapter<StatusListAdapter.My
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        /*Movie movie = moviesList.get(position);*/
+        if (mLanguage){
+            holder.logNote.setGravity(Gravity.START);
+        }else {
+            holder.logNote.setGravity(Gravity.END);
+        }
+
         switch (responseData.getLogDetails().get(position).getComplaintStatus()) {
             case 0:
                 holder.headingSubmitted.setText(R.string.submitted);
-                holder.lineGreen.setBackgroundColor(mContext.getResources().getColor(R.color.greenText));
+                holder.lineGreen.setBackgroundColor(mContext.getResources().getColor(R.color.red));
                 break;
 
             case 1:
@@ -70,19 +73,12 @@ public class StatusListAdapter extends RecyclerView.Adapter<StatusListAdapter.My
 
             case 2:
                 holder.headingSubmitted.setText(R.string.completed);
-                holder.lineGreen.setBackgroundColor(mContext.getResources().getColor(R.color.red));
+                holder.lineGreen.setBackgroundColor(mContext.getResources().getColor(R.color.greenText));
                 break;
         }
         if (responseData.getLogDetails().get(position).getComplaintsLogNote() != null)
         holder.logNote.setText(responseData.getLogDetails().get(position).getComplaintsLogNote().toString());
         holder.submittedDate.setText(responseData.getLogDetails().get(position).getSubmittedDate());
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               // holder.title.setBackgroundColor(mContext.getResources().getColor(R.color.orange));
-            }
-        });
 
     }
 

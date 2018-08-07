@@ -71,7 +71,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.MyView
         holder.mItem = mDataList.get(position);
         // Movie movie = moviesList.get(position);
         Picasso.get().load(holder.mItem.getIcon())
-                .placeholder(ContextCompat.getDrawable(mContext, R.drawable.ic_photo_place_holder))
+                .placeholder(ContextCompat.getDrawable(mContext, R.drawable.place_holder))
                 .into(holder.icon);
         holder.cat_name.setText(holder.mItem.getName());
 

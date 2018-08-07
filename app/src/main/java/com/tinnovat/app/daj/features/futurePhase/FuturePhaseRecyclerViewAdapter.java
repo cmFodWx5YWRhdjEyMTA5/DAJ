@@ -41,7 +41,7 @@ public class FuturePhaseRecyclerViewAdapter extends RecyclerView.Adapter<FutureP
 
         if (holder.mItem.getPhaseImages().size() != 0)
             Picasso.get().load(holder.mItem.getPhaseImages().get(0).getImgPath())
-                    .placeholder(ContextCompat.getDrawable(mContext, R.drawable.ic_photo_place_holder))
+                    .placeholder(ContextCompat.getDrawable(mContext, R.drawable.place_holder))
                     .into(holder.servicesImage);
         holder.serviceName.setText(holder.mItem.getPhaseName());
         holder.servicesImage.setOnClickListener(new View.OnClickListener() {

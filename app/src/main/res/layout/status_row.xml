@@ -23,7 +23,10 @@
             android:id="@+id/logNote"
             style="@style/subHeading1"
             android:layout_below="@+id/headingSubmitted"
-            android:layout_toEndOf="@+id/lineGreen"/>
+            android:layout_toEndOf="@+id/lineGreen"
+            android:layout_toStartOf="@+id/iconCalender"
+            android:gravity="start"
+            android:maxLines="1"/>
         <TextView
             android:id="@+id/submittedDate"
             android:layout_width="wrap_content"
@@ -33,6 +36,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="5dp"/>
         <ImageView
+            android:id="@+id/iconCalender"
             android:layout_width="20dp"
             android:layout_height="20dp"
             app:srcCompat="@drawable/date"

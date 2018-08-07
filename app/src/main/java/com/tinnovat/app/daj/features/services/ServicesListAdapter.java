@@ -1,7 +1,6 @@
 package com.tinnovat.app.daj.features.services;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.model.Service;
@@ -62,7 +60,7 @@ public class ServicesListAdapter extends RecyclerView.Adapter<ServicesListAdapte
 
         holder.mItem = mServiceList.get(position);
         Picasso.get().load(holder.mItem.getServiceImages())
-                .placeholder(ContextCompat.getDrawable(mContext, R.drawable.ic_photo_place_holder))
+                .placeholder(ContextCompat.getDrawable(mContext, R.drawable.place_holder))
                 .into(holder.servicesImage);
         holder.serviceName.setText(holder.mItem.getName());
 

@@ -126,7 +126,7 @@ public class ComplaintDetailFragment extends BaseFragment {
                     imageLayout.setVisibility(View.VISIBLE);
                     secondRow.setVisibility(View.GONE);
                     Picasso.get().load(mComplaintList.getImages().get(0).getPath())
-                            .placeholder(ContextCompat.getDrawable(getContext(), R.drawable.ic_photo_place_holder))
+                            .placeholder(ContextCompat.getDrawable(getContext(), R.drawable.place_holder))
                             .into(image1);
 
 
@@ -138,23 +138,23 @@ public class ComplaintDetailFragment extends BaseFragment {
                     secondRow.setVisibility(View.VISIBLE);
                     image4.setVisibility(View.VISIBLE);
                     Picasso.get().load(mComplaintList.getImages().get(0).getPath())
-                            .placeholder(ContextCompat.getDrawable(getContext(), R.drawable.ic_photo_place_holder))
+                            .placeholder(ContextCompat.getDrawable(getContext(), R.drawable.place_holder))
                             .into(image1);
                     Picasso.get().load(mComplaintList.getImages().get(1).getPath())
-                            .placeholder(ContextCompat.getDrawable(getContext(), R.drawable.ic_photo_place_holder))
+                            .placeholder(ContextCompat.getDrawable(getContext(), R.drawable.place_holder))
                             .into(image4);
 
                     break;
 
                 case 3:
                     Picasso.get().load(mComplaintList.getImages().get(0).getPath())
-                            .placeholder(ContextCompat.getDrawable(getContext(), R.drawable.ic_photo_place_holder))
+                            .placeholder(ContextCompat.getDrawable(getContext(), R.drawable.place_holder))
                             .into(image1);
                     Picasso.get().load(mComplaintList.getImages().get(1).getPath())
-                            .placeholder(ContextCompat.getDrawable(getContext(), R.drawable.ic_photo_place_holder))
+                            .placeholder(ContextCompat.getDrawable(getContext(), R.drawable.place_holder))
                             .into(image2);
                     Picasso.get().load(mComplaintList.getImages().get(2).getPath())
-                            .placeholder(ContextCompat.getDrawable(getContext(), R.drawable.ic_photo_place_holder))
+                            .placeholder(ContextCompat.getDrawable(getContext(), R.drawable.place_holder))
                             .into(image3);
                     image4.setVisibility(View.GONE);
                     break;
@@ -265,7 +265,7 @@ public class ComplaintDetailFragment extends BaseFragment {
     }
 
     public void setStatus(ComplaintList response) {
-        StatusListAdapter mAdapter = new StatusListAdapter(response, mListener);
+        StatusListAdapter mAdapter = new StatusListAdapter(response, mListener,getLanguage());
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
