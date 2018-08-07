@@ -222,7 +222,8 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
        // googlePlacesUrl.append("&key=" + "AIzaSyATuUiZUkEc_UgHuqsBJa1oqaODI-3mLs0");
         //googlePlacesUrl.append("&key=" + "AIzaSyDpnPkiTYmi98TS77FIuKutuxYUwZZv1lk");
 //        googlePlacesUrl.append("&key=" + "AIzaSyBkdg85XVOxV2emQyzIX7i0NLPkral006k");
-        googlePlacesUrl.append("&key=" + "AIzaSyCIhx8W-JYw8M5IqE2V6X5YU-V88N-7OE4");
+        //googlePlacesUrl.append("&key=" + "AIzaSyCIhx8W-JYw8M5IqE2V6X5YU-V88N-7OE4");//anj
+        googlePlacesUrl.append("&key=" + "AIzaSyDpnPkiTYmi98TS77FIuKutuxYUwZZv1lk");
         Log.d("getUrl", googlePlacesUrl.toString());
         return (googlePlacesUrl.toString());
     }
@@ -261,6 +262,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
         //stop location updates
         if (mGoogleApiClient != null) {
             LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
+            //LocationServices.getFusedLocationProviderClient(this).removeLocationUpdates(M);
             Log.d("onLocationChanged", "Removing Location Updates");
         }
         Log.d("onLocationChanged", "Exit");

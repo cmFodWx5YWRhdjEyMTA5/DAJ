@@ -26,7 +26,7 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBkdg85XVOxV2emQyzIX7i0NLPkral006k" />
+            android:value="AIzaSyDpnPkiTYmi98TS77FIuKutuxYUwZZv1lk" />
            <!-- android:value="AIzaSyAlatLwlGxwDed7curNyJhpeuzWHha6lsg" />-->
 
         <activity
@@ -159,6 +159,11 @@
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".features.complaint.ComplaintMainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
+            android:name=".features.futurePhase.ImageSliderActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
     </application>

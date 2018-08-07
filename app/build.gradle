@@ -66,6 +66,6 @@ dependencies {
     //image popup
     implementation 'com.github.chathuralakmal:AndroidImagePopup:1.2.1'
     //image Slider
-    implementation 'com.master.android:glideimageview:2.1'
+    //implementation 'me.relex:circleindicator:1.2.2@aar'
 
 }

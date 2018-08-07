@@ -59,9 +59,11 @@ public class ComplaintListAdapter extends RecyclerView.Adapter<ComplaintListAdap
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, final int position) {
+    public void onBindViewHolder(final MyViewHolder holder, int position) {
 
-        holder.complaintListItem = mComplaintList.get(position);
+        int size = (mComplaintList.size()-1)-position;
+
+        holder.complaintListItem = mComplaintList.get(size);
 
 
         holder.day.setText(CommonUtils.getInstance().getDate(holder.complaintListItem.getSubmittedDate(), true));

@@ -19,7 +19,7 @@ public class TestActivity extends BaseActivity {
 
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test);
+        setContentView(R.layout.activity_image_slider);
 
         recyclerView = findViewById(R.id.recycler_view);
 

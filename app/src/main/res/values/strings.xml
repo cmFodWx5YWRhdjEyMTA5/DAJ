@@ -183,4 +183,6 @@
     <string name="time_formatter">%s %s</string>//
     <string name="name_formatter">%s %s %s</string>//
     <string name="change_language">CHANGE LANGUAGE</string>
+    <string name="page_no_formatter">%d/%d</string>
+    <string name="close">close</string>
 </resources>
