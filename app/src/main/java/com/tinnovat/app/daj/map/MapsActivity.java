@@ -1,9 +1,13 @@
 package com.tinnovat.app.daj.map;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,6 +28,7 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
@@ -35,6 +40,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 
@@ -55,7 +61,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
    // private FloatingActionButton mButtonDirection;
     private double latitude;
     private double longitude;
-    private int PROXIMITY_RADIUS = 10000;
+    private int PROXIMITY_RADIUS = 1000;
 
 
     @Override
@@ -119,9 +125,8 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
             }
         });
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            checkLocationPermission();
-        }
+        checkIsLocationEnabled();
+
 
         //Check if Google Play Services Available or not
         if (!CheckGooglePlayServices()) {
@@ -135,6 +140,26 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+    }
+
+    private void checkIsLocationEnabled() {
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if( !locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("LOCATION services disabled");  // GPS not found
+            builder.setMessage("Please enable GPS"); // Want to enable?
+            builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                }
+            });
+            builder.setNegativeButton(R.string.no, null);
+            builder.create().show();
+        } else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                checkLocationPermission();
+            }
+        }
     }
 
     @Override
@@ -208,6 +233,21 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
+/*
+            FusedLocationProviderClient mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
+            mFusedLocationClient.getLastLocation()
+                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            // Got last known location. In some rare situations, this can be null.
+                            if (location != null) {
+                                // Logic to handle location object
+                                onLocationChanged(location);
+                            }
+                        }
+                    });*/
+
             LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
         }
     }

@@ -1,8 +1,10 @@
 package com.tinnovat.app.daj.features.complaint;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -145,6 +147,8 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
                 .showErrors(true)
                 .build();
 
+        checkIsLocationEnabled();
+
         getLocation();
 
         fetchCategory();
@@ -206,19 +210,47 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
         mListener = null;
     }
 
+    private void checkIsLocationEnabled() {
+        LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        if( !locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle("LOCATION services disabled");  // GPS not found
+            builder.setMessage("Please enable GPS"); // Want to enable?
+            builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                }
+            });
+            builder.setNegativeButton(R.string.no, null);
+            builder.create().show();
+        } else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                getLocation();
+            } else {
+                try {
+                    locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+                    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 5, this);
+                } catch (SecurityException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
     private void getLocation() {
 
         if (ContextCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
             ActivityCompat.requestPermissions(getActivity(), new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION}, 101);
 
-        }
+        } else {
 
-        try {
-            locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 5, this);
-        } catch (SecurityException e) {
-            e.printStackTrace();
+            try {
+                locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 5, this);
+            } catch (SecurityException e) {
+                e.printStackTrace();
+            }
         }
     }
 
