@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.tinnovat.app.daj.BaseActivity;
@@ -30,6 +31,7 @@ import retrofit2.Response;
 public class NotificationActivity extends BaseActivity {
 
     private AppPreferanceStore appPreferanceStore;
+    private RelativeLayout noData;
 
 
     @Override
@@ -37,17 +39,19 @@ public class NotificationActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification_list);
 
+        noData = findViewById(R.id.noData);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle(getText(R.string.my_profile));
+            getSupportActionBar().setTitle(getText(R.string.notification));
         }
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        /*NavigationView navigationView = findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.getMenu().getItem(8).setChecked(true);
-        navigationView.setItemIconTintList(null);*/
+        navigationView.getMenu().getItem(0).setChecked(true);
+        navigationView.setItemIconTintList(null);
 
         appPreferanceStore = new AppPreferanceStore(this);
 
@@ -72,29 +76,24 @@ public class NotificationActivity extends BaseActivity {
             @Override
             public void onResponse(Call<NotificationResponseModel> call, Response<NotificationResponseModel> response) {
                 endLoading();
-                showMessage("Profile list Successfully");
                 if (response.body() != null){
                     setData(response.body().getEvents());
-                    showMessage("ssssss");
                 }
-
-
-
             }
 
             @Override
             public void onFailure(Call<NotificationResponseModel> call, Throwable t) {
-                showMessage("Profile failed");
 
             }
         });
     }
 
-   private void setData( ){
-
-   }
-
-    public void setData(List<Event> event){
+    private void setData(List<Event> event){
+        if (event.size() == 0){
+            noData.setVisibility(View.VISIBLE);
+        }else {
+            noData.setVisibility(View.GONE);
+        }
         RecyclerView recyclerView= findViewById(R.id.recycler_view);
         NotificationAdapter mAdapter = new NotificationAdapter(event);
 

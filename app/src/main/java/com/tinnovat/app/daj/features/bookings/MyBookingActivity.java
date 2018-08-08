@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -209,7 +210,6 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
             @Override
             public void onResponse(Call<MyServiceBookingResponseModel> call, Response<MyServiceBookingResponseModel> response) {
                 endLoading();
-                showMessage("Category list Successfully");
 
                 setData(response,CommonUtils.getInstance().getDate2(CalendarDay.today().getCalendar()));
                 setUpComingData(response);
@@ -219,13 +219,22 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
             public void onFailure(Call<MyServiceBookingResponseModel> call, Throwable t) {
                 endLoading();
 
-                showMessage("Category list Failed");
             }
         });
     }
 
     private void setData(Response<MyServiceBookingResponseModel> response ,String date){
       //  RecyclerView recyclerView;
+        LinearLayout bookingList = findViewById(R.id.bookingList);
+        RelativeLayout noData = findViewById(R.id.noData);
+
+        if (response.body() == null || response.body().getServiceBooking().size() == 0){
+            bookingList.setVisibility(View.GONE);
+            noData.setVisibility(View.VISIBLE);
+        }else {
+            bookingList.setVisibility(View.VISIBLE);
+            noData.setVisibility(View.GONE);
+        }
 
         recyclerView = findViewById(R.id.recycler_view);
 
@@ -248,6 +257,15 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         mAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(mAdapter);
+        
+
+         if (mAdapter.getItemCount() == 0){
+            relativeLayout.setVisibility(View.GONE);
+            upComingBanner.setVisibility(View.GONE);
+        }else {
+            relativeLayout.setVisibility(View.VISIBLE);
+            upComingBanner.setVisibility(View.VISIBLE);
+        }
     }
 
 

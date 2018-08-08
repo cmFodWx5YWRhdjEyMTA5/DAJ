@@ -93,10 +93,13 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         holder.relativeLayout2.setVisibility(View.GONE);
         holder.relativeLayout3.setVisibility(View.GONE);
 
+        String[] startDateTime = mEvent.get(position).getStartDatetime().split(" ");
+        String[] endDateTime = mEvent.get(position).getEndDatetime().split(" ");
+
         holder.event.setText(mEvent.get(position).getEventsName());
         holder.venue.setText(mEvent.get(position).getEventsVenue());
-        holder.startDate.setText(mEvent.get(position).getStartDatetime());
-        holder.endDate.setText(mEvent.get(position).getEndDatetime());
+        holder.startDate.setText(startDateTime[0]);
+        holder.endDate.setText(endDateTime[0]);
        // holder.category.setText(mEvent.get(position).getEventsName());
 
 

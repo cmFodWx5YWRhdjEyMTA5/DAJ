@@ -83,8 +83,22 @@
                 app:mcv_weekDayTextAppearance="@style/CalenderViewCustom"
                 />
         </LinearLayout>
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/noData"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/no_data"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                />
+        </RelativeLayout>
 
         <LinearLayout
+            android:id="@+id/bookingList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
