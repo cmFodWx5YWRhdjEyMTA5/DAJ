@@ -2,6 +2,7 @@ package com.tinnovat.app.daj.features.eventAndNews;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import com.tinnovat.app.daj.data.network.model.EventDetails;
 import com.tinnovat.app.daj.testing.TestActivity;
 
 import java.util.List;
+import java.util.Objects;
 
 public class EventAndNewsListAdapter extends RecyclerView.Adapter<EventAndNewsListAdapter.MyViewHolder> {
 
@@ -72,7 +74,9 @@ public class EventAndNewsListAdapter extends RecyclerView.Adapter<EventAndNewsLi
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         if (eventDetailsList != null && !eventDetailsList.isEmpty()) {
             if (!eventDetailsList.get(position).getEventsImages().isEmpty()){
-                Picasso.get().load(eventDetailsList.get(position).getEventsImages().get(0).getImgPath()).into(holder.bannerImage);
+                Picasso.get().load(eventDetailsList.get(position).getEventsImages().get(0).getImgPath())
+                        .placeholder(Objects.requireNonNull(ContextCompat.getDrawable(mContext, R.drawable.place_holder)))
+                        .into(holder.bannerImage);
             }
 
             String[] startDate = eventDetailsList.get(position).getStartDatetime().split(" ");

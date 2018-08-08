@@ -12,6 +12,7 @@ import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.model.Futurephase;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 
 public class ImageSliderActivity extends AppCompatActivity {
@@ -42,6 +43,7 @@ public class ImageSliderActivity extends AppCompatActivity {
         mPager =  findViewById(R.id.pager);
         mPager.setAdapter(new ImageSliderAdapter(ImageSliderActivity.this,imageArray));
         mPager.setCurrentItem(currentPage, true);
+        Locale.setDefault(Locale.US);
         current.setText(String.valueOf(currentPage));
 
         mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

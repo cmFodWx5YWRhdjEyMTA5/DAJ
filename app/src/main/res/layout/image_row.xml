@@ -6,14 +6,17 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:elevation="3dp">
+        android:background="@drawable/small_bg_gray"
+        android:layout_marginEnd="5dp"
+        >
 
     <ImageView
         android:id="@+id/image1"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_margin="5dp"
+        android:layout_margin="3dp"
         android:scaleType="centerCrop"
+
         android:src="@drawable/future1" />
 </LinearLayout>
 </RelativeLayout>
