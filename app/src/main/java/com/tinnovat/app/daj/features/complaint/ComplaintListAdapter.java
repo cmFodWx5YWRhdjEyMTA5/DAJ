@@ -15,6 +15,7 @@ import com.tinnovat.app.daj.testing.TestActivity;
 import com.tinnovat.app.daj.utils.CommonUtils;
 
 import java.util.List;
+import java.util.Locale;
 
 public class ComplaintListAdapter extends RecyclerView.Adapter<ComplaintListAdapter.MyViewHolder> {
 
@@ -65,7 +66,7 @@ public class ComplaintListAdapter extends RecyclerView.Adapter<ComplaintListAdap
 
         holder.complaintListItem = mComplaintList.get(size);
 
-
+        Locale.setDefault(Locale.US);
         holder.day.setText(CommonUtils.getInstance().getDate(holder.complaintListItem.getSubmittedDate(), true));
         holder.month.setText(CommonUtils.getInstance().getDate(holder.complaintListItem.getSubmittedDate(), false));
         holder.complaint.setText(holder.complaintListItem.getCategoryName());

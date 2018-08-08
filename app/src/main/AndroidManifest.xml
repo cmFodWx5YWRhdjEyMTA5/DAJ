@@ -171,6 +171,15 @@
             android:name=".features.eventAndNews.EventImageSliderActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
+            android:name=".features.notification.NotificationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

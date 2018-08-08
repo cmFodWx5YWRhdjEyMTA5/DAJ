@@ -15,6 +15,7 @@ import com.tinnovat.app.daj.data.network.model.FuturePhasesResponseModel;
 import com.tinnovat.app.daj.data.network.model.GuestRegistrationResponseModel;
 import com.tinnovat.app.daj.data.network.model.LoginResponseModel;
 import com.tinnovat.app.daj.data.network.model.MyServiceBookingResponseModel;
+import com.tinnovat.app.daj.data.network.model.NotificationResponseModel;
 import com.tinnovat.app.daj.data.network.model.ProfileResponseModel;
 import com.tinnovat.app.daj.data.network.model.RequestParams;
 import com.tinnovat.app.daj.data.network.model.ServiceSlots;
@@ -127,4 +128,9 @@ public interface ApiInterface {
     @Headers({"Accept: application/json"})
     @GET("/Dar_alJewar/api/profile")
     Call<ProfileResponseModel> getProfileData(@Query("language") String language);
+
+    //Get My Booking services
+    @Headers({"Accept: application/json"})
+    @GET("/Dar_alJewar/api/notification")
+    Call<NotificationResponseModel> getNotificationData(@Query("language") String language);
 }

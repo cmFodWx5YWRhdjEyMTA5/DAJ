@@ -4,6 +4,7 @@ package com.tinnovat.app.daj.features.foodAndTaxi;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,8 @@ import android.widget.ImageView;
 import com.squareup.picasso.Picasso;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.model.FoodResponseModel;
+
+import java.util.Objects;
 
 import retrofit2.Response;
 
@@ -48,7 +51,9 @@ public class OrderAdapter extends BaseAdapter {
         }
 
         ImageView icon =convertView.findViewById(R.id.icon);
-        Picasso.get().load(foodResponseModel.body().getData().get(position).getAppIcon()).into(icon);
+        Picasso.get().load(foodResponseModel.body().getData().get(position).getAppIcon())
+                .placeholder(Objects.requireNonNull(ContextCompat.getDrawable(mContext, R.drawable.place_holder)))
+                .into(icon);
         final String url = foodResponseModel.body().getData().get(position).getUrl();
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -208,7 +208,7 @@
             android:layout_marginTop="-18dp"
             android:text="@string/less"/>
         <TextView
-            android:id="@+id/more"
+            android:id="@+id/bannerMore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/greenText"
@@ -222,7 +222,7 @@
             android:id="@+id/recycler_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/more"
+            android:layout_below="@+id/bannerMore"
             android:layout_marginBottom="20dp"
             android:elevation="5dp"
             />

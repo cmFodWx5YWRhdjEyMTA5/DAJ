@@ -187,4 +187,10 @@
     <string name="close">close</string>
     <string name="more">…More</string>
     <string name="less">…Less</string>
+    <string name="divide">:</string>
+    <string name="purpose_banner">Purpose</string>
+    <string name="event">Event</string>
+    <string name="venue">Venue</string>
+    <string name="start_date">Start Date</string>
+    <string name="end_date">End Date</string>
 </resources>

@@ -175,5 +175,10 @@
     <string name="PM">PM</string>
     <string name="more">…More</string>
     <string name="less">…Less</string>
+    <string name="purpose_banner">غرض</string>
+    <string name="event">هدف</string>
+    <string name="venue">مكان</string>
+    <string name="start_date">تاريخ البدء</string>
+    <string name="end_date">تاريخ الانتهاء</string>
 
 </resources>

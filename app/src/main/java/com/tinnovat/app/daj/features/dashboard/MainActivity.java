@@ -10,6 +10,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,6 +21,8 @@ import com.kapil.circularlayoutmanager.CircularLayoutManager;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.AppPreferanceStore;
+import com.tinnovat.app.daj.features.foodAndTaxi.OrderFoodActivity;
+import com.tinnovat.app.daj.features.notification.NotificationActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,6 +86,19 @@ public class MainActivity extends BaseActivity {
 
         this.setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
+        /*toolbar.inflateMenu(R.menu.main);
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (item.getItemId() == R.id.action_settings) {
+
+                    showMessage("hello");
+                }
+                return false;
+            }
+        });*/
+
+
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle(getText(R.string.dashboard));
@@ -180,6 +197,17 @@ public class MainActivity extends BaseActivity {
 
 
         // fetchEventList();//for api
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        return true;
+    }
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        //  preparation code here
+        return super.onPrepareOptionsMenu(menu);
     }
 
     private void setViews(List<String> eventName) {
@@ -326,6 +354,9 @@ public class MainActivity extends BaseActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent i = new Intent(MainActivity.this, NotificationActivity.class);
+            startActivity(i);
+
             return true;
         }
 
@@ -485,6 +516,9 @@ public class MainActivity extends BaseActivity {
     protected void onResume() {
         if (mAdapter != null){
             mAdapter.notifyDataSetChanged();
+            showMessage("resume");
+        }else {
+            showMessage("list null");
         }
         super.onResume();
     }

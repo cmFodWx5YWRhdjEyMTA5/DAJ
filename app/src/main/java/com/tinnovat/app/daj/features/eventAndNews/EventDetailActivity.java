@@ -39,6 +39,7 @@ public class EventDetailActivity extends BaseActivity {
     private TextView description;
     private TextView readMore;
     private TextView readLess;
+    private TextView bannerMore;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -78,8 +79,14 @@ public class EventDetailActivity extends BaseActivity {
         description = findViewById(R.id.discrptn);
         readMore = findViewById(R.id.readMore);
         readLess = findViewById(R.id.readLess);
+        bannerMore = findViewById(R.id.bannerMore);
         ImageView backBg = findViewById(R.id.backBg);
 
+        if (mEventDetailsList.getEventsImages().size() == 0){
+            bannerMore.setVisibility(View.GONE);
+        }else {
+            bannerMore.setVisibility(View.VISIBLE);
+        }
 
 
         if (mEventDetailsList.getInterest()) {
