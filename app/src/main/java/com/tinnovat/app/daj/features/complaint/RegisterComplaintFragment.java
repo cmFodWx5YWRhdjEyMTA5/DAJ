@@ -91,6 +91,7 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
     private EditText commentBox;
     private LocationManager mLocationManager;
     private Spinner spinner;
+    private LinearLayout takeImage;
 
     List<String> sam = new ArrayList<>();
     private Uri imageUri;
@@ -118,7 +119,7 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
         mListener.setTitle(getString(R.string.reg_complaint));
 
         appPreferanceStore = new AppPreferanceStore(getContext());
-        LinearLayout takeImage = view.findViewById(R.id.takeImage);
+        takeImage = view.findViewById(R.id.takeImage);
         buttonSubmit = view.findViewById(R.id.button_submit);
         textAddress = view.findViewById(R.id.text_address);
         commentBox = view.findViewById(R.id.commentBox);
@@ -208,6 +209,18 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onResume() {
+        if (images != null) {
+            if (images.size() < 3) {
+                takeImage.setVisibility(View.VISIBLE);
+            } else {
+                takeImage.setVisibility(View.GONE);
+            }
+        }
+        super.onResume();
     }
 
     private void checkIsLocationEnabled() {
@@ -439,19 +452,21 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
 
-            try {
-                Bitmap thumbnail = MediaStore.Images.Media.getBitmap(
-                        getActivity().getContentResolver(), imageUri);
-                images.add(thumbnail);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
+
+                try {
+                    Bitmap thumbnail = MediaStore.Images.Media.getBitmap(
+                            getActivity().getContentResolver(), imageUri);
+                    images.add(thumbnail);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 //            images.add(srcBmp);
-            mAdapter.setData(images);
-            recyclerViewImages.setVisibility(View.VISIBLE);
-        }
+                mAdapter.setData(images);
+                recyclerViewImages.setVisibility(View.VISIBLE);
+            }
+
     }
 
     public static boolean hasPermissions(Context context, String... permissions) {
@@ -474,7 +489,7 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
         dialog.setContentView(R.layout.image_dialog);
 
         ImageButton delete = dialog.findViewById(R.id.button_delete);
-        ImageView imageView = dialog.findViewById(R.id.image);
+        final ImageView imageView = dialog.findViewById(R.id.image);
 
         imageView.setImageBitmap(bitmapImage);
 
@@ -487,6 +502,11 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
                     recyclerViewImages.setVisibility(View.VISIBLE);
                 else
                     recyclerViewImages.setVisibility(View.GONE);
+
+                if (images.size()<3)
+                    takeImage.setVisibility(View.VISIBLE);
+                else
+                    takeImage.setVisibility(View.GONE);
 
 
                 dialog.dismiss();
