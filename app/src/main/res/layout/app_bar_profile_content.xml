@@ -55,20 +55,18 @@
             android:layout_marginTop="20dp"
             android:id="@+id/name"
             style="@style/headingWhite"
-            android:text="@string/lorem_ipsum"
             android:layout_centerHorizontal="true"/>
 
-        <TextView
+       <!-- <TextView
             android:id="@+id/userName"
             android:layout_below="@+id/name"
             style="@style/subHeadingWhite"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"/>-->
 
         <TextView
             android:id="@+id/villaNo"
-            android:layout_below="@+id/userName"
+            android:layout_below="@+id/name"
             style="@style/subHeadingWhite"
-            android:text="@string/villa_no_045"
             android:layout_centerHorizontal="true"/>
 
         <ScrollView
@@ -111,8 +109,7 @@
                         style="@style/subHeadingNormal"
                         android:layout_toEndOf="@id/calendarIcon1"
                         android:layout_marginStart="5dp"
-                        android:layout_below="@+id/dobText"
-                        android:text="12/5/2018" />
+                        android:layout_below="@+id/dobText" />
 
                     <ImageView
                         android:id="@+id/calendarIcon2"
@@ -131,8 +128,7 @@
                         style="@style/subHeadingNormal"
                         android:layout_marginStart="5dp"
                         android:layout_toEndOf="@id/calendarIcon2"
-                        android:layout_below="@+id/dobText"
-                        android:text="12/5/2018" />
+                        android:layout_below="@+id/dobText" />
 
                 </RelativeLayout>
 
@@ -158,8 +154,34 @@
                 <TextView
                     android:id="@+id/email"
                     style="@style/subHeadingNormal"
-                    android:layout_marginStart="25dp"
-                    android:text="@string/sample_mail" />
+                    android:layout_marginStart="25dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        app:srcCompat="@drawable/supervised_user" />
+                    <TextView
+                        style="@style/heading1"
+                        android:layout_marginStart="5dp"
+                        android:text="@string/user_name" />
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/userName"
+                    style="@style/subHeadingNormal"
+                    android:layout_marginStart="25dp" />
+                <!--<TextView
+                    android:id="@+id/userName"
+                    style="@style/subHeadingWhite"
+                    android:layout_centerHorizontal="true"/>-->
 
                 <View
                     android:layout_width="match_parent"
@@ -183,8 +205,7 @@
                 <TextView
                     android:id="@+id/address"
                     style="@style/subHeadingNormal"
-                    android:layout_marginStart="25dp"
-                    android:text="@string/lorem_ipsum_medium" />
+                    android:layout_marginStart="25dp"/>
 
                 <View
                     android:layout_width="match_parent"
@@ -209,8 +230,7 @@
                 <TextView
                     android:id="@+id/occupation"
                     style="@style/subHeadingNormal"
-                    android:layout_marginStart="25dp"
-                    android:text="@string/lorem_ipsum" />
+                    android:layout_marginStart="25dp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -225,7 +245,7 @@
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        app:srcCompat="@drawable/gender"/>
+                        app:srcCompat="@drawable/unisex"/>
                     <TextView
                         style="@style/heading1"
                         android:layout_marginStart="5dp"
@@ -234,8 +254,7 @@
                 <TextView
                     android:id="@+id/gender"
                     style="@style/subHeadingNormal"
-                    android:layout_marginStart="25dp"
-                    android:text="@string/lorem_ipsum" />
+                    android:layout_marginStart="25dp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -260,8 +279,7 @@
                 <TextView
                     android:id="@+id/maritalStatus"
                     style="@style/subHeadingNormal"
-                    android:layout_marginStart="25dp"
-                    android:text="@string/lorem_ipsum" />
+                    android:layout_marginStart="25dp"/>
 
                 <View
                     android:layout_width="match_parent"
@@ -286,8 +304,7 @@
                 <TextView
                     android:id="@+id/nationality"
                     style="@style/subHeadingNormal"
-                    android:layout_marginStart="25dp"
-                    android:text="@string/lorem_ipsum" />
+                    android:layout_marginStart="25dp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -312,8 +329,7 @@
                     android:id="@+id/mobNo"
                     style="@style/subHeadingNormal"
                     android:layout_marginStart="25dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="@string/sample_mob" />
+                    android:layout_marginBottom="10dp" />
             </LinearLayout>
         </ScrollView>
     </RelativeLayout>
