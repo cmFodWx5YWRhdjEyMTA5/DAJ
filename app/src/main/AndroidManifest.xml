@@ -166,6 +166,11 @@
             android:name=".features.futurePhase.ImageSliderActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
+            android:name=".features.eventAndNews.EventImageSliderActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

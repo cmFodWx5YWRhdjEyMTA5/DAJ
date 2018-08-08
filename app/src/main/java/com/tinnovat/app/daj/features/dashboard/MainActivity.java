@@ -56,6 +56,8 @@ public class MainActivity extends BaseActivity {
     private List<String> eventName;
     private AppPreferanceStore appPreferanceStore;
 
+    private RecyclerViewAdapter mAdapter;
+
     ImageView logoEn;
     ImageView logoAr;
 
@@ -183,7 +185,7 @@ public class MainActivity extends BaseActivity {
     private void setViews(List<String> eventName) {
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         // recyclerView.setAdapter(new RecyclerViewAdapter(getApplicationContext(), list));
-        RecyclerViewAdapter mAdapter = new RecyclerViewAdapter(getApplicationContext(), eventName, getLanguage());
+        mAdapter = new RecyclerViewAdapter(getApplicationContext(), eventName, getLanguage());
         recyclerView.addItemDecoration(new RecyclerItemDecoration());
         /*RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);*/
@@ -262,9 +264,9 @@ public class MainActivity extends BaseActivity {
         eventName = new ArrayList<>();
 
 
-        eventName.add("");
-        eventName.add("");
-        eventName.add("");
+        eventName.add(" ");
+        eventName.add(" ");
+        eventName.add(" ");
         eventName.add(getResources().getString(R.string.events));
         eventName.add(getResources().getString(R.string.services));
         eventName.add(getResources().getString(R.string.guest_reg));
@@ -280,9 +282,9 @@ public class MainActivity extends BaseActivity {
         eventName.add(getResources().getString(R.string.change_password));
         eventName.add(getResources().getString(R.string.change_language));
         eventName.add(getResources().getString(R.string.logout));
-        eventName.add("");
-        eventName.add("");
-        eventName.add("");
+        eventName.add(" ");
+        eventName.add(" ");
+        eventName.add(" ");
 
 
         setViews(eventName);
@@ -477,5 +479,13 @@ public class MainActivity extends BaseActivity {
     @Override
     public void onClick(View v) {
 
+    }
+
+    @Override
+    protected void onResume() {
+        if (mAdapter != null){
+            mAdapter.notifyDataSetChanged();
+        }
+        super.onResume();
     }
 }

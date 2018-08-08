@@ -1,6 +1,7 @@
 package com.tinnovat.app.daj.features.eventAndNews;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,11 +10,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.ceylonlabs.imageviewpopup.ImagePopup;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.model.EventDetails;
 import com.tinnovat.app.daj.data.network.model.EventsImage;
 import com.tinnovat.app.daj.data.network.model.Futurephase;
+import com.tinnovat.app.daj.features.futurePhase.ImageSliderActivity;
 import com.tinnovat.app.daj.testing.TestActivity;
 
 import java.util.List;
@@ -61,11 +64,17 @@ public class EventImageListAdapter extends RecyclerView.Adapter<EventImageListAd
 
         Picasso.get().load(mEventDetailsList.getEventsImages().get(position).getImgPath()).into(holder.image1);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.image1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                imagePopup.initiatePopup(holder.image1.getDrawable());
-                imagePopup.viewPopup();
+
+                Intent intent = new Intent(mContext, EventImageSliderActivity.class);
+                intent.putExtra("currentPosition",holder.getAdapterPosition());
+                intent.putExtra("mEventDetailsList", new Gson().toJson(mEventDetailsList));
+                mContext.startActivity(intent);
+
+                /*imagePopup.initiatePopup(holder.image1.getDrawable());
+                imagePopup.viewPopup();*/
 
             }
         });
