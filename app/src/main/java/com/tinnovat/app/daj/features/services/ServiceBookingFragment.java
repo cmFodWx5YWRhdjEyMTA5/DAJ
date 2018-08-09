@@ -1,10 +1,12 @@
 package com.tinnovat.app.daj.features.services;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -273,6 +275,24 @@ public class ServiceBookingFragment extends BaseFragment implements ChooseDateAd
         }
     }
 
+    private void showDilog(String message){
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
+        builder1.setMessage(message);
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                        getActivity().onBackPressed();
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
+    }
+
     private void doBooking(int category_id , int service_id, String date, List<Integer> timeSlots, int guest_no, String comments){
 
         startLoading();
@@ -287,12 +307,13 @@ public class ServiceBookingFragment extends BaseFragment implements ChooseDateAd
                 endLoading();
                 if (response.body() != null) {
                     if (response.body().getSuccess()) {
-                        showMessage(response.body().getMessage());
+                        //showMessage(response.body().getMessage());
+                        showDilog(response.body().getMessage());
                         mAdapter.notifyDataSetChanged();
                     } else {
-                        showMessage(response.body().getMessage());
+                        showDilog(response.body().getMessage());
                     }
-                    getFragmentManager().popBackStack();
+                    //getFragmentManager().popBackStack();
                 }else {
                    // showMessage("1 "+getResources().getString(R.string.network_problem));
                 }
@@ -301,7 +322,7 @@ public class ServiceBookingFragment extends BaseFragment implements ChooseDateAd
             @Override
             public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
                 endLoading();
-
+                showDilog("Booking Failed! Please Retry After Some Time");
                // showMessage("2 "+getResources().getString(R.string.network_problem));
             }
         });

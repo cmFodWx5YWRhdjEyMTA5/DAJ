@@ -194,9 +194,15 @@ public class LoginFragment extends BaseFragment {
                     if (response.body().getData() != null) {
                         seData(response);
 
-                        Intent intent = new Intent(getActivity(), MainActivity.class);
-                        startActivity(intent);
-
+                        if (response.body().getData().getStatusBoolean() == 0){
+                            Intent intent = new Intent(getActivity(), MainActivity.class);
+                            intent.putExtra("status",true);
+                            startActivity(intent);
+                        }else {
+                            Intent intent = new Intent(getActivity(), MainActivity.class);
+                            intent.putExtra("status",false);
+                            startActivity(intent);
+                        }
                         if (getActivity() != null) {
                             getActivity().finish();
                             endLoading();

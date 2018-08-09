@@ -163,7 +163,7 @@ public class FuturePhaseDetailFragment extends BaseFragment implements OnMapRead
     }
 
     private void doReadLess() {
-        descriptionText.setMaxLines(8);
+        descriptionText.setMaxLines(6);
         readLess.setVisibility(View.GONE);
         readMore.setVisibility(View.VISIBLE);
     }

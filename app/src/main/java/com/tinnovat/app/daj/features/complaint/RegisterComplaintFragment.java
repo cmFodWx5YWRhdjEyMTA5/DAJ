@@ -1,5 +1,6 @@
 package com.tinnovat.app.daj.features.complaint;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -44,6 +45,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.pchmn.androidverify.Form;
 import com.tinnovat.app.daj.BaseFragment;
 import com.tinnovat.app.daj.R;
@@ -61,6 +65,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.Executor;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -75,6 +80,7 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
     //ViewDialog alert;
     int mCatId = 0;
 
+    private FusedLocationProviderClient mFusedLocationClient;
 
     private static final int CAMERA_REQUEST = 1888;
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
@@ -144,6 +150,8 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
 
         location.setOnClickListener(this);
 
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
+
         form = new Form.Builder(getActivity())
                 .showErrors(true)
                 .build();
@@ -166,7 +174,8 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 /*if (i == 0) {
                   //  showMessage("nothing");
-                }*/ if(i!=0) {
+                }*/
+                if (i != 0) {
 
                     mCatId = catIds.get(i - 1);
                 }
@@ -225,7 +234,7 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
 
     private void checkIsLocationEnabled() {
         LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-        if( !locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ) {
+        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setTitle("LOCATION services disabled");  // GPS not found
             builder.setMessage("Please enable GPS"); // Want to enable?
@@ -242,7 +251,7 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
             } else {
                 try {
                     locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-                    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 5, this);
+                    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 500, 5, this);
                 } catch (SecurityException e) {
                     e.printStackTrace();
                 }
@@ -250,7 +259,10 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
         }
     }
 
+
     private void getLocation() {
+
+
 
         if (ContextCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
@@ -258,9 +270,25 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
 
         } else {
 
+
+
             try {
                 locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 5, this);
+              /*  locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 5, this);*/
+
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 0, this);
+                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 0, this);
+               /* mFusedLocationClient.getLastLocation()
+                        .addOnSuccessListener((Executor) this, new OnSuccessListener<Location>() {
+                            @Override
+                            public void onSuccess(Location location) {
+                                // Got last known location. In some rare situations this can be null.
+                                if (location != null) {
+                                    // Logic to handle location object
+                                    showMessage("hell");
+                                }
+                            }
+                        });*/
             } catch (SecurityException e) {
                 e.printStackTrace();
             }
@@ -420,9 +448,9 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
                     } else {
                         showMessage(response.body().getMessage());
                     }
-                    getActivity().finish();
+                    getActivity().onBackPressed();
                 } else {
-                    getActivity().finish();
+                    getActivity().onBackPressed();
                     //showMessage(getResources().getString(R.string.network_problem));
                 }
 
@@ -431,7 +459,7 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
             @Override
             public void onFailure(Call<CompllaintUpdateResponseModel> call, Throwable t) {
                 endLoading();
-                getActivity().finish();
+                getActivity().onBackPressed();
                 //showMessage("Complaint Registration failed");
             }
         });

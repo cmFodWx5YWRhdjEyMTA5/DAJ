@@ -21,6 +21,7 @@ import com.kapil.circularlayoutmanager.CircularLayoutManager;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.AppPreferanceStore;
+import com.tinnovat.app.daj.features.authentication.ChangePasswordActivity;
 import com.tinnovat.app.daj.features.foodAndTaxi.OrderFoodActivity;
 import com.tinnovat.app.daj.features.notification.NotificationActivity;
 
@@ -66,10 +67,20 @@ public class MainActivity extends BaseActivity {
 
     ImageView logoEn;
     ImageView logoAr;
+    boolean status;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent intent = getIntent();
+        status = intent.getBooleanExtra("status",false);
+        if (status){
+            status = false;
+            intent = new Intent(MainActivity.this, ChangePasswordActivity.class);
+            startActivity(intent);
+
+        }
 
         String languageToLoad;
         if (getLanguage()) {

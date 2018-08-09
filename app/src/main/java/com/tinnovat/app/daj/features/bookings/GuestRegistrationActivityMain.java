@@ -1,9 +1,12 @@
 package com.tinnovat.app.daj.features.bookings;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +22,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.pchmn.androidverify.Form;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
@@ -32,6 +36,7 @@ import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.GuestRegistrationResponseModel;
 import com.tinnovat.app.daj.data.network.model.RequestParams;
+import com.tinnovat.app.daj.features.dashboard.MainActivity;
 import com.tinnovat.app.daj.utils.CommonUtils;
 
 import java.util.ArrayList;
@@ -116,6 +121,26 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
 
         buttonAdd.setOnClickListener(this);
         buttonSubmit.setOnClickListener(this);
+
+
+    }
+
+    private void showDilog(String message){
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setMessage(message);
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                        finish();
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
     }
 
     private void createNewRow(int rowPosition) {
@@ -278,11 +303,13 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
                 endLoading();
                 if (response.body() != null) {
                     if (response.body().getStatus()) {
-                        showMessage(response.body().getMessage());
+                        showDilog(response.body().getMessage());
+                       // showMessage(response.body().getMessage());
                     } else {
-                        showMessage(response.body().getMessage());
+                        showDilog(response.body().getMessage());
+                        //showMessage(response.body().getMessage());
                     }
-                    finish();
+                   // finish();
                 } else {
                    // showMessage(getResources().getString(R.string.network_problem));
                 }
@@ -291,7 +318,7 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
             @Override
             public void onFailure(Call<GuestRegistrationResponseModel> call, Throwable t) {
                 endLoading();
-
+                showDilog("Booking Failed! Please Retry After Some Time");
                // showMessage(getResources().getString(R.string.network_problem));
             }
         });
@@ -365,7 +392,4 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
     public void onDateSelected(int selectedTimeSlots) {
         timeSlot = selectedTimeSlots;
     }
-
-
-
 }

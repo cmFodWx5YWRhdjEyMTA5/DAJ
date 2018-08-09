@@ -1,7 +1,9 @@
 package com.tinnovat.app.daj.features.complaint;
 
 import android.content.Context;
+import android.os.Build;
 import android.support.v7.widget.RecyclerView;
+import android.text.Layout;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -77,6 +79,9 @@ public class StatusListAdapter extends RecyclerView.Adapter<StatusListAdapter.My
                 break;
         }
         if (responseData.getLogDetails().get(position).getComplaintsLogNote() != null)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                holder.logNote.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
+            }
         holder.logNote.setText(responseData.getLogDetails().get(position).getComplaintsLogNote().toString());
         holder.submittedDate.setText(responseData.getLogDetails().get(position).getSubmittedDate());
 

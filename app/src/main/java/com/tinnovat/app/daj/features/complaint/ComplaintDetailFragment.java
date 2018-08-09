@@ -116,7 +116,7 @@ public class ComplaintDetailFragment extends BaseFragment {
                 banner.setVisibility(View.VISIBLE);
                 locationText.setText(getAddress(mComplaintList.getLocation().getLat(), mComplaintList.getLocation().getLong()));
             } else
-                banner.setVisibility(View.GONE);
+                banner.setVisibility(View.VISIBLE);
 
             switch (mComplaintList.getImages().size()) {
                 case 0:
