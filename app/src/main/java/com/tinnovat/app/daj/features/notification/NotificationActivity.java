@@ -83,7 +83,7 @@ public class NotificationActivity extends BaseActivity {
 
             @Override
             public void onFailure(Call<NotificationResponseModel> call, Throwable t) {
-
+                endLoading();
             }
         });
     }
