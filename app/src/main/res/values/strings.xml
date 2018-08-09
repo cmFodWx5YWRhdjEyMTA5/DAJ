@@ -193,4 +193,6 @@
     <string name="venue">Venue</string>
     <string name="start_date">Start Date</string>
     <string name="end_date">End Date</string>
+    <string name="no_complaints_found">No Complaints Found</string>
+    <string name="no_booking_found">No Booking Found</string>
 </resources>

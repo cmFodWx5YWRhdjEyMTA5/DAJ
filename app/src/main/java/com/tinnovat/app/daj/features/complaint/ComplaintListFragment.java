@@ -56,6 +56,8 @@ public class ComplaintListFragment extends BaseFragment {
 
     private AppPreferanceStore appPreferanceStore;
 
+    TextView empty ;
+
 
     public ComplaintListFragment() {
         // Required empty public constructor
@@ -75,6 +77,7 @@ public class ComplaintListFragment extends BaseFragment {
     public void initialiseViews(View view) {
         FloatingActionButton fab = view.findViewById(R.id.fab);
         recyclerView = view.findViewById(R.id.recycler_view);
+        empty = view.findViewById(R.id.empty);
 
         fab.setColorFilter(Color.WHITE);
 
@@ -154,6 +157,11 @@ public class ComplaintListFragment extends BaseFragment {
         });
     }
     public void setData(List<ComplaintList> responseList){
+        if (responseList.size() == 0){
+            empty.setVisibility(View.VISIBLE);
+        }else {
+            empty.setVisibility(View.GONE);
+        }
         ComplaintListAdapter mAdapter = new ComplaintListAdapter(responseList, mListener);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);

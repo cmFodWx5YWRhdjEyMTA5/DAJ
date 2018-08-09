@@ -23,7 +23,9 @@ public class UpcomingMyBookingsAdapter extends RecyclerView.Adapter<UpcomingMyBo
     private Context mContext;
     private MyServiceBookingResponseModel response;
     private DeleteEventListener mDeleteEventListener;
+    private SelectAdapterListener mSelectAdapterListener;
     private boolean mIsEnglish;
+    private int mCount = 0;
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView time;
         public TextView date;
@@ -45,9 +47,10 @@ public class UpcomingMyBookingsAdapter extends RecyclerView.Adapter<UpcomingMyBo
     }
 
 
-    public UpcomingMyBookingsAdapter(MyServiceBookingResponseModel responseModel,DeleteEventListener deleteEventListener,boolean isEnglish) {
+    public UpcomingMyBookingsAdapter(MyServiceBookingResponseModel responseModel,DeleteEventListener deleteEventListener,SelectAdapterListener selectAdapterListener,boolean isEnglish) {
         this.response = responseModel;
         this.mDeleteEventListener = deleteEventListener;
+        this.mSelectAdapterListener = selectAdapterListener;
         this.mIsEnglish = isEnglish;
     }
 
@@ -63,9 +66,12 @@ public class UpcomingMyBookingsAdapter extends RecyclerView.Adapter<UpcomingMyBo
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         String times = "";
+
+
         if ( !CommonUtils.getInstance().getDate2(CalendarDay.today().getCalendar())
                 .equals(response.getServiceBooking().get(position).getServiceBookingDate()) ){
-
+            mCount = mCount +1;
+            mSelectAdapterListener.onBookingSelected(mCount);
             if (mIsEnglish){
                 holder.time.setGravity(Gravity.END);
             }else {
@@ -116,5 +122,9 @@ public class UpcomingMyBookingsAdapter extends RecyclerView.Adapter<UpcomingMyBo
     public interface DeleteEventListener {
 
         void onDeleteItemSelected(List<Integer> selectedItems);
+    }
+    public interface SelectAdapterListener {
+
+        void onBookingSelected(int count);
     }
 }

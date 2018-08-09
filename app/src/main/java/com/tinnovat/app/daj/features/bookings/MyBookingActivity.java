@@ -37,7 +37,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter.SelectAdapterListener,UpcomingMyBookingsAdapter.DeleteEventListener{
+public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter.SelectAdapterListener,
+        MyBookingsAdapter.ItemCountListener1,
+        UpcomingMyBookingsAdapter.DeleteEventListener ,UpcomingMyBookingsAdapter.SelectAdapterListener{
 
 
     RelativeLayout relativeLayout;
@@ -45,10 +47,14 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
     String anotherDate = null;
     List<Integer> mSelectedBookings = new ArrayList<>();
     List<Integer> mSelectedBookings1 = new ArrayList<>();
-    UpcomingMyBookingsAdapter mAdapter;
+    UpcomingMyBookingsAdapter mAdapter2;
     MyBookingsAdapter mMyBookingAdapter;
     RecyclerView recyclerView;
+    RecyclerView recyclerView2;
     private AppPreferanceStore appPreferanceStore;
+    RelativeLayout listToday;
+    private int mCount;
+    private int mCount2 = 0;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +76,8 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
         relativeLayout= findViewById(R.id.relativeLayout);
         upComingBanner= findViewById(R.id.upComingBanner);
         ImageView delete = findViewById(R.id.delete);
+
+        listToday = findViewById(R.id.listToday);
 
         appPreferanceStore = new AppPreferanceStore(this);
 
@@ -183,12 +191,10 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
             public void onResponse(Call<MyServiceBookingResponseModel> call, Response<MyServiceBookingResponseModel> response) {
                 endLoading();
                 //showMessage("Category list Successfully");
-                //setData(response);
 
                 //todo changes
 
                 setData(response,anotherDate);
-              //  setUpComingData(response);
             }
 
             @Override
@@ -228,41 +234,48 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
         LinearLayout bookingList = findViewById(R.id.bookingList);
         RelativeLayout noData = findViewById(R.id.noData);
 
-        if (response.body() == null || response.body().getServiceBooking().size() == 0){
-            bookingList.setVisibility(View.GONE);
+       /* if (response.body() == null || response.body().getServiceBooking().size() == 0){
             noData.setVisibility(View.VISIBLE);
         }else {
-            bookingList.setVisibility(View.VISIBLE);
             noData.setVisibility(View.GONE);
-        }
+        }*/
+
+        //listToday.setVisibility(View.VISIBLE);
 
         recyclerView = findViewById(R.id.recycler_view);
 
-        mMyBookingAdapter = new MyBookingsAdapter(response.body(),date,this,getLanguage());
+        mMyBookingAdapter = new MyBookingsAdapter(response.body(),date,this,this,getLanguage());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         mMyBookingAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(mMyBookingAdapter);
+//showMessage(""+mCount);
+
     }
 
     private void setUpComingData(Response<MyServiceBookingResponseModel> response){
 
         //UpcomingMyBookingsAdapter mAdapter;
-        recyclerView = findViewById(R.id.recycler_view2);
+        recyclerView2 = findViewById(R.id.recycler_view2);
 
-        mAdapter = new UpcomingMyBookingsAdapter(response.body(),this,getLanguage());
+        /*relativeLayout.setVisibility(View.VISIBLE);
+        upComingBanner.setVisibility(View.VISIBLE);*/
+
+        mAdapter2 = new UpcomingMyBookingsAdapter(response.body(),this,this,getLanguage());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL, false);
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        mAdapter.notifyDataSetChanged();
-        recyclerView.setAdapter(mAdapter);
+        recyclerView2.setLayoutManager(mLayoutManager);
+        recyclerView2.setItemAnimator(new DefaultItemAnimator());
+        mAdapter2.notifyDataSetChanged();
+        recyclerView2.setAdapter(mAdapter2);
         
 
-         if (mAdapter.getItemCount() == 0){
+         if (mAdapter2.getItemCount() == 0){
+             //listToday.setVisibility(View.GONE);
             relativeLayout.setVisibility(View.GONE);
             upComingBanner.setVisibility(View.GONE);
         }else {
+             //listToday.setVisibility(View.VISIBLE);
             relativeLayout.setVisibility(View.VISIBLE);
             upComingBanner.setVisibility(View.VISIBLE);
         }
@@ -308,11 +321,45 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
     public void onBookingSelected(List<Integer> selectedBookings) {
         mSelectedBookings = selectedBookings;
 
+
     }
 
     @Override
     public void onDeleteItemSelected(List<Integer> selectedItems) {
         invokeDeleteBooking(selectedItems);
 
+
     }
+
+    @Override
+    public void onBookingSelected(int count) {
+        mCount2 = count;
+    }
+
+    @Override
+    public void onItemCount(int count) {
+        mCount = count;
+        /*if (mCount == 0 ){
+            mMyBookingAdapter.notifyDataSetChanged();
+            listToday.setVisibility(View.GONE);
+            //mCount = 0;
+            // mCount2 = 0;
+        }else {
+            mMyBookingAdapter.notifyDataSetChanged();
+            listToday.setVisibility(View.VISIBLE);
+            // mCount = 0;
+            // mCount2 = 0;
+        }*/
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+
+   /* @Override
+    public void onItemCount(int count) {
+        mCount = count;
+        showMessage(""+mCount);
+    }*/
 }

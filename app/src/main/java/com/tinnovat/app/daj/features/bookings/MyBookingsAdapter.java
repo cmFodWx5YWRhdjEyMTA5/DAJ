@@ -31,8 +31,10 @@ public class MyBookingsAdapter extends RecyclerView.Adapter<MyBookingsAdapter.My
     private MyServiceBookingResponseModel response;
     private String date;
     private SelectAdapterListener mListener;
+    private ItemCountListener1 mItemCountListener;
     private List<Integer> selectedBookings = new ArrayList<>();
     private boolean mIsEnglish;
+    private int mCount = 0;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView time;
@@ -51,10 +53,11 @@ public class MyBookingsAdapter extends RecyclerView.Adapter<MyBookingsAdapter.My
     }
 
 
-    public MyBookingsAdapter(MyServiceBookingResponseModel responseModel,String date,SelectAdapterListener mListener,boolean isEnglish) {
+    public MyBookingsAdapter(MyServiceBookingResponseModel responseModel,String date,SelectAdapterListener mListener,ItemCountListener1 itemCountListener,boolean isEnglish) {
         this.response = responseModel;
         this.date = date;
         this.mListener = mListener;
+        this.mItemCountListener = itemCountListener;
         this.mIsEnglish = isEnglish;
     }
 
@@ -78,6 +81,8 @@ public class MyBookingsAdapter extends RecyclerView.Adapter<MyBookingsAdapter.My
         }
 
         if ( date.equals(response.getServiceBooking().get(position).getServiceBookingDate()) ){
+            mCount = mCount +1;
+            mItemCountListener.onItemCount(mCount);
             holder.itemView.setVisibility(View.VISIBLE);
             holder.serviceName.setText(response.getServiceBooking().get(position).getService());
             if (response.getServiceBooking().get(position).getTimeSlots().size() != 0){
@@ -135,6 +140,11 @@ public class MyBookingsAdapter extends RecyclerView.Adapter<MyBookingsAdapter.My
 
     public interface SelectAdapterListener {
 
-        void onBookingSelected(List<Integer> selectedBookings);
+        void onBookingSelected(List<Integer> selectedBookings );
+    }
+
+    public interface ItemCountListener1 {
+
+        void onItemCount(int count);
     }
 }

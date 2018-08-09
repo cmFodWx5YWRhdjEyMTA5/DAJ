@@ -295,6 +295,24 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
         }
     }
 
+    private void showDilog(String message){
+        android.support.v7.app.AlertDialog.Builder builder1 = new android.support.v7.app.AlertDialog.Builder(getActivity());
+        builder1.setMessage(message);
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                        getActivity().onBackPressed();
+                    }
+                });
+
+        android.support.v7.app.AlertDialog alert11 = builder1.create();
+        alert11.show();
+    }
+
     private void fetchCategory() {
 
         startLoading();
@@ -444,11 +462,13 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
                 endLoading();
                 if (response.body() != null) {
                     if (response.body().isStatus()) {
-                        showMessage(response.body().getMessage());
+                       // showMessage(response.body().getMessage());
+                        showDilog(response.body().getMessage());
                     } else {
-                        showMessage(response.body().getMessage());
+                        //showMessage(response.body().getMessage());
+                        showDilog(response.body().getMessage());
                     }
-                    getActivity().onBackPressed();
+                    //getActivity().onBackPressed();
                 } else {
                     getActivity().onBackPressed();
                     //showMessage(getResources().getString(R.string.network_problem));
@@ -459,7 +479,7 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
             @Override
             public void onFailure(Call<CompllaintUpdateResponseModel> call, Throwable t) {
                 endLoading();
-                getActivity().onBackPressed();
+                showDilog("Registration Failed! Please Retry After Some Time");
                 //showMessage("Complaint Registration failed");
             }
         });

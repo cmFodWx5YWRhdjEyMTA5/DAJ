@@ -87,14 +87,17 @@
             android:visibility="gone"
             android:id="@+id/noData"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/no_data"
-                android:layout_centerHorizontal="true"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp">
+            <TextView
+                android:id="@+id/empty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                />
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/black"
+                android:text="@string/no_booking_found"
+                android:visibility="visible"/>
         </RelativeLayout>
 
         <LinearLayout
@@ -105,7 +108,9 @@
             android:layout_marginRight="20dp"
             android:orientation="vertical">
 
-            <RelativeLayout style="@style/boxStyleNew">
+            <RelativeLayout
+                android:id="@+id/listToday"
+                style="@style/boxStyleNew">
 
                 <LinearLayout
                     android:id="@+id/bannerText"
