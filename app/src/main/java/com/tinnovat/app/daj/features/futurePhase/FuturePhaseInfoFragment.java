@@ -113,7 +113,7 @@ public class FuturePhaseInfoFragment extends BaseFragment {
                 endLoading();
                 FuturePhasesResponseModel responseData = response.body();
                 if (responseData != null && responseData.getFuturephases() != null) {
-                    showMessage("Future PhasesInfo Successfully");
+                    //showMessage("Future PhasesInfo Successfully");
                     setData(responseData.getFuturephases());
                 }
 
@@ -123,7 +123,7 @@ public class FuturePhaseInfoFragment extends BaseFragment {
             public void onFailure(@NonNull Call<FuturePhasesResponseModel> call, @NonNull Throwable t) {
                 endLoading();
 
-                showMessage("FuturePhasesInfo Failed");
+                //showMessage("FuturePhasesInfo Failed");
             }
         });
     }

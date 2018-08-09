@@ -254,7 +254,7 @@ public class ComplaintDetailFragment extends BaseFragment {
         try {
             List<Address> addresses = geocoder.getFromLocation(lat, lng, 1);
             if (addresses.size() != 0)
-                return addresses.get(0).getAdminArea();
+                return addresses.get(0).getAddressLine(0) + ", " +addresses.get(0).getAddressLine(1) + ", " + addresses.get(0).getAddressLine(2);
             else
                 return null;
         } catch (IOException e) {

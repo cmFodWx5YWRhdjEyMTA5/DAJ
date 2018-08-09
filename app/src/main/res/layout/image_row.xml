@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/small_bg_gray"
-        android:layout_marginEnd="5dp"
-        >
+    android:background="@drawable/small_bg_gray"
+    android:layout_marginEnd="10dp">
 
     <ImageView
         android:id="@+id/image1"
@@ -19,7 +15,6 @@
 
         android:src="@drawable/future1" />
 </LinearLayout>
-</RelativeLayout>
 
 
 

@@ -97,7 +97,7 @@ public class ResetPasswordFragment extends BaseFragment {
                                     showMessage(response.body().getMessage());
                                 }
                             } else {
-                                showMessage(getResources().getString(R.string.network_problem));
+                                //showMessage(getResources().getString(R.string.network_problem));
                             }
                         }
 
@@ -105,7 +105,7 @@ public class ResetPasswordFragment extends BaseFragment {
                         public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
 
                             endLoading();
-                            showMessage(getResources().getString(R.string.network_problem));
+                            //showMessage(getResources().getString(R.string.network_problem));
                         }
                     });
 

@@ -57,96 +57,189 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
         String pos = Integer.toString(position);
 
         holder.item.setText(pos);
+        if (mLanguage) {
+            switch (position) {
+                case 0:
+                    holder.img.setVisibility(View.INVISIBLE);
+                    holder.img.setImageResource(R.drawable.phone_golden);
+                    break;
+                case 1:
+                    holder.img.setVisibility(View.INVISIBLE);
+                    holder.img.setImageResource(R.drawable.key);
+                    break;
+                case 2:
+                    holder.img.setVisibility(View.INVISIBLE);
+                    holder.img.setImageResource(R.drawable.logout);
+                    break;
+                case 3:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_event_eng);
+                    break;
+                case 4:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_service_eng);
+                    break;
 
-        switch (position) {
-            case 0:
-                holder.img.setVisibility(View.INVISIBLE);
-                holder.img.setImageResource(R.drawable.phone_golden);
-                break;
-            case 1:
-                holder.img.setVisibility(View.INVISIBLE);
-                holder.img.setImageResource(R.drawable.key);
-                break;
-            case 2:
-                holder.img.setVisibility(View.INVISIBLE);
-                holder.img.setImageResource(R.drawable.logout);
-                break;
-            case 3:
-                holder.img.setVisibility(View.VISIBLE);
-                holder.img.setImageResource(R.drawable.event);
-                break;
-            case 4:
-                holder.img.setVisibility(View.VISIBLE);
-                holder.img.setImageResource(R.drawable.service);
-                break;
+                case 5:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_guest_eng);
+                    break;
+                case 6:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_camer_eng);
+                    break;
+                case 7:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_location_eng);
+                    break;
+                case 8:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_projects_eng);
+                    break;
+                case 9:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_calander_eng);
+                    break;
+                case 10:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_profile_eng);
+                    break;
+                case 11:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_food_eng);
+                    break;
+                case 12:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_car_eng);
+                    break;
+                case 13:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_complaint_eng);
+                    break;
+                case 14:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_phone_eng);
+                    break;
+                case 15:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_key_eng);
+                    break;
+                case 16:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_lan_eng);
+                    break;
+                case 17:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_logout_eng);
+                    break;
+                case 18:
+                    holder.img.setVisibility(View.INVISIBLE);
+                    holder.img.setImageResource(R.drawable.key);
+                    break;
+                case 19:
+                    holder.img.setVisibility(View.INVISIBLE);
+                    holder.img.setImageResource(R.drawable.logout);
+                    break;
+                case 20:
+                    holder.img.setVisibility(View.INVISIBLE);
+                    holder.img.setImageResource(R.drawable.phone_golden);
+                    break;
 
-            case 5:
-                holder.img.setVisibility(View.VISIBLE);
-                holder.img.setImageResource(R.drawable.guest);
-                break;
-            case 6:
-                holder.img.setVisibility(View.VISIBLE);
-                holder.img.setImageResource(R.drawable.camera);
-                break;
-            case 7:
-                holder.img.setVisibility(View.VISIBLE);
-                holder.img.setImageResource(R.drawable.navigation);
-                break;
-            case 8:
-                holder.img.setVisibility(View.VISIBLE);
-                holder.img.setImageResource(R.drawable.projects);
-                break;
-            case 9:
-                holder.img.setVisibility(View.VISIBLE);
-                holder.img.setImageResource(R.drawable.my_booking);
-                break;
-            case 10:
-                holder.img.setVisibility(View.VISIBLE);
-                holder.img.setImageResource(R.drawable.profile);
-                break;
-            case 11:
-                holder.img.setVisibility(View.VISIBLE);
-                holder.img.setImageResource(R.drawable.food);
-                break;
-            case 12:
-                holder.img.setVisibility(View.VISIBLE);
-                holder.img.setImageResource(R.drawable.car);
-                break;
-            case 13:
-                holder.img.setVisibility(View.VISIBLE);
-                holder.img.setVisibility(View.VISIBLE);
-                holder.img.setImageResource(R.drawable.complaint);
-                break;
-            case 14:
-                holder.img.setVisibility(View.VISIBLE);
-                holder.img.setImageResource(R.drawable.phone_golden);
-                break;
-            case 15:
-                holder.img.setVisibility(View.VISIBLE);
-                holder.img.setImageResource(R.drawable.key);
-                break;
-            case 16:
-                holder.img.setVisibility(View.VISIBLE);
-                holder.img.setImageResource(R.drawable.language);
-                break;
-            case 17:
-                holder.img.setVisibility(View.VISIBLE);
-                holder.img.setImageResource(R.drawable.logout);
-                break;
-            case 18:
-                holder.img.setVisibility(View.INVISIBLE);
-                holder.img.setImageResource(R.drawable.key);
-                break;
-            case 19:
-                holder.img.setVisibility(View.INVISIBLE);
-                holder.img.setImageResource(R.drawable.logout);
-                break;
-            case 20:
-                holder.img.setVisibility(View.INVISIBLE);
-                holder.img.setImageResource(R.drawable.phone_golden);
-                break;
+            }
+        }else {
+            switch (position) {
+                case 0:
+                    holder.img.setVisibility(View.INVISIBLE);
+                    holder.img.setImageResource(R.drawable.phone_golden);
+                    break;
+                case 1:
+                    holder.img.setVisibility(View.INVISIBLE);
+                    holder.img.setImageResource(R.drawable.key);
+                    break;
+                case 2:
+                    holder.img.setVisibility(View.INVISIBLE);
+                    holder.img.setImageResource(R.drawable.logout);
+                    break;
+                case 3:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_event_arb);
+                    break;
+                case 4:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_service_arb);
+                    break;
 
+                case 5:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_guest_arb);
+                    break;
+                case 6:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_camer_arb);
+                    break;
+                case 7:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_location_arb);
+                    break;
+                case 8:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_projects_arb);
+                    break;
+                case 9:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_calander_arb);
+                    break;
+                case 10:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_profile_arb);
+                    break;
+                case 11:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_food_arb);
+                    break;
+                case 12:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_car_arb);
+                    break;
+                case 13:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_complaint_arb);
+                    break;
+                case 14:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_phone_arb);
+                    break;
+                case 15:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_key_arb);
+                    break;
+                case 16:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_lan_arb);
+                    break;
+                case 17:
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.img.setImageResource(R.drawable.dash_logout_arb);
+                    break;
+                case 18:
+                    holder.img.setVisibility(View.INVISIBLE);
+                    holder.img.setImageResource(R.drawable.key);
+                    break;
+                case 19:
+                    holder.img.setVisibility(View.INVISIBLE);
+                    holder.img.setImageResource(R.drawable.logout);
+                    break;
+                case 20:
+                    holder.img.setVisibility(View.INVISIBLE);
+                    holder.img.setImageResource(R.drawable.phone_golden);
+                    break;
+
+            }
         }
+
+
 
       /*  holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

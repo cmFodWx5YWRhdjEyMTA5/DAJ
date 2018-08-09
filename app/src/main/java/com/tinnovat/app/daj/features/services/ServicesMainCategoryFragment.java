@@ -112,7 +112,7 @@ public class ServicesMainCategoryFragment extends BaseFragment {
             @Override
             public void onResponse(@NonNull Call<ServicesResponseModel> call, @NonNull Response<ServicesResponseModel> response) {
                 endLoading();
-                showMessage("Data Fetched Successfully");
+                //showMessage("Data Fetched Successfully");
 
                 ServicesResponseModel responseBody = response.body();
                 if (responseBody != null && responseBody.getServiceCategory() != null) {
@@ -124,7 +124,7 @@ public class ServicesMainCategoryFragment extends BaseFragment {
             public void onFailure(@NonNull Call<ServicesResponseModel> call, @NonNull Throwable t) {
                 endLoading();
 
-                showMessage("ServiceList Failed");
+                //showMessage("ServiceList Failed");
             }
         });
     }

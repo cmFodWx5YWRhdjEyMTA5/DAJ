@@ -235,7 +235,7 @@ public class ServiceBookingFragment extends BaseFragment implements ChooseDateAd
             @Override
             public void onResponse(@NonNull Call<ServiceSlots> call, Response<ServiceSlots> response) {
                 endLoading();
-                showMessage("Data Fetched Successfully");
+                //showMessage("Data Fetched Successfully");
 
                 setDateCategory(response.body().getServiceAvailableDates());
                 /*if (response.body() != null && response.body().getServiceCategory() != null) {
@@ -250,7 +250,7 @@ public class ServiceBookingFragment extends BaseFragment implements ChooseDateAd
             public void onFailure(Call<ServiceSlots> call, Throwable t) {
                 endLoading();
 
-                showMessage("ServiceAvailableSlots Failed");
+                //showMessage("ServiceAvailableSlots Failed");
             }
         });
     }
@@ -294,7 +294,7 @@ public class ServiceBookingFragment extends BaseFragment implements ChooseDateAd
                     }
                     getFragmentManager().popBackStack();
                 }else {
-                    showMessage("1 "+getResources().getString(R.string.network_problem));
+                   // showMessage("1 "+getResources().getString(R.string.network_problem));
                 }
             }
 
@@ -302,7 +302,7 @@ public class ServiceBookingFragment extends BaseFragment implements ChooseDateAd
             public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
                 endLoading();
 
-                showMessage("2 "+getResources().getString(R.string.network_problem));
+               // showMessage("2 "+getResources().getString(R.string.network_problem));
             }
         });
     }

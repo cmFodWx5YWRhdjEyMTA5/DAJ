@@ -194,14 +194,14 @@ public class EventDetailActivity extends BaseActivity {
                         // finish();
                     }
                 } else {
-                    showMessage("1 " + getResources().getString(R.string.network_problem));
+                   // showMessage("1 " + getResources().getString(R.string.network_problem));
                 }
             }
 
             @Override
             public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
                 endLoading();
-                showMessage("2 " + getResources().getString(R.string.network_problem));
+               // showMessage("2 " + getResources().getString(R.string.network_problem));
             }
         });
     }

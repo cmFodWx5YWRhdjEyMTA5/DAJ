@@ -142,11 +142,11 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if (i==0){
+                /*if (i==0){
                     showMessage("nothing");
                 }else {
                     showMessage("selected");
-                }
+                }*/
             }
 
             @Override
@@ -284,7 +284,7 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
                     }
                     finish();
                 } else {
-                    showMessage(getResources().getString(R.string.network_problem));
+                   // showMessage(getResources().getString(R.string.network_problem));
                 }
             }
 
@@ -292,7 +292,7 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
             public void onFailure(Call<GuestRegistrationResponseModel> call, Throwable t) {
                 endLoading();
 
-                showMessage(getResources().getString(R.string.network_problem));
+               // showMessage(getResources().getString(R.string.network_problem));
             }
         });
 

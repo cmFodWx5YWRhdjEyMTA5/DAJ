@@ -120,7 +120,7 @@ public class LoginFragment extends BaseFragment {
                 break;
 
             case R.id.arabic:
-                showMessage("ar");
+               // showMessage("ar");
                 if (getLanguage()) {
 
                     setLanguage(false);
@@ -189,26 +189,31 @@ public class LoginFragment extends BaseFragment {
             @Override
             public void onResponse(Call<LoginResponseModel> call, Response<LoginResponseModel> response) {
                 //showMessage("Login Successful");
-                endLoading();
+               // endLoading();
                 if (response.body() != null) {
                     if (response.body().getData() != null) {
                         seData(response);
+
                         Intent intent = new Intent(getActivity(), MainActivity.class);
                         startActivity(intent);
-                        if (getActivity() != null)
+
+                        if (getActivity() != null) {
                             getActivity().finish();
+                            endLoading();
+                        }
                     }else if (response.body().getMessage() != null){
+                        endLoading();
                         showMessage(response.body().getMessage());
                     }
                 }else {
-                    showMessage(getResources().getString(R.string.network_problem));
+                    //showMessage(getResources().getString(R.string.network_problem));
                 }
             }
 
             @Override
             public void onFailure(Call<LoginResponseModel> call, Throwable t) {
                 endLoading();
-                showMessage(getResources().getString(R.string.network_problem));
+               // showMessage(getResources().getString(R.string.network_problem));
             }
         });
     }

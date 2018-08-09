@@ -57,7 +57,7 @@ public class EmergencyContactActivity extends BaseActivity {
             @Override
             public void onResponse(Call<ContactResponseModel> call, Response<ContactResponseModel> response) {
                 endLoading();
-                showMessage("ContactList Successfully");
+               // showMessage("ContactList Successfully");
                 setData(response);
             }
 
@@ -65,7 +65,7 @@ public class EmergencyContactActivity extends BaseActivity {
             public void onFailure(Call<ContactResponseModel> call, Throwable t) {
 
                 endLoading();
-                showMessage("ContactList Failed");
+                //showMessage("ContactList Failed");
             }
         });
     }

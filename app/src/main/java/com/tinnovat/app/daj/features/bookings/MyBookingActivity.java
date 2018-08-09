@@ -182,7 +182,7 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
             @Override
             public void onResponse(Call<MyServiceBookingResponseModel> call, Response<MyServiceBookingResponseModel> response) {
                 endLoading();
-                showMessage("Category list Successfully");
+                //showMessage("Category list Successfully");
                 //setData(response);
 
                 //todo changes
@@ -195,7 +195,7 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
             public void onFailure(Call<MyServiceBookingResponseModel> call, Throwable t) {
                 endLoading();
 
-                showMessage("Category list Failed");
+                //showMessage("Category list Failed");
             }
         });
     }
@@ -292,14 +292,14 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
                        // finish();
                     }
                 }else {
-                    showMessage("1 "+getResources().getString(R.string.network_problem));
+                   // showMessage("1 "+getResources().getString(R.string.network_problem));
                 }
             }
 
             @Override
             public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
                 endLoading();
-                showMessage("2 "+getResources().getString(R.string.network_problem));
+               // showMessage("2 "+getResources().getString(R.string.network_problem));
             }
         });
     }

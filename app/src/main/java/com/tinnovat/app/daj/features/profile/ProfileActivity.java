@@ -79,7 +79,7 @@ public class ProfileActivity extends BaseActivity {
 
             @Override
             public void onFailure(Call<ProfileResponseModel> call, Throwable t) {
-                showMessage("Profile failed");
+                //showMessage("Profile failed");
 
             }
         });

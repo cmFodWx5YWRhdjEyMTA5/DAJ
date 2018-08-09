@@ -58,7 +58,7 @@ public class OrderTaxiActivity extends BaseActivity {
             @Override
             public void onResponse(Call<FoodResponseModel> call, Response<FoodResponseModel> response) {
                 endLoading();
-                showMessage("TaxiApps Successfully");
+                //showMessage("TaxiApps Successfully");
                 setData(response);
             }
 
@@ -66,7 +66,7 @@ public class OrderTaxiActivity extends BaseActivity {
             public void onFailure(Call<FoodResponseModel> call, Throwable t) {
 
                 endLoading();
-                showMessage("TaxiApps Failed");
+                //showMessage("TaxiApps Failed");
             }
         });
     }

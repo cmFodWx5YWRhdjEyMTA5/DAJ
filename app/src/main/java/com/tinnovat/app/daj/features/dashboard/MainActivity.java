@@ -60,6 +60,8 @@ public class MainActivity extends BaseActivity {
     private List<String> eventName;
     private AppPreferanceStore appPreferanceStore;
 
+    RecyclerView recyclerView;
+
     private RecyclerViewAdapter mAdapter;
 
     ImageView logoEn;
@@ -211,7 +213,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void setViews(List<String> eventName) {
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        recyclerView = findViewById(R.id.recycler_view);
         // recyclerView.setAdapter(new RecyclerViewAdapter(getApplicationContext(), list));
         mAdapter = new RecyclerViewAdapter(getApplicationContext(), eventName, getLanguage());
         recyclerView.addItemDecoration(new RecyclerItemDecoration());
@@ -514,11 +516,15 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onResume() {
-        if (mAdapter != null){
+
+        //initializeList();
+
+        if ( mAdapter != null){
+            recyclerView.setAdapter(mAdapter);
             mAdapter.notifyDataSetChanged();
-            showMessage("resume");
+           // showMessage("resume");
         }else {
-            showMessage("list null");
+           // showMessage("list null");
         }
         super.onResume();
     }

@@ -61,7 +61,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
    // private FloatingActionButton mButtonDirection;
     private double latitude;
     private double longitude;
-    private int PROXIMITY_RADIUS = 1000;
+    private int PROXIMITY_RADIUS = 10000;
 
 
     @Override

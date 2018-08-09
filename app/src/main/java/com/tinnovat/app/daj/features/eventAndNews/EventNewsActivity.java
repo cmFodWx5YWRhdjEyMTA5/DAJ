@@ -117,7 +117,7 @@ public class EventNewsActivity extends BaseActivity implements TabLayout.OnTabSe
             @Override
             public void onResponse(Call<EventListModel> call, Response<EventListModel> response) {
                 endLoading();
-                showMessage("Data Fetched Successfully");
+               // showMessage("Data Fetched Successfully");
                 if (response.body() != null && response.body().getCategory() != null) {
 
                     List<EventDetails> eventDetails = new ArrayList<>();
@@ -135,7 +135,7 @@ public class EventNewsActivity extends BaseActivity implements TabLayout.OnTabSe
             public void onFailure(Call<EventListModel> call, Throwable t) {
 
                 endLoading();
-                showMessage("EventsAndNews Failed");
+                //showMessage("EventsAndNews Failed");
             }
         });
     }

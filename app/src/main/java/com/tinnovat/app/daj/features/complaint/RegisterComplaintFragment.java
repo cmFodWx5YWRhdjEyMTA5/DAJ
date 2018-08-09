@@ -164,9 +164,9 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if (i == 0) {
-                    showMessage("nothing");
-                } else {
+                /*if (i == 0) {
+                  //  showMessage("nothing");
+                }*/ if(i!=0) {
 
                     mCatId = catIds.get(i - 1);
                 }
@@ -277,7 +277,7 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
             @Override
             public void onResponse(Call<ComplaintCategoriesResponseModel> call, Response<ComplaintCategoriesResponseModel> response) {
                 endLoading();
-                showMessage("Category list Successfully");
+               // showMessage("Category list Successfully");
                 setData(response);
             }
 
@@ -285,7 +285,7 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
             public void onFailure(Call<ComplaintCategoriesResponseModel> call, Throwable t) {
 
                 endLoading();
-                showMessage("Category list Failed");
+                //showMessage("Category list Failed");
             }
         });
     }
@@ -422,7 +422,8 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
                     }
                     getActivity().finish();
                 } else {
-                    showMessage(getResources().getString(R.string.network_problem));
+                    getActivity().finish();
+                    //showMessage(getResources().getString(R.string.network_problem));
                 }
 
             }
@@ -430,8 +431,8 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
             @Override
             public void onFailure(Call<CompllaintUpdateResponseModel> call, Throwable t) {
                 endLoading();
-
-                showMessage("Complaint Registration failed");
+                getActivity().finish();
+                //showMessage("Complaint Registration failed");
             }
         });
     }
@@ -523,7 +524,7 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
         longitude = location.getLongitude();
 
         try {
-            Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
+            Geocoder geocoder = new Geocoder(getContext(), Locale.ENGLISH);
             List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
             textAddress.setText(addresses.get(0).getAddressLine(0) + ", " +
                     addresses.get(0).getAddressLine(1) + ", " + addresses.get(0).getAddressLine(2));

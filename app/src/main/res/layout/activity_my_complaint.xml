@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".features.complaint.MyComplaintActivity"
     android:background="@mipmap/bg"
     android:orientation="vertical">
     <RelativeLayout
@@ -124,6 +123,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
+                    android:maxLines="1"
                     android:text="@string/dar_al_jewar_hall"
                     android:textStyle=""
                     android:textColor="@color/white" />
