@@ -1,7 +1,9 @@
 package com.tinnovat.app.daj.features.authentication;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
@@ -84,22 +86,31 @@ public class ChangePasswordActivity extends BaseActivity {
 
                 invokeChangePassword(currentPassword.getText().toString(),newPassword.getText().toString());
             }else {
-                showMessage(getResources().getString(R.string.password_mismatch));
+                showDilog(getResources().getString(R.string.password_mismatch),false);
             }
         }
 
-       /* if (newPassword.getText().toString().matches("") || newPassword.getText().toString().matches("") ||newPassword.getText().toString().matches("")){
-            showMessage(getResources().getString(R.string.fil_all_fields));
-        }else {
-            if (newPassword.getText().toString().equals(cnfrmPassword.getText().toString())){
-
-                invokeChangePassword(currentPassword.getText().toString(),newPassword.getText().toString());
-            }else {
-                showMessage(getResources().getString(R.string.password_mismatch));
-            }
-        }*/
-
     }
+    private void showDilog(String message, final Boolean error){
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setMessage(message);
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                        if (error){
+                            finish();
+                        }
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
+    }
+
     private void invokeChangePassword(String oldPassword, String newPassword) {
         startLoading();
 
@@ -113,21 +124,17 @@ public class ChangePasswordActivity extends BaseActivity {
                 endLoading();
                 if (response.body() != null) {
                     if (response.body().getSuccess()) {
-                        showMessage(response.body().getMessage());
-                        finish();
+                        showDilog(response.body().getMessage(),true);
                     } else {
-                        showMessage(response.body().getMessage());
-                        finish();
+                        showDilog(response.body().getMessage(),true);
                     }
-                }else {
-                   // showMessage("1 "+getResources().getString(R.string.network_problem));
                 }
             }
 
             @Override
             public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
                 endLoading();
-               // showMessage("2 "+getResources().getString(R.string.network_problem));
+                showDilog("Please Try After SomeTime !",true);
             }
         });
     }

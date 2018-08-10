@@ -65,7 +65,7 @@ dependencies {
     implementation 'com.github.pchmn:AndroidVerify:1.0.2'
     //image popup
     implementation 'com.github.chathuralakmal:AndroidImagePopup:1.2.1'
-    //image Slider
-    //implementation 'me.relex:circleindicator:1.2.2@aar'
+    //snackbar
+    implementation 'com.github.aritraroy:Flashbar:1.0.2'
 
 }

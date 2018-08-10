@@ -72,7 +72,7 @@ public class MainActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        endLoading();
         Intent intent = getIntent();
         status = intent.getBooleanExtra("status",false);
         if (status){

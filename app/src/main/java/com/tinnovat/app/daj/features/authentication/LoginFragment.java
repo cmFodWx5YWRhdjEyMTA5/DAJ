@@ -1,5 +1,6 @@
 package com.tinnovat.app.daj.features.authentication;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -120,7 +122,6 @@ public class LoginFragment extends BaseFragment {
                 break;
 
             case R.id.arabic:
-               // showMessage("ar");
                 if (getLanguage()) {
 
                     setLanguage(false);
@@ -176,6 +177,23 @@ public class LoginFragment extends BaseFragment {
         }
     }
 
+    private void showDilog(String message){
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
+        builder1.setMessage(message);
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
+    }
+
     private void invokeLoginService() {
 
 
@@ -188,8 +206,6 @@ public class LoginFragment extends BaseFragment {
         call.enqueue(new Callback<LoginResponseModel>() {
             @Override
             public void onResponse(Call<LoginResponseModel> call, Response<LoginResponseModel> response) {
-                //showMessage("Login Successful");
-               // endLoading();
                 if (response.body() != null) {
                     if (response.body().getData() != null) {
                         seData(response);
@@ -205,21 +221,20 @@ public class LoginFragment extends BaseFragment {
                         }
                         if (getActivity() != null) {
                             getActivity().finish();
-                            endLoading();
+                            //endLoading();
                         }
                     }else if (response.body().getMessage() != null){
                         endLoading();
-                        showMessage(response.body().getMessage());
+                        showDilog(response.body().getMessage());
                     }
-                }else {
-                    //showMessage(getResources().getString(R.string.network_problem));
                 }
+
             }
 
             @Override
             public void onFailure(Call<LoginResponseModel> call, Throwable t) {
                 endLoading();
-               // showMessage(getResources().getString(R.string.network_problem));
+                showDilog("Login Failed Please Try After Sometime");
             }
         });
     }

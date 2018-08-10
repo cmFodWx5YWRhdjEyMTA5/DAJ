@@ -4,35 +4,25 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.tinnovat.app.daj.R;
-import com.tinnovat.app.daj.data.network.model.MyServiceBookingResponseModel;
-import com.tinnovat.app.daj.utils.CommonUtils;
+import com.tinnovat.app.daj.data.network.model.ServiceBooking;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class MyBookingsAdapter extends RecyclerView.Adapter<MyBookingsAdapter.MyViewHolder> {
 
     private Context mContext;
-    private int size = 0;
-    private MyServiceBookingResponseModel response;
-    private String date;
     private SelectAdapterListener mListener;
-    private ItemCountListener1 mItemCountListener;
     private List<Integer> selectedBookings = new ArrayList<>();
+    private List<ServiceBooking> mServiceBookings = new ArrayList<>();
     private boolean mIsEnglish;
     private int mCount = 0;
 
@@ -53,11 +43,9 @@ public class MyBookingsAdapter extends RecyclerView.Adapter<MyBookingsAdapter.My
     }
 
 
-    public MyBookingsAdapter(MyServiceBookingResponseModel responseModel,String date,SelectAdapterListener mListener,ItemCountListener1 itemCountListener,boolean isEnglish) {
-        this.response = responseModel;
-        this.date = date;
+    public MyBookingsAdapter(List<ServiceBooking> serviceBookings,SelectAdapterListener mListener,boolean isEnglish) {
+        this.mServiceBookings = serviceBookings;
         this.mListener = mListener;
-        this.mItemCountListener = itemCountListener;
         this.mIsEnglish = isEnglish;
     }
 
@@ -80,71 +68,44 @@ public class MyBookingsAdapter extends RecyclerView.Adapter<MyBookingsAdapter.My
             holder.time.setGravity(Gravity.END);
         }
 
-        if ( date.equals(response.getServiceBooking().get(position).getServiceBookingDate()) ){
-            mCount = mCount +1;
-            mItemCountListener.onItemCount(mCount);
             holder.itemView.setVisibility(View.VISIBLE);
-            holder.serviceName.setText(response.getServiceBooking().get(position).getService());
-            if (response.getServiceBooking().get(position).getTimeSlots().size() != 0){
-                for (int i = 0 ; i< response.getServiceBooking().get(position).getTimeSlots().size();i++){
+            holder.serviceName.setText(mServiceBookings.get(position).getService());
+            if (mServiceBookings.get(position).getTimeSlots().size() != 0){
+                for (int i = 0 ; i< mServiceBookings.get(position).getTimeSlots().size();i++){
                     if (i == 0){
                         //Todo change
-                        times = times+response.getServiceBooking().get(position).getTimeSlots().get(i).getSlots();
+                        times = times+mServiceBookings.get(position).getTimeSlots().get(i).getSlots();
                     }else{
-                    times = times+"\n"+response.getServiceBooking().get(position).getTimeSlots().get(i).getSlots();
+                    times = times+"\n"+mServiceBookings.get(position).getTimeSlots().get(i).getSlots();
                     }
 
                 }
                 holder.time.setText(times);
             }
 
-            holder.linearLayout.setVisibility(View.VISIBLE);
-        }else {
-            holder.linearLayout.setVisibility(View.GONE);
-        }
 
         holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
-                    selectedBookings.add(response.getServiceBooking().get(holder.getAdapterPosition()).getId());
+                    selectedBookings.add(mServiceBookings.get(holder.getAdapterPosition()).getId());
                     mListener.onBookingSelected(selectedBookings);
-                }else if (selectedBookings.contains(response.getServiceBooking().get(holder.getAdapterPosition()).getId())) {
-                    selectedBookings.remove(response.getServiceBooking().get(holder.getAdapterPosition()).getId());
+                }else if (selectedBookings.contains(mServiceBookings.get(holder.getAdapterPosition()).getId())) {
+                    selectedBookings.remove(mServiceBookings.get(holder.getAdapterPosition()).getId());
                 }
-                /*if (selectedBookings == null){
-                    selectedBookings = new ArrayList<>();
-                    selectedBookings.add(response.getServiceBooking().get(holder.getAdapterPosition()).getId());
-                }else if (selectedBookings.contains(response.getServiceBooking().get(holder.getAdapterPosition()).getId())) {
-                    selectedBookings.remove(response.getServiceBooking().get(holder.getAdapterPosition()).getId());
-                }else {
-                    if (!selectedBookings.isEmpty()){
-                        selectedBookings.add(response.getServiceBooking().get(holder.getAdapterPosition()).getId());
-                    }else {
-                        selectedBookings = new ArrayList<>();
-                        selectedBookings.add(response.getServiceBooking().get(holder.getAdapterPosition()).getId());
-                    }
-
-                }*/
             }
         });
 
 
-       // mListener.onBookingSelected(selectedBookings);
     }
 
     @Override
     public int getItemCount() {
-        return response.getServiceBooking().size();
+        return mServiceBookings.size();
     }
 
     public interface SelectAdapterListener {
 
         void onBookingSelected(List<Integer> selectedBookings );
-    }
-
-    public interface ItemCountListener1 {
-
-        void onItemCount(int count);
     }
 }

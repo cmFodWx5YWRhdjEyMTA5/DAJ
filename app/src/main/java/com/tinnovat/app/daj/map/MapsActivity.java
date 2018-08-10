@@ -15,7 +15,6 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.CheckableImageButton;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
@@ -23,12 +22,10 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
@@ -40,7 +37,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 
@@ -295,7 +291,6 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
         //move map camera
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
-        Toast.makeText(MapsActivity.this, "Your Current Location", Toast.LENGTH_LONG).show();
 
         Log.d("onLocationChanged", String.format("latitude:%.3f longitude:%.3f", latitude, longitude));
 
@@ -371,7 +366,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
                 } else {
 
                     // Permission denied, Disable the functionality that depends on this permission.
-                    Toast.makeText(this, "permission denied", Toast.LENGTH_LONG).show();
+                    showDilog("Permission Denied");
                 }
                 return;
             }
@@ -379,6 +374,24 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
             // other 'case' lines to check for other permissions this app might request.
             // You can add here other case statements according to your requirement.
         }
+    }
+
+    private void showDilog(String message){
+        android.support.v7.app.AlertDialog.Builder builder1 = new android.support.v7.app.AlertDialog.Builder(this);
+        builder1.setMessage(message);
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+
+                    }
+                });
+
+        android.support.v7.app.AlertDialog alert11 = builder1.create();
+        alert11.show();
     }
 
     @Override
@@ -395,7 +408,6 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
                 Log.d("onClick", url);
                 GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
                 getNearbyPlacesData.execute(dataTransfer);
-                Toast.makeText(MapsActivity.this, "Nearby Restaurants", Toast.LENGTH_LONG).show();
 
 
                 break;
@@ -408,7 +420,6 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
                         Log.d("onClick", url);
                         getNearbyPlacesData = new GetNearbyPlacesData();
                         getNearbyPlacesData.execute(dataTransfer);
-                        Toast.makeText(MapsActivity.this, "Nearby Petrol", Toast.LENGTH_LONG).show();
 
                 break;
             case R.id.image3:
@@ -421,7 +432,6 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
                 Log.d("onClick", url);
                 getNearbyPlacesData = new GetNearbyPlacesData();
                 getNearbyPlacesData.execute(dataTransfer);
-                Toast.makeText(MapsActivity.this, "Nearby Hospitals", Toast.LENGTH_LONG).show();
                 break;
 
             case R.id.image4:
@@ -433,7 +443,6 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,
                 Log.d("onClick", url);
                 getNearbyPlacesData = new GetNearbyPlacesData();
                 getNearbyPlacesData.execute(dataTransfer);
-                Toast.makeText(MapsActivity.this, "Nearby Shopping", Toast.LENGTH_LONG).show();
                 break;
 
            /* case R.id.fab_direction:

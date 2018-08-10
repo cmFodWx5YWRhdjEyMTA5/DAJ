@@ -1,11 +1,13 @@
 package com.tinnovat.app.daj.features.authentication;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -69,13 +71,10 @@ public class ResetPasswordFragment extends BaseFragment {
         userName = view.findViewById(R.id.userName);
         email = view.findViewById(R.id.email);
 
-        //submit.setOnClickListener(this);
-
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (form.isValid()) {
-                    //  invokeResetPassword(userName.getText().toString(),email.getText().toString());
                     startLoading();
 
                     ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
@@ -91,13 +90,10 @@ public class ResetPasswordFragment extends BaseFragment {
                             if (response.body() != null) {
                                 if (response.body().getSuccess()) {
 
-                                    showMessage(response.body().getMessage());
-                                    Objects.requireNonNull(getActivity()).getSupportFragmentManager().popBackStack();
+                                    showDilog(response.body().getMessage(),true);
                                 } else {
-                                    showMessage(response.body().getMessage());
+                                    showDilog(response.body().getMessage(),false);
                                 }
-                            } else {
-                                //showMessage(getResources().getString(R.string.network_problem));
                             }
                         }
 
@@ -105,7 +101,7 @@ public class ResetPasswordFragment extends BaseFragment {
                         public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
 
                             endLoading();
-                            //showMessage(getResources().getString(R.string.network_problem));
+                            showDilog("Failed Please Try After Sometime !",true);
                         }
                     });
 
@@ -126,111 +122,27 @@ public class ResetPasswordFragment extends BaseFragment {
         if (getActivity() != null)
             getActivity().onBackPressed();
 
-        switch (view.getId()) {
+    }
 
-            case R.id.submit:
-                //fetchData(view);
-                if (form.isValid()) {
-                    //  invokeResetPassword(userName.getText().toString(),email.getText().toString());
-                    startLoading();
+    private void showDilog(String message, final boolean success){
+        final AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
+        builder1.setMessage(message);
+        builder1.setCancelable(true);
 
-                    ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-                    RequestParams.ResetPasswordRequest resetPasswordRequest = new RequestParams().new ResetPasswordRequest(userName.getText().toString(), email.getText().toString());
-
-                    Call<SuccessResponseModel> call = apiInterface.resetPassword(resetPasswordRequest);
-                    call.enqueue(new Callback<SuccessResponseModel>() {
-                        @Override
-                        public void onResponse(Call<SuccessResponseModel> call, Response<SuccessResponseModel> response) {
-                            endLoading();
-                            //showMessage("Successful");
-                            getActivity().getFragmentManager().popBackStack();
-
-                            //todo change
-               /* if (response.body() != null) {
-                    if (response.body().getSuccess()) {
-
-                        showMessage(response.body().getMessage());
-                    } else {
-                        showMessage(response.body().getMessage());
-                    }
-                }else {
-                    showMessage(getResources().getString(R.string.network_problem));
-                }*/
+        builder1.setPositiveButton(
+                "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                        if (success){
+                            getActivity().onBackPressed();
                         }
 
-                        @Override
-                        public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
-
-                            endLoading();
-                            //  showMessage(getResources().getString(R.string.network_problem));
-                        }
-                    });
-
-                }
-                break;
-        }
-
-
-    }
-
-    private void fetchData(View view) {
-       /* EditText userName = view.findViewById(R.id.userName);
-        EditText email = view.findViewById(R.id.email);*/
-
-
-        // validate the form
-        if (form.isValid()) {
-            invokeResetPassword(userName.getText().toString(), email.getText().toString());
-
-        } else {
-            // showMessage(view,"testtt");
-            // showMessage("testtt");
-        }
-
-
-    }
-
-    public void showMessage(View view, String message) {
-        Snackbar mySnackbar = Snackbar.make(view,
-                message, Snackbar.LENGTH_SHORT);
-        mySnackbar.show();
-//        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
-    }
-
-    private void invokeResetPassword(String userName, String email) {
-        startLoading();
-
-        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        RequestParams.ResetPasswordRequest resetPasswordRequest = new RequestParams().new ResetPasswordRequest(userName, email);
-
-        Call<SuccessResponseModel> call = apiInterface.resetPassword(resetPasswordRequest);
-        call.enqueue(new Callback<SuccessResponseModel>() {
-            @Override
-            public void onResponse(Call<SuccessResponseModel> call, Response<SuccessResponseModel> response) {
-                endLoading();
-                //   showMessage("Login Successful");
-                getActivity().getFragmentManager().popBackStack();
-
-                //todo change
-               /* if (response.body() != null) {
-                    if (response.body().getSuccess()) {
-
-                        showMessage(response.body().getMessage());
-                    } else {
-                        showMessage(response.body().getMessage());
                     }
-                }else {
-                    showMessage(getResources().getString(R.string.network_problem));
-                }*/
-            }
+                });
 
-            @Override
-            public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
-
-                endLoading();
-                //  showMessage(getResources().getString(R.string.network_problem));
-            }
-        });
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
     }
 
 }

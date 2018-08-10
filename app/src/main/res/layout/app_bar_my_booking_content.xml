@@ -29,15 +29,17 @@
     android:layout_marginTop="50dp"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/calenderLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/blackLight">
+            android:background="@color/blackLight"
+            android:layout_alignParentTop="true">
 
             <RelativeLayout
                 android:id="@+id/startDate"
@@ -84,11 +86,13 @@
                 />
         </LinearLayout>
         <RelativeLayout
-            android:visibility="gone"
+            android:visibility="visible"
             android:id="@+id/noData"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="40dp"
+            android:layout_below="@+id/calenderLayout"
+            >
             <TextView
                 android:id="@+id/empty"
                 android:layout_width="wrap_content"
@@ -101,16 +105,19 @@
         </RelativeLayout>
 
         <LinearLayout
+
             android:id="@+id/bookingList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_below="@+id/calenderLayout">
 
             <RelativeLayout
                 android:id="@+id/listToday"
-                style="@style/boxStyleNew">
+                style="@style/boxStyleNew"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:id="@+id/bannerText"
@@ -194,12 +201,14 @@
                 android:layout_marginTop="5dp"
                 android:text="@string/upcoming_bookings"
                 android:textColor="@color/black"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="gone"/>
 
             <RelativeLayout
                 android:id="@+id/relativeLayout"
                 style="@style/boxStyleNew"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="10dp"
+                android:visibility="gone">
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/recycler_view2"
                     android:layout_width="match_parent"
@@ -207,12 +216,9 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
-
                     />
-
-
             </RelativeLayout>
         </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
 </ScrollView>
 </android.support.design.widget.CoordinatorLayout>

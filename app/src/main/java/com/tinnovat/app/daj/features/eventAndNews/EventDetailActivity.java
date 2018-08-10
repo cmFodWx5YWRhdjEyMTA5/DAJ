@@ -1,9 +1,11 @@
 package com.tinnovat.app.daj.features.eventAndNews;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -174,8 +176,6 @@ public class EventDetailActivity extends BaseActivity {
         startLoading();
 
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
-        //ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        //  RequestParams.DeleteServiceBookingRequest deleteServiceBookingRequest = new RequestParams().new DeleteServiceBookingRequest(booking_id);
         Call<SuccessResponseModel> call = apiInterface.postEventInterset(mId);
         call.enqueue(new Callback<SuccessResponseModel>() {
             @Override
@@ -183,27 +183,38 @@ public class EventDetailActivity extends BaseActivity {
                 endLoading();
                 if (response.body() != null) {
                     if (response.body().getSuccess()) {
-                        showMessage(response.body().getMessage());
+                        showDilog(response.body().getMessage());
                         doInterested(true);
-                        //finish();
-                        //  mMyBookingAdapter.notifyDataSetChanged();
-                        // recyclerView.setAdapter(mMyBookingAdapter);
-                        // fetchMyBookingService();
                     } else {
-                        showMessage(response.body().getMessage());
-                        // finish();
+                        showDilog(response.body().getMessage());
                     }
-                } else {
-                   // showMessage("1 " + getResources().getString(R.string.network_problem));
                 }
             }
 
             @Override
             public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
                 endLoading();
-               // showMessage("2 " + getResources().getString(R.string.network_problem));
+                showDilog("Please Try After SomeTime !");
             }
         });
+    }
+
+    private void showDilog(String message){
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setMessage(message);
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                        finish();
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
     }
 
     private void doReadMore() {

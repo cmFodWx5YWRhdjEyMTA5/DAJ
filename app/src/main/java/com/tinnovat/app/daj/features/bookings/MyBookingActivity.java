@@ -1,8 +1,11 @@
 package com.tinnovat.app.daj.features.bookings;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +17,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.andrognito.flashbar.Flashbar;
+import com.andrognito.flashbar.anim.FlashAnim;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
@@ -25,6 +30,7 @@ import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.MyServiceBookingResponseModel;
 import com.tinnovat.app.daj.data.network.model.RequestParams;
+import com.tinnovat.app.daj.data.network.model.ServiceBooking;
 import com.tinnovat.app.daj.data.network.model.SuccessResponseModel;
 import com.tinnovat.app.daj.utils.CommonUtils;
 
@@ -38,8 +44,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter.SelectAdapterListener,
-        MyBookingsAdapter.ItemCountListener1,
-        UpcomingMyBookingsAdapter.DeleteEventListener ,UpcomingMyBookingsAdapter.SelectAdapterListener{
+        UpcomingMyBookingsAdapter.DeleteEventListener{
 
 
     RelativeLayout relativeLayout;
@@ -87,6 +92,7 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
 
         delete.setOnClickListener(this);
 
+        //showMessageSnakBar();
     }
 
     @Override
@@ -166,8 +172,8 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
                 fetchMyBookingOnAnotherDate(CommonUtils.getInstance().getDate(date.getCalendar()));
 
                 if (CommonUtils.getInstance().getDate2(CalendarDay.today().getCalendar()).equals(anotherDate) ){
-                    relativeLayout.setVisibility(View.VISIBLE);
-                    upComingBanner.setVisibility(View.VISIBLE);
+                   // relativeLayout.setVisibility(View.VISIBLE);
+                   // upComingBanner.setVisibility(View.VISIBLE);
                     fetchMyBookingService();
                 }else {
                     fetchMyBookingOnAnotherDate(CommonUtils.getInstance().getDate(date.getCalendar()));
@@ -190,18 +196,17 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
             @Override
             public void onResponse(Call<MyServiceBookingResponseModel> call, Response<MyServiceBookingResponseModel> response) {
                 endLoading();
-                //showMessage("Category list Successfully");
-
                 //todo changes
 
-                setData(response,anotherDate);
+                if (response.body() != null){
+                    setData(response.body().getServiceBooking());
+                }
+
             }
 
             @Override
             public void onFailure(Call<MyServiceBookingResponseModel> call, Throwable t) {
                 endLoading();
-
-                //showMessage("Category list Failed");
             }
         });
     }
@@ -217,8 +222,8 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
             public void onResponse(Call<MyServiceBookingResponseModel> call, Response<MyServiceBookingResponseModel> response) {
                 endLoading();
 
-                setData(response,CommonUtils.getInstance().getDate2(CalendarDay.today().getCalendar()));
-                setUpComingData(response);
+                todayListFiltration(response,CommonUtils.getInstance().getDate2(CalendarDay.today().getCalendar()));
+                upcomingListFiltration(response,CommonUtils.getInstance().getDate2(CalendarDay.today().getCalendar()));
             }
 
             @Override
@@ -229,40 +234,64 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
         });
     }
 
-    private void setData(Response<MyServiceBookingResponseModel> response ,String date){
-      //  RecyclerView recyclerView;
-        LinearLayout bookingList = findViewById(R.id.bookingList);
-        RelativeLayout noData = findViewById(R.id.noData);
+    private void todayListFiltration(Response<MyServiceBookingResponseModel> response ,String date){
+        List<ServiceBooking> serviceBookings =new ArrayList<>();
+        for (int i = 0;i<response.body().getServiceBooking().size();i++){
+            if(date.equals(response.body().getServiceBooking().get(i).getServiceBookingDate())){
 
-       /* if (response.body() == null || response.body().getServiceBooking().size() == 0){
-            noData.setVisibility(View.VISIBLE);
+                serviceBookings.add(response.body().getServiceBooking().get(i));
+
+            }
+        }
+        if (serviceBookings.size() != 0){
+            setData(serviceBookings);
         }else {
-            noData.setVisibility(View.GONE);
-        }*/
+            listToday.setVisibility(View.GONE);
+        }
+        //if(date.equals(response.getServiceBooking().get(position).getServiceBookingDate())
+    }
 
-        //listToday.setVisibility(View.VISIBLE);
+    private void upcomingListFiltration(Response<MyServiceBookingResponseModel> response ,String date){
+        List<ServiceBooking> serviceBookings =new ArrayList<>();
+        for (int i = 0;i<response.body().getServiceBooking().size();i++){
+            if(!date.equals(response.body().getServiceBooking().get(i).getServiceBookingDate())){
+
+                serviceBookings.add(response.body().getServiceBooking().get(i));
+
+            }
+        }
+        if (serviceBookings.size() != 0){
+            setUpComingData(serviceBookings);
+        }else {
+            relativeLayout.setVisibility(View.GONE);
+            upComingBanner.setVisibility(View.GONE);
+        }
+        //if(date.equals(response.getServiceBooking().get(position).getServiceBookingDate())
+    }
+
+    private void setData(List<ServiceBooking> serviceBookings){
 
         recyclerView = findViewById(R.id.recycler_view);
 
-        mMyBookingAdapter = new MyBookingsAdapter(response.body(),date,this,this,getLanguage());
+        mMyBookingAdapter = new MyBookingsAdapter(serviceBookings,this,getLanguage());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         mMyBookingAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(mMyBookingAdapter);
-//showMessage(""+mCount);
+
+        if (mMyBookingAdapter.getItemCount() == 0){
+            listToday.setVisibility(View.GONE);
+        }else {
+            listToday.setVisibility(View.VISIBLE);
+        }
 
     }
 
-    private void setUpComingData(Response<MyServiceBookingResponseModel> response){
+    private void setUpComingData(List<ServiceBooking> serviceBookings){
 
-        //UpcomingMyBookingsAdapter mAdapter;
         recyclerView2 = findViewById(R.id.recycler_view2);
-
-        /*relativeLayout.setVisibility(View.VISIBLE);
-        upComingBanner.setVisibility(View.VISIBLE);*/
-
-        mAdapter2 = new UpcomingMyBookingsAdapter(response.body(),this,this,getLanguage());
+        mAdapter2 = new UpcomingMyBookingsAdapter(serviceBookings,this,getLanguage());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL, false);
         recyclerView2.setLayoutManager(mLayoutManager);
         recyclerView2.setItemAnimator(new DefaultItemAnimator());
@@ -295,17 +324,19 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
                 endLoading();
                 if (response.body() != null) {
                     if (response.body().getSuccess()) {
-                        showMessage(response.body().getMessage());
+                        //showMessage(response.body().getMessage());
+
+                        showMessageSnakBar(response.body().getMessage());
                         //finish();
                       //  mMyBookingAdapter.notifyDataSetChanged();
                        // recyclerView.setAdapter(mMyBookingAdapter);
                         fetchMyBookingService();
                     } else {
-                        showMessage(response.body().getMessage());
+                        showMessageSnakBar(response.body().getMessage());
+                        //showMessage(response.body().getMessage());
+                        fetchMyBookingService();
                        // finish();
                     }
-                }else {
-                   // showMessage("1 "+getResources().getString(R.string.network_problem));
                 }
             }
 
@@ -332,34 +363,44 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
     }
 
     @Override
-    public void onBookingSelected(int count) {
-        mCount2 = count;
-    }
-
-    @Override
-    public void onItemCount(int count) {
-        mCount = count;
-        /*if (mCount == 0 ){
-            mMyBookingAdapter.notifyDataSetChanged();
-            listToday.setVisibility(View.GONE);
-            //mCount = 0;
-            // mCount2 = 0;
-        }else {
-            mMyBookingAdapter.notifyDataSetChanged();
-            listToday.setVisibility(View.VISIBLE);
-            // mCount = 0;
-            // mCount2 = 0;
-        }*/
-    }
-
-    @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
 
-   /* @Override
-    public void onItemCount(int count) {
-        mCount = count;
-        showMessage(""+mCount);
-    }*/
+    public void showMessageSnakBar(String message) {
+       /* Snackbar mySnackbar = Snackbar.make(view,message, Snackbar.LENGTH_SHORT);
+        mySnackbar.show();*/
+
+        final Flashbar flashbar = new Flashbar.Builder(this)
+                .gravity(Flashbar.Gravity.BOTTOM)
+                .title(message)
+                .message("  ")
+                .backgroundColorRes(R.color.colorPrimaryDark)
+                .enterAnimation(FlashAnim.with(this)
+                        .animateBar()
+                        .duration(400)
+                        .slideFromLeft()
+                        .overshoot())
+                .exitAnimation(FlashAnim.with(this)
+                        .animateBar()
+                        .duration(250)
+                        .slideFromLeft()
+                        .accelerate())
+                .build();
+
+        flashbar.show();
+
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                flashbar.dismiss();
+            }
+        }, 4000);
+      /*  Snackbar mySnackbar = Snackbar.make(findViewById(R.id.myCoordinatorLayout),
+                R.string.email_archived, Snackbar.LENGTH_SHORT);
+        mySnackbar.setAction(R.string.undo_string, new MyUndoListener());
+        mySnackbar.show();*/
+    }
 }

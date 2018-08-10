@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.model.MyServiceBookingResponseModel;
+import com.tinnovat.app.daj.data.network.model.ServiceBooking;
 import com.tinnovat.app.daj.utils.CommonUtils;
 
 import java.util.ArrayList;
@@ -21,9 +22,9 @@ import java.util.List;
 public class UpcomingMyBookingsAdapter extends RecyclerView.Adapter<UpcomingMyBookingsAdapter.MyViewHolder> {
 
     private Context mContext;
-    private MyServiceBookingResponseModel response;
+    private List<ServiceBooking> mServiceBookings = new ArrayList<>();
     private DeleteEventListener mDeleteEventListener;
-    private SelectAdapterListener mSelectAdapterListener;
+    //private SelectAdapterListener mSelectAdapterListener;
     private boolean mIsEnglish;
     private int mCount = 0;
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -47,10 +48,10 @@ public class UpcomingMyBookingsAdapter extends RecyclerView.Adapter<UpcomingMyBo
     }
 
 
-    public UpcomingMyBookingsAdapter(MyServiceBookingResponseModel responseModel,DeleteEventListener deleteEventListener,SelectAdapterListener selectAdapterListener,boolean isEnglish) {
-        this.response = responseModel;
+    public UpcomingMyBookingsAdapter(List<ServiceBooking> serviceBookings, DeleteEventListener deleteEventListener, boolean isEnglish) {
+        this.mServiceBookings = serviceBookings;
         this.mDeleteEventListener = deleteEventListener;
-        this.mSelectAdapterListener = selectAdapterListener;
+        //this.mSelectAdapterListener = selectAdapterListener;
         this.mIsEnglish = isEnglish;
     }
 
@@ -68,10 +69,8 @@ public class UpcomingMyBookingsAdapter extends RecyclerView.Adapter<UpcomingMyBo
         String times = "";
 
 
-        if ( !CommonUtils.getInstance().getDate2(CalendarDay.today().getCalendar())
-                .equals(response.getServiceBooking().get(position).getServiceBookingDate()) ){
-            mCount = mCount +1;
-            mSelectAdapterListener.onBookingSelected(mCount);
+       /* if ( !CommonUtils.getInstance().getDate2(CalendarDay.today().getCalendar())
+                .equals(response.getServiceBooking().get(position).getServiceBookingDate()) ){*/
             if (mIsEnglish){
                 holder.time.setGravity(Gravity.END);
             }else {
@@ -79,18 +78,18 @@ public class UpcomingMyBookingsAdapter extends RecyclerView.Adapter<UpcomingMyBo
             }
 
             holder.itemView.setVisibility(View.VISIBLE);
-            holder.serviceName.setText(response.getServiceBooking().get(position).getService());
+            holder.serviceName.setText(mServiceBookings.get(position).getService());
             holder.time.setText("");
             holder.relativeLayout.setVisibility(View.VISIBLE);
-            holder.date.setText(response.getServiceBooking().get(position).getServiceBookingDate());
+            holder.date.setText(mServiceBookings.get(position).getServiceBookingDate());
 
-            if (response.getServiceBooking().get(position).getTimeSlots().size() != 0){
-                for (int i = 0 ; i< response.getServiceBooking().get(position).getTimeSlots().size();i++){
+            if (mServiceBookings.get(position).getTimeSlots().size() != 0){
+                for (int i = 0 ; i< mServiceBookings.get(position).getTimeSlots().size();i++){
                     if (i == 0){
                         //Todo change
-                        times = times+response.getServiceBooking().get(position).getTimeSlots().get(i).getSlots();
+                        times = times+mServiceBookings.get(position).getTimeSlots().get(i).getSlots();
                     }else{
-                        times = times+"\n"+response.getServiceBooking().get(position).getTimeSlots().get(i).getSlots();
+                        times = times+"\n"+mServiceBookings.get(position).getTimeSlots().get(i).getSlots();
                     }
 
                 }
@@ -98,15 +97,15 @@ public class UpcomingMyBookingsAdapter extends RecyclerView.Adapter<UpcomingMyBo
 
 
             }
-        }else {
+        /*}else {
             holder.relativeLayout.setVisibility(View.GONE);
-        }
+        }*/
 
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 List<Integer> selectedBookings = new ArrayList<>();
-                selectedBookings.add(response.getServiceBooking().get(holder.getAdapterPosition()).getId());
+                selectedBookings.add(mServiceBookings.get(holder.getAdapterPosition()).getId());
                 mDeleteEventListener.onDeleteItemSelected(selectedBookings);
             }
         });
@@ -116,15 +115,11 @@ public class UpcomingMyBookingsAdapter extends RecyclerView.Adapter<UpcomingMyBo
 
     @Override
     public int getItemCount() {
-        return response.getServiceBooking().size();
+        return mServiceBookings.size();
     }
 
     public interface DeleteEventListener {
 
         void onDeleteItemSelected(List<Integer> selectedItems);
-    }
-    public interface SelectAdapterListener {
-
-        void onBookingSelected(int count);
     }
 }
