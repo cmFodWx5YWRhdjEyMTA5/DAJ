@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
@@ -24,6 +25,7 @@ import retrofit2.Response;
 public class EmergencyContactActivity extends BaseActivity {
 
     private AppPreferanceStore appPreferanceStore;
+    private TextView noData;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,7 @@ public class EmergencyContactActivity extends BaseActivity {
         navigationView.setItemIconTintList(null);
 
         appPreferanceStore = new AppPreferanceStore(this);
+        noData = findViewById(R.id.nodata);
         fetchContactList();
     }
 
@@ -78,6 +81,11 @@ public class EmergencyContactActivity extends BaseActivity {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
+        if (mAdapter.getItemCount() == 0){
+            noData.setVisibility(View.VISIBLE);
+        }else {
+            noData.setVisibility(View.GONE);
+        }
     }
 
     @Override

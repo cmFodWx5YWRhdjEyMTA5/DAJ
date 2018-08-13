@@ -31,7 +31,7 @@ import retrofit2.Response;
 public class NotificationActivity extends BaseActivity {
 
     private AppPreferanceStore appPreferanceStore;
-    private RelativeLayout noData;
+    private TextView noData;
 
 
     @Override
@@ -39,7 +39,7 @@ public class NotificationActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification_list);
 
-        noData = findViewById(R.id.noData);
+        noData = findViewById(R.id.nodata);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

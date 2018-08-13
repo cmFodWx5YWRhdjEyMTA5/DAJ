@@ -143,7 +143,6 @@ public class ComplaintListFragment extends BaseFragment {
             @Override
             public void onResponse(@NonNull Call<ComplaintListResponseModel> call, @NonNull Response<ComplaintListResponseModel> response) {
                 endLoading();
-               // showMessage("ComplaintList Successfully");
                 ComplaintListResponseModel responseBody = response.body();
                 if (responseBody != null && responseBody.getComplaints() != null)
                     setData(responseBody.getComplaints());
@@ -152,7 +151,6 @@ public class ComplaintListFragment extends BaseFragment {
             @Override
             public void onFailure(@NonNull Call<ComplaintListResponseModel> call, @NonNull Throwable t) {
                 endLoading();
-                //showMessage("ComplaintList Failed");
             }
         });
     }

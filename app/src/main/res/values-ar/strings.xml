@@ -182,5 +182,6 @@
     <string name="end_date">تاريخ الانتهاء</string>
     <string name="no_complaints_found">لا توجد شكاوى</string>
     <string name="no_booking_found">لم يتم العثور على الحجز</string>
+    <string name="no_notification_found">لم يتم العثور على إشعار</string>
 
 </resources>
