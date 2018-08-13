@@ -173,6 +173,11 @@
             android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity
+            android:name=".features.complaint.ComplaintImageSliderActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
             android:name=".features.notification.NotificationActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">

@@ -1,6 +1,7 @@
 package com.tinnovat.app.daj.features.complaint;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.location.Address;
@@ -21,12 +22,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ceylonlabs.imageviewpopup.ImagePopup;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 import com.tinnovat.app.daj.BaseFragment;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.model.ComplaintList;
+import com.tinnovat.app.daj.features.futurePhase.ImageSliderActivity;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -181,8 +185,7 @@ public class ComplaintDetailFragment extends BaseFragment {
             image1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    imagePopup.initiatePopup(image1.getDrawable());
-                    imagePopup.viewPopup();
+                    ImagePopup(0);
 
                 }
             });
@@ -190,8 +193,7 @@ public class ComplaintDetailFragment extends BaseFragment {
             image2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    imagePopup.initiatePopup(image2.getDrawable());
-                    imagePopup.viewPopup();
+                    ImagePopup(1);
 
                 }
             });
@@ -199,8 +201,7 @@ public class ComplaintDetailFragment extends BaseFragment {
             image3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    imagePopup.initiatePopup(image3.getDrawable());
-                    imagePopup.viewPopup();
+                    ImagePopup(2);
 
                 }
             });
@@ -208,8 +209,7 @@ public class ComplaintDetailFragment extends BaseFragment {
             image4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    imagePopup.initiatePopup(image4.getDrawable());
-                    imagePopup.viewPopup();
+                    ImagePopup(3);
 
                 }
             });
@@ -225,6 +225,20 @@ public class ComplaintDetailFragment extends BaseFragment {
 
 
         setStatus(mComplaintList);
+    }
+
+    private void ImagePopup(int position){
+
+        String[] images = new String[mComplaintList.getImages().size()];
+        for (int i=0 ;i<mComplaintList.getImages().size();i++){
+            images[i] = mComplaintList.getImages().get(i).getPath();
+        }
+
+
+                Intent intent = new Intent(getContext(), ComplaintImageSliderActivity.class);
+                intent.putExtra("currentPosition",position);
+                intent.putExtra("images", images);
+                getActivity().startActivity(intent);
     }
 
     @Override
