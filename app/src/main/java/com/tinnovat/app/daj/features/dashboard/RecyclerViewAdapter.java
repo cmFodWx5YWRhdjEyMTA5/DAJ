@@ -2,7 +2,9 @@ package com.tinnovat.app.daj.features.dashboard;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.widget.RecyclerView;
+import android.text.Layout;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,6 +48,10 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            holder.event.setJustificationMode(Layout.JUSTIFICATION_MODE_NONE);
+        }
 
         if (mLanguage) {
             holder.event.setGravity(Gravity.END);
