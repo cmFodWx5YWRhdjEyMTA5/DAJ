@@ -57,8 +57,7 @@ public class OrderTaxiActivity extends BaseActivity {
         call.enqueue(new Callback<FoodResponseModel>() {
             @Override
             public void onResponse(Call<FoodResponseModel> call, Response<FoodResponseModel> response) {
-                endLoading();
-                //showMessage("TaxiApps Successfully");
+
                 setData(response);
             }
 
@@ -66,7 +65,6 @@ public class OrderTaxiActivity extends BaseActivity {
             public void onFailure(Call<FoodResponseModel> call, Throwable t) {
 
                 endLoading();
-                //showMessage("TaxiApps Failed");
             }
         });
     }
@@ -74,6 +72,7 @@ public class OrderTaxiActivity extends BaseActivity {
     private void setData(Response<FoodResponseModel> response){
         GridView gridview =  findViewById(R.id.gridview);
         gridview.setAdapter(new OrderAdapter(this,response));
+        endLoading();
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.tinnovat.app.daj.features.services;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -111,12 +112,14 @@ public class ServicesMainCategoryFragment extends BaseFragment {
         call.enqueue(new Callback<ServicesResponseModel>() {
             @Override
             public void onResponse(@NonNull Call<ServicesResponseModel> call, @NonNull Response<ServicesResponseModel> response) {
-                endLoading();
+                //endLoading();
                 //showMessage("Data Fetched Successfully");
 
                 ServicesResponseModel responseBody = response.body();
                 if (responseBody != null && responseBody.getServiceCategory() != null) {
                     setData(responseBody.getServiceCategory());
+                }else {
+                    endLoading();
                 }
             }
 
@@ -156,6 +159,16 @@ public class ServicesMainCategoryFragment extends BaseFragment {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(new ServicesAdapter(data, getActivity(), mListener, getLanguage()));
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                endLoading();
+            }
+        }, 2000);
+
     }
 
     public interface OnCategoryListFragmentInteractionListener {

@@ -144,6 +144,18 @@ public class ServiceBookingFragment extends BaseFragment implements ChooseDateAd
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         mAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(mAdapter);
+
+        if (mAdapter.getItemCount() == 0){
+            showDilog(getActivity().getResources().getString(R.string.slots_filled),false);
+
+            buttonBook.setEnabled(false);
+            buttonBook.setText(getActivity().getResources().getString(R.string.fully_booked));
+            buttonBook.setBackgroundColor(getActivity().getResources().getColor(R.color.gray));
+        }else {
+            buttonBook.setEnabled(true);
+            buttonBook.setText(getActivity().getResources().getString(R.string.book));
+            buttonBook.setBackgroundColor(getActivity().getResources().getColor(R.color.greenText));
+        }
     }
 
     private void setData() {
@@ -237,22 +249,15 @@ public class ServiceBookingFragment extends BaseFragment implements ChooseDateAd
             @Override
             public void onResponse(@NonNull Call<ServiceSlots> call, Response<ServiceSlots> response) {
                 endLoading();
-                //showMessage("Data Fetched Successfully");
+                if (response.body() != null && response.body().getServiceAvailableDates() != null) {
 
-                setDateCategory(response.body().getServiceAvailableDates());
-                /*if (response.body() != null && response.body().getServiceCategory() != null) {
-
-
-                   // setData(response);
-                    showMessage("ServiceList success");
-                }*/
+                    setDateCategory(response.body().getServiceAvailableDates());
+                }
             }
 
             @Override
             public void onFailure(Call<ServiceSlots> call, Throwable t) {
                 endLoading();
-
-                //showMessage("ServiceAvailableSlots Failed");
             }
         });
     }
@@ -275,7 +280,7 @@ public class ServiceBookingFragment extends BaseFragment implements ChooseDateAd
         }
     }
 
-    private void showDilog(String message){
+    private void showDilog(String message, final Boolean error){
         AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
         builder1.setMessage(message);
         builder1.setCancelable(true);
@@ -284,8 +289,13 @@ public class ServiceBookingFragment extends BaseFragment implements ChooseDateAd
                 "OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                        getActivity().onBackPressed();
+                        if (error){
+                            dialog.cancel();
+                            getActivity().onBackPressed();
+                        }else {
+                            dialog.cancel();
+                        }
+
                     }
                 });
 
@@ -307,23 +317,19 @@ public class ServiceBookingFragment extends BaseFragment implements ChooseDateAd
                 endLoading();
                 if (response.body() != null) {
                     if (response.body().getSuccess()) {
-                        //showMessage(response.body().getMessage());
-                        showDilog(response.body().getMessage());
+                        showDilog(response.body().getMessage(),true);
                         mAdapter.notifyDataSetChanged();
                     } else {
-                        showDilog(response.body().getMessage());
+                        showDilog(response.body().getMessage(),true);
                     }
-                    //getFragmentManager().popBackStack();
                 }else {
-                   // showMessage("1 "+getResources().getString(R.string.network_problem));
                 }
             }
 
             @Override
             public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
                 endLoading();
-                showDilog("Booking Failed! Please Retry After Some Time");
-               // showMessage("2 "+getResources().getString(R.string.network_problem));
+                showDilog("Booking Failed! Please Retry After Some Time",true);
             }
         });
     }

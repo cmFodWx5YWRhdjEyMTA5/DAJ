@@ -57,7 +57,7 @@ public class OrderFoodActivity extends BaseActivity {
         call.enqueue(new Callback<FoodResponseModel>() {
             @Override
             public void onResponse(Call<FoodResponseModel> call, Response<FoodResponseModel> response) {
-                endLoading();
+
                 //showMessage("FoodApps Successfully");
                 setData(response);
             }
@@ -74,6 +74,7 @@ public class OrderFoodActivity extends BaseActivity {
     private void setData(Response<FoodResponseModel> response){
         GridView gridview =  findViewById(R.id.gridview);
         gridview.setAdapter(new OrderAdapter(this,response));
+        endLoading();
     }
 
     @Override

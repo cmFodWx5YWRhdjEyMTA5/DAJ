@@ -2,6 +2,7 @@ package com.tinnovat.app.daj.features.futurePhase;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -110,11 +111,12 @@ public class FuturePhaseInfoFragment extends BaseFragment {
         call.enqueue(new Callback<FuturePhasesResponseModel>() {
             @Override
             public void onResponse(@NonNull Call<FuturePhasesResponseModel> call, @NonNull Response<FuturePhasesResponseModel> response) {
-                endLoading();
+
                 FuturePhasesResponseModel responseData = response.body();
                 if (responseData != null && responseData.getFuturephases() != null) {
-                    //showMessage("Future PhasesInfo Successfully");
                     setData(responseData.getFuturephases());
+                }else {
+                    endLoading();
                 }
 
             }
@@ -122,8 +124,6 @@ public class FuturePhaseInfoFragment extends BaseFragment {
             @Override
             public void onFailure(@NonNull Call<FuturePhasesResponseModel> call, @NonNull Throwable t) {
                 endLoading();
-
-                //showMessage("FuturePhasesInfo Failed");
             }
         });
     }
@@ -155,6 +155,16 @@ public class FuturePhaseInfoFragment extends BaseFragment {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(new FuturePhaseRecyclerViewAdapter(data, getActivity(), mListener));
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                endLoading();
+            }
+        }, 2000);
+
     }
 
     public interface OnListFragmentInteractionListener {

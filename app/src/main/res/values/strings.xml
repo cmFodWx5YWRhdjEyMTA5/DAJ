@@ -196,4 +196,5 @@
     <string name="no_complaints_found">No Complaints Found</string>
     <string name="no_booking_found">No Booking Found</string>
     <string name="no_notification_found">No Notification Found</string>
+    <string name="slots_filled">All The Slots Are Filled</string>
 </resources>
