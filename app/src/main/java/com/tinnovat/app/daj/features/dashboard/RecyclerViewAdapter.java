@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
@@ -244,17 +245,6 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
 
             }
         }
-
-
-
-      /*  holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(context, EventNewsActivity.class);
-                i.putExtra("response",new Gson().toJson(mResponse.body().getCategory().get(holder.getAdapterPosition()).getEvents()));
-                context.startActivity(i);
-            }
-        });*/
     }
 
     @Override

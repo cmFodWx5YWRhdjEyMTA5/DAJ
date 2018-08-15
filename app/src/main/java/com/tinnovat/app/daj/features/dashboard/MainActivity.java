@@ -1,5 +1,6 @@
 package com.tinnovat.app.daj.features.dashboard;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
@@ -10,10 +11,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -223,30 +228,61 @@ public class MainActivity extends BaseActivity {
         return super.onPrepareOptionsMenu(menu);
     }
 
+    private static int getScreenResolution(Context context)
+    {
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        DisplayMetrics metrics = new DisplayMetrics();
+        display.getMetrics(metrics);
+        int width = metrics.widthPixels;
+        int height = metrics.heightPixels;
+
+        return height ;
+    }
+
     private void setViews(List<String> eventName) {
+        int height = getScreenResolution(this);
+
+        Log.e("hhhhhhh",""+height);
         recyclerView = findViewById(R.id.recycler_view);
         // recyclerView.setAdapter(new RecyclerViewAdapter(getApplicationContext(), list));
         mAdapter = new RecyclerViewAdapter(getApplicationContext(), eventName, getLanguage());
         recyclerView.addItemDecoration(new RecyclerItemDecoration());
         /*RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);*/
-        recyclerView.setLayoutManager(new CircularLayoutManager(getApplicationContext(), 280, -130));
+        recyclerView.setLayoutManager(new CircularLayoutManager(getApplicationContext(), 250, -80));//280
 
         //  recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         mAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(mAdapter);
 
+
+
         recyclerView.addOnItemTouchListener(new OnRecyclerItemClickListener(getApplicationContext(),
                 new OnRecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void OnItemClick(RecyclerView parent, int childIndex) {
-                        if (childIndex == 3) {
-                            performClick(((TextView) parent.getChildAt(childIndex).findViewById(R.id.item)).getText().toString());
+
+                        if (parent.getChildAt(childIndex).getX() > parent.getChildAt(childIndex-1).getX()){
+                            if (parent.getChildAt(childIndex).getX() > parent.getChildAt(childIndex+1).getX()){
+                                performClick(((TextView) parent.getChildAt(childIndex).findViewById(R.id.item)).getText().toString());
+                            }else {
+                                showMessage("222");
+                            }
+                        }else {
+                            showMessage("111");
                         }
+
+                        /*if (childIndex == 3) {
+                            performClick(((TextView) parent.getChildAt(childIndex).findViewById(R.id.item)).getText().toString());
+
+                            //parent.removeItemDecorationAt(0);
+                        }*/
                     }
                 }));
     }
+
 
     private void performClick(String option) {
         switch (option) {
