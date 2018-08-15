@@ -276,8 +276,9 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
                 locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
               /*  locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 5, this);*/
 
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 0, this);
-                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 0, this);
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, this);
+                locationManager.requestLocationUpdates(LocationManager.PASSIVE_PROVIDER, 1000, 0, this);
+                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0, this);
                /* mFusedLocationClient.getLastLocation()
                         .addOnSuccessListener((Executor) this, new OnSuccessListener<Location>() {
                             @Override
@@ -413,7 +414,7 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
                 break;
 
             case R.id.location:
-                getLocation();
+                checkIsLocationEnabled();
                 break;
 
             default:
@@ -423,26 +424,31 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
     }
 
     private void doValidation() {
-        if (mCatId == 0) {
-            showMessage(getResources().getString(R.string.choose_category));
-        } else {
-            startLoading();
-            List<String> imageArray = new ArrayList<>();
-            if (images != null && !images.isEmpty()) {
+        if (lattitude == 0 && longitude == 0){
+            checkIsLocationEnabled();
+        }else {
 
-                for (Bitmap bitmap : images) {
-                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 30, baos);
-                    imageArray.add("data:image/jpeg;base64," + Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT));
+            List<String> imageArray = new ArrayList<>();
+            if (mCatId == 0) {
+                showMessage(getResources().getString(R.string.choose_category));
+            } else {
+                startLoading();
+
+                if (images != null && !images.isEmpty()) {
+
+                    for (Bitmap bitmap : images) {
+                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 30, baos);
+                        imageArray.add("data:image/jpeg;base64," + Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT));
+                    }
+
+                    registerComplaint(imageArray);
+                } else {
+                    registerComplaint(imageArray);
                 }
 
-                registerComplaint(imageArray);
-            } else {
-                endLoading();
-                showMessage(getResources().getString(R.string.please_upload_image));
+
             }
-
-
         }
     }
 
@@ -567,7 +573,6 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
 
     @Override
     public void onLocationChanged(Location location) {
-        // textAddress.setText("Latitude: " + location.getLatitude() + "\n Longitude: " + location.getLongitude());
         lattitude = location.getLatitude();
         longitude = location.getLongitude();
 

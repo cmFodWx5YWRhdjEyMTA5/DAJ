@@ -114,7 +114,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/curve_small_bg_gray"
                 android:padding="10dp"
-                android:text="@string/sample_address"
+                android:hint="@string/location"
                 android:textColor="@color/black" />
 
             <android.support.v7.widget.RecyclerView
