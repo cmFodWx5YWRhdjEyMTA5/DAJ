@@ -1,9 +1,12 @@
 package com.tinnovat.app.daj.features.bookings;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
@@ -32,6 +35,7 @@ import com.tinnovat.app.daj.data.network.model.MyServiceBookingResponseModel;
 import com.tinnovat.app.daj.data.network.model.RequestParams;
 import com.tinnovat.app.daj.data.network.model.ServiceBooking;
 import com.tinnovat.app.daj.data.network.model.SuccessResponseModel;
+import com.tinnovat.app.daj.features.services.ServicesMainActivity;
 import com.tinnovat.app.daj.utils.CommonUtils;
 
 import java.util.ArrayList;
@@ -60,6 +64,7 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
     RelativeLayout listToday;
     private int mCount;
     private int mCount2 = 0;
+    MaterialCalendarView cal;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +83,11 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
         navigationView.getMenu().getItem(7).setChecked(true);
         navigationView.setItemIconTintList(null);
 
+        FloatingActionButton addService = findViewById(R.id.add);
+        addService.setColorFilter(Color.WHITE);
+
+
+
         relativeLayout= findViewById(R.id.relativeLayout);
         upComingBanner= findViewById(R.id.upComingBanner);
         ImageView delete = findViewById(R.id.delete);
@@ -91,8 +101,7 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
         SetCalenderView();
 
         delete.setOnClickListener(this);
-
-        //showMessageSnakBar();
+        addService.setOnClickListener(this);
     }
 
     @Override
@@ -118,15 +127,25 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
                 if(mSelectedBookings.size() !=0){
                     invokeDeleteBooking(mSelectedBookings);
                 }
+                break;
 
-
+            case R.id.add:
+                String selectedDay = CommonUtils.getInstance().getDate(cal.getSelectedDate().getCalendar());
+                fetchServices(selectedDay);
                 break;
         }
 
     }
+    public void fetchServices(String selectedDay) {
+        //Bundle bundle = new Bundle();
+
+        Intent i = new Intent(getApplicationContext(), ServicesMainActivity.class);
+        i.putExtra("selectedDay", selectedDay);
+        startActivity(i);
+    }
 
     private void SetCalenderView(){
-        MaterialCalendarView cal = findViewById(R.id.calendarView);
+        cal = findViewById(R.id.calendarView);
 
         cal.state().edit()
                 .setMinimumDate(CalendarDay.from(CalendarDay.today().getYear(), CalendarDay.today().getMonth(), CalendarDay.today().getDay()))
@@ -350,7 +369,8 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
 
     @Override
     public void onBookingSelected(List<Integer> selectedBookings) {
-        mSelectedBookings = selectedBookings;
+        //mSelectedBookings = selectedBookings;
+        invokeDeleteBooking(selectedBookings);
 
 
     }

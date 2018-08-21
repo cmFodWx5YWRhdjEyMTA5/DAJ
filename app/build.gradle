@@ -67,5 +67,7 @@ dependencies {
     implementation 'com.github.chathuralakmal:AndroidImagePopup:1.2.1'
     //snackbar
     implementation 'com.github.aritraroy:Flashbar:1.0.2'
+    //for Justify text
+    implementation 'me.biubiubiu.justifytext:library:1.1'
 
 }

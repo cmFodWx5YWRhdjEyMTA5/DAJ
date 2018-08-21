@@ -14,6 +14,8 @@ import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.model.ComplaintList;
 import com.tinnovat.app.daj.testing.TestActivity;
 
+import me.biubiubiu.justifytext.library.JustifyTextView;
+
 public class StatusListAdapter extends RecyclerView.Adapter<StatusListAdapter.MyViewHolder> {
 
     private final ComplaintDetailFragment.OnFragmentInteractionListener mListener;
@@ -31,7 +33,7 @@ public class StatusListAdapter extends RecyclerView.Adapter<StatusListAdapter.My
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView headingSubmitted;
-        public TextView logNote;
+        public JustifyTextView logNote;
         public TextView submittedDate;
         public View lineGreen;
 
@@ -69,20 +71,23 @@ public class StatusListAdapter extends RecyclerView.Adapter<StatusListAdapter.My
                 break;
 
             case 1:
+                holder.headingSubmitted.setText(R.string.assigned);
+                holder.lineGreen.setBackgroundColor(mContext.getResources().getColor(R.color.blue));
+                break;
+
+                case 2:
                 holder.headingSubmitted.setText(R.string.in_progress);
                 holder.lineGreen.setBackgroundColor(mContext.getResources().getColor(R.color.orange));
                 break;
 
-            case 2:
+            case 3:
                 holder.headingSubmitted.setText(R.string.completed);
                 holder.lineGreen.setBackgroundColor(mContext.getResources().getColor(R.color.greenText));
                 break;
         }
         if (responseData.getLogDetails().get(position).getComplaintsLogNote() != null)
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                holder.logNote.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
-            }
-        holder.logNote.setText(responseData.getLogDetails().get(position).getComplaintsLogNote().toString());
+
+        holder.logNote.setText(String.format(mContext.getResources().getString(R.string.description_formatter),responseData.getLogDetails().get(position).getComplaintsLogNote().toString()));
         holder.submittedDate.setText(responseData.getLogDetails().get(position).getSubmittedDate());
 
     }

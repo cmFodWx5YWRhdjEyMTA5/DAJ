@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -31,7 +32,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
@@ -117,7 +118,7 @@
             <RelativeLayout
                 android:id="@+id/listToday"
                 style="@style/boxStyleNew"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <LinearLayout
                     android:id="@+id/bannerText"
@@ -129,20 +130,21 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="125dp"
+                        android:layout_width="160dp"
                         android:layout_height="wrap_content">
 
                         <ImageView
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_marginStart="5dp"
-                            app:srcCompat="@drawable/time" />
+                            app:srcCompat="@drawable/time"
+                            android:visibility="visible"/>
 
                         <TextView
-                            android:layout_width="100dp"
+                            android:layout_width="140dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:text="@string/time"
+                            android:layout_marginStart="5dp"
+                            android:text="@string/today_events"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -161,7 +163,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
-                            android:text="@string/today_events"
+                            android:text="@string/time"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
@@ -170,6 +172,7 @@
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_alignParentEnd="true"
+                            android:visibility="gone"
                             app:srcCompat="@drawable/delete" />
                     </RelativeLayout>
                 </LinearLayout>
@@ -219,6 +222,20 @@
                     />
             </RelativeLayout>
         </LinearLayout>
+
     </RelativeLayout>
 </ScrollView>
-</android.support.design.widget.CoordinatorLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="26dp"
+            android:layout_marginEnd="26dp"
+            app:srcCompat="@drawable/add_white_24dp"
+            app:layout_behavior="nl.basvanmanen.fabexample.ui.ScrollAwareFABBehavior" />
+
+</RelativeLayout>

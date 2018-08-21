@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -31,6 +32,7 @@ public class MyBookingsAdapter extends RecyclerView.Adapter<MyBookingsAdapter.My
         public TextView serviceName;
         public LinearLayout linearLayout;
         public CheckBox checkBox;
+        public ImageView delete;
 
 
         public MyViewHolder(View view) {
@@ -39,6 +41,7 @@ public class MyBookingsAdapter extends RecyclerView.Adapter<MyBookingsAdapter.My
             serviceName = view.findViewById(R.id.serviceName);
             linearLayout = view.findViewById(R.id.linearLayout);
             checkBox = view.findViewById(R.id.checkBox);
+            delete = view.findViewById(R.id.delete);
         }
     }
 
@@ -84,7 +87,7 @@ public class MyBookingsAdapter extends RecyclerView.Adapter<MyBookingsAdapter.My
             }
 
 
-        holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        /*holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
@@ -93,6 +96,14 @@ public class MyBookingsAdapter extends RecyclerView.Adapter<MyBookingsAdapter.My
                 }else if (selectedBookings.contains(mServiceBookings.get(holder.getAdapterPosition()).getId())) {
                     selectedBookings.remove(mServiceBookings.get(holder.getAdapterPosition()).getId());
                 }
+            }
+        });*/
+
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectedBookings.add(mServiceBookings.get(holder.getAdapterPosition()).getId());
+                mListener.onBookingSelected(selectedBookings);
             }
         });
 

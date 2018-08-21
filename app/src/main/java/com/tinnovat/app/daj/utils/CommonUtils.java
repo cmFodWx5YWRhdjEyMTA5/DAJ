@@ -86,4 +86,19 @@ public class CommonUtils {
 
         return calendar;
     }
+
+    public Calendar convertToCalender(String inputDate) {
+        SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+        Date dt1 = null;
+        try {
+            dt1 = format1.parse(inputDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(dt1.getTime());
+
+        return calendar;
+    }
 }

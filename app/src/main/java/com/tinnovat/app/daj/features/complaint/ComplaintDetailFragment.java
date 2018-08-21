@@ -34,6 +34,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import me.biubiubiu.justifytext.library.JustifyTextView;
+
 
 public class ComplaintDetailFragment extends BaseFragment {
 
@@ -75,7 +77,7 @@ public class ComplaintDetailFragment extends BaseFragment {
         TextView complaintTitle = view.findViewById(R.id.complaintTitle);
         TextView complaintDate = view.findViewById(R.id.complaintDate);
         TextView status = view.findViewById(R.id.status);
-        TextView description = view.findViewById(R.id.description);
+        JustifyTextView description = view.findViewById(R.id.description);
 
         imagePopup = new ImagePopup(getActivity());
         imagePopup.setBackgroundColor(Color.BLACK);
@@ -84,22 +86,27 @@ public class ComplaintDetailFragment extends BaseFragment {
 
         complaintTitle.setText(mComplaintList.getCategoryName());
         complaintDate.setText(mComplaintList.getSubmittedDate());
-        description.setText(mComplaintList.getDescription());
+        description.setText(String.format(getResources().getString(R.string.description_formatter),mComplaintList.getDescription()));
 
         switch (mComplaintList.getComplaintStatus()) {
             case 0:
                 status.setText(R.string.submitted);
-                status.setBackgroundResource(R.drawable.curve_small_bg_green);
+                status.setBackgroundResource(R.drawable.curve_small_bg_red);
                 break;
 
             case 1:
+                status.setText(R.string.assigned);
+                status.setBackgroundResource(R.drawable.curve_small_bg_blue);
+                break;
+
+                case 2:
                 status.setText(R.string.in_progress);
                 status.setBackgroundResource(R.drawable.curve_small_bg_orange);
                 break;
 
-            case 2:
+            case 3:
                 status.setText(R.string.completed);
-                status.setBackgroundResource(R.drawable.curve_small_bg_red);
+                status.setBackgroundResource(R.drawable.curve_small_bg_green);
                 break;
         }
 

@@ -30,6 +30,7 @@ import com.tinnovat.app.daj.features.futurePhase.ImageListAdapter;
 import java.util.List;
 import java.util.Objects;
 
+import me.biubiubiu.justifytext.library.JustifyTextView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -38,7 +39,7 @@ public class EventDetailActivity extends BaseActivity {
     private EventDetails mEventDetailsList;
     private int mId = 0;
     private Button interested;
-    private TextView description;
+    private JustifyTextView description;
     private TextView readMore;
     private TextView readLess;
     private TextView bannerMore;
@@ -122,10 +123,8 @@ public class EventDetailActivity extends BaseActivity {
 
         venue.setText(mEventDetailsList.getEventsVenue());
         tittle.setText(mEventDetailsList.getEventsName());
-        description.setText(mEventDetailsList.getEventsDescription());
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            description.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
-        }
+        description.setText(String.format(getResources().getString(R.string.description_formatter),mEventDetailsList.getEventsDescription()));
+
 
         description.post(new Runnable() {
             @Override

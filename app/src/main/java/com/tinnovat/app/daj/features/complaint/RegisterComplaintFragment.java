@@ -324,7 +324,6 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
             @Override
             public void onResponse(Call<ComplaintCategoriesResponseModel> call, Response<ComplaintCategoriesResponseModel> response) {
                 endLoading();
-               // showMessage("Category list Successfully");
                 setData(response);
             }
 
@@ -332,7 +331,6 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
             public void onFailure(Call<ComplaintCategoriesResponseModel> call, Throwable t) {
 
                 endLoading();
-                //showMessage("Category list Failed");
             }
         });
     }
@@ -468,16 +466,12 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
                 endLoading();
                 if (response.body() != null) {
                     if (response.body().isStatus()) {
-                       // showMessage(response.body().getMessage());
                         showDilog(response.body().getMessage());
                     } else {
-                        //showMessage(response.body().getMessage());
                         showDilog(response.body().getMessage());
                     }
-                    //getActivity().onBackPressed();
                 } else {
                     getActivity().onBackPressed();
-                    //showMessage(getResources().getString(R.string.network_problem));
                 }
 
             }
@@ -486,7 +480,6 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
             public void onFailure(Call<CompllaintUpdateResponseModel> call, Throwable t) {
                 endLoading();
                 showDilog("Registration Failed! Please Retry After Some Time");
-                //showMessage("Complaint Registration failed");
             }
         });
     }

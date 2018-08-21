@@ -22,7 +22,7 @@
             android:layout_marginTop="5dp"
             android:layout_toEndOf="@+id/lineGreen"
             android:text="@string/submitted"/>
-        <TextView
+        <me.biubiubiu.justifytext.library.JustifyTextView
             android:id="@+id/logNote"
             style="@style/subHeading1"
             android:layout_below="@+id/headingSubmitted"

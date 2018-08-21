@@ -17,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -148,14 +149,19 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
             row = (TableRow) LayoutInflater.from(this).inflate(R.layout.content_form_guest_registration, null);
         cal = row.findViewById(R.id.calendarView);
         monthTitle = row.findViewById(R.id.monthTitle);
-        //purpose = row.findViewById(R.id.purpose);
         EditText inputName = row.findViewById(R.id.input_name);
         EditText vehicleNumber = row.findViewById(R.id.vehicle_no);
         Spinner spinner = row.findViewById(R.id.spinner_purpose);
 
+        ImageView delete = row.findViewById(R.id.delete);
+        if (rowPosition == 0){
+            delete.setVisibility(View.INVISIBLE);
+        }else {
+            delete.setVisibility(View.VISIBLE);
+        }
+
         calendarViewList.add(cal);
         tvListMonthTitle.add(monthTitle);
-        //tvListPurpose.add(purpose);
         purposeSpinnerList.add(spinner);
         tvInputNameList.add(inputName);
         tvVehicleNumberList.add(vehicleNumber);
@@ -259,30 +265,11 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
         // validate the form
         if (form.isValid()) {
 
-            doRegistration(name, dates, time, purpose, vehicleNo);
-
-/*  //todo change
-            for (int i = 0; i < table.getChildCount(); i++) {
-
-                // the form is valid
-                EditText input_name = tvInputNameList.get(i);
-                EditText vehicle_no = tvVehicleNumberList.get(i);
-                String selectedDate = CommonUtils.getInstance().getDate(calendarViewList.get(i).getCurrentDate().getCalendar());
-
-                showMessage("valid");
-                if (selectedDate == null) {
-                    selectedDate = CommonUtils.getInstance().getDate(CalendarDay.today().getCalendar());
-                    doRegistration(input_name.getText().toString(), selectedDate, time, purposeId, vehicle_no.getText().toString());
-                } else {
-                    doRegistration(input_name.getText().toString(), selectedDate, time, purposeId, vehicle_no.getText().toString());
-                }
-
-
-            }*/
-
-
-        } else {
-            // the form is not valid
+            if (purpose.contains(0)){
+                showMessage(getResources().getString(R.string.choose_purpose));
+            }else {
+                doRegistration(name, dates, time, purpose, vehicleNo);
+            }
         }
     }
 
@@ -304,14 +291,11 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
                 if (response.body() != null) {
                     if (response.body().getStatus()) {
                         showDilog(response.body().getMessage());
-                       // showMessage(response.body().getMessage());
                     } else {
                         showDilog(response.body().getMessage());
-                        //showMessage(response.body().getMessage());
                     }
-                   // finish();
                 } else {
-                   // showMessage(getResources().getString(R.string.network_problem));
+                    showDilog("Booking Failed! Please Retry After Some Time");
                 }
             }
 
@@ -319,7 +303,6 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
             public void onFailure(Call<GuestRegistrationResponseModel> call, Throwable t) {
                 endLoading();
                 showDilog("Booking Failed! Please Retry After Some Time");
-               // showMessage(getResources().getString(R.string.network_problem));
             }
         });
 

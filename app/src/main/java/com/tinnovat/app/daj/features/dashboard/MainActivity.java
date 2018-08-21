@@ -40,27 +40,6 @@ public class MainActivity extends BaseActivity {
     ImageView facebook;
     ImageView twitter;
     ImageView instagram;
-    /*RelativeLayout events;
-    RelativeLayout services;
-    RelativeLayout guest_registration;
-    RelativeLayout view_camera;
-    RelativeLayout navigation;
-    RelativeLayout projects;
-
-    ImageView arcEventAr;
-    ImageView arcEventEn;
-    ImageView arcServicesAr;
-    ImageView arcServicesEn;
-
-    ImageView arcGuestAr;
-    ImageView arcGuestEn;
-    ImageView arcCameraAr;
-    ImageView arcCameraEn;
-
-    ImageView arcNavAr;
-    ImageView arcNavEn;
-    ImageView arcProjectAr;
-    ImageView arcProjectEn;*/
 
 
     private List<String> eventName;
@@ -104,17 +83,6 @@ public class MainActivity extends BaseActivity {
 
         this.setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
-        /*toolbar.inflateMenu(R.menu.main);
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                if (item.getItemId() == R.id.action_settings) {
-
-                    showMessage("hello");
-                }
-                return false;
-            }
-        });*/
 
 
         setSupportActionBar(toolbar);

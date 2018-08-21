@@ -1,6 +1,7 @@
 package com.tinnovat.app.daj.features.services;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -84,6 +85,8 @@ public class ServicesSelectedCategoryFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
+
+
 
         appPreferanceStore = new AppPreferanceStore(getContext());
         mListener.setTitle(mDataItem.getName());

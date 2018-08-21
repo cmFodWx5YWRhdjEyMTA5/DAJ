@@ -12,6 +12,7 @@ import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -26,11 +27,13 @@ import com.tinnovat.app.daj.BaseFragment;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.model.Futurephase;
 
+import me.biubiubiu.justifytext.library.JustifyTextView;
+
 
 public class FuturePhaseDetailFragment extends BaseFragment implements OnMapReadyCallback {
 
     private Futurephase futurePhaseItem;
-    private TextView descriptionText;
+    private JustifyTextView descriptionText;
     private TextView readMore;
     private TextView readLess;
 
@@ -68,13 +71,11 @@ public class FuturePhaseDetailFragment extends BaseFragment implements OnMapRead
         lng = Double.parseDouble(futurePhaseItem.getLocationlng());
 
 
+
         bannerText.setText(futurePhaseItem.getPhaseName());
         area.setText(futurePhaseItem.getArea());
-        descriptionText.setText(futurePhaseItem.getDesc());
+        descriptionText.setText(String.format(getString(R.string.description_formatter),futurePhaseItem.getDesc()));
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            descriptionText.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
-        }
 
         descriptionText.post(new Runnable() {
             @Override

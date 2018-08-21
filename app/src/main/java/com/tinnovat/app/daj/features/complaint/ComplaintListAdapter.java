@@ -79,11 +79,16 @@ public class ComplaintListAdapter extends RecyclerView.Adapter<ComplaintListAdap
                 break;
 
             case 1:
+                holder.status.setText(R.string.assigned);
+                holder.status.setBackgroundResource(R.drawable.curve_small_bg_blue);
+                break;
+
+                case 2:
                 holder.status.setText(R.string.in_progress);
                 holder.status.setBackgroundResource(R.drawable.curve_small_bg_orange);
                 break;
 
-            case 2:
+            case 3:
                 holder.status.setText(R.string.completed);
                 holder.status.setBackgroundResource(R.drawable.curve_small_bg_green);
                 break;

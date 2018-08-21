@@ -197,4 +197,5 @@
     <string name="no_booking_found">No Booking Found</string>
     <string name="no_notification_found">No Notification Found</string>
     <string name="slots_filled">All The Slots Are Filled</string>
+    <string name="description_formatter">%s \n</string>//
 </resources>

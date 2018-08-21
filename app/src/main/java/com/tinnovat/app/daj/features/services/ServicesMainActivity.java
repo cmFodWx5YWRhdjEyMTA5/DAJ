@@ -1,5 +1,6 @@
 package com.tinnovat.app.daj.features.services;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
@@ -7,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.model.Service;
@@ -18,6 +20,7 @@ import java.util.Objects;
 public class ServicesMainActivity extends BaseActivity implements ServicesMainCategoryFragment.OnCategoryListFragmentInteractionListener,
 ServicesSelectedCategoryFragment.OnListFragmentInteractionListener, ServiceBookingFragment.OnFragmentInteractionListener{
 
+    String mDay = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,10 +28,12 @@ ServicesSelectedCategoryFragment.OnListFragmentInteractionListener, ServiceBooki
         setContentView(R.layout.activity_frame_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        /*if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle(getText(R.string.dashboard));
-        }*/
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+       if (getIntent().getExtras() != null){
+           mDay = getIntent().getStringExtra("selectedDay");
+       }
+
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -68,7 +73,7 @@ ServicesSelectedCategoryFragment.OnListFragmentInteractionListener, ServiceBooki
     public void onServiceListFragmentInteraction(Service item, int categoryId) {
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.content_frame, ServiceBookingFragment.newInstance(item, categoryId));
+        transaction.replace(R.id.content_frame, ServiceBookingFragment.newInstance(item, categoryId,mDay));
         transaction.addToBackStack(null).commit();
 
      /*   Intent i = new Intent(mContext, ServiceBookingActivity.class);
@@ -79,6 +84,7 @@ ServicesSelectedCategoryFragment.OnListFragmentInteractionListener, ServiceBooki
 
     @Override
     public void onCategoryListFragmentInteraction(ServiceCategory item) {
+
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.content_frame, ServicesSelectedCategoryFragment.newInstance(1,item));

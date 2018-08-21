@@ -39,21 +39,29 @@
         <TextView
             style="@style/heading1"
             android:layout_marginBottom="10dp"
-            android:text="@string/description" />
+            android:text="@string/description" />\
+
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp">
 
-        <TextView
+            <me.biubiubiu.justifytext.library.JustifyTextView
+                android:id="@+id/descriptionText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="6"
+                android:textColor="@color/black"
+                />
+       <!-- <TextView
             android:id="@+id/descriptionText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:maxLines="6"
             android:ellipsize="end"
             android:text="@string/lorem_ipsum_large"
-            android:textColor="@color/black" />
+            android:textColor="@color/black" />-->
             <TextView
                 android:id="@+id/readMore"
                 android:layout_width="wrap_content"

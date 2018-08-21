@@ -49,6 +49,7 @@ public class ServiceBookingFragment extends BaseFragment implements ChooseDateAd
     private double lat;
     private double lng;
     private Service mServiceItem;
+    private String mSelectedDay;
     private int mCategoryId;
 
     MaterialCalendarView cal;
@@ -70,10 +71,11 @@ public class ServiceBookingFragment extends BaseFragment implements ChooseDateAd
         // Required empty public constructor
     }
 
-    public static Fragment newInstance(Service item, int categoryId) {
+    public static Fragment newInstance(Service item, int categoryId,String day) {
         ServiceBookingFragment fragment = new ServiceBookingFragment();
         fragment.mServiceItem = item;
         fragment.mCategoryId = categoryId;
+        fragment.mSelectedDay = day;
         return fragment;
     }
 
@@ -96,10 +98,11 @@ public class ServiceBookingFragment extends BaseFragment implements ChooseDateAd
         commentBox = view.findViewById(R.id.commentBox);
 
 
-        setData();
+
 
         setCalender();
 
+        setData();
     }
 
     @Override
@@ -164,8 +167,13 @@ public class ServiceBookingFragment extends BaseFragment implements ChooseDateAd
         Picasso.get().load(mServiceItem.getServiceImages()).into(servicesImage);
 
        // setDateCategory(mServiceItem.getServiceAvailableDates());
+        if (mSelectedDay != null){
+            fetchServiceAvailableSlots(mSelectedDay);
+        }else {
+            fetchServiceAvailableSlots(CommonUtils.getInstance().getDate(CalendarDay.today().getCalendar()));
+        }
 
-        fetchServiceAvailableSlots(CommonUtils.getInstance().getDate(CalendarDay.today().getCalendar()));
+
     }
 
     private void setCalender() {
@@ -174,7 +182,15 @@ public class ServiceBookingFragment extends BaseFragment implements ChooseDateAd
                 .setMinimumDate(CalendarDay.from(CalendarDay.today().getYear(), CalendarDay.today().getMonth(), CalendarDay.today().getDay()))
                 .commit();
 
-        cal.setSelectedDate(CalendarDay.today());
+        if (mSelectedDay != null){
+            cal.setSelectedDate(CommonUtils.getInstance().convertToCalender(mSelectedDay));
+            cal.setCurrentDate(CommonUtils.getInstance().convertToCalender(mSelectedDay));
+
+            selectedDate = mSelectedDay;
+        }else {
+            cal.setSelectedDate(CalendarDay.today());
+        }
+
         cal.setSelected(true);
 
         if (getLanguage()) {
