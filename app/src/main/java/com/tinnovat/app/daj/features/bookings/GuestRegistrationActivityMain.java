@@ -144,14 +144,16 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
         alert11.show();
     }
 
-    private void createNewRow(int rowPosition) {
+    private void createNewRow(final int rowPosition) {
 
-            row = (TableRow) LayoutInflater.from(this).inflate(R.layout.content_form_guest_registration, null);
+        row = (TableRow) LayoutInflater.from(this).inflate(R.layout.content_form_guest_registration, null);
         cal = row.findViewById(R.id.calendarView);
         monthTitle = row.findViewById(R.id.monthTitle);
         EditText inputName = row.findViewById(R.id.input_name);
         EditText vehicleNumber = row.findViewById(R.id.vehicle_no);
         Spinner spinner = row.findViewById(R.id.spinner_purpose);
+
+//        inputName.setText(""+rowPosition);
 
         ImageView delete = row.findViewById(R.id.delete);
         if (rowPosition == 0){
@@ -170,14 +172,11 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
         setCalender(rowPosition);
 //        setTimeSlot(recyclerView);
 
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                /*if (i==0){
-                    showMessage("nothing");
-                }else {
-                    showMessage("selected");
-                }*/
+
             }
 
             @Override
@@ -188,11 +187,46 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
 
         table.addView(row);
 
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //table.removeView(row);
+                //table.removeView(row);
+
+                int pos = table.getChildCount()-1;
+
+                if (rowPosition > pos){
+                    calendarViewList.remove(pos);
+                    tvListMonthTitle.remove(pos);
+                    purposeSpinnerList.remove(pos);
+                    tvInputNameList.remove(pos);
+                    tvVehicleNumberList.remove(pos);
+                    deleteGuest(pos);
+                }else {
+                    calendarViewList.remove(rowPosition);
+                    tvListMonthTitle.remove(rowPosition);
+                    purposeSpinnerList.remove(rowPosition);
+                    tvInputNameList.remove(rowPosition);
+                    tvVehicleNumberList.remove(rowPosition);
+                    deleteGuest(rowPosition);
+                }
+            }
+        });
+
+//        table.addView(row);
+
     }
 
-    private void setCalender(final int position) {
+    public void deleteGuest(int rowPosition){
 
-        MaterialCalendarView cal = calendarViewList.get(position);
+        table.removeViewAt(rowPosition);
+
+    }
+
+    public void setCalender(final int position) {
+
+//        MaterialCalendarView cal = calendarViewList.get(position);
+        cal = calendarViewList.get(position);
         final TextView monthTitle = tvListMonthTitle.get(position);
 
         cal.state().edit()
@@ -200,7 +234,9 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
                 .commit();
 
         cal.setSelectedDate(CalendarDay.today());
+        cal.setCurrentDate(CalendarDay.today());
         cal.setSelected(true);
+
 
         if (getLanguage()) {
             cal.setRightArrowMask(ContextCompat.getDrawable(this, R.drawable.arrow_right));
@@ -258,19 +294,7 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
     }
 
     private void validation() {
-        Form form = new Form.Builder(this)
-                .showErrors(true)
-                .build();
-
-        // validate the form
-        if (form.isValid()) {
-
-            if (purpose.contains(0)){
-                showMessage(getResources().getString(R.string.choose_purpose));
-            }else {
-                doRegistration(name, dates, time, purpose, vehicleNo);
-            }
-        }
+        doRegistration(name, dates, time, purpose, vehicleNo);
     }
 
 
@@ -324,41 +348,65 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.submit:
+
+                name.clear();
+                dates.clear();
+                time.clear();
+                purpose.clear();
+                vehicleNo.clear();
+
+                Form form = new Form.Builder(this)
+                        .showErrors(true)
+                        .build();
                 //purposeSpinnerList
-                for (int i = 0; i < table.getChildCount(); i++) {
-                    EditText userName = table.getChildAt(i).findViewById(R.id.input_name);
+                if (form.isValid()) {
+                    for (int i = 0; i < table.getChildCount(); i++) {
+                        EditText userName = table.getChildAt(i).findViewById(R.id.input_name);
 
-                    TimePicker timePicker = table.getChildAt(i).findViewById(R.id.simpleTimePicker);
-                    Spinner spinner_purpose = table.getChildAt(i).findViewById(R.id.spinner_purpose);
-                    EditText vehicleno = table.getChildAt(i).findViewById(R.id.vehicle_no);
+                        TimePicker timePicker = table.getChildAt(i).findViewById(R.id.simpleTimePicker);
+                        Spinner spinner_purpose = table.getChildAt(i).findViewById(R.id.spinner_purpose);
+                        EditText vehicleno = table.getChildAt(i).findViewById(R.id.vehicle_no);
 
-                   name.add(userName.getText().toString());
-                    dates.add(CommonUtils.getInstance().getDate(calendarViewList.get(i).getSelectedDate().getCalendar()));
-                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                        name.add(userName.getText().toString());
+                        dates.add(CommonUtils.getInstance().getDate(calendarViewList.get(i).getSelectedDate().getCalendar()));
+                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
 
-                        String hr;
-                        String min;
-                        if (timePicker.getHour()<10){
-                            hr = "0"+Integer.toString(timePicker.getHour());
-                            //time.add(""+hr+":"+timePicker.getMinute());
-                        }else {
-                           hr = Integer.toString(timePicker.getHour());
+                            String hr;
+                            String min;
+                            if (timePicker.getHour() < 10) {
+                                hr = "0" + Integer.toString(timePicker.getHour());
+
+                            } else {
+                                hr = Integer.toString(timePicker.getHour());
+                            }
+
+                            if (timePicker.getMinute() < 10) {
+                                min = "0" + Integer.toString(timePicker.getMinute());
+                            } else {
+                                min = Integer.toString(timePicker.getMinute());
+                            }
+                            time.add(hr + ":" + min);
+                        } else {
+                            time.add("10:00");
                         }
 
-                        if (timePicker.getMinute()<10){
-                            min = "0"+Integer.toString(timePicker.getMinute());
+                        if (purposeSpinnerList.get(i).getSelectedItemPosition() != 0){
+                            purpose.add(purposeSpinnerList.get(i).getSelectedItemPosition());
                         }else {
-                            min = Integer.toString(timePicker.getMinute());
+                            showMessage(getResources().getString(R.string.choose_purpose));
                         }
-                        time.add(hr+":"+min);
-                    }else {
-                        time.add("10:00");
+
+
+                        vehicleNo.add(vehicleno.getText().toString());
+                    }
+                }
+                if (name.size() != 0 && dates.size() != 0&& time.size() != 0&& purpose.size() !=0){
+                    if (name.size() == dates.size() &&  dates.size()== purpose.size()){
+                        validation();
                     }
 
-                    purpose.add(purposeSpinnerList.get(i).getSelectedItemPosition());
-                    vehicleNo.add(vehicleno.getText().toString());
                 }
-                validation();
+
                 break;
 
             case R.id.add:

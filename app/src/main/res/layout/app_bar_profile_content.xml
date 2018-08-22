@@ -21,15 +21,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <!--<android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />-->
-
-
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -57,12 +48,6 @@
             style="@style/headingWhite"
             android:layout_centerHorizontal="true"/>
 
-       <!-- <TextView
-            android:id="@+id/userName"
-            android:layout_below="@+id/name"
-            style="@style/subHeadingWhite"
-            android:layout_centerHorizontal="true"/>-->
-
         <TextView
             android:id="@+id/villaNo"
             android:layout_below="@+id/name"
@@ -87,50 +72,22 @@
                 android:orientation="vertical"
                 android:padding="20dp">
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-
                     <ImageView
-                        android:id="@+id/calendarIcon1"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        app:srcCompat="@drawable/calender" />
-
-                    <TextView
-                        android:id="@+id/dobText"
-                        style="@style/heading1"
-                        android:layout_marginStart="5dp"
-                        android:layout_toEndOf="@+id/calendarIcon1"
-                        android:text="@string/date_of_birth" />
-
-                    <TextView
-                        android:id="@+id/dob"
-                        style="@style/subHeadingNormal"
-                        android:layout_toEndOf="@id/calendarIcon1"
-                        android:layout_marginStart="5dp"
-                        android:layout_below="@+id/dobText" />
-
-                    <ImageView
-                        android:id="@+id/calendarIcon2"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_centerHorizontal="true"
-                        app:srcCompat="@drawable/calender" />
-
+                        app:srcCompat="@drawable/supervised_user" />
                     <TextView
                         style="@style/heading1"
                         android:layout_marginStart="5dp"
-                        android:layout_toEndOf="@+id/calendarIcon2"
-                        android:text="@string/joining_date" />
-                    <TextView
-                        android:id="@+id/joiningDate"
-                        style="@style/subHeadingNormal"
-                        android:layout_marginStart="5dp"
-                        android:layout_toEndOf="@id/calendarIcon2"
-                        android:layout_below="@+id/dobText" />
-
-                </RelativeLayout>
+                        android:text="@string/user_name" />
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/userName"
+                    style="@style/subHeadingNormal"
+                    android:layout_marginStart="25dp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -162,26 +119,24 @@
                     android:background="@color/gray"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"/>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        app:srcCompat="@drawable/supervised_user" />
+                        app:srcCompat="@drawable/mobile" />
                     <TextView
                         style="@style/heading1"
                         android:layout_marginStart="5dp"
-                        android:text="@string/user_name" />
+                        android:text="@string/mobile_no" />
                 </LinearLayout>
                 <TextView
-                    android:id="@+id/userName"
+                    android:id="@+id/mobNo"
                     style="@style/subHeadingNormal"
-                    android:layout_marginStart="25dp" />
-                <!--<TextView
-                    android:id="@+id/userName"
-                    style="@style/subHeadingWhite"
-                    android:layout_centerHorizontal="true"/>-->
+                    android:layout_marginStart="25dp"
+                   />
 
                 <View
                     android:layout_width="match_parent"
@@ -189,6 +144,31 @@
                     android:background="@color/gray"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        app:srcCompat="@drawable/calender" />
+                    <TextView
+                        style="@style/heading1"
+                        android:layout_marginStart="5dp"
+                        android:text="@string/date_of_birth" />
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/dob"
+                    style="@style/subHeadingNormal"
+                    android:layout_marginStart="25dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -213,6 +193,7 @@
                     android:background="@color/gray"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"/>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -239,6 +220,33 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"/>
 
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        app:srcCompat="@drawable/calender" />
+                    <TextView
+                        style="@style/heading1"
+                        android:layout_marginStart="5dp"
+                        android:text="@string/joining_date" />
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/joiningDate"
+                    style="@style/subHeadingNormal"
+                    android:layout_marginStart="25dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -255,6 +263,8 @@
                     android:id="@+id/gender"
                     style="@style/subHeadingNormal"
                     android:layout_marginStart="25dp" />
+
+
 
                 <View
                     android:layout_width="match_parent"
@@ -304,32 +314,10 @@
                 <TextView
                     android:id="@+id/nationality"
                     style="@style/subHeadingNormal"
-                    android:layout_marginStart="25dp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/gray"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        app:srcCompat="@drawable/mobile" />
-                    <TextView
-                        style="@style/heading1"
-                        android:layout_marginStart="5dp"
-                        android:text="@string/mobile_no" />
-                </LinearLayout>
-                <TextView
-                    android:id="@+id/mobNo"
-                    style="@style/subHeadingNormal"
                     android:layout_marginStart="25dp"
                     android:layout_marginBottom="10dp" />
+
+
             </LinearLayout>
         </ScrollView>
     </RelativeLayout>
