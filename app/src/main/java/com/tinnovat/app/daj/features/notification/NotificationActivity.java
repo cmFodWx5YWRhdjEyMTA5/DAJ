@@ -17,6 +17,7 @@ import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.ContactResponseModel;
 import com.tinnovat.app.daj.data.network.model.Event;
+import com.tinnovat.app.daj.data.network.model.Guest;
 import com.tinnovat.app.daj.data.network.model.NotificationResponseModel;
 import com.tinnovat.app.daj.data.network.model.ProfileData;
 import com.tinnovat.app.daj.data.network.model.ProfileResponseModel;
@@ -77,7 +78,14 @@ public class NotificationActivity extends BaseActivity {
             public void onResponse(Call<NotificationResponseModel> call, Response<NotificationResponseModel> response) {
                 endLoading();
                 if (response.body() != null){
+                    setDataGuest(response.body().getGuest());
                     setData(response.body().getEvents());
+
+                    if (response.body().getGuest().size() == 0 && response.body().getEvents().size() == 0){
+                        setNoData(true);
+                    }else {
+                        setNoData(false);
+                    }
                 }
             }
 
@@ -87,15 +95,29 @@ public class NotificationActivity extends BaseActivity {
             }
         });
     }
-
-    private void setData(List<Event> event){
-        if (event.size() == 0){
+    private void setNoData(Boolean emptyList){
+        if (emptyList){
             noData.setVisibility(View.VISIBLE);
         }else {
             noData.setVisibility(View.GONE);
         }
+    }
+
+    private void setData(List<Event> event){
+
         RecyclerView recyclerView= findViewById(R.id.recycler_view);
         NotificationAdapter mAdapter = new NotificationAdapter(event);
+
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(mAdapter);
+    }
+
+    private void setDataGuest(List<Guest> guest){
+
+        RecyclerView recyclerView= findViewById(R.id.recycler_view_guest);
+        NotificationGuestAdapter mAdapter = new NotificationGuestAdapter(guest);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);

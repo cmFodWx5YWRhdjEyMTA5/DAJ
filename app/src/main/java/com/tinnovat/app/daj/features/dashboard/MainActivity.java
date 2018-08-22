@@ -235,11 +235,11 @@ public class MainActivity extends BaseActivity {
                         if (parent.getChildAt(childIndex).getX() > parent.getChildAt(childIndex-1).getX()){
                             if (parent.getChildAt(childIndex).getX() > parent.getChildAt(childIndex+1).getX()){
                                 performClick(((TextView) parent.getChildAt(childIndex).findViewById(R.id.item)).getText().toString());
-                            }else {
+                            }/*else {
                                 showMessage("222");
                             }
                         }else {
-                            showMessage("111");
+                            showMessage("111");*/
                         }
 
                         /*if (childIndex == 3) {

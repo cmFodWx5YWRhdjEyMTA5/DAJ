@@ -114,7 +114,7 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
         listItems.add(getResources().getString(R.string.family));
         listItems.add(getResources().getString(R.string.friend));
         listItems.add(getResources().getString(R.string.maintenance));
-        listItems.add(getResources().getString(R.string.taxi));
+        listItems.add(getResources().getString(R.string.taxi1));
         listItems.add(getResources().getString(R.string.delivery));
         purposeList = listItems.toArray(new CharSequence[listItems.size()]);
 

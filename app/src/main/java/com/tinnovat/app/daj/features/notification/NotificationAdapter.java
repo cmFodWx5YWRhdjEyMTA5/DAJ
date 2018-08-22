@@ -33,35 +33,17 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView guestName;
-        public TextView purpose;
-        public TextView status;
+
         public TextView event;
         public TextView venue;
         public TextView startDate;
         public TextView endDate;
         public TextView category;
-        public RelativeLayout relativeLayout1;
-        public RelativeLayout relativeLayout2;
-        public RelativeLayout relativeLayout3;
-        public RelativeLayout relativeLayout4;
-        public RelativeLayout relativeLayout5;
-        public RelativeLayout relativeLayout6;
+
 
         public MyViewHolder(View view) {
             super(view);
-            relativeLayout1 = view.findViewById(R.id.relativeLayout1);
-            relativeLayout2 = view.findViewById(R.id.relativeLayout2);
-            relativeLayout3 = view.findViewById(R.id.relativeLayout3);
-            relativeLayout4 = view.findViewById(R.id.relativeLayout4);
-            relativeLayout5 = view.findViewById(R.id.relativeLayout5);
-            relativeLayout6 = view.findViewById(R.id.relativeLayout6);
 
-
-            guestName = view.findViewById(R.id.guestName);
-            guestName = view.findViewById(R.id.guestName);
-            purpose = view.findViewById(R.id.purpose);
-            status = view.findViewById(R.id.status);
             event = view.findViewById(R.id.event);
             venue = view.findViewById(R.id.venue);
             startDate = view.findViewById(R.id.startDate);
@@ -87,11 +69,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        /*Movie movie = moviesList.get(position);
-        holder.title.setText("10Am - 11am");*/
-        holder.relativeLayout1.setVisibility(View.GONE);
-        holder.relativeLayout2.setVisibility(View.GONE);
-        holder.relativeLayout3.setVisibility(View.GONE);
 
         String[] startDateTime = mEvent.get(position).getStartDatetime().split(" ");
         String[] endDateTime = mEvent.get(position).getEndDatetime().split(" ");
@@ -100,8 +77,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         holder.venue.setText(mEvent.get(position).getEventsVenue());
         holder.startDate.setText(startDateTime[0]);
         holder.endDate.setText(endDateTime[0]);
-       // holder.category.setText(mEvent.get(position).getEventsName());
-
 
     }
 

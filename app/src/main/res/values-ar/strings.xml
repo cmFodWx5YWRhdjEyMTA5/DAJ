@@ -184,5 +184,6 @@
     <string name="no_booking_found">لم يتم العثور على الحجز</string>
     <string name="no_notification_found">لم يتم العثور على إشعار</string>
     <string name="slots_filled">جميع فتحات مليئة</string>
+    <string name="date">تاريخ</string>
 
 </resources>
