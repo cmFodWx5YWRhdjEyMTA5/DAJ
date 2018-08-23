@@ -9,7 +9,7 @@
     </style>
 
     <style name="NavigationTheme" parent="AppTheme.NoActionBar">
-        <item name="listPreferredItemHeightSmall">40dp</item><!-- menu item height- vary as u need -->
+        <item name="listPreferredItemHeightSmall">50dp</item><!-- menu item height- vary as u need -->
     </style>
 
     <style name="CalenderViewCustom" >
