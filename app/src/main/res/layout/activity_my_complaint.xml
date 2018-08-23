@@ -124,7 +124,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:maxLines="1"
-                    android:text="@string/dar_al_jewar_hall"
+
                     android:textStyle=""
                     android:textColor="@color/white" />
             </LinearLayout>

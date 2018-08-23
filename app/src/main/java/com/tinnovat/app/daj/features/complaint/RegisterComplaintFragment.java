@@ -241,6 +241,7 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
             builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialogInterface, int i) {
                     startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                    //checkIsLocationEnabled();
                 }
             });
             builder.setNegativeButton(R.string.no, null);
@@ -267,6 +268,7 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
         if (ContextCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
             ActivityCompat.requestPermissions(getActivity(), new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION}, 101);
+            checkIsLocationEnabled();
 
         } else {
 

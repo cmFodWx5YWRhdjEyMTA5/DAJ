@@ -118,7 +118,7 @@ public class ComplaintDetailFragment extends BaseFragment {
             LinearLayout secondRow = view.findViewById(R.id.secondRow);
             RelativeLayout imageLayout = view.findViewById(R.id.photoLayout);
 
-            TextView locationText = view.findViewById(R.id.locationText);
+            //TextView locationText = view.findViewById(R.id.locationText);
 
             LinearLayout banner = view.findViewById(R.id.bannerText);
 
