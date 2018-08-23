@@ -37,9 +37,7 @@ import java.util.Locale;
 public class MainActivity extends BaseActivity {
 //        implements NavigationView.OnNavigationItemSelectedListener {
 
-    ImageView facebook;
-    ImageView twitter;
-    ImageView instagram;
+
 
 
     private List<String> eventName;
@@ -101,9 +99,9 @@ public class MainActivity extends BaseActivity {
         navigationView.getMenu().getItem(0).setChecked(true);
         navigationView.setItemIconTintList(null);
 
-        facebook = findViewById(R.id.facebook);
-        twitter = findViewById(R.id.twitter);
-        instagram = findViewById(R.id.instagram);
+        ImageView facebook = findViewById(R.id.facebook);
+        ImageView twitter = findViewById(R.id.twitter);
+        ImageView instagram = findViewById(R.id.instagram);
 
 
         if (!getLanguage()) {
@@ -121,6 +119,9 @@ public class MainActivity extends BaseActivity {
             navigationView.getMenu().getItem(10).setIcon(R.drawable.taxi_ar_nav);
             navigationView.getMenu().getItem(11).setIcon(R.drawable.complaint_ar_nav);
             navigationView.getMenu().getItem(12).setIcon(R.drawable.contact_ar_nav);
+            navigationView.getMenu().getItem(13).setIcon(R.drawable.password_ar_nav);
+            navigationView.getMenu().getItem(14).setIcon(R.drawable.language_ar_nav);
+            navigationView.getMenu().getItem(15).setIcon(R.drawable.logout_ar_nav);
 
         } else {
             //for Eng
@@ -138,6 +139,9 @@ public class MainActivity extends BaseActivity {
             navigationView.getMenu().getItem(10).setIcon(R.drawable.taxi_nav);
             navigationView.getMenu().getItem(11).setIcon(R.drawable.complaint_nav);
             navigationView.getMenu().getItem(12).setIcon(R.drawable.contact_nav);
+            navigationView.getMenu().getItem(13).setIcon(R.drawable.password_nav);
+            navigationView.getMenu().getItem(14).setIcon(R.drawable.language_nav);
+            navigationView.getMenu().getItem(15).setIcon(R.drawable.logout_nav);
 
         }
 

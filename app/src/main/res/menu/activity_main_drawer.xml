@@ -58,7 +58,7 @@
             android:title="@string/emergency_contact" />
         <item
             android:id="@+id/change_password"
-            android:icon="@drawable/key_nav"
+            android:icon="@drawable/password_nav"
             android:title="@string/change_password" />
         <item
             android:id="@+id/change_language"
