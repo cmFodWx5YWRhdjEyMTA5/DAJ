@@ -19,13 +19,12 @@ class RecyclerItemDecoration extends RecyclerView.ItemDecoration {
         outRect.bottom = (int) DpToPx(parent.getContext(), 50);//50
 
         if (parent.getChildAdapterPosition(view) == 0) {
-            outRect.top = (int) DpToPx(parent.getContext(), 20);
+            outRect.top = (int) DpToPx(parent.getContext(), 0);
             //outRect.bottom = (int) DpToPx(parent.getContext(), 0);
         }
         if (parent.getChildAdapterPosition(view) == parent.getAdapter().getItemCount() - 1) {
             outRect.bottom = (int) DpToPx(parent.getContext(), 0);
         }
-
 
     }
 

@@ -41,7 +41,7 @@ dependencies {
     //implementation 'com.github.Lesilva:BetterSpinner:1.1.0'
     implementation 'com.prolificinteractive:material-calendarview:1.4.3'
 
-    implementation 'com.github.kapil93:circular-layout-manager:1.0.0'
+//    implementation 'com.github.kapil93:circular-layout-manager:1.0.0'
 
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
@@ -70,4 +70,5 @@ dependencies {
     //for Justify text
     implementation 'me.biubiubiu.justifytext:library:1.1'
 
+    compile project(path: ':circular-layout-manager')
 }

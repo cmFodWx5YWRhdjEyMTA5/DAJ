@@ -213,9 +213,9 @@ public class MainActivity extends BaseActivity {
     }
 
     private void setViews(List<String> eventName) {
-        int height = getScreenResolution(this);
+//        int height = getScreenResolution(this);
 
-        Log.e("hhhhhhh",""+height);
+//        Log.e("hhhhhhh",""+height);
         recyclerView = findViewById(R.id.recycler_view);
         // recyclerView.setAdapter(new RecyclerViewAdapter(getApplicationContext(), list));
         mAdapter = new RecyclerViewAdapter(getApplicationContext(), eventName, getLanguage());
@@ -227,6 +227,7 @@ public class MainActivity extends BaseActivity {
         //  recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         mAdapter.notifyDataSetChanged();
+
         recyclerView.setAdapter(mAdapter);
 
 
