@@ -292,12 +292,32 @@ public class CircularLayoutManager extends RecyclerView.LayoutManager {
 
         child.setPivotX(0);
 
-        if (scale >.9){
-            child.setBackground(child.getContext().getResources().getDrawable(R.drawable.curve_small_bg_trans));
-            getScreenResolution(child.getContext());
-        }else {
-            child.setBackgroundColor(0);
+        // Global Variable
+        boolean isTablet;
+
+//Get Value from values bool.xml file
+        isTablet = child.getContext().getResources().getBoolean(R.bool.isTablet);
+
+//Now check condition
+        if(isTablet){
+            //Device is tablet
+            if (scale >.94){
+                child.setBackground(child.getContext().getResources().getDrawable(R.drawable.curve_small_bg_trans));
+                getScreenResolution(child.getContext());
+            }else {
+                child.setBackgroundColor(0);
+            }
+        }else{
+            //Device is mobile
+            if (scale >.9){
+                child.setBackground(child.getContext().getResources().getDrawable(R.drawable.curve_small_bg_trans));
+                getScreenResolution(child.getContext());
+            }else {
+                child.setBackgroundColor(0);
+            }
         }
+
+
         child.setScaleX(scale);
         child.setScaleY(scale);
     }

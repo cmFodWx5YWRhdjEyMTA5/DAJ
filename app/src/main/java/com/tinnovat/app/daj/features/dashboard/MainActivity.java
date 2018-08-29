@@ -50,6 +50,8 @@ public class MainActivity extends BaseActivity {
     ImageView logoEn;
     ImageView logoAr;
     boolean status;
+    boolean isTablet;
+    boolean isSmall;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,6 +65,11 @@ public class MainActivity extends BaseActivity {
             startActivity(intent);
 
         }
+
+
+
+        isTablet = getResources().getBoolean(R.bool.isTablet);
+        isSmall = getResources().getBoolean(R.bool.small);
 
         String languageToLoad;
         if (getLanguage()) {
@@ -102,6 +109,7 @@ public class MainActivity extends BaseActivity {
         ImageView facebook = findViewById(R.id.facebook);
         ImageView twitter = findViewById(R.id.twitter);
         ImageView instagram = findViewById(R.id.instagram);
+
 
 
         if (!getLanguage()) {
@@ -200,31 +208,35 @@ public class MainActivity extends BaseActivity {
         return super.onPrepareOptionsMenu(menu);
     }
 
-    private static int getScreenResolution(Context context)
-    {
-        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        Display display = wm.getDefaultDisplay();
-        DisplayMetrics metrics = new DisplayMetrics();
-        display.getMetrics(metrics);
-        int width = metrics.widthPixels;
-        int height = metrics.heightPixels;
 
-        return height ;
-    }
 
     private void setViews(List<String> eventName) {
-//        int height = getScreenResolution(this);
 
-//        Log.e("hhhhhhh",""+height);
         recyclerView = findViewById(R.id.recycler_view);
         // recyclerView.setAdapter(new RecyclerViewAdapter(getApplicationContext(), list));
-        mAdapter = new RecyclerViewAdapter(getApplicationContext(), eventName, getLanguage());
+        mAdapter = new RecyclerViewAdapter(getApplicationContext(), eventName, getLanguage(),isTablet,isSmall);
         recyclerView.addItemDecoration(new RecyclerItemDecoration());
         /*RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);*/
-        recyclerView.setLayoutManager(new CircularLayoutManager(getApplicationContext(), 250, -80));//280
+//        recyclerView.setLayoutManager(new CircularLayoutManager(getApplicationContext(), 250, -80));//280
 
         //  recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+
+//Now check condition
+        if(isTablet){
+            if (isSmall){
+                //Device is tablet
+                recyclerView.setLayoutManager(new CircularLayoutManager(getApplicationContext(), 400, -80));//280
+            }else {
+                //Device is tablet
+                recyclerView.setLayoutManager(new CircularLayoutManager(getApplicationContext(), 500, -80));//280
+            }
+
+        }else{
+            //Device is mobile
+            recyclerView.setLayoutManager(new CircularLayoutManager(getApplicationContext(), 250, -80));//250 80
+        }
 
         mAdapter.notifyDataSetChanged();
 
@@ -258,84 +270,83 @@ public class MainActivity extends BaseActivity {
 
 
     private void performClick(String option) {
-        switch (option) {
 
-            case "3":
-                fetchEvents();
-                break;
-            case "4":
-                fetchServices();
-                break;
-            case "5":
-                fetchGuestRegistration();
-                break;
-            case "6":
-                fetchCamera();
-                break;
-            case "7":
-                fetchMaps();
-                break;
-            case "8":
-                fetchFuturePhase();
-                break;
-            case "9":
-                fetchMyBooking();
-                break;
-            case "10":
-                fetchProfile();
-                break;
-            case "11":
-                fetchOrderFood();
-                break;
-            case "12":
-                fetchOrderTaxi();
-                break;
-            case "13":
-                fetchMyComplaintList();
-                break;
-            case "14":
-                fetchEmergencyContact();
-                break;
-            case "15":
-                fetchChangePassword();
-                break;
-            case "16":
-                changeLanguage();
-                break;
-            case "17":
-                fetchLogout();
-                break;
+                switch (option) {
 
+                    case "3":
+                        fetchEvents();
+                        break;
+                    case "4":
+                        fetchServices();
+                        break;
+                    case "5":
+                        fetchGuestRegistration();
+                        break;
+                    case "6":
+                        fetchCamera();
+                        break;
+                    case "7":
+                        fetchMaps();
+                        break;
+                    case "8":
+                        fetchFuturePhase();
+                        break;
+                    case "9":
+                        fetchMyBooking();
+                        break;
+                    case "10":
+                        fetchProfile();
+                        break;
+                    case "11":
+                        fetchOrderFood();
+                        break;
+                    case "12":
+                        fetchOrderTaxi();
+                        break;
+                    case "13":
+                        fetchMyComplaintList();
+                        break;
+                    case "14":
+                        fetchEmergencyContact();
+                        break;
+                    case "15":
+                        fetchChangePassword();
+                        break;
+                    case "16":
+                        changeLanguage();
+                        break;
+                    case "17":
+                        fetchLogout();
+                        break;
 
         }
+
     }
 
     private void initializeList() {
         eventName = new ArrayList<>();
 
-
-        eventName.add(" ");
-        eventName.add(" ");
-        eventName.add(" ");
-        eventName.add(getResources().getString(R.string.events));
-        eventName.add(getResources().getString(R.string.services));
-        eventName.add(getResources().getString(R.string.guest_reg));
-        eventName.add(getResources().getString(R.string.view_camera));
-        eventName.add(getResources().getString(R.string.navigation));
-        eventName.add(getResources().getString(R.string.projects));
-        eventName.add(getResources().getString(R.string.my_bookings));
-        eventName.add(getResources().getString(R.string.my_profile));
-        eventName.add(getResources().getString(R.string.order_food));
-        eventName.add(getResources().getString(R.string.order_taxi));
-        eventName.add(getResources().getString(R.string.complaint));
-        eventName.add(getResources().getString(R.string.emergency_contact));
-        eventName.add(getResources().getString(R.string.change_password));
-        eventName.add(getResources().getString(R.string.change_language));
-        eventName.add(getResources().getString(R.string.logout));
-        eventName.add(" ");
-        eventName.add(" ");
-        eventName.add(" ");
-
+                eventName.add(" ");
+                eventName.add(" ");
+                eventName.add(" ");
+                eventName.add(getResources().getString(R.string.events));
+                eventName.add(getResources().getString(R.string.services));
+                eventName.add(getResources().getString(R.string.guest_reg));
+                eventName.add(getResources().getString(R.string.view_camera));
+                eventName.add(getResources().getString(R.string.navigation));
+                eventName.add(getResources().getString(R.string.projects));
+                eventName.add(getResources().getString(R.string.my_bookings));
+                eventName.add(getResources().getString(R.string.my_profile));
+                eventName.add(getResources().getString(R.string.order_food));
+                eventName.add(getResources().getString(R.string.order_taxi));
+                eventName.add(getResources().getString(R.string.complaint));
+                eventName.add(getResources().getString(R.string.emergency_contact));
+                eventName.add(getResources().getString(R.string.change_password));
+                eventName.add(getResources().getString(R.string.change_language));
+                eventName.add(getResources().getString(R.string.logout));
+                eventName.add(" ");
+                eventName.add(" ");
+                eventName.add(" ");
 
         setViews(eventName);
     }
@@ -360,13 +371,6 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }*/
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -385,150 +389,6 @@ public class MainActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /*  @SuppressWarnings("StatementWithEmptyBody")
-      @Override
-      public boolean onNavigationItemSelected(MenuItem item) {
-          // Handle navigation view item clicks here.
-          int id = item.getItemId();
-
-          if (id == R.id.home) {
-
-
-              // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-              // Handle the camera action
-              // item.setIcon(R.layout.dialog_guest);
-              // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-
-             *//* Intent i = new Intent(MainActivity.this, MainActivity.class);
-            startActivity(i);*//*
-
-     *//* if (a==1) {
-                item.setIcon(R.drawable.icon_slection_arabic);
-            }else {
-                item.setIcon(R.drawable.icon_slection_english);
-            }*//*
-        } else if (id == R.id.events) {
-            fetchEvents();
-
-        } else if (id == R.id.services) {
-            fetchServices();
-        } else if (id == R.id.guest_registration) {
-            fetchGuestRegistration();
-
-        } else if (id == R.id.view_camera) {
-            fetchCamera();
-
-        } else if (id == R.id.navigation) {
-            fetchMaps();
-
-        } else if (id == R.id.projects) {
-            fetchFuturePhase();
-
-        } else if (id == R.id.my_bookings) {
-            fetchMyBooking();
-
-        } else if (id == R.id.view_profile) {
-            fetchProfile();
-
-        } else if (id == R.id.food) {
-            fetchOrderFood();
-
-        } else if (id == R.id.taxi) {
-            fetchOrderTaxi();
-
-        } else if (id == R.id.complaint) {
-            fetchMyComplaintList();
-        } else if (id == R.id.emergency_contact) {
-            fetchEmergencyContact();
-
-        } else if (id == R.id.change_password) {
-            fetchChangePassword();
-        } else if (id == R.id.logout) {
-            fetchLogout();
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
-
-
-    private void fetchHome() {
-        Intent i = new Intent(MainActivity.this, MainActivity.class);
-        startActivity(i);
-    }
-
-    private void fetchEvents() {
-        Intent i = new Intent(MainActivity.this, EventNewsActivity.class);
-        startActivity(i);
-    }
-
-    private void fetchServices() {
-        Intent i = new Intent(MainActivity.this, ServicesMainActivity.class);
-        startActivity(i);
-    }
-
-    private void fetchGuestRegistration() {
-        Intent i = new Intent(MainActivity.this, GuestRegistrationActivityMain.class);
-        startActivity(i);
-    }
-
-    private void fetchCamera() {
-        Intent i = new Intent(MainActivity.this, SurveillanceActivity.class);
-        startActivity(i);
-    }
-
-    private void fetchMaps() {
-        Intent i = new Intent(MainActivity.this, MapsActivity.class);
-        startActivity(i);
-    }
-
-    private void fetchFuturePhase() {
-        Intent i = new Intent(MainActivity.this, FuturePhaseMainActivity.class);
-        startActivity(i);
-    }
-
-    private void fetchMyBooking() {
-        Intent i = new Intent(MainActivity.this, MyBookingActivity.class);
-        startActivity(i);
-    }
-
-    private void fetchProfile() {
-        Intent i = new Intent(MainActivity.this, ProfileActivity.class);
-        startActivity(i);
-    }
-
-    private void fetchOrderFood() {
-        Intent i = new Intent(MainActivity.this, OrderFoodActivity.class);
-        startActivity(i);
-    }
-
-    private void fetchOrderTaxi() {
-        Intent i = new Intent(MainActivity.this, OrderTaxiActivity.class);
-        startActivity(i);
-    }
-
-    private void fetchMyComplaintList() {
-        Intent i = new Intent(MainActivity.this, ComplaintMainActivity.class);
-        startActivity(i);
-    }
-
-    private void fetchEmergencyContact() {
-        Intent i = new Intent(MainActivity.this, EmergencyContactActivity.class);
-        startActivity(i);
-    }
-
-    private void fetchChangePassword() {
-        Intent i = new Intent(MainActivity.this, ChangePasswordActivity.class);
-        startActivity(i);
-    }
-
-    private void fetchLogout() {
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-        startActivity(intent);
-        finish();
-    }
-*/
     @Override
     public void onClick(View v) {
 

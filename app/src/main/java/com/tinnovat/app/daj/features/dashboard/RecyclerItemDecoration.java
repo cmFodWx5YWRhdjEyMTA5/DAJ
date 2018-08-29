@@ -7,6 +7,8 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.Toast;
 
+import com.tinnovat.app.daj.R;
+
 /**
  * Item decorator for recycler view. Adds margin to the outermost children of the list to induce an
  * over scroll effect with drag.
@@ -15,16 +17,44 @@ import android.widget.Toast;
 class RecyclerItemDecoration extends RecyclerView.ItemDecoration {
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-        outRect.top = (int) DpToPx(parent.getContext(), 0);
-        outRect.bottom = (int) DpToPx(parent.getContext(), 50);//50
+        // Global Variable
+        boolean isTablet;
+        boolean isSmall;
 
-        if (parent.getChildAdapterPosition(view) == 0) {
-            outRect.top = (int) DpToPx(parent.getContext(), 0);
-            //outRect.bottom = (int) DpToPx(parent.getContext(), 0);
+//Get Value from values bool.xml file
+        isTablet = view.getResources().getBoolean(R.bool.isTablet);
+        isSmall = view.getResources().getBoolean(R.bool.small);
+
+//Now check condition
+        if(isTablet){
+            //Device is tablet
+                outRect.top = (int) DpToPx(parent.getContext(), 50);
+                outRect.bottom = (int) DpToPx(parent.getContext(), 50);//50
+
+                if (parent.getChildAdapterPosition(view) == 0) {
+                    outRect.top = (int) DpToPx(parent.getContext(), 50);
+                    outRect.bottom = (int) DpToPx(parent.getContext(), 50);
+                }
+                if (parent.getChildAdapterPosition(view) == parent.getAdapter().getItemCount() - 1) {
+                    outRect.top = (int) DpToPx(parent.getContext(), 50);
+                    outRect.bottom = (int) DpToPx(parent.getContext(), 50);
+                }
+
+        }else{
+
+            outRect.top = (int) DpToPx(parent.getContext(), 25);//30
+            outRect.bottom = (int) DpToPx(parent.getContext(), 25);//30
+
+            if (parent.getChildAdapterPosition(view) == 0) {
+                outRect.top = (int) DpToPx(parent.getContext(), 25);
+                outRect.bottom = (int) DpToPx(parent.getContext(), 25);
+            }
+            if (parent.getChildAdapterPosition(view) == parent.getAdapter().getItemCount() - 1) {
+                outRect.top = (int) DpToPx(parent.getContext(), 25);
+                outRect.bottom = (int) DpToPx(parent.getContext(), 25);
+            }
         }
-        if (parent.getChildAdapterPosition(view) == parent.getAdapter().getItemCount() - 1) {
-            outRect.bottom = (int) DpToPx(parent.getContext(), 0);
-        }
+
 
     }
 
