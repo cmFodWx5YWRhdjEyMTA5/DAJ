@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@mipmap/bg">
+
+    <ImageView
+        android:id="@+id/titleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@drawable/complainte_bg"
+        android:scaleType="centerCrop"/>
+
+
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_below="@+id/titleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/comStatus"
+            style="@style/headingMain"
+            android:layout_marginStart="20dp"
+            android:text="@string/your_complaint_status" />
+
+        <ImageView
+            android:id="@+id/addComplaints"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_toEndOf="@+id/comStatus"
+            android:layout_alignBottom="@+id/comStatus"
+            android:layout_marginStart="50dp"
+            app:srcCompat="@drawable/add_white_24dp"
+            android:visibility="invisible"/>
+    </RelativeLayout>
+    <View
+        android:id="@+id/line"
+        android:layout_below="@+id/title"
+        android:layout_width="150dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/greenText"/>
+
+    <TextView
+        android:id="@+id/empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/line"
+        android:text="@string/no_complaints_found"
+        android:visibility="gone"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line"/>
+   <!-- <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_below="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    
+    <RelativeLayout
+        android:id="@+id/row1"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="start">
+
+        <View
+            android:id="@+id/line1"
+            style="@style/lineIndicationSmall"
+            android:background="@color/greenText"/>
+        <TextView
+            android:gravity="center"
+            android:id="@+id/day"
+            style="@style/heading1"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/line1"
+            android:textSize="25sp"
+            android:text="08"/>
+
+        <TextView
+            style="@style/subHeading1"
+            android:layout_alignEnd="@+id/day"
+            android:layout_alignStart="@+id/day"
+            android:layout_below="@+id/day"
+            android:text="May"
+            android:textColor="@color/greenText"
+            />
+
+        <TextView
+            android:gravity="center_vertical"
+            android:id="@+id/complaint"
+            style="@style/heading1"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@+id/day"
+            android:text="@string/lorem_ipsum"/>
+        <TextView
+            android:id="@+id/complaintId"
+            style="@style/subHeading1"
+            android:layout_below="@+id/complaint"
+            android:layout_alignStart="@+id/complaint"
+            android:text="@string/reg_no_727247878"/>
+
+
+        <TextView
+            android:id="@+id/status"
+            style="@style/statusButton"
+            android:background="@drawable/curve_small_bg_green"
+            android:text="@string/status"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"/>
+
+    <RelativeLayout
+        android:id="@+id/row2"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
+
+        <View
+            android:id="@+id/line2"
+            style="@style/lineIndicationSmall"
+            android:background="@color/greenText"/>
+        <TextView
+            android:gravity="center"
+            android:id="@+id/day1"
+            style="@style/heading1"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/line2"
+            android:textSize="25sp"
+            android:text="08"/>
+
+        <TextView
+            style="@style/subHeading1"
+            android:layout_alignEnd="@+id/day1"
+            android:layout_alignStart="@+id/day1"
+            android:layout_below="@+id/day1"
+            android:text="May"
+            android:textColor="@color/greenText"
+            />
+
+        <TextView
+            android:gravity="center_vertical"
+            android:id="@+id/complaint1"
+            style="@style/heading1"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@+id/day1"
+            android:text="@string/lorem_ipsum"/>
+        <TextView
+            android:id="@+id/complaintId1"
+            style="@style/subHeading1"
+            android:layout_below="@+id/complaint1"
+            android:layout_alignStart="@+id/complaint1"
+            android:text="@string/reg_no_727247878"/>
+
+
+        <TextView
+            android:id="@+id/status1"
+            style="@style/statusButton"
+            android:background="@drawable/curve_small_bg_green"
+            android:text="@string/status"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"/>
+
+    <RelativeLayout
+        android:id="@+id/row3"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
+
+        <View
+            android:id="@+id/line3"
+            style="@style/lineIndicationSmall"
+            android:background="@color/greenText"/>
+        <TextView
+            android:gravity="center"
+            android:id="@+id/day2"
+            style="@style/heading1"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/line3"
+            android:textSize="25sp"
+            android:text="08"/>
+
+        <TextView
+            style="@style/subHeading1"
+            android:layout_alignEnd="@+id/day2"
+            android:layout_alignStart="@+id/day2"
+            android:layout_below="@+id/day2"
+            android:text="May"
+            android:textColor="@color/greenText"
+            />
+
+        <TextView
+            android:gravity="center_vertical"
+            android:id="@+id/complaint2"
+            style="@style/heading1"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@+id/day2"
+            android:text="@string/lorem_ipsum"/>
+        <TextView
+            android:id="@+id/complaintId2"
+            style="@style/subHeading1"
+            android:layout_below="@+id/complaint2"
+            android:layout_alignStart="@+id/complaint2"
+            android:text="@string/reg_no_727247878"/>
+
+
+        <TextView
+            android:id="@+id/status2"
+            style="@style/statusButton"
+            android:background="@drawable/curve_small_bg_orange"
+            android:text="@string/assigned"/>
+
+    </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
+
+        <RelativeLayout
+            android:id="@+id/row4"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp">
+
+            <View
+                android:id="@+id/line4"
+                style="@style/lineIndicationSmall"
+                android:background="@color/greenText"/>
+            <TextView
+                android:gravity="center"
+                android:id="@+id/day4"
+                style="@style/heading1"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/line4"
+                android:textSize="25sp"
+                android:text="08"/>
+
+            <TextView
+                style="@style/subHeading1"
+                android:layout_alignEnd="@+id/day4"
+                android:layout_alignStart="@+id/day4"
+                android:layout_below="@+id/day4"
+                android:text="May"
+                android:textColor="@color/greenText"
+                />
+
+            <TextView
+                android:gravity="center_vertical"
+                android:id="@+id/complaint4"
+                style="@style/heading1"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_toEndOf="@+id/day4"
+                android:text="@string/lorem_ipsum"/>
+            <TextView
+                android:id="@+id/complaintId4"
+                style="@style/subHeading1"
+                android:layout_below="@+id/complaint4"
+                android:layout_alignStart="@+id/complaint4"
+                android:text="@string/reg_no_727247878"/>
+
+
+            <TextView
+                android:id="@+id/status4"
+                style="@style/statusButton"
+                android:background="@drawable/curve_small_bg_green"
+                android:text="@string/status"/>
+
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
+
+        <RelativeLayout
+            android:id="@+id/row5"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp">
+
+            <View
+                android:id="@+id/line5"
+                style="@style/lineIndicationSmall"
+                android:background="@color/greenText"/>
+            <TextView
+                android:gravity="center"
+                android:id="@+id/day5"
+                style="@style/heading1"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/line5"
+                android:textSize="25sp"
+                android:text="08"/>
+
+            <TextView
+                style="@style/subHeading1"
+                android:layout_alignEnd="@+id/day5"
+                android:layout_alignStart="@+id/day5"
+                android:layout_below="@+id/day5"
+                android:text="May"
+                android:textColor="@color/greenText"
+                />
+
+            <TextView
+                android:gravity="center_vertical"
+                android:id="@+id/complaint5"
+                style="@style/heading1"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_toEndOf="@+id/day5"
+                android:text="@string/lorem_ipsum"/>
+            <TextView
+                android:id="@+id/complaintId5"
+                style="@style/subHeading1"
+                android:layout_below="@+id/complaint5"
+                android:layout_alignStart="@+id/complaint5"
+                android:text="@string/reg_no_727247878"/>
+
+
+            <TextView
+                android:id="@+id/status5"
+                style="@style/statusButton"
+                android:background="@drawable/curve_small_bg_orange"
+                android:text="@string/assigned"/>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+    </ScrollView>-->
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="26dp"
+        android:layout_marginEnd="26dp"
+        app:srcCompat="@drawable/add_white_24dp" />
+</RelativeLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="240dp"
+    android:background="?android:attr/selectableItemBackground"
+    android:orientation="vertical"
+    android:layout_marginTop="10dp">
+
+        <ImageView
+            android:id="@+id/servicesImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/future1" />
+
+        <TextView
+            android:id="@+id/serviceName"
+            style="@style/futureListBanner"
+            android:text="@string/lorem_ipsum" />
+
+</RelativeLayout>

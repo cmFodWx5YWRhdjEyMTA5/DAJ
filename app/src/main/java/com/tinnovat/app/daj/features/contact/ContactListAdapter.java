@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.model.ContactResponseModel;
@@ -87,7 +86,6 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
                     // TODO: Consider calling
                     ActivityCompat.requestPermissions((Activity) mContext, new String[]{android.Manifest.permission.CALL_PHONE}, 1);
 
-                    Toast.makeText(mContext, "enable", Toast.LENGTH_SHORT).show();
                     return;
                 }else {
                     Intent intent = new Intent(Intent.ACTION_CALL);
@@ -110,7 +108,6 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
                     // TODO: Consider calling
                     ActivityCompat.requestPermissions((Activity) mContext, new String[]{android.Manifest.permission.CALL_PHONE}, 1);
 
-                    Toast.makeText(mContext, "enable", Toast.LENGTH_SHORT).show();
                     return;
                 }else {
                     Intent intent = new Intent(Intent.ACTION_CALL);

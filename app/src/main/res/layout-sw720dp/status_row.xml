@@ -33,14 +33,15 @@
             android:id="@+id/submittedDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="25sp"
             android:text="Thu , Nov 2017"
             android:textColor="@color/greenText"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="5dp"/>
         <ImageView
             android:id="@+id/iconCalender"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             app:srcCompat="@drawable/date"
             android:layout_margin="5dp"
             android:layout_toStartOf="@+id/submittedDate" />

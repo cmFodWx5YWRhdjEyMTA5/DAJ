@@ -33,7 +33,7 @@ public class StatusListAdapter extends RecyclerView.Adapter<StatusListAdapter.My
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView headingSubmitted;
-        public JustifyTextView logNote;
+        public TextView logNote;
         public TextView submittedDate;
         public View lineGreen;
 
@@ -87,7 +87,7 @@ public class StatusListAdapter extends RecyclerView.Adapter<StatusListAdapter.My
         }
         if (responseData.getLogDetails().get(position).getComplaintsLogNote() != null)
 
-        holder.logNote.setText(String.format(mContext.getResources().getString(R.string.description_formatter),responseData.getLogDetails().get(position).getComplaintsLogNote().toString()));
+        holder.logNote.setText(responseData.getLogDetails().get(position).getComplaintsLogNote().toString());
         holder.submittedDate.setText(responseData.getLogDetails().get(position).getSubmittedDate());
 
     }

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical"
+    android:layout_margin="10dp">
+
+    <RelativeLayout
+        android:id="@+id/a1"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:background="@drawable/curve_small_bg_gray">
+        <ImageView
+            android:id="@+id/bannerImage"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/event_details_bg"/>
+        <TextView
+            android:id="@+id/bannerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_below="@+id/bannerImage"
+            android:text="@string/lorem_ipsum"
+            android:textSize="20sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            />
+        <TextView
+            android:id="@+id/startDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/greenText"
+            android:textSize="20sp"
+            android:layout_alignParentBottom="true"
+            android:textStyle="bold"
+            android:text="@string/lorem_ipsum"/>
+
+        <TextView
+            android:id="@+id/to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:textSize="20sp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:text="@string/to"
+            android:textColor="@color/greenText" />
+
+        <TextView
+            android:id="@+id/endDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/greenText"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:text="@string/lorem_ipsum"
+            android:textSize="20sp"
+            android:layout_marginBottom="5dp"
+            android:textStyle="bold"
+            android:layout_marginEnd="10dp"/>
+
+        <Button
+            android:id="@+id/interested"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/bannerImage"
+            android:text="@string/lorem_ipsum"
+            android:textColor="@color/greenText"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="5dp"
+            android:paddingEnd="5dp"
+            android:paddingStart="5dp"
+            android:textSize="15sp"
+            android:elevation="5dp"
+            android:background="@drawable/curve_small_bg_gray"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".features.dashboard.MainActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        tools:context=".features.profile.ProfileActivity">
+        <ImageView
+            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/bg"/>
+
+        <ImageView
+            android:id="@+id/bg1"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/profile_bg"
+            />
+        <TextView
+            android:layout_marginTop="20dp"
+            android:id="@+id/name"
+            style="@style/headingWhite"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/villaNo"
+            android:layout_below="@+id/name"
+            style="@style/subHeadingWhite"
+            android:layout_centerHorizontal="true"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="180dp"
+            android:background="@drawable/curve_small_bg_gray">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="3dp"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:srcCompat="@drawable/supervised_user" />
+                    <TextView
+                        style="@style/heading1"
+                        android:layout_marginStart="5dp"
+                        android:text="@string/user_name" />
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/userName"
+                    style="@style/subHeadingNormal"
+                    android:layout_marginStart="35dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:srcCompat="@drawable/mail" />
+                    <TextView
+                        style="@style/heading1"
+                        android:layout_marginStart="5dp"
+                        android:text="@string/email_id" />
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/email"
+                    style="@style/subHeadingNormal"
+                    android:layout_marginStart="35dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:srcCompat="@drawable/mobile" />
+                    <TextView
+                        style="@style/heading1"
+                        android:layout_marginStart="5dp"
+                        android:text="@string/mobile_no" />
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/mobNo"
+                    style="@style/subHeadingNormal"
+                    android:layout_marginStart="35dp"
+                   />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:srcCompat="@drawable/calender" />
+                    <TextView
+                        style="@style/heading1"
+                        android:layout_marginStart="5dp"
+                        android:text="@string/date_of_birth" />
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/dob"
+                    style="@style/subHeadingNormal"
+                    android:layout_marginStart="35dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:srcCompat="@drawable/navigation"
+                        android:tint="@color/greenText"/>
+                    <TextView
+                        style="@style/heading1"
+                        android:layout_marginStart="5dp"
+                        android:text="@string/permanent_address" />
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/address"
+                    style="@style/subHeadingNormal"
+                    android:layout_marginStart="35dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:srcCompat="@drawable/work"
+                        android:tint="@color/greenText"/>
+                    <TextView
+                        style="@style/heading1"
+                        android:layout_marginStart="5dp"
+                        android:text="@string/occupation" />
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/occupation"
+                    style="@style/subHeadingNormal"
+                    android:layout_marginStart="35dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:srcCompat="@drawable/calender" />
+                    <TextView
+                        style="@style/heading1"
+                        android:layout_marginStart="5dp"
+                        android:text="@string/joining_date" />
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/joiningDate"
+                    style="@style/subHeadingNormal"
+                    android:layout_marginStart="35dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:srcCompat="@drawable/unisex"/>
+                    <TextView
+                        style="@style/heading1"
+                        android:layout_marginStart="5dp"
+                        android:text="@string/gender" />
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/gender"
+                    style="@style/subHeadingNormal"
+                    android:layout_marginStart="35dp" />
+
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:srcCompat="@drawable/user"
+                        android:tint="@color/greenText"/>
+                    <TextView
+                        style="@style/heading1"
+                        android:layout_marginStart="5dp"
+                        android:text="@string/marital_status" />
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/maritalStatus"
+                    style="@style/subHeadingNormal"
+                    android:layout_marginStart="35dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:srcCompat="@drawable/flag"
+                        android:tint="@color/greenText"/>
+                    <TextView
+                        style="@style/heading1"
+                        android:layout_marginStart="5dp"
+                        android:text="@string/nationality" />
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/nationality"
+                    style="@style/subHeadingNormal"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginBottom="10dp" />
+
+
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>
