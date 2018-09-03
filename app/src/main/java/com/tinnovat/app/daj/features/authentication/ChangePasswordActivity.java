@@ -134,7 +134,7 @@ public class ChangePasswordActivity extends BaseActivity {
             @Override
             public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
                 endLoading();
-                showDilog("Please Try After SomeTime !",true);
+                showDilog("Please Try Again Later!",true);
             }
         });
     }

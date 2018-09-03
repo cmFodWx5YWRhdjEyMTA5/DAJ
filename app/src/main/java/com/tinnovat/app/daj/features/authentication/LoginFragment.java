@@ -234,7 +234,7 @@ public class LoginFragment extends BaseFragment {
             @Override
             public void onFailure(Call<LoginResponseModel> call, Throwable t) {
                 endLoading();
-                showDilog("Login Failed Please Try After Sometime");
+                showDilog("Login Failed Please Try Again Later!");
             }
         });
     }

@@ -187,10 +187,10 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         } else if (id == R.id.guest_registration) {
             fetchGuestRegistration();
 
-        } else if (id == R.id.view_camera) {
+        } /*else if (id == R.id.view_camera) {
             fetchCamera();
 
-        } else if (id == R.id.navigation) {
+        }*/ else if (id == R.id.navigation) {
             fetchMaps();
 
         } else if (id == R.id.projects) {

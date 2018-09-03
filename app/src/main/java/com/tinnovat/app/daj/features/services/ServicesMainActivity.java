@@ -53,18 +53,18 @@ ServicesSelectedCategoryFragment.OnListFragmentInteractionListener, ServiceBooki
             navigationView.getMenu().getItem(1).setIcon(R.drawable.event_ar_nav);
             navigationView.getMenu().getItem(2).setIcon(R.drawable.service_ar_nav);
             navigationView.getMenu().getItem(3).setIcon(R.drawable.guest_ar_nav);
-            navigationView.getMenu().getItem(4).setIcon(R.drawable.camera_ar_nav);
-            navigationView.getMenu().getItem(5).setIcon(R.drawable.navigation_ar_nav);
-            navigationView.getMenu().getItem(6).setIcon(R.drawable.project_ar_nav);
-            navigationView.getMenu().getItem(7).setIcon(R.drawable.booking_ar_nav);
-            navigationView.getMenu().getItem(8).setIcon(R.drawable.profile_ar_nav);
-            navigationView.getMenu().getItem(9).setIcon(R.drawable.food_ar_nav);
-            navigationView.getMenu().getItem(10).setIcon(R.drawable.taxi_ar_nav);
-            navigationView.getMenu().getItem(11).setIcon(R.drawable.complaint_ar_nav);
-            navigationView.getMenu().getItem(12).setIcon(R.drawable.contact_ar_nav);
-            navigationView.getMenu().getItem(13).setIcon(R.drawable.password_ar_nav);
-            navigationView.getMenu().getItem(14).setIcon(R.drawable.language_ar_nav);
-            navigationView.getMenu().getItem(15).setIcon(R.drawable.logout_ar_nav);
+            //navigationView.getMenu().getItem(4).setIcon(R.drawable.camera_ar_nav);
+            navigationView.getMenu().getItem(6).setIcon(R.drawable.navigation_ar_nav);
+            navigationView.getMenu().getItem(7).setIcon(R.drawable.project_ar_nav);
+            navigationView.getMenu().getItem(8).setIcon(R.drawable.booking_ar_nav);
+            navigationView.getMenu().getItem(9).setIcon(R.drawable.profile_ar_nav);
+            navigationView.getMenu().getItem(10).setIcon(R.drawable.food_ar_nav);
+            navigationView.getMenu().getItem(11).setIcon(R.drawable.taxi_ar_nav);
+            navigationView.getMenu().getItem(12).setIcon(R.drawable.complaint_ar_nav);
+            navigationView.getMenu().getItem(13).setIcon(R.drawable.contact_ar_nav);
+            navigationView.getMenu().getItem(14).setIcon(R.drawable.password_ar_nav);
+            navigationView.getMenu().getItem(15).setIcon(R.drawable.language_ar_nav);
+            navigationView.getMenu().getItem(16).setIcon(R.drawable.logout_ar_nav);
 
         } else {
             //for Eng
@@ -73,18 +73,18 @@ ServicesSelectedCategoryFragment.OnListFragmentInteractionListener, ServiceBooki
             navigationView.getMenu().getItem(1).setIcon(R.drawable.event_nav);
             navigationView.getMenu().getItem(2).setIcon(R.drawable.service_nav);
             navigationView.getMenu().getItem(3).setIcon(R.drawable.guest_nav);
-            navigationView.getMenu().getItem(4).setIcon(R.drawable.camera_nav);
-            navigationView.getMenu().getItem(5).setIcon(R.drawable.navigation_nav);
-            navigationView.getMenu().getItem(6).setIcon(R.drawable.project_nav);
-            navigationView.getMenu().getItem(7).setIcon(R.drawable.booking_nav);
-            navigationView.getMenu().getItem(8).setIcon(R.drawable.profile_nav);
-            navigationView.getMenu().getItem(9).setIcon(R.drawable.food_nav);
-            navigationView.getMenu().getItem(10).setIcon(R.drawable.taxi_nav);
-            navigationView.getMenu().getItem(11).setIcon(R.drawable.complaint_nav);
-            navigationView.getMenu().getItem(12).setIcon(R.drawable.contact_nav);
-            navigationView.getMenu().getItem(13).setIcon(R.drawable.password_nav);
-            navigationView.getMenu().getItem(14).setIcon(R.drawable.language_nav);
-            navigationView.getMenu().getItem(15).setIcon(R.drawable.logout_nav);
+            // navigationView.getMenu().getItem(4).setIcon(R.drawable.camera_nav);
+            navigationView.getMenu().getItem(4).setIcon(R.drawable.navigation_nav);
+            navigationView.getMenu().getItem(5).setIcon(R.drawable.project_nav);
+            navigationView.getMenu().getItem(6).setIcon(R.drawable.booking_nav);
+            navigationView.getMenu().getItem(7).setIcon(R.drawable.profile_nav);
+            navigationView.getMenu().getItem(8).setIcon(R.drawable.food_nav);
+            navigationView.getMenu().getItem(9).setIcon(R.drawable.taxi_nav);
+            navigationView.getMenu().getItem(10).setIcon(R.drawable.complaint_nav);
+            navigationView.getMenu().getItem(11).setIcon(R.drawable.contact_nav);
+            navigationView.getMenu().getItem(12).setIcon(R.drawable.password_nav);
+            navigationView.getMenu().getItem(13).setIcon(R.drawable.language_nav);
+            navigationView.getMenu().getItem(14).setIcon(R.drawable.logout_nav);
 
         }
 

@@ -101,7 +101,7 @@ public class ResetPasswordFragment extends BaseFragment {
                         public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
 
                             endLoading();
-                            showDilog("Failed Please Try After Sometime !",true);
+                            showDilog("Please Try Again Later!",true);
                         }
                     });
 
