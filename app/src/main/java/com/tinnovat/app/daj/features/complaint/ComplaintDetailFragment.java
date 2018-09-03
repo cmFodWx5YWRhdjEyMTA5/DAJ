@@ -68,7 +68,7 @@ public class ComplaintDetailFragment extends BaseFragment {
 
     @Override
     public void initialiseViews(View view) {
-        mListener.setTitle(mComplaintList.getCategoryName());
+        mListener.setTitle(getActivity().getResources().getString(R.string.my_com));
         locationText = view.findViewById(R.id.locationText);
         recyclerView = view.findViewById(R.id.recycler_view);
 

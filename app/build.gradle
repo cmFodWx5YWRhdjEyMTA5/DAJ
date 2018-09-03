@@ -69,6 +69,8 @@ dependencies {
     implementation 'com.github.aritraroy:Flashbar:1.0.2'
     //for Justify text
     implementation 'me.biubiubiu.justifytext:library:1.1'
+    //lat log
+    implementation'com.github.ankitdubey021:GPSTracker:1.1'
 
     compile project(path: ':circular-layout-manager')
 }

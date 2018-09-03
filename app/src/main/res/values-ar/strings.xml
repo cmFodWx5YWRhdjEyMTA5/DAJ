@@ -126,6 +126,7 @@
     <string name="future_phase_info_list">قائمة معلومات المرحلة المستقبلية</string>//
     <string name="my_booking">حجزي</string>//
     <string name="my_complaint">الشكاوي الخاصة بي</string>//
+    <string name="my_com">الشكاوي الخاصة بي</string>//
     <string name="reg_complaint">تسجيل شكوى</string>//
     <string name="my_complaint_list">قائمة الشكاوي الخاصة بي</string>//
     <string name="order_taxi">طلب تاكسي</string>//

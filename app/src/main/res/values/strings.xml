@@ -138,6 +138,7 @@
     <string name="future_phase_info_list">FUTURE PHASE INFO LIST</string>
     <string name="my_booking">MY BOOKINGS</string>
     <string name="my_complaint">MY COMPLAINTS</string>
+    <string name="my_com">MY COMPLAINT</string>
     <string name="reg_complaint">Register Complaint</string>
     <string name="my_complaint_list">MY COMPLAINTS LIST</string>
     <string name="order_taxi">ORDER TAXI</string>

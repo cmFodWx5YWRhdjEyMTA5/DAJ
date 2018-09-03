@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -28,7 +29,9 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.test.mock.MockPackageManager;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,6 +61,8 @@ import com.tinnovat.app.daj.data.network.model.ComplaintCategoriesResponseModel;
 import com.tinnovat.app.daj.data.network.model.CompllaintUpdateResponseModel;
 import com.tinnovat.app.daj.data.network.model.RequestParams;
 
+import org.ankit.gpslibrary.MyTracker;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -72,7 +77,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class RegisterComplaintFragment extends BaseFragment implements ImagesAdapter.ImageAdapterListener, LocationListener {
+public class RegisterComplaintFragment extends BaseFragment implements ImagesAdapter.ImageAdapterListener {
 
     TextView category;
     List<String> listItems;
@@ -80,7 +85,10 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
     //ViewDialog alert;
     int mCatId = 0;
 
-    private FusedLocationProviderClient mFusedLocationClient;
+    private static final int REQUEST_CODE_PERMISSION = 2;
+    String mPermission = Manifest.permission.ACCESS_FINE_LOCATION;
+
+//    private FusedLocationProviderClient mFusedLocationClient;
 
     private static final int CAMERA_REQUEST = 1888;
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
@@ -150,7 +158,7 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
 
         location.setOnClickListener(this);
 
-        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
+//        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
 
         form = new Form.Builder(getActivity())
                 .showErrors(true)
@@ -158,11 +166,60 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
 
         checkIsLocationEnabled();
 
-        getLocation();
+//        getLocation();
+
+//        checkLocation();
 
         fetchCategory();
 
 
+    }
+
+    private void checkLocation(){
+        try {
+            if (ActivityCompat.checkSelfPermission(getActivity(), mPermission)
+                    != MockPackageManager.PERMISSION_GRANTED) {
+
+                ActivityCompat.requestPermissions(getActivity(), new String[]{mPermission, Manifest.permission.READ_PHONE_STATE},
+                        REQUEST_CODE_PERMISSION);
+            }else{
+                //read location
+                getLocations();
+            }
+        } catch (Exception e) {
+            showMessage("error");
+            e.printStackTrace();
+        }
+    }
+   /* @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_CODE_PERMISSION:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    getLocations();
+                } else {
+                    System.out.println("permission denied!");
+                }
+                break;
+        }
+    }*/
+
+
+    private void getLocations(){
+        MyTracker tracker=new MyTracker(getActivity());
+
+        lattitude = tracker.getLatitude();
+        longitude = tracker.getLongitude();
+
+        try {
+            Geocoder geocoder = new Geocoder(getContext(), Locale.ENGLISH);
+            List<Address> addresses = geocoder.getFromLocation(tracker.getLatitude(), tracker.getLongitude(), 1);
+            textAddress.setText(addresses.get(0).getAddressLine(0) + ", " +
+                    addresses.get(0).getAddressLine(1) + ", " + addresses.get(0).getAddressLine(2));
+        } catch (Exception e) {
+
+            Log.i("location error","");
+        }
     }
 
     private void setSpinner(List<String> listItems) {
@@ -247,21 +304,12 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
             builder.setNegativeButton(R.string.no, null);
             builder.create().show();
         } else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                getLocation();
-            } else {
-                try {
-                    locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-                    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 500, 5, this);
-                } catch (SecurityException e) {
-                    e.printStackTrace();
-                }
-            }
+            checkLocation();
         }
     }
 
 
-    private void getLocation() {
+    /*private void getLocation() {
 
 
 
@@ -276,12 +324,12 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
 
             try {
                 locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-              /*  locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 5, this);*/
+              *//*  locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 5, this);*//*
 
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, this);
                 locationManager.requestLocationUpdates(LocationManager.PASSIVE_PROVIDER, 1000, 0, this);
                 locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0, this);
-               /* mFusedLocationClient.getLastLocation()
+               *//* mFusedLocationClient.getLastLocation()
                         .addOnSuccessListener((Executor) this, new OnSuccessListener<Location>() {
                             @Override
                             public void onSuccess(Location location) {
@@ -291,12 +339,12 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
                                     showMessage("hell");
                                 }
                             }
-                        });*/
+                        });*//*
             } catch (SecurityException e) {
                 e.printStackTrace();
             }
         }
-    }
+    }*/
 
     private void showDilog(String message){
         android.support.v7.app.AlertDialog.Builder builder1 = new android.support.v7.app.AlertDialog.Builder(getActivity());
@@ -417,6 +465,10 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
                 checkIsLocationEnabled();
                 break;
 
+                case R.id.text_address:
+                checkIsLocationEnabled();
+                break;
+
             default:
                 break;
         }
@@ -489,7 +541,7 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == MY_CAMERA_PERMISSION_CODE) {
+        /*if (requestCode == MY_CAMERA_PERMISSION_CODE) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(getContext(), "camera permission granted", Toast.LENGTH_LONG).show();
                 Intent cameraIntent = new
@@ -498,6 +550,27 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
             } else {
                 Toast.makeText(getContext(), "camera permission denied", Toast.LENGTH_LONG).show();
             }
+        }*/
+
+        switch (requestCode) {
+            case REQUEST_CODE_PERMISSION:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    getLocations();
+                } else {
+                    showMessage("Please Enable GPS and Internet");
+                }
+                break;
+
+            case MY_CAMERA_PERMISSION_CODE:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(getContext(), "camera permission granted", Toast.LENGTH_LONG).show();
+                    Intent cameraIntent = new
+                            Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(cameraIntent, CAMERA_REQUEST);
+                } else {
+                    Toast.makeText(getContext(), "camera permission denied", Toast.LENGTH_LONG).show();
+                }
+                break;
         }
     }
 
@@ -566,7 +639,7 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
         dialog.show();
     }
 
-    @Override
+    /*@Override
     public void onLocationChanged(Location location) {
         lattitude = location.getLatitude();
         longitude = location.getLongitude();
@@ -580,9 +653,9 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
 
         }
 
-    }
+    }*/
 
-    @Override
+   /* @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
 
     }
@@ -595,7 +668,7 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
     @Override
     public void onProviderDisabled(String provider) {
 
-    }
+    }*/
 
     /*public class ViewDialog implements ComplaintCategoryAdapter.CategoryAdapterListener {
         Dialog dialog;
