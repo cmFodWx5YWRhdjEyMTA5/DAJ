@@ -33,6 +33,7 @@
             style="@style/EditTextField"
             android:drawableStart="@drawable/user_small_green"
             android:hint="@string/user_name"
+            android:text="jainy"
             android:textAlignment="viewStart"/>
         </com.pchmn.androidverify.InputValidator>
 
@@ -50,6 +51,7 @@
             style="@style/EditTextField"
             android:drawableStart="@drawable/password_small_green"
             android:hint="@string/password"
+            android:text="12345"
             android:inputType="textPassword"
             android:textAlignment="viewStart"/>
         </com.pchmn.androidverify.InputValidator>

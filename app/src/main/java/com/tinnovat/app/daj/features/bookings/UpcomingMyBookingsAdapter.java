@@ -72,9 +72,9 @@ public class UpcomingMyBookingsAdapter extends RecyclerView.Adapter<UpcomingMyBo
        /* if ( !CommonUtils.getInstance().getDate2(CalendarDay.today().getCalendar())
                 .equals(response.getServiceBooking().get(position).getServiceBookingDate()) ){*/
             if (mIsEnglish){
-                holder.time.setGravity(Gravity.END);
-            }else {
                 holder.time.setGravity(Gravity.START);
+            }else {
+                holder.time.setGravity(Gravity.END);
             }
 
             holder.itemView.setVisibility(View.VISIBLE);
