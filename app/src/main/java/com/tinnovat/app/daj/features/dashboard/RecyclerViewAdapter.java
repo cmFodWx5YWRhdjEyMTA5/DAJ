@@ -87,27 +87,32 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
                             holder.img.setVisibility(View.INVISIBLE);
                             holder.img.setImageResource(R.drawable.logout);
                             break;
-                        case 3:
+                            case 3:
+                            holder.itemView.setVisibility(View.INVISIBLE);
+                            holder.img.setVisibility(View.INVISIBLE);
+                            holder.img.setImageResource(R.drawable.logout);
+                            break;
+                        case 4:
                             holder.itemView.setVisibility(View.VISIBLE);
                             holder.img.setVisibility(View.VISIBLE);
                             holder.img.setImageResource(R.drawable.dash_event_eng);
                             break;
-                        case 4:
+                        case 5:
                             holder.itemView.setVisibility(View.VISIBLE);
                             holder.img.setVisibility(View.VISIBLE);
                             holder.img.setImageResource(R.drawable.dash_service_eng);
                             break;
 
-                        case 5:
+                        case 6:
                             holder.itemView.setVisibility(View.VISIBLE);
                             holder.img.setVisibility(View.VISIBLE);
                             holder.img.setImageResource(R.drawable.dash_guest_eng);
                             break;
-                        case 6:
+                       /* case 6:
                             holder.itemView.setVisibility(View.VISIBLE);
                             holder.img.setVisibility(View.VISIBLE);
                             holder.img.setImageResource(R.drawable.dash_camer_eng);
-                            break;
+                            break;*/
                         case 7:
                             holder.itemView.setVisibility(View.VISIBLE);
                             holder.img.setVisibility(View.VISIBLE);
@@ -183,6 +188,11 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
                             holder.img.setVisibility(View.INVISIBLE);
                             holder.img.setImageResource(R.drawable.phone_golden);
                             break;
+                            case 22:
+                            holder.itemView.setVisibility(View.INVISIBLE);
+                            holder.img.setVisibility(View.INVISIBLE);
+                            holder.img.setImageResource(R.drawable.phone_golden);
+                            break;
 
                     }
                 } else {
@@ -204,28 +214,34 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
                             holder.img.setVisibility(View.INVISIBLE);
                             holder.img.setImageResource(R.drawable.logout);
                             break;
+                            case 3:
+                            holder.itemView.setVisibility(View.INVISIBLE);
+                            holder.itemView.setVisibility(View.INVISIBLE);
+                            holder.img.setVisibility(View.INVISIBLE);
+                            holder.img.setImageResource(R.drawable.logout);
+                            break;
 
-                        case 3:
+                        case 4:
                             holder.itemView.setVisibility(View.VISIBLE);
                             holder.img.setVisibility(View.VISIBLE);
                             holder.img.setImageResource(R.drawable.dash_event_arb);
                             break;
-                        case 4:
+                        case 5:
                             holder.itemView.setVisibility(View.VISIBLE);
                             holder.img.setVisibility(View.VISIBLE);
                             holder.img.setImageResource(R.drawable.dash_service_arb);
                             break;
 
-                        case 5:
+                        case 6:
                             holder.itemView.setVisibility(View.VISIBLE);
                             holder.img.setVisibility(View.VISIBLE);
                             holder.img.setImageResource(R.drawable.dash_guest_arb);
                             break;
-                        case 6:
+                        /*case 6:
                             holder.itemView.setVisibility(View.VISIBLE);
                             holder.img.setVisibility(View.VISIBLE);
                             holder.img.setImageResource(R.drawable.dash_camer_arb);
-                            break;
+                            break;*/
                         case 7:
                             holder.itemView.setVisibility(View.VISIBLE);
                             holder.img.setVisibility(View.VISIBLE);

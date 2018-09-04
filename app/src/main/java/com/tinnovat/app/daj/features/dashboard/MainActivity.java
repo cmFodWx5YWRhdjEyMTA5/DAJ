@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -109,7 +110,6 @@ public class MainActivity extends BaseActivity {
         ImageView instagram = findViewById(R.id.instagram);
 
 
-
         if (!getLanguage()) {
             //for arabic
             navigationView.getMenu().getItem(0).setIcon(R.drawable.home_ar_nav);
@@ -117,17 +117,17 @@ public class MainActivity extends BaseActivity {
             navigationView.getMenu().getItem(2).setIcon(R.drawable.service_ar_nav);
             navigationView.getMenu().getItem(3).setIcon(R.drawable.guest_ar_nav);
             //navigationView.getMenu().getItem(4).setIcon(R.drawable.camera_ar_nav);
-            navigationView.getMenu().getItem(6).setIcon(R.drawable.navigation_ar_nav);
-            navigationView.getMenu().getItem(7).setIcon(R.drawable.project_ar_nav);
-            navigationView.getMenu().getItem(8).setIcon(R.drawable.booking_ar_nav);
-            navigationView.getMenu().getItem(9).setIcon(R.drawable.profile_ar_nav);
-            navigationView.getMenu().getItem(10).setIcon(R.drawable.food_ar_nav);
-            navigationView.getMenu().getItem(11).setIcon(R.drawable.taxi_ar_nav);
-            navigationView.getMenu().getItem(12).setIcon(R.drawable.complaint_ar_nav);
-            navigationView.getMenu().getItem(13).setIcon(R.drawable.contact_ar_nav);
-            navigationView.getMenu().getItem(14).setIcon(R.drawable.password_ar_nav);
-            navigationView.getMenu().getItem(15).setIcon(R.drawable.language_ar_nav);
-            navigationView.getMenu().getItem(16).setIcon(R.drawable.logout_ar_nav);
+            navigationView.getMenu().getItem(4).setIcon(R.drawable.navigation_ar_nav);
+            navigationView.getMenu().getItem(5).setIcon(R.drawable.project_ar_nav);
+            navigationView.getMenu().getItem(6).setIcon(R.drawable.booking_ar_nav);
+            navigationView.getMenu().getItem(7).setIcon(R.drawable.profile_ar_nav);
+            navigationView.getMenu().getItem(8).setIcon(R.drawable.food_ar_nav);
+            navigationView.getMenu().getItem(9).setIcon(R.drawable.taxi_ar_nav);
+            navigationView.getMenu().getItem(10).setIcon(R.drawable.complaint_ar_nav);
+            navigationView.getMenu().getItem(11).setIcon(R.drawable.contact_ar_nav);
+            navigationView.getMenu().getItem(12).setIcon(R.drawable.password_ar_nav);
+            navigationView.getMenu().getItem(13).setIcon(R.drawable.language_ar_nav);
+            navigationView.getMenu().getItem(14).setIcon(R.drawable.logout_ar_nav);
 
         } else {
             //for Eng
@@ -269,18 +269,18 @@ public class MainActivity extends BaseActivity {
 
                 switch (option) {
 
-                    case "3":
+                    case "4":
                         fetchEvents();
                         break;
-                    case "4":
+                    case "5":
                         fetchServices();
                         break;
-                    case "5":
+                    case "6":
                         fetchGuestRegistration();
                         break;
-                    case "6":
+                   /* case "6":
                         fetchCamera();
-                        break;
+                        break;*/
                     case "7":
                         fetchMaps();
                         break;
@@ -325,10 +325,11 @@ public class MainActivity extends BaseActivity {
                 eventName.add(" ");
                 eventName.add(" ");
                 eventName.add(" ");
+                eventName.add(" ");
                 eventName.add(getResources().getString(R.string.events));
                 eventName.add(getResources().getString(R.string.services));
                 eventName.add(getResources().getString(R.string.guest_reg));
-                eventName.add(getResources().getString(R.string.view_camera));
+                //eventName.add(getResources().getString(R.string.view_camera));
                 eventName.add(getResources().getString(R.string.navigation));
                 eventName.add(getResources().getString(R.string.projects));
                 eventName.add(getResources().getString(R.string.my_bookings));
@@ -340,6 +341,7 @@ public class MainActivity extends BaseActivity {
                 eventName.add(getResources().getString(R.string.change_password));
                 eventName.add(getResources().getString(R.string.change_language));
                 eventName.add(getResources().getString(R.string.logout));
+                eventName.add(" ");
                 eventName.add(" ");
                 eventName.add(" ");
                 eventName.add(" ");
