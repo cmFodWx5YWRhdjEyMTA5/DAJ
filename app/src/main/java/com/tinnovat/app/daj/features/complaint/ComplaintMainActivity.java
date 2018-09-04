@@ -48,7 +48,7 @@ public class ComplaintMainActivity extends BaseActivity implements
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.getMenu().getItem(11).setChecked(true);
+        navigationView.getMenu().getItem(10).setChecked(true);
         navigationView.setItemIconTintList(null);
 
         ImageView facebook = findViewById(R.id.facebook);

@@ -58,11 +58,11 @@ public class StatusListAdapter extends RecyclerView.Adapter<StatusListAdapter.My
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        if (mLanguage){
+        /*if (mLanguage){
             holder.logNote.setGravity(Gravity.START);
         }else {
             holder.logNote.setGravity(Gravity.END);
-        }
+        }*/
 
         switch (responseData.getLogDetails().get(position).getComplaintStatus()) {
             case 0:

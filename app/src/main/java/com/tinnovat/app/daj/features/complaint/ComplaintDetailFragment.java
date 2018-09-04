@@ -13,6 +13,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,7 +84,6 @@ public class ComplaintDetailFragment extends BaseFragment {
         imagePopup.setBackgroundColor(Color.BLACK);
         imagePopup.setFullScreen(true);
 
-
         complaintTitle.setText(mComplaintList.getCategoryName());
         complaintDate.setText(mComplaintList.getSubmittedDate());
         description.setText(String.format(getResources().getString(R.string.description_formatter),mComplaintList.getDescription()));
@@ -119,6 +119,13 @@ public class ComplaintDetailFragment extends BaseFragment {
             RelativeLayout imageLayout = view.findViewById(R.id.photoLayout);
 
             //TextView locationText = view.findViewById(R.id.locationText);
+
+
+      if (getLanguage()){
+                 locationText.setGravity(Gravity.START|Gravity.CENTER_VERTICAL);
+        }else {
+                 locationText.setGravity(Gravity.END|Gravity.CENTER_VERTICAL);
+        }
 
             LinearLayout banner = view.findViewById(R.id.bannerText);
 

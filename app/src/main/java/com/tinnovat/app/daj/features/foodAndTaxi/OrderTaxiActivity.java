@@ -3,6 +3,7 @@ package com.tinnovat.app.daj.features.foodAndTaxi;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -37,7 +38,7 @@ public class OrderTaxiActivity extends BaseActivity {
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.getMenu().getItem(10).setChecked(true);
+        navigationView.getMenu().getItem(9).setChecked(true);
         navigationView.setItemIconTintList(null);
 
         appPreferanceStore = new AppPreferanceStore(this);
@@ -73,6 +74,11 @@ public class OrderTaxiActivity extends BaseActivity {
         GridView gridview =  findViewById(R.id.gridview);
         gridview.setAdapter(new OrderAdapter(this,response));
         endLoading();
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        onBackPressed();
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

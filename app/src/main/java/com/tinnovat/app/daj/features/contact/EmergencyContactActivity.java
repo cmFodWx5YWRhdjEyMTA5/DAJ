@@ -8,6 +8,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -45,7 +46,7 @@ public class EmergencyContactActivity extends BaseActivity {
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.getMenu().getItem(12).setChecked(true);
+        navigationView.getMenu().getItem(11).setChecked(true);
         navigationView.setItemIconTintList(null);
 
         ImageView facebook = findViewById(R.id.facebook);
@@ -121,6 +122,11 @@ public class EmergencyContactActivity extends BaseActivity {
         appPreferanceStore = new AppPreferanceStore(this);
         noData = findViewById(R.id.nodata);
         fetchContactList();
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        onBackPressed();
+        return super.onOptionsItemSelected(item);
     }
 
     private void fetchContactList() {

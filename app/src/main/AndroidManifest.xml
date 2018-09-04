@@ -64,91 +64,60 @@
             android:name=".features.bookings.MyBookingActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
+
         </activity>
         <activity
             android:name=".features.foodAndTaxi.OrderTaxiActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
+
         </activity>
         <activity
             android:name=".features.foodAndTaxi.OrderFoodActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
             android:name=".features.surveillance.SurveillanceActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
             android:name=".features.eventAndNews.EventNewsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".features.dashboard.MainActivity" />
         </activity>
         <activity
             android:name=".features.eventAndNews.EventDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.features.eventAndNews.EventNewsActivity" />
         </activity>
         <activity
             android:name=".features.contact.EmergencyContactActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
             android:name=".features.bookings.GuestRegistrationActivityMain"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
             android:name=".features.profile.ProfileActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
             android:name=".features.authentication.ChangePasswordActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
             android:name=".map.MapsActivity"
             android:label="@string/map"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
         <activity
             android:name=".features.futurePhase.FuturePhaseMainActivity"
@@ -181,9 +150,6 @@
             android:name=".features.notification.NotificationActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tinnovat.app.daj.features.dashboard.MainActivity" />
         </activity>
     </application>
 

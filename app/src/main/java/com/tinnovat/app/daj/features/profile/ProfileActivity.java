@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -45,7 +46,7 @@ public class ProfileActivity extends BaseActivity {
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.getMenu().getItem(8).setChecked(true);
+        navigationView.getMenu().getItem(7).setChecked(true);
         navigationView.setItemIconTintList(null);
 
         ImageView facebook = findViewById(R.id.facebook);
@@ -128,6 +129,11 @@ public class ProfileActivity extends BaseActivity {
     public void initialiseViews() {
 
 
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        onBackPressed();
+        return super.onOptionsItemSelected(item);
     }
 
 

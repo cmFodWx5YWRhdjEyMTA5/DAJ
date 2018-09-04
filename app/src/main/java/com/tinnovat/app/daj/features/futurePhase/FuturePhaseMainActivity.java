@@ -34,7 +34,7 @@ public class FuturePhaseMainActivity extends BaseActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.getMenu().getItem(6).setChecked(true);
+        navigationView.getMenu().getItem(5).setChecked(true);
         navigationView.setItemIconTintList(null);
         ImageView facebook = findViewById(R.id.facebook);
         ImageView twitter = findViewById(R.id.twitter);

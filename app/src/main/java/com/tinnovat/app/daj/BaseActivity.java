@@ -16,6 +16,10 @@ import android.view.Window;
 import android.widget.Toast;
 
 import com.tinnovat.app.daj.data.AppPreferanceStore;
+import com.tinnovat.app.daj.data.network.ApiClient;
+import com.tinnovat.app.daj.data.network.ApiInterface;
+import com.tinnovat.app.daj.data.network.model.LogoutResponseModel;
+import com.tinnovat.app.daj.data.network.model.NotificationResponseModel;
 import com.tinnovat.app.daj.features.authentication.ChangePasswordActivity;
 import com.tinnovat.app.daj.features.authentication.LoginActivity;
 import com.tinnovat.app.daj.features.bookings.GuestRegistrationActivityMain;
@@ -34,6 +38,10 @@ import com.tinnovat.app.daj.map.MapsActivity;
 
 import java.util.Locale;
 import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
 
@@ -299,9 +307,32 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     }
 
     public void fetchLogout() {
-        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-        startActivity(intent);
-        finish();
+        doLogout();
+
+    }
+
+    public void doLogout() {
+        startLoading();
+
+        ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
+        //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
+        Call<LogoutResponseModel> call = apiInterface.getLogout();
+        call.enqueue(new Callback<LogoutResponseModel>() {
+            @Override
+            public void onResponse(Call<LogoutResponseModel> call, Response<LogoutResponseModel> response) {
+                endLoading();
+                if (response.body() != null){
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LogoutResponseModel> call, Throwable t) {
+                endLoading();
+            }
+        });
     }
 
     public void changeLanguage(){

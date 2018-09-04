@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -131,7 +132,11 @@ public class SurveillanceActivity extends BaseActivity {
             arc_play.setScaleType(ImageView.ScaleType.FIT_START);
         }
     }
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        onBackPressed();
+        return super.onOptionsItemSelected(item);
+    }
     @Override
     public void initialiseViews() {
 

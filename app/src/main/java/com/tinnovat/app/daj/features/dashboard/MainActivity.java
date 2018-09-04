@@ -397,13 +397,13 @@ public class MainActivity extends BaseActivity {
 
         //initializeList();
 
-        if ( mAdapter != null){
+        /*if ( mAdapter != null){
             recyclerView.setAdapter(mAdapter);
             mAdapter.notifyDataSetChanged();
            // showMessage("resume");
         }else {
            // showMessage("list null");
-        }
+        }*/
         super.onResume();
     }
 }
