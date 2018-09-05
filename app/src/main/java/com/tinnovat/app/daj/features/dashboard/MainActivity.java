@@ -233,11 +233,9 @@ public class MainActivity extends BaseActivity {
             //Device is mobile
             recyclerView.setLayoutManager(new CircularLayoutManager(getApplicationContext(), 250, -80));//250 80
         }
-
         mAdapter.notifyDataSetChanged();
 
         recyclerView.setAdapter(mAdapter);
-
 
 
         recyclerView.addOnItemTouchListener(new OnRecyclerItemClickListener(getApplicationContext(),

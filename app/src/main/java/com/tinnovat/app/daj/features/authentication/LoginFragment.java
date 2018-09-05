@@ -2,6 +2,7 @@ package com.tinnovat.app.daj.features.authentication;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +31,7 @@ import com.tinnovat.app.daj.features.dashboard.MainActivity;
 
 import java.util.Objects;
 
+import io.github.douglasjunior.androidSimpleTooltip.SimpleTooltip;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -80,6 +83,16 @@ public class LoginFragment extends BaseFragment {
         form = new Form.Builder(getContext(), rootView)
                 .showErrors(true)
                 .build();
+
+        //todo tooltip
+       /* new SimpleTooltip.Builder(getActivity())
+                .anchorView(facebook)
+                .text("facebook")
+                .gravity(Gravity.TOP)
+                .animated(true)
+                .transparentOverlay(false)
+                .build()
+                .show();*/
 
         signIn.setOnClickListener(this);
         forgotPassword.setOnClickListener(this);
