@@ -10,8 +10,7 @@
             android:id="@+id/servicesImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/future1" />
+            android:scaleType="centerCrop" />
 
         <TextView
             android:id="@+id/serviceName"

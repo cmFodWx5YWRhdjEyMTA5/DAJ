@@ -73,8 +73,7 @@
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 android:layout_marginEnd="1dp"
-                android:layout_weight="1"
-                android:src="@drawable/cctv"/>
+                android:layout_weight="1"/>
             <LinearLayout
                 android:id="@+id/secondRow"
                 android:layout_width="0dp"
@@ -87,21 +86,18 @@
                 android:layout_width="match_parent"
                 android:scaleType="centerCrop"
                 android:layout_height="300dp"
-                android:layout_marginBottom="1dp"
-                android:src="@drawable/cctv"/>
+                android:layout_marginBottom="1dp"/>
                 <ImageView
                     android:id="@+id/image2"
                     android:layout_width="match_parent"
                     android:scaleType="centerCrop"
                     android:layout_height="150dp"
-                   android:layout_marginBottom="1dp"
-                    android:src="@drawable/cctv"/>
+                   android:layout_marginBottom="1dp"/>
                 <ImageView
                     android:id="@+id/image3"
                     android:layout_width="match_parent"
                     android:scaleType="centerCrop"
-                    android:layout_height="150dp"
-                    android:src="@drawable/cctv"/>
+                    android:layout_height="150dp"/>
             </LinearLayout>
         </LinearLayout>
             <LinearLayout

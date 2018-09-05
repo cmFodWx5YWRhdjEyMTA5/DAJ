@@ -29,7 +29,6 @@
                     android:id="@+id/servicesImage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/booking_bg"
                     android:scaleType="centerCrop"/>
 
                 <TextView
