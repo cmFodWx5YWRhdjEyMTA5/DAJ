@@ -8,9 +8,11 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -38,6 +40,7 @@ public class NotificationActivity extends BaseActivity {
 
     private AppPreferanceStore appPreferanceStore;
     private TextView noData;
+    RecyclerView recyclerView;
 
 
     @Override
@@ -144,9 +147,14 @@ public class NotificationActivity extends BaseActivity {
     @Override
     public void initialiseViews() {
 
-
+//        fetchProfileData();
     }
 
+    @Override
+    protected void onResume() {
+        fetchProfileData();
+        super.onResume();
+    }
 
     public void fetchProfileData() {
         startLoading();
@@ -185,7 +193,7 @@ public class NotificationActivity extends BaseActivity {
 
     private void setData(List<Notifications> notifications){
 
-        RecyclerView recyclerView= findViewById(R.id.recycler_view);
+        recyclerView= findViewById(R.id.recycler_view);
         NotificationAdapter mAdapter = new NotificationAdapter(notifications);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL, false);

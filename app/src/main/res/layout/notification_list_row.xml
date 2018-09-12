@@ -10,7 +10,8 @@
     android:background="@drawable/curve_small_bg_gray"
     android:orientation="vertical"
     android:paddingTop="10dp"
-    android:elevation="3dp">
+    android:elevation="3dp"
+    >
 
     <RelativeLayout
         android:id="@+id/relativeLayout4"

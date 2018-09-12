@@ -210,15 +210,10 @@ public class LoginFragment extends BaseFragment {
 
     private void invokeLoginService() {
 
-        String android_id = Settings.Secure.getString(getActivity().getContentResolver(),
-                Settings.Secure.ANDROID_ID);
-
-
-
         startLoading();
 
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        RequestParams.LoginReequest loginReequest = new RequestParams().new LoginReequest(userName.getText().toString(), password.getText().toString(), appPreferanceStore.getLanguage() ? "en" : "ar","android",android_id);
+        RequestParams.LoginReequest loginReequest = new RequestParams().new LoginReequest(userName.getText().toString(), password.getText().toString(), appPreferanceStore.getLanguage() ? "en" : "ar","android",appPreferanceStore.getDeviceToken());
         Call<LoginResponseModel> call = apiInterface.login(loginReequest);
         call.enqueue(new Callback<LoginResponseModel>() {
             @Override

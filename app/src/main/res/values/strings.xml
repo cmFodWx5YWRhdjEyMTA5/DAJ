@@ -206,6 +206,7 @@
     <string name="capacity">Capacity</string>//
     <string name="complaint_no">Complaint No</string>//
     <string name="cmp">CMP%d</string>//
+    <string name="technician">Assigned Technician</string>//
 
 
 </resources>

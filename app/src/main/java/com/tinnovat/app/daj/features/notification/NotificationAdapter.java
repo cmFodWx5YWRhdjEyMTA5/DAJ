@@ -17,10 +17,16 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.model.ContactResponseModel;
 import com.tinnovat.app.daj.data.network.model.Event;
 import com.tinnovat.app.daj.data.network.model.Notifications;
+import com.tinnovat.app.daj.features.bookings.GuestRegistrationActivityMain;
+import com.tinnovat.app.daj.features.complaint.ComplaintMainActivity;
+import com.tinnovat.app.daj.features.eventAndNews.EventDetailActivity;
+import com.tinnovat.app.daj.features.eventAndNews.EventImageSliderActivity;
+import com.tinnovat.app.daj.features.eventAndNews.EventNewsActivity;
 import com.tinnovat.app.daj.testing.TestActivity;
 
 import java.util.List;
@@ -47,7 +53,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         TextView mText4;
         TextView mText5;
 
-
         public MyViewHolder(View view) {
             super(view);
 
@@ -71,7 +76,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.notification_list_row, parent, false);
         itemView.setOnClickListener(new TestActivity());
@@ -82,6 +87,9 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
+
+
+
 
         switch (mNotifications.get(position).getType()){
             case "event":
@@ -175,7 +183,48 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                 }
 
                 break;
+            case "technician":
+                holder.mBanner1.setText(mContext.getResources().getString(R.string.complaint_no));
+                holder.mBanner2.setText(mContext.getResources().getString(R.string.technician));
+                holder.mBanner3.setText(mContext.getResources().getString(R.string.email_id));
+                holder.mBanner4.setText(mContext.getResources().getString(R.string.date));
+                holder.mBanner5.setText(mContext.getResources().getString(R.string.time));
+
+                holder.mText1.setText(String.format(mContext.getResources().getString(R.string.cmp),mNotifications.get(position).getRegisterNo()));
+                holder.mText2.setText(mNotifications.get(position).getTechnicianName());
+                holder.mText3.setText(mNotifications.get(position).getTechnicianEmail());
+
+                String[] dateAndTime = mNotifications.get(position).getNotifyTime().split(" ");
+                holder.mText4.setText(dateAndTime[0]);
+                holder.mText5.setText(String.format(mContext.getResources().getString(R.string.time_formatter),dateAndTime[1],dateAndTime[2]));
+                break;
         }
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (mNotifications.get(holder.getAdapterPosition()).getType()) {
+                    case "event": {
+
+                        Intent i = new Intent(mContext, EventDetailActivity.class);
+                        i.putExtra("response",new Gson().toJson(mNotifications.get(holder.getAdapterPosition())));
+                        mContext.startActivity(i);
+
+                        break;
+                    }
+                    case "complaint": {
+                        Intent intent = new Intent(mContext, ComplaintMainActivity.class);
+                        intent.putExtra("response",new Gson().toJson(mNotifications.get(holder.getAdapterPosition())));
+                        intent.putExtra("fromNotification",true);
+                        mContext.startActivity(intent);
+
+                        break;
+                    }
+                }
+
+
+            }
+        });
 
     }
 

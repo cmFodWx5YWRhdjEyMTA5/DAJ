@@ -25,11 +25,6 @@ import java.util.List;
 
 public class EventListTabFragment extends BaseFragment {
 
-    RelativeLayout a1;
-    RelativeLayout a2;
-    RelativeLayout a3;
-
-    private List<Movie> movieList = new ArrayList<>();
     private RecyclerView recyclerView;
     private EventAndNewsListAdapter mAdapter;
 
@@ -73,7 +68,7 @@ public class EventListTabFragment extends BaseFragment {
 
         setView(view);
 
-        Button btn = view.findViewById(R.id.btn);
+       /* Button btn = view.findViewById(R.id.btn);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,12 +85,11 @@ public class EventListTabFragment extends BaseFragment {
                 startActivity(i);
             }
         });
-
+*/
         return view;
     }
 
     private void setView(View view) {
-        TextView banner = view.findViewById(R.id.bannerText);
 
         recyclerView = view.findViewById(R.id.recycler_view);
         mAdapter = new EventAndNewsListAdapter();

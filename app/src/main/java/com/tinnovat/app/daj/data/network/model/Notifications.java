@@ -1,11 +1,46 @@
 package com.tinnovat.app.daj.data.network.model;
 
+import android.location.Location;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
 public class Notifications {
+    @SerializedName("register_no")
+    @Expose
+    private Integer registerNo;
+    @SerializedName("categoryName")
+    @Expose
+    private String categoryName;
+    @SerializedName("complaint_status")
+    @Expose
+    private Integer complaintStatus;
+    @SerializedName("submitted_date")
+    @Expose
+    private String submittedDate;
+    @SerializedName("location")
+    @Expose
+    private Location location;
+    @SerializedName("description")
+    @Expose
+    private String description;
+    @SerializedName("log_details")
+    @Expose
+    private List<LogDetail> logDetails = null;
+    @SerializedName("images")
+    @Expose
+    private List<Object> images = null;
+    @SerializedName("user_id")
+    @Expose
+    private Integer userId;
+    @SerializedName("type")
+    @Expose
+    private String type;
+    @SerializedName("notify_time")
+    @Expose
+    private String notifyTime;
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -39,9 +74,12 @@ public class Notifications {
     @SerializedName("user_interested")
     @Expose
     private Boolean userInterested;
-    @SerializedName("type")
+    @SerializedName("technician_name")
     @Expose
-    private String type;
+    private String technicianName;
+    @SerializedName("technician_email")
+    @Expose
+    private String technicianEmail;
     @SerializedName("Name")
     @Expose
     private String name;
@@ -54,18 +92,94 @@ public class Notifications {
     @SerializedName("VehicleNo")
     @Expose
     private String vehicleNo;
-    @SerializedName("notify_time")
-    @Expose
-    private String notifyTime;
-    @SerializedName("register_no")
-    @Expose
-    private Integer registerNo;
-    @SerializedName("categoryName")
-    @Expose
-    private String categoryName;
-    @SerializedName("complaint_status")
-    @Expose
-    private Integer complaintStatus;
+
+    public Integer getRegisterNo() {
+        return registerNo;
+    }
+
+    public void setRegisterNo(Integer registerNo) {
+        this.registerNo = registerNo;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public Integer getComplaintStatus() {
+        return complaintStatus;
+    }
+
+    public void setComplaintStatus(Integer complaintStatus) {
+        this.complaintStatus = complaintStatus;
+    }
+
+    public String getSubmittedDate() {
+        return submittedDate;
+    }
+
+    public void setSubmittedDate(String submittedDate) {
+        this.submittedDate = submittedDate;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<LogDetail> getLogDetails() {
+        return logDetails;
+    }
+
+    public void setLogDetails(List<LogDetail> logDetails) {
+        this.logDetails = logDetails;
+    }
+
+    public List<Object> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Object> images) {
+        this.images = images;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getNotifyTime() {
+        return notifyTime;
+    }
+
+    public void setNotifyTime(String notifyTime) {
+        this.notifyTime = notifyTime;
+    }
 
     public Integer getId() {
         return id;
@@ -155,12 +269,20 @@ public class Notifications {
         this.userInterested = userInterested;
     }
 
-    public String getType() {
-        return type;
+    public String getTechnicianName() {
+        return technicianName;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setTechnicianName(String technicianName) {
+        this.technicianName = technicianName;
+    }
+
+    public String getTechnicianEmail() {
+        return technicianEmail;
+    }
+
+    public void setTechnicianEmail(String technicianEmail) {
+        this.technicianEmail = technicianEmail;
     }
 
     public String getName() {
@@ -195,35 +317,4 @@ public class Notifications {
         this.vehicleNo = vehicleNo;
     }
 
-    public String getNotifyTime() {
-        return notifyTime;
-    }
-
-    public void setNotifyTime(String notifyTime) {
-        this.notifyTime = notifyTime;
-    }
-
-    public Integer getRegisterNo() {
-        return registerNo;
-    }
-
-    public void setRegisterNo(Integer registerNo) {
-        this.registerNo = registerNo;
-    }
-
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
-
-    public Integer getComplaintStatus() {
-        return complaintStatus;
-    }
-
-    public void setComplaintStatus(Integer complaintStatus) {
-        this.complaintStatus = complaintStatus;
-    }
 }

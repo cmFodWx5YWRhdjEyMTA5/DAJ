@@ -12,9 +12,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.google.gson.Gson;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.model.ComplaintList;
+import com.tinnovat.app.daj.data.network.model.EventDetails;
 import com.tinnovat.app.daj.data.network.model.Service;
 import com.tinnovat.app.daj.data.network.model.ServiceCategory;
 import com.tinnovat.app.daj.features.services.ServiceBookingFragment;
@@ -120,6 +122,12 @@ public class ComplaintMainActivity extends BaseActivity implements
                 startActivity(followIntent);
             }
         });
+
+        Intent i = getIntent();
+        if (i.getBooleanExtra("fromNotification",false)){
+            complaintDetails(new Gson().fromJson(i.getStringExtra("response"), ComplaintList.class));
+        }
+//        ComplaintList complaintList = new Gson().fromJson(i.getStringExtra("response"), ComplaintList.class);
     }
 
     @Override
@@ -141,7 +149,13 @@ public class ComplaintMainActivity extends BaseActivity implements
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        onBackPressed();
+        Intent i = getIntent();
+        if (i.getBooleanExtra("fromNotification",false)){
+            finish();
+        }else {
+            onBackPressed();
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -175,6 +189,12 @@ public class ComplaintMainActivity extends BaseActivity implements
     @Override
     public void setTitle(String title) {
         Objects.requireNonNull(getSupportActionBar()).setTitle(title);
+    }
+
+    public void complaintDetails(ComplaintList complaintList){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_frame, ComplaintDetailFragment.newInstance(complaintList));
+        transaction.addToBackStack(null).commit();
     }
 
    /* @Override

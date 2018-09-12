@@ -11,15 +11,18 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
+import com.tinnovat.app.daj.data.AppPreferanceStore;
 
 public class SplashScreenActivity extends BaseActivity {
 
     private static final int SPLASH_TIME_OUT = 3000;
+    private AppPreferanceStore appPreferanceStore;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+        appPreferanceStore = new AppPreferanceStore(this);
     }
 
     @Override
@@ -28,6 +31,7 @@ public class SplashScreenActivity extends BaseActivity {
             @Override
             public void onSuccess(InstanceIdResult instanceIdResult) {
                 String newToken = instanceIdResult.getToken();
+                appPreferanceStore.setDeviceToken(newToken);
                 Log.e("newToken",newToken);
 
             }

@@ -30,6 +30,8 @@ public class AppPreferanceStore {
 
     private static final String AUTH_TOKEN = "AUTH_TOKEN";
 
+    private static final String DEVICE_TOKEN = "DEVICE_TOKEN";
+
     private static final String NAME = "Name";
 
     private static final String USER_NAME = "Username";
@@ -80,6 +82,12 @@ public class AppPreferanceStore {
     public void setToken(String token){
         editor = pref.edit();
         editor.putString(AUTH_TOKEN, token);
+        editor.apply();
+    }
+
+    public void setDeviceToken(String token){
+        editor = pref.edit();
+        editor.putString(DEVICE_TOKEN, token);
         editor.apply();
     }
     public void setDataEventAndNews(Response<EventListModel> response){
@@ -168,6 +176,10 @@ public class AppPreferanceStore {
      * */
     public String getToken(){
         return pref.getString(AUTH_TOKEN, null);
+    }
+
+    public String getDeviceToken(){
+        return pref.getString(DEVICE_TOKEN, null);
     }
 
 
