@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -209,12 +210,15 @@ public class LoginFragment extends BaseFragment {
 
     private void invokeLoginService() {
 
+        String android_id = Settings.Secure.getString(getActivity().getContentResolver(),
+                Settings.Secure.ANDROID_ID);
+
 
 
         startLoading();
 
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        RequestParams.LoginReequest loginReequest = new RequestParams().new LoginReequest(userName.getText().toString(), password.getText().toString(), appPreferanceStore.getLanguage() ? "en" : "ar");
+        RequestParams.LoginReequest loginReequest = new RequestParams().new LoginReequest(userName.getText().toString(), password.getText().toString(), appPreferanceStore.getLanguage() ? "en" : "ar","android",android_id);
         Call<LoginResponseModel> call = apiInterface.login(loginReequest);
         call.enqueue(new Callback<LoginResponseModel>() {
             @Override

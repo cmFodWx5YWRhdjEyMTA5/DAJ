@@ -12,11 +12,15 @@ public class RequestParams {
         private String UserName;
         private String Password;
         private String language;
+        private String device;
+        private String device_token;
 
-        public LoginReequest(String userName, String password, String language) {
+        public LoginReequest(String userName, String password, String language,String device,String device_token) {
             UserName = userName;
             Password = password;
             this.language = language;
+            this.device = device;
+            this.device_token = device_token;
         }
     }
 

@@ -201,4 +201,11 @@
     <string name="description_formatter">%s \n</string>//
     <string name="arrived">Arrived</string>//
     <string name="date">Date</string>//
+
+
+    <string name="capacity">Capacity</string>//
+    <string name="complaint_no">Complaint No</string>//
+    <string name="cmp">CMP%d</string>//
+
+
 </resources>

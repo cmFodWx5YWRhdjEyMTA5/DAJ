@@ -6,26 +6,15 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class NotificationResponseModel {
-    @SerializedName("guest")
+    @SerializedName("notification")
     @Expose
-    private List<Guest> guest = null;
-    @SerializedName("events")
-    @Expose
-    private List<Event> events = null;
+    private List<Notifications> notification = null;
 
-    public List<Guest> getGuest() {
-        return guest;
+    public List<Notifications> getNotification() {
+        return notification;
     }
 
-    public void setGuest(List<Guest> guest) {
-        this.guest = guest;
-    }
-
-    public List<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(List<Event> events) {
-        this.events = events;
+    public void setNotification(List<Notifications> notification) {
+        this.notification = notification;
     }
 }

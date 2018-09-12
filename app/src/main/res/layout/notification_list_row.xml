@@ -18,7 +18,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/bannerEvent"
+            android:id="@+id/banner1"
             style="@style/notificationTextStart"
             android:gravity="start"
             android:text="@string/event" />
@@ -30,9 +30,10 @@
             android:text="@string/divide" />
 
         <TextView
-            android:id="@+id/event"
+            android:id="@+id/text1"
             style="@style/notificationTextEnd"
-            android:layout_toEndOf="@+id/divide4" />
+            android:layout_toEndOf="@+id/divide4"
+            android:maxLines="1"/>
     </RelativeLayout>
 
 
@@ -42,7 +43,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/bannerVenue"
+            android:id="@+id/banner2"
             style="@style/notificationTextStart"
             android:gravity="start"
             android:text="@string/venue" />
@@ -54,9 +55,10 @@
             android:text="@string/divide" />
 
         <TextView
-            android:id="@+id/venue"
+            android:id="@+id/text2"
             style="@style/notificationTextEnd"
-            android:layout_toEndOf="@+id/divide5" />
+            android:layout_toEndOf="@+id/divide5"
+            android:maxLines="1"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -65,7 +67,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/bannerStartDate"
+            android:id="@+id/banner3"
             style="@style/notificationTextStart"
             android:gravity="start"
             android:text="@string/start_date" />
@@ -77,9 +79,10 @@
             android:text="@string/divide" />
 
         <TextView
-            android:id="@+id/startDate"
+            android:id="@+id/text3"
             style="@style/notificationTextEnd"
-            android:layout_toEndOf="@+id/divide6" />
+            android:layout_toEndOf="@+id/divide6"
+            android:maxLines="1"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -88,7 +91,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/bannerEndDate"
+            android:id="@+id/banner4"
             style="@style/notificationTextStart"
             android:gravity="start"
             android:text="@string/end_date" />
@@ -100,9 +103,34 @@
             android:text="@string/divide" />
 
         <TextView
-            android:id="@+id/endDate"
+            android:id="@+id/text4"
             style="@style/notificationTextEnd"
-            android:layout_toEndOf="@+id/divide7" />
+            android:layout_toEndOf="@+id/divide7"
+            android:maxLines="1"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/banner5"
+            style="@style/notificationTextStart"
+            android:gravity="start"
+            android:text="@string/end_date" />
+
+        <TextView
+            android:id="@+id/divide8"
+            style="@style/notificationTextMiddle"
+            android:layout_centerHorizontal="true"
+            android:text="@string/divide" />
+
+        <TextView
+            android:id="@+id/text5"
+            style="@style/notificationTextEnd"
+            android:layout_toEndOf="@+id/divide8"
+            android:maxLines="1"/>
     </RelativeLayout>
 
 
