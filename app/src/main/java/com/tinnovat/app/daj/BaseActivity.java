@@ -1,6 +1,7 @@
 package com.tinnovat.app.daj;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
@@ -322,6 +323,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
             public void onResponse(Call<LogoutResponseModel> call, Response<LogoutResponseModel> response) {
                 endLoading();
                 if (response.body() != null){
+                    appPreferenceStore.deleteToken();
                     Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(intent);
                     finish();

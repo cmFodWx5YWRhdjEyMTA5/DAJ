@@ -178,6 +178,10 @@ public class AppPreferanceStore {
         return pref.getString(AUTH_TOKEN, null);
     }
 
+    public void deleteToken(){
+        pref.edit().remove(AUTH_TOKEN).apply();
+    }
+
     public String getDeviceToken(){
         return pref.getString(DEVICE_TOKEN, null);
     }

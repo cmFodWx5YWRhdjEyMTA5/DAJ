@@ -12,6 +12,7 @@ import com.google.firebase.iid.InstanceIdResult;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.AppPreferanceStore;
+import com.tinnovat.app.daj.features.dashboard.MainActivity;
 
 public class SplashScreenActivity extends BaseActivity {
 
@@ -40,9 +41,16 @@ public class SplashScreenActivity extends BaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
+                if (appPreferanceStore.getToken() == null){
+                    Intent intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                }else {
+                    Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
+                    intent.putExtra("status",true);
+                    startActivity(intent);
+                }
+
 
             }
         }, SPLASH_TIME_OUT);
