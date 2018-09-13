@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.model.EventDetails;
-import com.tinnovat.app.daj.data.network.model.Futurephase;
 
 import java.util.ArrayList;
 import java.util.Locale;

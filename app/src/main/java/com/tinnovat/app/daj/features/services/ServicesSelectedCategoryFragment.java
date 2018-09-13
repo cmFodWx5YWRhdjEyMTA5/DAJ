@@ -1,10 +1,7 @@
 package com.tinnovat.app.daj.features.services;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,17 +12,8 @@ import android.view.ViewGroup;
 import com.tinnovat.app.daj.BaseFragment;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.AppPreferanceStore;
-import com.tinnovat.app.daj.data.network.ApiClient;
-import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.Service;
 import com.tinnovat.app.daj.data.network.model.ServiceCategory;
-import com.tinnovat.app.daj.data.network.model.ServicesResponseModel;
-
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * A fragment representing a list of Items.

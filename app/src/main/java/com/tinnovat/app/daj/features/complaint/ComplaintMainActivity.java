@@ -5,8 +5,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,12 +14,6 @@ import com.google.gson.Gson;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.model.ComplaintList;
-import com.tinnovat.app.daj.data.network.model.EventDetails;
-import com.tinnovat.app.daj.data.network.model.Service;
-import com.tinnovat.app.daj.data.network.model.ServiceCategory;
-import com.tinnovat.app.daj.features.services.ServiceBookingFragment;
-import com.tinnovat.app.daj.features.services.ServicesMainCategoryFragment;
-import com.tinnovat.app.daj.features.services.ServicesSelectedCategoryFragment;
 
 import java.util.Objects;
 

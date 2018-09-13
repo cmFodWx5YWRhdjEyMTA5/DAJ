@@ -20,8 +20,6 @@ import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.ContactResponseModel;
 
-import java.util.Objects;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

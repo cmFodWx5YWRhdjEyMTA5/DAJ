@@ -10,11 +10,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.tinnovat.app.daj.R;
-import com.tinnovat.app.daj.data.network.model.MyServiceBookingResponseModel;
 import com.tinnovat.app.daj.data.network.model.ServiceBooking;
-import com.tinnovat.app.daj.utils.CommonUtils;
 
 import java.util.ArrayList;
 import java.util.List;

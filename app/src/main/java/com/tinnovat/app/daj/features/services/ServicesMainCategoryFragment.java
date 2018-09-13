@@ -12,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.tinnovat.app.daj.BaseFragment;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.AppPreferanceStore;

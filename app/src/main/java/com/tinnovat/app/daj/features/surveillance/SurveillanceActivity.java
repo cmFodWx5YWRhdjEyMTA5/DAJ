@@ -12,8 +12,6 @@ import android.widget.ImageView;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 
-import java.util.Objects;
-
 public class SurveillanceActivity extends BaseActivity {
 
     ImageView arc_gate;

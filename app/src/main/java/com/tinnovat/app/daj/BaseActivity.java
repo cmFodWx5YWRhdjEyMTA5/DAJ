@@ -1,7 +1,6 @@
 package com.tinnovat.app.daj;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
@@ -20,7 +19,6 @@ import com.tinnovat.app.daj.data.AppPreferanceStore;
 import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.LogoutResponseModel;
-import com.tinnovat.app.daj.data.network.model.NotificationResponseModel;
 import com.tinnovat.app.daj.features.authentication.ChangePasswordActivity;
 import com.tinnovat.app.daj.features.authentication.LoginActivity;
 import com.tinnovat.app.daj.features.bookings.GuestRegistrationActivityMain;

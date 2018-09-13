@@ -8,12 +8,9 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.tinnovat.app.daj.BaseActivity;
@@ -21,14 +18,8 @@ import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.AppPreferanceStore;
 import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
-import com.tinnovat.app.daj.data.network.model.ContactResponseModel;
-import com.tinnovat.app.daj.data.network.model.Event;
-import com.tinnovat.app.daj.data.network.model.Guest;
 import com.tinnovat.app.daj.data.network.model.NotificationResponseModel;
 import com.tinnovat.app.daj.data.network.model.Notifications;
-import com.tinnovat.app.daj.data.network.model.ProfileData;
-import com.tinnovat.app.daj.data.network.model.ProfileResponseModel;
-import com.tinnovat.app.daj.features.contact.ContactListAdapter;
 
 import java.util.List;
 

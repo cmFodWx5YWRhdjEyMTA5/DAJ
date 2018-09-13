@@ -1,14 +1,12 @@
 package com.tinnovat.app.daj.features.complaint;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.model.ComplaintList;
 import com.tinnovat.app.daj.testing.TestActivity;

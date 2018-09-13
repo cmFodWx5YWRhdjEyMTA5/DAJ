@@ -1,7 +1,6 @@
 package com.tinnovat.app.daj.features.dashboard;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 import android.text.Layout;
@@ -10,19 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.squareup.picasso.Picasso;
 import com.tinnovat.app.daj.R;
-import com.tinnovat.app.daj.data.network.model.EventListModel;
-import com.tinnovat.app.daj.features.eventAndNews.EventNewsActivity;
 
 import java.util.List;
-
-import retrofit2.Response;
 
 /**
  * Adapter for recycler view.

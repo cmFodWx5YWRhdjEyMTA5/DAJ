@@ -1,6 +1,5 @@
 package com.tinnovat.app.daj.features.eventAndNews.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,17 +7,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.tinnovat.app.daj.BaseFragment;
 import com.tinnovat.app.daj.R;
-import com.tinnovat.app.daj.data.network.model.EventDetails;
-import com.tinnovat.app.daj.features.eventAndNews.EventDetailActivity;
 import com.tinnovat.app.daj.data.AppPreferanceStore;
+import com.tinnovat.app.daj.data.network.model.EventDetails;
 import com.tinnovat.app.daj.features.eventAndNews.EventAndNewsListAdapter;
-import com.tinnovat.app.daj.testing.Movie;
 
 import java.util.ArrayList;
 import java.util.List;

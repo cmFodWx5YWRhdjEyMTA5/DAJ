@@ -1,10 +1,8 @@
 package com.tinnovat.app.daj.features.dashboard;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,14 +10,10 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.Display;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,7 +22,6 @@ import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.AppPreferanceStore;
 import com.tinnovat.app.daj.features.authentication.ChangePasswordActivity;
-import com.tinnovat.app.daj.features.foodAndTaxi.OrderFoodActivity;
 import com.tinnovat.app.daj.features.notification.NotificationActivity;
 
 import java.util.ArrayList;

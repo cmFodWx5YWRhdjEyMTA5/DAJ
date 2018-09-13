@@ -7,10 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.tinnovat.app.daj.R;
-import com.tinnovat.app.daj.data.network.model.Futurephase;
-import com.tinnovat.app.daj.features.futurePhase.ImageSliderAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;

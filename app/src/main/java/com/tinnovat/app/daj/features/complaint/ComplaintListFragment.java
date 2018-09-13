@@ -1,30 +1,19 @@
 package com.tinnovat.app.daj.features.complaint;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.prolificinteractive.materialcalendarview.CalendarDay;
-import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
-import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
-import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
-import com.prolificinteractive.materialcalendarview.format.DayFormatter;
-import com.squareup.picasso.Picasso;
 import com.tinnovat.app.daj.BaseFragment;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.AppPreferanceStore;
@@ -32,15 +21,7 @@ import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.ComplaintList;
 import com.tinnovat.app.daj.data.network.model.ComplaintListResponseModel;
-import com.tinnovat.app.daj.data.network.model.RequestParams;
-import com.tinnovat.app.daj.data.network.model.Service;
-import com.tinnovat.app.daj.data.network.model.ServiceAvailableDate;
-import com.tinnovat.app.daj.data.network.model.ServiceSlots;
-import com.tinnovat.app.daj.data.network.model.SuccessResponseModel;
-import com.tinnovat.app.daj.features.services.ChooseDateAdapter;
-import com.tinnovat.app.daj.utils.CommonUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;

@@ -1,6 +1,5 @@
 package com.tinnovat.app.daj.features.bookings;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -26,7 +25,6 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import com.pchmn.androidverify.Form;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
@@ -40,7 +38,6 @@ import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.GuestRegistrationResponseModel;
 import com.tinnovat.app.daj.data.network.model.RequestParams;
-import com.tinnovat.app.daj.features.dashboard.MainActivity;
 import com.tinnovat.app.daj.utils.CommonUtils;
 
 import java.util.ArrayList;

@@ -23,15 +23,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ceylonlabs.imageviewpopup.ImagePopup;
-import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 import com.tinnovat.app.daj.BaseFragment;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.model.ComplaintList;
-import com.tinnovat.app.daj.features.futurePhase.ImageSliderActivity;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 

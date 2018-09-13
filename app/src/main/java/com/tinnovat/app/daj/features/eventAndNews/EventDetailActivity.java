@@ -3,7 +3,6 @@ package com.tinnovat.app.daj.features.eventAndNews;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v7.app.AlertDialog;
@@ -11,7 +10,6 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.Layout;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -25,12 +23,7 @@ import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.EventDetails;
-import com.tinnovat.app.daj.data.network.model.RequestParams;
 import com.tinnovat.app.daj.data.network.model.SuccessResponseModel;
-import com.tinnovat.app.daj.features.futurePhase.ImageListAdapter;
-
-import java.util.List;
-import java.util.Objects;
 
 import me.biubiubiu.justifytext.library.JustifyTextView;
 import retrofit2.Call;

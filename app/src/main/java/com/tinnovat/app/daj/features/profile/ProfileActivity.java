@@ -10,18 +10,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.AppPreferanceStore;
 import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
-import com.tinnovat.app.daj.data.network.model.MyServiceBookingResponseModel;
 import com.tinnovat.app.daj.data.network.model.ProfileData;
 import com.tinnovat.app.daj.data.network.model.ProfileResponseModel;
-import com.tinnovat.app.daj.utils.CommonUtils;
-
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;

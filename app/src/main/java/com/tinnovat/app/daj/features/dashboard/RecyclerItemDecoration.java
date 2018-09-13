@@ -5,7 +5,6 @@ import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.View;
-import android.widget.Toast;
 
 import com.tinnovat.app.daj.R;
 

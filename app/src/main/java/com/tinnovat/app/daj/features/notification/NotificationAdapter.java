@@ -1,37 +1,21 @@
 package com.tinnovat.app.daj.features.notification;
 
-import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.tinnovat.app.daj.R;
-import com.tinnovat.app.daj.data.network.model.ContactResponseModel;
-import com.tinnovat.app.daj.data.network.model.Event;
 import com.tinnovat.app.daj.data.network.model.Notifications;
-import com.tinnovat.app.daj.features.bookings.GuestRegistrationActivityMain;
 import com.tinnovat.app.daj.features.complaint.ComplaintMainActivity;
 import com.tinnovat.app.daj.features.eventAndNews.EventDetailActivity;
-import com.tinnovat.app.daj.features.eventAndNews.EventImageSliderActivity;
-import com.tinnovat.app.daj.features.eventAndNews.EventNewsActivity;
 import com.tinnovat.app.daj.testing.TestActivity;
 
 import java.util.List;
-
-import retrofit2.Response;
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.MyViewHolder> {
 

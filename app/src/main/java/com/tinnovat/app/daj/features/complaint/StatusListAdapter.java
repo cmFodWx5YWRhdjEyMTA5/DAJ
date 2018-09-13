@@ -1,10 +1,7 @@
 package com.tinnovat.app.daj.features.complaint;
 
 import android.content.Context;
-import android.os.Build;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +10,6 @@ import android.widget.TextView;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.network.model.ComplaintList;
 import com.tinnovat.app.daj.testing.TestActivity;
-
-import me.biubiubiu.justifytext.library.JustifyTextView;
 
 public class StatusListAdapter extends RecyclerView.Adapter<StatusListAdapter.MyViewHolder> {
 

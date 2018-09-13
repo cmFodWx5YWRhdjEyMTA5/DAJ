@@ -1,11 +1,9 @@
 package com.tinnovat.app.daj.features.authentication;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.pchmn.androidverify.Form;
 import com.tinnovat.app.daj.BaseFragment;
@@ -24,8 +21,6 @@ import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.RequestParams;
 import com.tinnovat.app.daj.data.network.model.SuccessResponseModel;
-
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
