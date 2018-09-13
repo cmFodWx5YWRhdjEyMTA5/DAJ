@@ -47,7 +47,7 @@ public class SplashScreenActivity extends BaseActivity {
                     finish();
                 }else {
                     Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
-                    intent.putExtra("status",true);
+                    intent.putExtra("status",false);
                     startActivity(intent);
                 }
 
