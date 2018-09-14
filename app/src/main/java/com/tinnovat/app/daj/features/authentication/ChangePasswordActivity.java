@@ -87,8 +87,11 @@ public class ChangePasswordActivity extends BaseActivity {
         // validate the form
         if (form.isValid()) {
             if (newPassword.getText().toString().equals(cnfrmPassword.getText().toString())){
-
-                invokeChangePassword(currentPassword.getText().toString(),newPassword.getText().toString());
+                if (isNetworkConnected()){
+                    invokeChangePassword(currentPassword.getText().toString(),newPassword.getText().toString());
+                }else {
+                    showErrorDilog(false);
+                }
             }else {
                 showDilog(getResources().getString(R.string.password_mismatch),false);
             }

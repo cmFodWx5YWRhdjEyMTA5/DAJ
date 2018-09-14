@@ -70,40 +70,48 @@ public class ResetPasswordFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 if (form.isValid()) {
-                    startLoading();
-
-                    ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-                    RequestParams.ResetPasswordRequest resetPasswordRequest = new RequestParams().new ResetPasswordRequest(userName.getText().toString(), email.getText().toString());
-
-                    Call<SuccessResponseModel> call = apiInterface.resetPassword(resetPasswordRequest);
-                    call.enqueue(new Callback<SuccessResponseModel>() {
-                        @Override
-                        public void onResponse(Call<SuccessResponseModel> call, Response<SuccessResponseModel> response) {
-                            endLoading();
-
-                            //todo change
-                            if (response.body() != null) {
-                                if (response.body().getSuccess()) {
-
-                                    showDilog(response.body().getMessage(),true);
-                                } else {
-                                    showDilog(response.body().getMessage(),false);
-                                }
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
-
-                            endLoading();
-                            showDilog(getResources().getString(R.string.try_again_later),true);
-                        }
-                    });
+                    if (isNetworkConnected()){
+                        resetPassword();
+                    }else {
+                        showErrorDilog(false);
+                    }
 
                 }
             }
         });
 
+    }
+
+    private void resetPassword(){
+        startLoading();
+
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        RequestParams.ResetPasswordRequest resetPasswordRequest = new RequestParams().new ResetPasswordRequest(userName.getText().toString(), email.getText().toString());
+
+        Call<SuccessResponseModel> call = apiInterface.resetPassword(resetPasswordRequest);
+        call.enqueue(new Callback<SuccessResponseModel>() {
+            @Override
+            public void onResponse(Call<SuccessResponseModel> call, Response<SuccessResponseModel> response) {
+                endLoading();
+
+                //todo change
+                if (response.body() != null) {
+                    if (response.body().getSuccess()) {
+
+                        showDilog(response.body().getMessage(),true);
+                    } else {
+                        showDilog(response.body().getMessage(),false);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
+
+                endLoading();
+                showDilog(getResources().getString(R.string.try_again_later),true);
+            }
+        });
     }
 
     @Override

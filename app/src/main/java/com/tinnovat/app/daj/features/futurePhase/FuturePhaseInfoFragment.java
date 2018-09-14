@@ -88,7 +88,12 @@ public class FuturePhaseInfoFragment extends BaseFragment {
         appPreferanceStore = new AppPreferanceStore(getContext());
         mListener.setTitle(getString(R.string.future_phase_info_list));
 
-        fetchFuturePhasesInfo();
+
+        if (isNetworkConnected()){
+            fetchFuturePhasesInfo();
+        }else {
+            showErrorDilog(true);
+        }
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();

@@ -126,7 +126,12 @@ public class EventNewsActivity extends BaseActivity implements TabLayout.OnTabSe
 
         appPreferanceStore = new AppPreferanceStore(this);
 
-        fetchEventList();
+        if (isNetworkConnected()){
+            fetchEventList();
+        }else {
+            showErrorDilog(true);
+        }
+
 
     }
     @Override

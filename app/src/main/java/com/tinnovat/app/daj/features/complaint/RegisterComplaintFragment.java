@@ -161,8 +161,14 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
 //        getLocation();
 
 //        checkLocation();
+        if (isNetworkConnected()){
+            fetchCategory();
 
-        fetchCategory();
+        }else {
+            showErrorDilog(false);
+        }
+
+
 
 
     }
@@ -450,7 +456,6 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
                     doValidation();
                 }
 
-                //registerComplaint();
                 break;
 
             case R.id.location:
@@ -497,37 +502,43 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
     }
 
     private void registerComplaint(List<String> imageArray) {
+        if (isNetworkConnected()){
+            RequestParams.ComplaintRequest request = new RequestParams().new ComplaintRequest(
+                    appPreferanceStore.getLanguage() ? "en" : "ar", mCatId, commentBox.getText() == null ? " " : commentBox.getText().toString(),
+                    imageArray, String.format("%s,%s", lattitude, longitude));
 
-        RequestParams.ComplaintRequest request = new RequestParams().new ComplaintRequest(
-                appPreferanceStore.getLanguage() ? "en" : "ar", mCatId, commentBox.getText() == null ? " " : commentBox.getText().toString(),
-                imageArray, String.format("%s,%s", lattitude, longitude));
+            ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
 
-        ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
-
-        //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
-        Call<CompllaintUpdateResponseModel> call = apiInterface.registerComplaintService(request);
-        call.enqueue(new Callback<CompllaintUpdateResponseModel>() {
-            @Override
-            public void onResponse(Call<CompllaintUpdateResponseModel> call, Response<CompllaintUpdateResponseModel> response) {
-                endLoading();
-                if (response.body() != null) {
-                    if (response.body().isStatus()) {
-                        showDilog(response.body().getMessage());
+            //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
+            Call<CompllaintUpdateResponseModel> call = apiInterface.registerComplaintService(request);
+            call.enqueue(new Callback<CompllaintUpdateResponseModel>() {
+                @Override
+                public void onResponse(Call<CompllaintUpdateResponseModel> call, Response<CompllaintUpdateResponseModel> response) {
+                    endLoading();
+                    if (response.body() != null) {
+                        if (response.body().isStatus()) {
+                            showDilog(response.body().getMessage());
+                        } else {
+                            showDilog(response.body().getMessage());
+                        }
                     } else {
-                        showDilog(response.body().getMessage());
+                        getActivity().onBackPressed();
                     }
-                } else {
-                    getActivity().onBackPressed();
+
                 }
 
-            }
+                @Override
+                public void onFailure(Call<CompllaintUpdateResponseModel> call, Throwable t) {
+                    endLoading();
+                    showDilog(getResources().getString(R.string.try_again_later));
+                }
+            });
 
-            @Override
-            public void onFailure(Call<CompllaintUpdateResponseModel> call, Throwable t) {
-                endLoading();
-                showDilog(getResources().getString(R.string.try_again_later));
-            }
-        });
+        }else {
+            showErrorDilog(false);
+        }
+
+
     }
 
     @Override

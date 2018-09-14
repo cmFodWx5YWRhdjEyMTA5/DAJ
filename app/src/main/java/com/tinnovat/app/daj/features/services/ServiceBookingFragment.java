@@ -256,26 +256,31 @@ public class ServiceBookingFragment extends BaseFragment implements ChooseDateAd
     }
 
     private void fetchServiceAvailableSlots(String selectedDate) {
-        startLoading();
+        if (isNetworkConnected()){
+            startLoading();
 
-        ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
-        //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
-        Call<ServiceSlots> call = apiInterface.getAvailableTimeSlots(mCategoryId, mServiceItem.getId(), selectedDate);
-        call.enqueue(new Callback<ServiceSlots>() {
-            @Override
-            public void onResponse(@NonNull Call<ServiceSlots> call, Response<ServiceSlots> response) {
-                endLoading();
-                if (response.body() != null && response.body().getServiceAvailableDates() != null) {
+            ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
+            //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
+            Call<ServiceSlots> call = apiInterface.getAvailableTimeSlots(mCategoryId, mServiceItem.getId(), selectedDate);
+            call.enqueue(new Callback<ServiceSlots>() {
+                @Override
+                public void onResponse(@NonNull Call<ServiceSlots> call, Response<ServiceSlots> response) {
+                    endLoading();
+                    if (response.body() != null && response.body().getServiceAvailableDates() != null) {
 
-                    setDateCategory(response.body().getServiceAvailableDates());
+                        setDateCategory(response.body().getServiceAvailableDates());
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<ServiceSlots> call, Throwable t) {
-                endLoading();
-            }
-        });
+                @Override
+                public void onFailure(Call<ServiceSlots> call, Throwable t) {
+                    endLoading();
+                }
+            });
+        }else {
+            showErrorDilog(true);
+        }
+
     }
 
     private void fetchData() {
@@ -320,34 +325,38 @@ public class ServiceBookingFragment extends BaseFragment implements ChooseDateAd
     }
 
     private void doBooking(int category_id , int service_id, String date, List<Integer> timeSlots, int guest_no, String comments){
+        if (isNetworkConnected()){
+            startLoading();
 
-        startLoading();
+            ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
+            RequestParams.ServiceBookingRequest serviceBookingRequest = new RequestParams().new ServiceBookingRequest(category_id , service_id, date, timeSlots, guest_no, comments);
 
-        ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
-        RequestParams.ServiceBookingRequest serviceBookingRequest = new RequestParams().new ServiceBookingRequest(category_id , service_id, date, timeSlots, guest_no, comments);
-
-        Call<SuccessResponseModel> call = apiInterface.serviceBooking(serviceBookingRequest);
-        call.enqueue(new Callback<SuccessResponseModel>() {
-            @Override
-            public void onResponse(Call<SuccessResponseModel> call, Response<SuccessResponseModel> response) {
-                endLoading();
-                if (response.body() != null) {
-                    if (response.body().getSuccess()) {
-                        showDilog(response.body().getMessage(),true);
-                        mAdapter.notifyDataSetChanged();
-                    } else {
-                        showDilog(response.body().getMessage(),true);
+            Call<SuccessResponseModel> call = apiInterface.serviceBooking(serviceBookingRequest);
+            call.enqueue(new Callback<SuccessResponseModel>() {
+                @Override
+                public void onResponse(Call<SuccessResponseModel> call, Response<SuccessResponseModel> response) {
+                    endLoading();
+                    if (response.body() != null) {
+                        if (response.body().getSuccess()) {
+                            showDilog(response.body().getMessage(),true);
+                            mAdapter.notifyDataSetChanged();
+                        } else {
+                            showDilog(response.body().getMessage(),true);
+                        }
+                    }else {
                     }
-                }else {
                 }
-            }
 
-            @Override
-            public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
-                endLoading();
-                showDilog(getResources().getString(R.string.try_again_later),true);
-            }
-        });
+                @Override
+                public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
+                    endLoading();
+                    showDilog(getResources().getString(R.string.try_again_later),true);
+                }
+            });
+        }else {
+            showErrorDilog(false);
+        }
+
     }
 
     @Override

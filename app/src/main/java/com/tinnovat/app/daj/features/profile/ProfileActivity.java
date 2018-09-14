@@ -116,7 +116,11 @@ public class ProfileActivity extends BaseActivity {
 
         appPreferanceStore = new AppPreferanceStore(this);
 
-        fetchProfileData();
+        if (isNetworkConnected()){
+            fetchProfileData();
+        }else {
+            showErrorDilog(true);
+        }
 
     }
 

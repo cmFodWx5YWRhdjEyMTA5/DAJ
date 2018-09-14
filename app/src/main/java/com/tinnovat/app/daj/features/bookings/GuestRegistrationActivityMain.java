@@ -372,7 +372,12 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
     }
 
     private void validation() {
-        doRegistration(name, dates, time, purpose, vehicleNo);
+        if (isNetworkConnected()){
+            doRegistration(name, dates, time, purpose, vehicleNo);
+        }else {
+            showErrorDilog(false);
+        }
+
     }
 
 

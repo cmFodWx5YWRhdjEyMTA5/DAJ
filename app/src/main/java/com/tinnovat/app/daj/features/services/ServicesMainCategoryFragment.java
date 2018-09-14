@@ -88,7 +88,11 @@ public class ServicesMainCategoryFragment extends BaseFragment {
         appPreferanceStore = new AppPreferanceStore(getContext());
         mListener.setTitle(getString(R.string.services));
 
-        fetchServiceList();
+        if (isNetworkConnected()){
+            fetchServiceList();
+        }else {
+            showErrorDilog(true);
+        }
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();

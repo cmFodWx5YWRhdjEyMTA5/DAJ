@@ -312,7 +312,12 @@ public class EventDetailActivity extends BaseActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.interested:
-                actionInterested();
+                if (isNetworkConnected()){
+                    actionInterested();
+                }else {
+                    showErrorDilog(false);
+                }
+
                 break;
 
             case R.id.readMore:

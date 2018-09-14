@@ -178,7 +178,12 @@ public class LoginFragment extends BaseFragment {
 // validate the form
         if(form.isValid()) {
             // the form is valid
-            invokeLoginService();
+            if (isNetworkConnected()){
+                invokeLoginService();
+            }else {
+                showErrorDilog(false);
+            }
+
         }
         else {
             // the form is not valid

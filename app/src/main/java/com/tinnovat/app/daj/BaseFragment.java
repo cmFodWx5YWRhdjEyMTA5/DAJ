@@ -1,12 +1,16 @@
 package com.tinnovat.app.daj;
 
 import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
@@ -86,5 +90,30 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.detach(this).attach(this).commit();
+    }
+    public boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null;
+    }
+
+    public void showErrorDilog(final boolean needToFinish){
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
+        builder1.setMessage(getResources().getString(R.string.no_internet));
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                        if (needToFinish){
+                            getActivity().onBackPressed();
+                        }
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
     }
 }

@@ -119,7 +119,13 @@ public class EmergencyContactActivity extends BaseActivity {
 
         appPreferanceStore = new AppPreferanceStore(this);
         noData = findViewById(R.id.nodata);
-        fetchContactList();
+
+        if (isNetworkConnected()){
+            fetchContactList();
+        }else {
+            showErrorDilog(true);
+        }
+
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

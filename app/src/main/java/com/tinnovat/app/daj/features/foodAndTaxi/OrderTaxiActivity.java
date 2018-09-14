@@ -41,7 +41,11 @@ public class OrderTaxiActivity extends BaseActivity {
 
         appPreferanceStore = new AppPreferanceStore(this);
 
-        fetchTaxiApps();
+        if (isNetworkConnected()){
+            fetchTaxiApps();
+        }else {
+            showErrorDilog(true);
+        }
     }
 
     private void fetchTaxiApps() {

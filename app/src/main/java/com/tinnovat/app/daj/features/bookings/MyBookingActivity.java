@@ -278,52 +278,61 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
     }
 
     private void fetchMyBookingOnAnotherDate(String date) {
+        if (isNetworkConnected()){
+            startLoading();
 
-        startLoading();
+            ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
+            //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
+            Call<MyServiceBookingResponseModel> call = apiInterface.getBookingAnotherDate(appPreferanceStore.getLanguage() ? "en" : "ar",date);
+            call.enqueue(new Callback<MyServiceBookingResponseModel>() {
+                @Override
+                public void onResponse(Call<MyServiceBookingResponseModel> call, Response<MyServiceBookingResponseModel> response) {
+                    endLoading();
+                    //todo changes
 
-        ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
-        //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
-        Call<MyServiceBookingResponseModel> call = apiInterface.getBookingAnotherDate(appPreferanceStore.getLanguage() ? "en" : "ar",date);
-        call.enqueue(new Callback<MyServiceBookingResponseModel>() {
-            @Override
-            public void onResponse(Call<MyServiceBookingResponseModel> call, Response<MyServiceBookingResponseModel> response) {
-                endLoading();
-                //todo changes
-
-                if (response.body() != null){
-                    setData(response.body().getServiceBooking());
+                    if (response.body() != null){
+                        setData(response.body().getServiceBooking());
+                    }
                 }
 
-            }
+                @Override
+                public void onFailure(Call<MyServiceBookingResponseModel> call, Throwable t) {
+                    endLoading();
+                }
+            });
 
-            @Override
-            public void onFailure(Call<MyServiceBookingResponseModel> call, Throwable t) {
-                endLoading();
-            }
-        });
+        }else {
+            showErrorDilog(false);
+        }
     }
 
     public void fetchMyBookingService() {
-        startLoading();
+        if (isNetworkConnected()){
+            startLoading();
 
-        ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
-        //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
-        Call<MyServiceBookingResponseModel> call = apiInterface.getBookingServices(appPreferanceStore.getLanguage() ? "en" : "ar");
-        call.enqueue(new Callback<MyServiceBookingResponseModel>() {
-            @Override
-            public void onResponse(Call<MyServiceBookingResponseModel> call, Response<MyServiceBookingResponseModel> response) {
-                endLoading();
+            ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
+            //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
+            Call<MyServiceBookingResponseModel> call = apiInterface.getBookingServices(appPreferanceStore.getLanguage() ? "en" : "ar");
+            call.enqueue(new Callback<MyServiceBookingResponseModel>() {
+                @Override
+                public void onResponse(Call<MyServiceBookingResponseModel> call, Response<MyServiceBookingResponseModel> response) {
+                    endLoading();
 
-                todayListFiltration(response,CommonUtils.getInstance().getDate2(CalendarDay.today().getCalendar()));
-                upcomingListFiltration(response,CommonUtils.getInstance().getDate2(CalendarDay.today().getCalendar()));
-            }
+                    todayListFiltration(response,CommonUtils.getInstance().getDate2(CalendarDay.today().getCalendar()));
+                    upcomingListFiltration(response,CommonUtils.getInstance().getDate2(CalendarDay.today().getCalendar()));
+                }
 
-            @Override
-            public void onFailure(Call<MyServiceBookingResponseModel> call, Throwable t) {
-                endLoading();
+                @Override
+                public void onFailure(Call<MyServiceBookingResponseModel> call, Throwable t) {
+                    endLoading();
 
-            }
-        });
+                }
+            });
+
+        }else {
+            showErrorDilog(true);
+        }
+
     }
 
     private void todayListFiltration(Response<MyServiceBookingResponseModel> response ,String date){
@@ -404,6 +413,7 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
 
 
     private void invokeDeleteBooking(List<Integer> booking_id) {
+        if (isNetworkConnected()){
         startLoading();
 
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
@@ -438,6 +448,9 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
                // showMessage("2 "+getResources().getString(R.string.network_problem));
             }
         });
+        }else {
+            showErrorDilog(false);
+        }
     }
 
     @Override

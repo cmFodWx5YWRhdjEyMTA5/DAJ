@@ -41,7 +41,12 @@ public class OrderFoodActivity extends BaseActivity {
 
         appPreferanceStore = new AppPreferanceStore(this);
 
-        fetchFoodApps();
+        if (isNetworkConnected()){
+            fetchFoodApps();
+        }else {
+            showErrorDilog(true);
+        }
+
     }
 
     private void fetchFoodApps() {

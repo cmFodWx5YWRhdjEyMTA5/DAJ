@@ -138,7 +138,6 @@ public class NotificationActivity extends BaseActivity {
     @Override
     public void initialiseViews() {
 
-//        fetchProfileData();
     }
 
     @Override
@@ -148,31 +147,36 @@ public class NotificationActivity extends BaseActivity {
     }
 
     public void fetchProfileData() {
-        startLoading();
+        if (isNetworkConnected()){
+            startLoading();
 
-        ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
-        //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
-        Call<NotificationResponseModel> call = apiInterface.getNotificationData(appPreferanceStore.getLanguage() ? "en" : "ar");
-        call.enqueue(new Callback<NotificationResponseModel>() {
-            @Override
-            public void onResponse(Call<NotificationResponseModel> call, Response<NotificationResponseModel> response) {
-                endLoading();
-                if (response.body() != null){
-                    setData(response.body().getNotification());
+            ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
+            //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
+            Call<NotificationResponseModel> call = apiInterface.getNotificationData(appPreferanceStore.getLanguage() ? "en" : "ar");
+            call.enqueue(new Callback<NotificationResponseModel>() {
+                @Override
+                public void onResponse(Call<NotificationResponseModel> call, Response<NotificationResponseModel> response) {
+                    endLoading();
+                    if (response.body() != null){
+                        setData(response.body().getNotification());
 
-                    if (response.body().getNotification().size() == 0 ){
-                        setNoData(true);
-                    }else {
-                        setNoData(false);
+                        if (response.body().getNotification().size() == 0 ){
+                            setNoData(true);
+                        }else {
+                            setNoData(false);
+                        }
                     }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<NotificationResponseModel> call, Throwable t) {
-                endLoading();
-            }
-        });
+                @Override
+                public void onFailure(Call<NotificationResponseModel> call, Throwable t) {
+                    endLoading();
+                }
+            });
+        }else {
+            showErrorDilog(true);
+        }
+
     }
     private void setNoData(Boolean emptyList){
         if (emptyList){

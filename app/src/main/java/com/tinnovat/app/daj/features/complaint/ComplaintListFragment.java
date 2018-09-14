@@ -64,8 +64,13 @@ public class ComplaintListFragment extends BaseFragment {
 
         fab.setOnClickListener(this);
 
+        if (isNetworkConnected()){
+            fetchContactList();
 
-        fetchContactList();
+        }else {
+            showErrorDilog(true);
+        }
+
     }
 
     @Override
