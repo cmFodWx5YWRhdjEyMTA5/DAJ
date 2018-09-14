@@ -8,11 +8,14 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.pchmn.androidverify.Form;
 import com.tinnovat.app.daj.BaseFragment;
@@ -66,20 +69,35 @@ public class ResetPasswordFragment extends BaseFragment {
         userName = view.findViewById(R.id.userName);
         email = view.findViewById(R.id.email);
 
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (form.isValid()) {
-                    if (isNetworkConnected()){
-                        resetPassword();
-                    }else {
-                        showErrorDilog(false);
-                    }
-
+        email.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    doValidation();
                 }
+                return false;
             }
         });
 
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doValidation();
+            }
+        });
+
+    }
+
+
+
+    private void doValidation(){
+        if (form.isValid()) {
+            if (isNetworkConnected()){
+                resetPassword();
+            }else {
+                showErrorDilog(false);
+            }
+
+        }
     }
 
     private void resetPassword(){
@@ -124,7 +142,6 @@ public class ResetPasswordFragment extends BaseFragment {
 
         if (getActivity() != null)
             getActivity().onBackPressed();
-
     }
 
     private void showDilog(String message, final boolean success){

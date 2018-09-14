@@ -5,10 +5,13 @@ import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.pchmn.androidverify.Form;
 import com.tinnovat.app.daj.BaseActivity;
@@ -23,6 +26,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ChangePasswordActivity extends BaseActivity {
+    EditText cnfrmPassword;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,7 @@ public class ChangePasswordActivity extends BaseActivity {
         setContentView(R.layout.activity_change_password);
         //Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.change_password));
         Toolbar toolbar = findViewById(R.id.toolbar);
+        cnfrmPassword = findViewById(R.id.cnfrmPassword);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle(getText(R.string.change_password));
@@ -43,7 +48,15 @@ public class ChangePasswordActivity extends BaseActivity {
 
         Button submit = findViewById(R.id.submit);
         submit.setOnClickListener(this);
-       // initialiseEventListners();
+
+        cnfrmPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    doValidation();
+                }
+                return false;
+            }
+        });
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -66,7 +79,7 @@ public class ChangePasswordActivity extends BaseActivity {
 
         switch (v.getId()){
             case R.id.submit:
-                checkValidation();
+                doValidation();
 
                 break;
 
@@ -74,10 +87,10 @@ public class ChangePasswordActivity extends BaseActivity {
         }
     }
 
-    private void checkValidation() {
+    private void doValidation() {
         EditText currentPassword = findViewById(R.id.currentPassword);
         EditText newPassword = findViewById(R.id.newPassword);
-        EditText cnfrmPassword = findViewById(R.id.cnfrmPassword);
+
 
 
         Form form = new Form.Builder(this)
