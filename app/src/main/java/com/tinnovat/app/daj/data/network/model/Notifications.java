@@ -22,7 +22,7 @@ public class Notifications {
     private String submittedDate;
     @SerializedName("location")
     @Expose
-    private Location location;
+    private Locations location;
     @SerializedName("description")
     @Expose
     private String description;
@@ -125,11 +125,11 @@ public class Notifications {
         this.submittedDate = submittedDate;
     }
 
-    public Location getLocation() {
+    public Locations getLocation() {
         return location;
     }
 
-    public void setLocation(Location location) {
+    public void setLocation(Locations location) {
         this.location = location;
     }
 

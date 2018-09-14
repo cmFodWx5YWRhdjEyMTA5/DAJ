@@ -320,17 +320,16 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
             @Override
             public void onResponse(Call<LogoutResponseModel> call, Response<LogoutResponseModel> response) {
                 endLoading();
-                if (response.body() != null){
                     appPreferenceStore.deleteToken();
                     Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(intent);
                     finish();
-                }
             }
 
             @Override
             public void onFailure(Call<LogoutResponseModel> call, Throwable t) {
                 endLoading();
+
             }
         });
     }

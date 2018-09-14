@@ -397,14 +397,14 @@ public class GuestRegistrationActivityMain extends BaseActivity implements Guest
                         showDilog(response.body().getMessage());
                     }
                 } else {
-                    showDilog("Booking Failed! Please Try Again Later!");
+                    showDilog(getResources().getString(R.string.try_again_later));
                 }
             }
 
             @Override
             public void onFailure(Call<GuestRegistrationResponseModel> call, Throwable t) {
                 endLoading();
-                showDilog("Booking Failed! Please Try Again Later!");
+                showDilog(getResources().getString(R.string.try_again_later));
             }
         });
 

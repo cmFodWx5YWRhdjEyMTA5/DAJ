@@ -345,7 +345,7 @@ public class ServiceBookingFragment extends BaseFragment implements ChooseDateAd
             @Override
             public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
                 endLoading();
-                showDilog("Booking Failed! Please Try Again Later!",true);
+                showDilog(getResources().getString(R.string.try_again_later),true);
             }
         });
     }

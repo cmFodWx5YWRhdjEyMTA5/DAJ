@@ -525,7 +525,7 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
             @Override
             public void onFailure(Call<CompllaintUpdateResponseModel> call, Throwable t) {
                 endLoading();
-                showDilog("Registration Failed! Please Try Again Later!");
+                showDilog(getResources().getString(R.string.try_again_later));
             }
         });
     }

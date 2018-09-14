@@ -263,7 +263,7 @@ public class EventDetailActivity extends BaseActivity {
             @Override
             public void onFailure(Call<SuccessResponseModel> call, Throwable t) {
                 endLoading();
-                showDilog("Please Try Again Later!");
+                showDilog(getResources().getString(R.string.try_again_later));
             }
         });
     }

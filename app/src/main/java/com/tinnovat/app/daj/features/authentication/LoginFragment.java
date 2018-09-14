@@ -240,7 +240,7 @@ public class LoginFragment extends BaseFragment {
             @Override
             public void onFailure(Call<LoginResponseModel> call, Throwable t) {
                 endLoading();
-                showDilog("Login Failed Please Try Again Later!");
+                showDilog(getResources().getString(R.string.try_again_later));
             }
         });
     }
