@@ -13,6 +13,7 @@ import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.AppPreferanceStore;
 import com.tinnovat.app.daj.features.dashboard.MainActivity;
+import com.tinnovat.app.daj.features.notification.NotificationActivity;
 
 public class SplashScreenActivity extends BaseActivity {
 
@@ -41,15 +42,31 @@ public class SplashScreenActivity extends BaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (appPreferanceStore.getToken() == null){
-                    Intent intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                    finish();
+                Intent i = getIntent();
+                if (i.getBooleanExtra("fromNotification",false)){
+
+                    if (appPreferanceStore.getToken() == null){
+                        Intent intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }else {
+                        Intent intent = new Intent(SplashScreenActivity.this, NotificationActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }else {
-                    Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
-                    intent.putExtra("status",false);
-                    startActivity(intent);
+                    if (appPreferanceStore.getToken() == null){
+                        Intent intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }else {
+                        Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
+                        intent.putExtra("status",false);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
+
 
 
             }

@@ -15,6 +15,7 @@ import android.support.v4.content.ContextCompat;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.tinnovat.app.daj.R;
+import com.tinnovat.app.daj.features.authentication.SplashScreenActivity;
 import com.tinnovat.app.daj.features.notification.NotificationActivity;
 
 public class DAJFirebaseMessagingService extends FirebaseMessagingService {
@@ -28,7 +29,8 @@ public class DAJFirebaseMessagingService extends FirebaseMessagingService {
     private void sendMyNotification(String message) {
 
         //On click of notification it redirect to this Activity
-        Intent intent = new Intent(this, NotificationActivity.class);
+        Intent intent = new Intent(this, SplashScreenActivity.class);
+        intent.putExtra("fromNotification",true);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
 

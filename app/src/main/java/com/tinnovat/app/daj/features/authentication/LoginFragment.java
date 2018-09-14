@@ -9,9 +9,12 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -99,6 +102,15 @@ public class LoginFragment extends BaseFragment {
         english.setOnClickListener(this);
         arabic.setOnClickListener(this);
 
+        password.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    doValidation();
+                }
+                return false;
+            }
+        });
+
 
     }
 
@@ -168,13 +180,6 @@ public class LoginFragment extends BaseFragment {
     }
 
     private void doValidation(){
-
-
-// or initiate from a fragment or from what you want by providing your own root view
-      /*  Form form = new Form.Builder(getContext(), v)
-                .showErrors(true)
-                .build();*/
-
 // validate the form
         if(form.isValid()) {
             // the form is valid
