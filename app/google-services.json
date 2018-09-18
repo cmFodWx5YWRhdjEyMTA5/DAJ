@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "29447611620",
+    "firebase_url": "https://dar-al-jewar-aeebe.firebaseio.com",
+    "project_id": "dar-al-jewar-aeebe",
+    "storage_bucket": "dar-al-jewar-aeebe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:29447611620:android:ff86fe40e78ebfb8",
+        "android_client_info": {
+          "package_name": "com.tinnovat.app.daj"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "29447611620-l4m2jmsc5mqqdkpa69ls7uigaorfacd1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcvagQjoMTKWAbKwjTjGvrrHjQxh6XngE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
