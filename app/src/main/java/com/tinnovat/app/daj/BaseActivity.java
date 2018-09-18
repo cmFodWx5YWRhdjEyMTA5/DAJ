@@ -323,7 +323,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
         ApiInterface apiInterface = ApiClient.getAuthClient(getToken()).create(ApiInterface.class);
         //ApiInterface apiInterface = ApiClient.getAuthClient(appPreferanceStore.getToken()).create(ApiInterface.class);
-        Call<LogoutResponseModel> call = apiInterface.getLogout();
+        Call<LogoutResponseModel> call = apiInterface.getLogout(appPreferenceStore.getDeviceToken());
         call.enqueue(new Callback<LogoutResponseModel>() {
             @Override
             public void onResponse(Call<LogoutResponseModel> call, Response<LogoutResponseModel> response) {

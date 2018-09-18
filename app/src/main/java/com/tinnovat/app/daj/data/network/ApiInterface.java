@@ -138,5 +138,5 @@ public interface ApiInterface {
     //Get Service List
     @Headers({"Accept: application/json"})
     @GET("/Dar_alJewar/api/logout")
-    Call<LogoutResponseModel> getLogout();
+    Call<LogoutResponseModel> getLogout(@Query("device_token") String fcmToken);
 }
