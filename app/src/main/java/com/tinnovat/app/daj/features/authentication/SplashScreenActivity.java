@@ -42,7 +42,7 @@ public class SplashScreenActivity extends BaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = getIntent();
+                /*Intent i = getIntent();
                 if (i.getBooleanExtra("fromNotification",false)){
 
                     if (appPreferanceStore.getToken() == null){
@@ -65,8 +65,17 @@ public class SplashScreenActivity extends BaseActivity {
                         startActivity(intent);
                         finish();
                     }
+                }*/
+                if (appPreferanceStore.getToken() == null){
+                    Intent intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                }else {
+                    Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
+                    intent.putExtra("status",false);
+                    startActivity(intent);
+                    finish();
                 }
-
 
 
             }

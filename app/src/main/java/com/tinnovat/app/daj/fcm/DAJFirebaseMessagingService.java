@@ -29,7 +29,7 @@ public class DAJFirebaseMessagingService extends FirebaseMessagingService {
     private void sendMyNotification(String message) {
 
         //On click of notification it redirect to this Activity
-        Intent intent = new Intent(this, SplashScreenActivity.class);
+        Intent intent = new Intent(this, NotificationActivity.class);
         intent.putExtra("fromNotification",true);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
@@ -40,12 +40,14 @@ public class DAJFirebaseMessagingService extends FirebaseMessagingService {
 
         Uri soundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.mipmap.daj_icon)
+                .setSmallIcon(R.drawable.mosque)
+                .setColor(getResources().getColor(R.color.gold))
                 .setLargeIcon(bitmap)
                 .setContentTitle("DAR AL JEWAR")
                 .setContentText(message)
                 .setAutoCancel(true)
                 .setSound(soundUri)
+
                 .setContentIntent(pendingIntent);
 
 

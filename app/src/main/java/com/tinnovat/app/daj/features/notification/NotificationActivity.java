@@ -20,6 +20,7 @@ import com.tinnovat.app.daj.data.network.ApiClient;
 import com.tinnovat.app.daj.data.network.ApiInterface;
 import com.tinnovat.app.daj.data.network.model.NotificationResponseModel;
 import com.tinnovat.app.daj.data.network.model.Notifications;
+import com.tinnovat.app.daj.features.authentication.SplashScreenActivity;
 
 import java.util.List;
 
@@ -40,6 +41,12 @@ public class NotificationActivity extends BaseActivity {
         setContentView(R.layout.activity_notification_list);
 
         noData = findViewById(R.id.nodata);
+        appPreferanceStore = new AppPreferanceStore(this);
+        if (appPreferanceStore.getToken() == null){
+            Intent intent = new Intent(NotificationActivity.this, SplashScreenActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -123,7 +130,7 @@ public class NotificationActivity extends BaseActivity {
             }
         });
 
-        appPreferanceStore = new AppPreferanceStore(this);
+
 
         fetchProfileData();
 
