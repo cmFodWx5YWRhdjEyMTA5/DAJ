@@ -21,11 +21,19 @@ import com.tinnovat.app.daj.testing.TestActivity;
 import java.util.List;
 import java.util.Objects;
 
+
 public class EventAndNewsListAdapter extends RecyclerView.Adapter<EventAndNewsListAdapter.MyViewHolder> {
 
     private Context mContext;
+    private SelectAdapterListener mListener;
 
     private List<EventDetails> eventDetailsList;
+
+
+    public EventAndNewsListAdapter(SelectAdapterListener listener){
+
+        this.mListener = listener;
+    }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title;
@@ -42,6 +50,8 @@ public class EventAndNewsListAdapter extends RecyclerView.Adapter<EventAndNewsLi
             interested = view.findViewById(R.id.interested);
             bannerImage = view.findViewById(R.id.bannerImage);
         }
+
+
     }
 
     class ViewPagerViewHolder extends RecyclerView.ViewHolder {
@@ -77,6 +87,8 @@ public class EventAndNewsListAdapter extends RecyclerView.Adapter<EventAndNewsLi
                 Picasso.get().load(eventDetailsList.get(position).getEventsImages().get(0).getImgPath())
                         .placeholder(Objects.requireNonNull(ContextCompat.getDrawable(mContext, R.drawable.place_holder)))
                         .into(holder.bannerImage);
+            }else {
+                Picasso.get().load(R.drawable.event_details_bg).into(holder.bannerImage);
             }
 
             String[] startDate = eventDetailsList.get(position).getStartDatetime().split(" ");
@@ -95,13 +107,23 @@ public class EventAndNewsListAdapter extends RecyclerView.Adapter<EventAndNewsLi
                 }
             });
 
+            holder.interested.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    mListener.onInterested(eventDetailsList.get(holder.getAdapterPosition()).getId());
+
+                }
+            });
+
+
             if (eventDetailsList.get(position).getInterest()){
                 if (eventDetailsList.get(position).getUserInterested()){
                     holder.interested.setEnabled(false);
                     holder.interested.setText(mContext.getResources().getString(R.string.interested));
                     holder.interested.setTextColor(mContext.getResources().getColor(R.color.gray));
                 }else {
-                    holder.interested.setEnabled(false);
+                    holder.interested.setEnabled(true);
                     holder.interested.setText(mContext.getResources().getString(R.string.interest_to_attend));
                     holder.interested.setTextColor(mContext.getResources().getColor(R.color.greenText));
                 }
@@ -123,5 +145,9 @@ public class EventAndNewsListAdapter extends RecyclerView.Adapter<EventAndNewsLi
     @Override
     public int getItemCount() {
         return eventDetailsList == null ? 0 : eventDetailsList.size();
+    }
+
+    public interface SelectAdapterListener{
+        void onInterested(int eventId);
     }
 }

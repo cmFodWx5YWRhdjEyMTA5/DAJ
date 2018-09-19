@@ -134,6 +134,17 @@ public class EventNewsActivity extends BaseActivity implements TabLayout.OnTabSe
 
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (isNetworkConnected()){
+            fetchEventList();
+        }else {
+            showErrorDilog(true);
+        }
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         onBackPressed();
