@@ -9,6 +9,7 @@ import android.view.View;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.RemoteMessage;
 import com.tinnovat.app.daj.BaseActivity;
 import com.tinnovat.app.daj.R;
 import com.tinnovat.app.daj.data.AppPreferanceStore;
@@ -25,16 +26,17 @@ public class SplashScreenActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         appPreferanceStore = new AppPreferanceStore(this);
+
     }
 
     @Override
     public void initialiseViews() {
-        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener( this,  new OnSuccessListener<InstanceIdResult>() {
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(this, new OnSuccessListener<InstanceIdResult>() {
             @Override
             public void onSuccess(InstanceIdResult instanceIdResult) {
                 String newToken = instanceIdResult.getToken();
                 appPreferanceStore.setDeviceToken(newToken);
-                Log.e("newToken",newToken);
+                Log.e("newToken", newToken);
 
             }
         });
@@ -66,13 +68,18 @@ public class SplashScreenActivity extends BaseActivity {
                         finish();
                     }
                 }*/
-                if (appPreferanceStore.getToken() == null){
+                if(getIntent().hasExtra("key_1") ){
+                    startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
+                    finish();
+                    return;
+                }
+                if (appPreferanceStore.getToken() == null) {
                     Intent intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
                     startActivity(intent);
                     finish();
-                }else {
+                } else {
                     Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
-                    intent.putExtra("status",false);
+                    intent.putExtra("status", false);
                     startActivity(intent);
                     finish();
                 }
