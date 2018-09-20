@@ -37,13 +37,13 @@ public class DAJFirebaseMessagingService extends FirebaseMessagingService {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
 
-        Drawable drawable= ContextCompat.getDrawable(this,R.mipmap.daj_icon);
+        Drawable drawable= ContextCompat.getDrawable(this,R.drawable.large_icon);
 
         Bitmap bitmap = ((BitmapDrawable)drawable).getBitmap();
 
         Uri soundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this,"HIGH")
-                .setSmallIcon(R.drawable.mosque)
+                .setSmallIcon(R.drawable.small_icon)
                 .setColor(getResources().getColor(R.color.gold))
                 .setLargeIcon(bitmap)
                 .setContentTitle("DAR AL JEWAR")
