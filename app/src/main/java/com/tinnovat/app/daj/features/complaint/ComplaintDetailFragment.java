@@ -307,6 +307,7 @@ public class ComplaintDetailFragment extends BaseFragment {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+        //recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setAdapter(mAdapter);
     }
 
