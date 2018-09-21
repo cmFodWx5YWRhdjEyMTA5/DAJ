@@ -47,6 +47,7 @@ public class ComplaintDetailFragment extends BaseFragment {
     ImageView image2;
     ImageView image3;
     ImageView image4;
+    LinearLayout banner;
 
     public ComplaintDetailFragment() {
         // Required empty public constructor
@@ -81,6 +82,8 @@ public class ComplaintDetailFragment extends BaseFragment {
         imagePopup.setBackgroundColor(Color.BLACK);
         imagePopup.setFullScreen(true);
 
+        banner = view.findViewById(R.id.bannerText);
+
         complaintTitle.setText(mComplaintList.getCategoryName());
         complaintDate.setText(mComplaintList.getSubmittedDate());
         description.setText(String.format(getResources().getString(R.string.description_formatter),mComplaintList.getDescription()));
@@ -113,7 +116,7 @@ public class ComplaintDetailFragment extends BaseFragment {
             image3 = view.findViewById(R.id.image3);
             image4 = view.findViewById(R.id.image4);
             LinearLayout secondRow = view.findViewById(R.id.secondRow);
-            RelativeLayout imageLayout = view.findViewById(R.id.photoLayout);
+            LinearLayout imageLayout = view.findViewById(R.id.imageLayout);
 
             //TextView locationText = view.findViewById(R.id.locationText);
 
@@ -124,14 +127,15 @@ public class ComplaintDetailFragment extends BaseFragment {
                  locationText.setGravity(Gravity.END|Gravity.CENTER_VERTICAL);
         }
 
-            LinearLayout banner = view.findViewById(R.id.bannerText);
 
 
-            if (getAddress(mComplaintList.getLocation().getLat(), mComplaintList.getLocation().getLong()) != null) {
+
+            if (getLocationText() != null) {
                 banner.setVisibility(View.VISIBLE);
-                locationText.setText(getAddress(mComplaintList.getLocation().getLat(), mComplaintList.getLocation().getLong()));
+                locationText.setText(getLocationText());
+                //locationText.setText(getAddress(mComplaintList.getLocation().getLat(), mComplaintList.getLocation().getLong()));
             } else
-                banner.setVisibility(View.VISIBLE);
+                banner.setVisibility(View.GONE);
 
             switch (mComplaintList.getImages().size()) {
                 case 0:
@@ -227,8 +231,17 @@ public class ComplaintDetailFragment extends BaseFragment {
 
 
         } else {
-            RelativeLayout imageLayout = view.findViewById(R.id.photoLayout);
-            imageLayout.setVisibility(View.GONE);
+
+
+            if (getLocationText() != null) {
+                LinearLayout imageLayout = view.findViewById(R.id.imageLayout);
+                imageLayout.setVisibility(View.GONE);
+
+                banner.setVisibility(View.VISIBLE);
+                locationText.setText(getLocationText());
+                //locationText.setText(getAddress(mComplaintList.getLocation().getLat(), mComplaintList.getLocation().getLong()));
+            } else
+                banner.setVisibility(View.GONE);
         }
 
 
@@ -236,6 +249,19 @@ public class ComplaintDetailFragment extends BaseFragment {
 
 
         setStatus(mComplaintList);
+    }
+
+    private String getLocationText(){
+      /*  LinearLayout banner = view.findViewById(R.id.bannerText);
+
+
+        if (getAddress(mComplaintList.getLocation().getLat(), mComplaintList.getLocation().getLong()) != null) {
+            banner.setVisibility(View.VISIBLE);
+            locationText.setText(getAddress(mComplaintList.getLocation().getLat(), mComplaintList.getLocation().getLong()));
+        } else
+            banner.setVisibility(View.VISIBLE);
+        */
+        return getAddress(mComplaintList.getLocation().getLat(), mComplaintList.getLocation().getLong());
     }
 
     private void ImagePopup(int position){
