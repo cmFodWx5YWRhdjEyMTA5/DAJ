@@ -269,8 +269,9 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
                     fetchMyBookingService();
                 }else {
                     fetchMyBookingOnAnotherDate(CommonUtils.getInstance().getDate(date.getCalendar()));
-                    relativeLayout.setVisibility(View.GONE);
-                    upComingBanner.setVisibility(View.GONE);
+                    //relativeLayout.setVisibility(View.GONE);
+                    //upComingBanner.setVisibility(View.GONE);
+                    listToday.setVisibility(View.GONE);
                 }
 
             }
@@ -291,7 +292,8 @@ public class MyBookingActivity extends BaseActivity implements MyBookingsAdapter
                     //todo changes
 
                     if (response.body() != null){
-                        setData(response.body().getServiceBooking());
+                        setUpComingData(response.body().getServiceBooking());
+                        //setData(response.body().getServiceBooking());
                     }
                 }
 

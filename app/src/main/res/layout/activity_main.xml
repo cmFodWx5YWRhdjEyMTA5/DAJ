@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@drawable/bg_with_white"
+        android:background="@mipmap/bg_with_white"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
         app:itemBackground="@drawable/drawer_selected_item"
@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/bg_with_white"/>
+                android:src="@mipmap/bg_with_white"/>
 
             <ImageView
                 android:id="@+id/facebook"

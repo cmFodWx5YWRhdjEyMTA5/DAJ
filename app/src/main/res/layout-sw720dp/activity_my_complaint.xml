@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@mipmap/bg"
-    android:orientation="vertical">
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="120dp"
@@ -52,12 +56,13 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textSize="25sp"
+            android:layout_marginEnd="-50dp"
         android:text="@string/lorem_ipsum_large"
        />
         <RelativeLayout
             android:id="@+id/photoLayout"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:visibility="visible"
             android:elevation="5dp"
@@ -65,7 +70,8 @@
         <LinearLayout
             android:id="@+id/imageLayout"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="600dp"
+            android:visibility="visible"
             >
             <ImageView
                 android:id="@+id/image1"
@@ -77,7 +83,7 @@
             <LinearLayout
                 android:id="@+id/secondRow"
                 android:layout_width="0dp"
-                android:layout_height="400dp"
+                android:layout_height="600dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 >
@@ -85,36 +91,36 @@
                 android:id="@+id/image4"
                 android:layout_width="match_parent"
                 android:scaleType="centerCrop"
-                android:layout_height="400dp"
+                android:layout_height="600dp"
                 android:layout_marginBottom="1dp"/>
                 <ImageView
                     android:id="@+id/image2"
                     android:layout_width="match_parent"
                     android:scaleType="centerCrop"
-                    android:layout_height="200dp"
+                    android:layout_height="300dp"
                    android:layout_marginBottom="1dp"/>
                 <ImageView
                     android:id="@+id/image3"
                     android:layout_width="match_parent"
                     android:scaleType="centerCrop"
-                    android:layout_height="200dp"/>
+                    android:layout_height="300dp"/>
             </LinearLayout>
         </LinearLayout>
             <LinearLayout
                 android:id="@+id/bannerText"
                 android:layout_alignParentBottom="true"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="80dp"
                 android:background="@color/blackTrans" >
                 <ImageView
                     android:id="@+id/navIcon"
-                    android:layout_width="20dp"
+                    android:layout_width="40dp"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
-                    app:srcCompat="@drawable/projects"
+                    app:srcCompat="@drawable/navigation"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
-                    android:tint="@color/greenText"/>
+                    android:tint="@color/white"/>
 
                 <TextView
                     android:id="@+id/locationText"
@@ -122,12 +128,10 @@
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:maxLines="1"
-
+                    android:textSize="30sp"
                     android:textStyle=""
                     android:textColor="@color/white" />
             </LinearLayout>
-
-
         </RelativeLayout>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"
@@ -135,136 +139,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"/>
 
-
-     <!--   <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="start">
-            <View
-                android:id="@+id/lineGreen"
-                style="@style/lineIndication"
-                android:background="@color/greenText"/>
-            <TextView
-                android:gravity="center_vertical"
-                android:id="@+id/headingSubmitted"
-                style="@style/heading1"
-                android:layout_marginTop="5dp"
-                android:layout_toEndOf="@+id/lineGreen"
-                android:text="@string/submitted"/>
-            <TextView
-                style="@style/subHeading1"
-                android:layout_below="@+id/headingSubmitted"
-                android:layout_toEndOf="@+id/lineGreen"
-                android:text="@string/lorem_ipsum"/>
-            <TextView
-                android:id="@+id/submittedDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Thu , Nov 2017"
-                android:textColor="@color/greenText"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="5dp"/>
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                app:srcCompat="@drawable/date"
-                android:layout_margin="5dp"
-                android:layout_toStartOf="@+id/submittedDate" />
-
-        </RelativeLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/gray"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"/>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-            <View
-                android:id="@+id/lineOrange"
-                style="@style/lineIndication"
-                android:background="@color/orange"/>
-            <TextView
-                android:gravity="center_vertical"
-                android:id="@+id/headingProgress"
-                style="@style/heading1"
-                android:layout_marginTop="5dp"
-                android:layout_toEndOf="@+id/lineOrange"
-                android:text="@string/in_progress"/>
-            <TextView
-                style="@style/subHeading1"
-                android:layout_below="@+id/headingProgress"
-                android:layout_toEndOf="@+id/lineOrange"
-                android:text="@string/lorem_ipsum"/>
-            <TextView
-                android:id="@+id/assignedDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Thu , Nov 2017"
-                android:textColor="@color/greenText"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="5dp"/>
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                app:srcCompat="@drawable/date"
-                android:layout_margin="5dp"
-                android:layout_toStartOf="@+id/assignedDate"/>
-
-        </RelativeLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/gray"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"/>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-            <View
-                android:id="@+id/lineBlue"
-                style="@style/lineIndication"
-                android:background="@color/blue"/>
-            <TextView
-                android:gravity="center_vertical"
-                android:id="@+id/headingCompleted"
-                style="@style/heading1"
-                android:layout_marginTop="5dp"
-                android:layout_toEndOf="@+id/lineBlue"
-                android:text="@string/completed"/>
-            <TextView
-                style="@style/subHeading1"
-                android:layout_below="@+id/headingCompleted"
-                android:layout_toEndOf="@+id/lineBlue"
-                android:text="@string/lorem_ipsum"/>
-            <TextView
-                android:id="@+id/inProgressDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Thu , Nov 2017"
-                android:textColor="@color/greenText"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="5dp"/>
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                app:srcCompat="@drawable/date"
-                android:layout_margin="5dp"
-                android:layout_toStartOf="@+id/inProgressDate"/>
-
-        </RelativeLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/gray"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"/>
--->
-
-
 </LinearLayout>
 </LinearLayout>
+</ScrollView>

@@ -6,7 +6,7 @@
     <color name="colorAccent">#C2A15A</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
-    <color name="blackTrans">#99000000</color>
+    <color name="blackTrans">#50000000</color>
     <color name="blackLight">#323433</color>
     <color name="blackLightTrans">#11000000</color>
     <color name="greenNavSelection">#24735D</color>

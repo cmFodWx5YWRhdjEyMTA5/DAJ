@@ -176,6 +176,8 @@ public class EventDetailActivity extends BaseActivity {
 
         if (mEventDetailsList.getEventsImages().size() != 0) {
             Picasso.get().load(mEventDetailsList.getEventsImages().get(0).getImgPath()).into(backBg);
+        }else {
+            Picasso.get().load(R.drawable.event_details_bg).into(backBg);
         }
 
         String[] startDateTime = mEventDetailsList.getStartDatetime().split(" ");

@@ -39,7 +39,7 @@
         <TextView
             style="@style/heading1"
             android:layout_marginBottom="10dp"
-            android:text="@string/description" />\
+            android:text="@string/description" />
 
 
         <RelativeLayout
@@ -51,6 +51,7 @@
                 android:id="@+id/descriptionText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="-20dp"
                 android:maxLines="6"
                 android:textColor="@color/black"
                 />
@@ -70,8 +71,7 @@
                 android:textStyle="bold"
                 android:layout_below="@+id/descriptionText"
                 android:layout_alignParentEnd="true"
-                android:background="@color/white"
-                android:layout_marginTop="-18dp"
+                android:background="@color/transparentWhite"
                 android:text="@string/more"/>
 
             <TextView
@@ -82,8 +82,7 @@
                 android:textStyle="bold"
                 android:layout_below="@+id/descriptionText"
                 android:layout_alignParentEnd="true"
-                android:background="@color/white"
-                android:layout_marginTop="-18dp"
+                android:background="@color/transparentWhite"
                 android:text="@string/less"/>
     </RelativeLayout>
         <include
