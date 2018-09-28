@@ -142,4 +142,5 @@
     <string name="technician">Assigned Technician</string>
     <string name="try_again_later">oops!! something went wrong. Please try again</string>
     <string name="no_internet">Your Internet Connection Appears To Be Offline</string>
+    <string name="no_data">No Data Available</string>
 </resources>

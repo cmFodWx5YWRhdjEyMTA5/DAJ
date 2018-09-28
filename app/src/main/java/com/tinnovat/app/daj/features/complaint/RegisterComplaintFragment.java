@@ -440,14 +440,43 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(intent, CAMERA_REQUEST);*/
             }
+        }else{
+            fromGallery();
         }
+    }
+
+    private void fromGallery(){
+        Intent pickPhoto = new Intent(Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(pickPhoto , 1);
+    }
+
+    private void showAlert(){
+        String[] selection = {"From Camera", "From Gallery"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setItems(selection, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // the user clicked on colors[which]
+                switch (which){
+                    case 0:
+                        takePhoto();
+                        break;
+                    case 1:
+                        fromGallery();
+                        break;
+                }
+            }
+        });
+        builder.show();
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.takeImage:
-                takePhoto();
+                //takePhoto();
+                showAlert();
                 break;
 
             case R.id.button_submit:
@@ -578,8 +607,43 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch(requestCode) {
+            case 1:
+                try {
+                    Uri selectedImage = data.getData();
+                    //imageview.setImageURI(selectedImage);
 
-            if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
+                    Bitmap thumbnail = MediaStore.Images.Media.getBitmap(
+                            getActivity().getContentResolver(), selectedImage);
+                    images.add(thumbnail);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+//            images.add(srcBmp);
+                mAdapter.setData(images);
+                recyclerViewImages.setVisibility(View.VISIBLE);
+                break;
+
+                default:
+                    if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
+
+                        try {
+                            Bitmap thumbnail = MediaStore.Images.Media.getBitmap(
+                                    getActivity().getContentResolver(), imageUri);
+                            images.add(thumbnail);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+//            images.add(srcBmp);
+                        mAdapter.setData(images);
+                        recyclerViewImages.setVisibility(View.VISIBLE);
+                    }
+                    break;
+        }
+
+
+
+            /*if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
 
                 try {
                     Bitmap thumbnail = MediaStore.Images.Media.getBitmap(
@@ -591,7 +655,7 @@ public class RegisterComplaintFragment extends BaseFragment implements ImagesAda
 //            images.add(srcBmp);
                 mAdapter.setData(images);
                 recyclerViewImages.setVisibility(View.VISIBLE);
-            }
+            }*/
 
     }
 

@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.tinnovat.app.daj.BaseFragment;
 import com.tinnovat.app.daj.R;
@@ -81,8 +82,16 @@ public class EventListTabFragment extends BaseFragment implements EventAndNewsLi
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
 
+        TextView mNoData = view.findViewById(R.id.noData);
+
+        if (mAdapter.getItemCount() == 0){
+            mNoData.setVisibility(View.VISIBLE);
+        }else {
+            mNoData.setVisibility(View.GONE);
+        }
+
+        recyclerView.setAdapter(mAdapter);
         mAdapter.setData(eventDetailsList);
     }
 

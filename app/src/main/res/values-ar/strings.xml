@@ -127,5 +127,6 @@
     <string name="technician">فني معين</string>
     <string name="close">أغلق</string>
     <string name="try_again_later">للأسف حدث خطأ ما حاول مرة اخرى</string>
+    <string name="no_data">لا تتوافر بيانات</string>
 
 </resources>
